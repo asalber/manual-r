@@ -1,0 +1,26 @@
+book_filename: "bookdown"
+new_session: true
+before_chapter_script: _common.R
+delete_merged_file: true
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Ecuación '
+    thm: 'Teorema '
+    lem: 'Lema '
+    cor: 'Corolario '
+    prp: 'Proposición '
+    cnj: 'Conjetura '
+    def: 'Definición '
+    exm: 'Ejemplo '
+    exr: 'Ejercicio '
+    hyp: 'Hipótesis '
+    proof: 'Demostración. '
+    remark: 'Observación. '
+    solution: 'Solución. '
+  ui:
+    edit: Editar
+    chapter_name: 'Capítulo '
+    appendix_name: 'Apéndice '
+

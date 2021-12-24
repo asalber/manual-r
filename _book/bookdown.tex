@@ -1,0 +1,192 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Curso básico de análisis de datos con R},
+  pdfauthor={Alfredo Sánchez Alberca},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\title{Curso básico de análisis de datos con R}
+\author{Alfredo Sánchez Alberca}
+\date{2021-12-24}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{prefacio}{%
+\chapter*{Prefacio}\label{prefacio}}
+\addcontentsline{toc}{chapter}{Prefacio}
+
+\hypertarget{propuxf3sito-de-este-manual}{%
+\section*{Propósito de este manual}\label{propuxf3sito-de-este-manual}}
+\addcontentsline{toc}{section}{Propósito de este manual}
+
+Este manual proporciona una introducción amigable al \href{https://www.r-project.org/}{lenguaje de programación R} para aquellas personas interesadas en utilizar este lenguaje para el análisis de datos.
+
+El manual empieza con los conceptos básicos del lenguaje de programación R pero enseguida aborda su uso para la visualización y el análisis estadístico de datos, haciendo un recorrido por los test estadísticos más comunes.
+
+Lo más interesante de este manual es la multitud de ejemplos que ilustran el uso de las técnicas estadísticas presentadas, así como los problemas propuestos.
+
+El manual no aborda los fundamentos matemáticos de los análisis estadísticos presentados, aunque si explica brevemente cuándo deben usarse y cuándo no, así como las interpretaciones de los resultados obtenidos en los ejemplos. Si alguien está interesado en profundizar en los detalles matemáticos, puede visitar esta \href{https://aprendeconalf.es/docencia/estadistica/}{página}.
+
+No es un curso de programación en R, sino de uso de sus funciones predefinidas y de los paquetes más habituales para el análisis de datos.
+
+Para cualquier comentario o sugerencia sobre este manual escriba al autor (\href{mailto:asalber@ceu.es}{\nolinkurl{asalber@ceu.es}}).
+
+\hypertarget{licencia}{%
+\section*{Licencia}\label{licencia}}
+\addcontentsline{toc}{section}{Licencia}
+
+Este trabajo se libera bajo licencia \href{https://creativecommons.org/licenses/by-sa/4.0/deed.es}{Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)}
+
+Manual básico de análisis de datos con R by Alfredo Sánchez Alberca is licensed under CC BY-SA 4.0
+
+\hypertarget{introducciuxf3n-a-r}{%
+\chapter{Introducción a R}\label{introducciuxf3n-a-r}}
+
+La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al
+servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar un gran volumen de datos.
+Actualmente, prácticamente nadie se plantea hacer un estudio estadístico serio sin la ayuda de un buen programa de
+análisis de datos.
+
+\emph{R} es un potente lenguaje de programación que incluye multitud de funciones para la representación y el análisis de
+datos.
+Fue desarrollado por Robert Gentleman y Ross Ihaka en la Universidad de Auckland en Nueva Zelanda, aunque actualmente es mantenido por una enorme comunidad científica en todo el mundo.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.25\linewidth]{img/Rlogo} 
+
+}
+
+\caption{Logotipo de R}\label{fig:rlogo}
+\end{figure}
+
+Las ventajas de R frente a otros programas habituales de análisis de datos, como pueden ser SPSS, SAS o Matlab, son múltiples:
+
+\begin{itemize}
+\tightlist
+\item
+  Es software libre y por tanto gratuito. Puede descargarse desde la web \url{http://www.r-project.org/}.
+\item
+  Es multiplataforma. Existen versiones para Windows, Macintosh, Linux y otras plataformas.
+\item
+  Está avalado y en constante desarrollo por una amplia comunidad científica distribuida por todo el mundo que lo utiliza como estándar para el análisis de datos.
+\item
+  Cuenta con multitud de paquetes para todo tipo de análisis estadísticos y representaciones gráficas, desde los más
+  habituales, hasta los más novedosos y sofisticados que no incluyen otros programas. Los paquetes están organizados y
+  documentados en un \href{https://cran.r-project.org/}{repositorio CRAN} (Comprehensive R Archive Network) desde donde pueden descargarse libremente.
+\item
+  Es programable, lo que permite que el usuario pueda crear fácilmente sus propias funciones o paquetes para
+  análisis de datos específicos.
+  Existen multitud de libros, manuales y tutoriales libres que permiten su aprendizaje e ilustran el análisis
+  estadístico de datos en distintas disciplinas científicas como las Matemáticas, la Física, la Biología, la Psicología, la Medicina, etc.
+\end{itemize}
+
+\hypertarget{entornos-de-desarrollo}{%
+\section{Entornos de desarrollo}\label{entornos-de-desarrollo}}
+
+Por defecto el entorno de trabajo de R es en línea de comandos, lo que significa que los cálculos y los análisis se realizan mediante comandos o instrucciones que el usuario teclea en una ventana de texto. No obstante, existen distintas
+interfaces gráficas de usuario que facilitan su uso, sobre todo para usuarios noveles. Algunas de ellas, como las que se enumeran a continuación, son completos entornos de desarrollo que facilitan la gestión de cualquier proyecto:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.rstudio.com/}{RStudio}. Probablemente el entorno de desarrollo más extendido para programar con R ya que incorpora multitud de utilidades para facilitar la programación con R.
+\item
+  \href{https://rkward.kde.org}{RKWard}. Es otra otro de los entornos de desarrollo más completos que además incluye a posibilidad de añadir nuevos menús y cuadros de diálogo personalizados.
+\item
+  \href{https://code.visualstudio.com/}{Visual Studio Code}. Es un entorno de desarrollo de propósito general ampliamente extendido. Aunque no es un entorno de desarrollo específico para R, incluye una extensión con utilidades que facilitan mucho el desarrollo con R.
+\end{itemize}
+
+\hypertarget{estructuras-de-control}{%
+\chapter{Estructuras de control}\label{estructuras-de-control}}
+
+\hypertarget{funciones}{%
+\chapter{Funciones}\label{funciones}}
+
+\hypertarget{gruxe1ficos-y-visualizaciuxf3n-de-datos}{%
+\chapter{Gráficos y visualización de datos}\label{gruxe1ficos-y-visualizaciuxf3n-de-datos}}
+
+\hypertarget{estaduxedstica-descriptiva}{%
+\chapter{Estadística descriptiva}\label{estaduxedstica-descriptiva}}
+
+\hypertarget{estimaciuxf3n-de-paruxe1metros-y-contrastes-de-hipuxf3tesis}{%
+\chapter{Estimación de parámetros y contrastes de hipótesis}\label{estimaciuxf3n-de-paruxe1metros-y-contrastes-de-hipuxf3tesis}}
+
+  \bibliography{bibliography.bib}
+
+\end{document}

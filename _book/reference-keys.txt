@@ -1,0 +1,8 @@
+fig:rlogo
+introducción-a-r
+entornos-de-desarrollo
+estructuras-de-control
+funciones
+gráficos-y-visualización-de-datos
+estadística-descriptiva
+estimación-de-parámetros-y-contrastes-de-hipótesis
