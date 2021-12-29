@@ -1,0 +1,21 @@
+# Análisis de regresión simple
+
+
+## Regresión lineal
+
+
+## Correlación
+
+
+## Regresión no lineal
+
+
+## Regresión múltiple 
+
+
+
+
+
+
+
+

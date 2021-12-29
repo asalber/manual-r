@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 3 Tipos de datos | Curso básico de análisis de datos con R</title>
+<meta name="author" content="Alfredo Sánchez Alberca">
+<meta name="description" content="3.1 Tipos de datos primitivos simples En R existen distintos tipos de datos predefinidos simples: numeric: Es el tipo de los números. Secuencia de dígitos (pueden incluir el - para negativos y el...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="Capítulo 3 Tipos de datos | Curso básico de análisis de datos con R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://aprendeconalf.es/tipos-de-datos.html">
+<meta property="og:description" content="3.1 Tipos de datos primitivos simples En R existen distintos tipos de datos predefinidos simples: numeric: Es el tipo de los números. Secuencia de dígitos (pueden incluir el - para negativos y el...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 3 Tipos de datos | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="3.1 Tipos de datos primitivos simples En R existen distintos tipos de datos predefinidos simples: numeric: Es el tipo de los números. Secuencia de dígitos (pueden incluir el - para negativos y el...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Curso básico de análisis de datos con R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 3</span> Tipos de datos</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/asalber/manual-r">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tipos-de-datos" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Capítulo 3</span> Tipos de datos<a class="anchor" aria-label="anchor" href="#tipos-de-datos"><i class="fas fa-link"></i></a>
+</h1>
+<div id="tipos-de-datos-primitivos-simples" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Tipos de datos primitivos simples<a class="anchor" aria-label="anchor" href="#tipos-de-datos-primitivos-simples"><i class="fas fa-link"></i></a>
+</h2>
+<p>En R existen distintos tipos de datos predefinidos simples:</p>
+<ul>
+<li><p><code>numeric</code>: Es el tipo de los números. Secuencia de dígitos (pueden incluir el - para negativos y el . para decimales) que representan números. Por ejemplo, <code>1</code>, <code>2.0</code>, <code>3.1415</code> o <code>4.5e3</code>.<br>
+Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
+<li><p><code>integer</code>: Es el tipo de los números enteros. Secuencia de dígitos sin separador de decimales que representan un número entero.</p></li>
+<li><p><code>character</code>: Es cualquier cadena de caracteres alfanuméricos. Secuencia de caracteres alfanuméricos que representan texto. Se escriben entre comillas simples o dobles. Por ejemplo <code>"Hola"</code> o <code>'Hola'</code>.</p></li>
+<li><p><code>logical</code>: Es el tipo de los booleanos. Puede tomar cualquiera de los dos valores lógicos <code>TRUE</code> (verdadero) o <code>FALSE</code> (falso). También se pueden abreviar como <code>T</code> o <code>F</code>.</p></li>
+<li><p><code>NA</code>: Se utiliza para representar datos desconocidos o perdidos. Aunque en realidad es un dato lógico, puede considerarse con un tipo de dato especial.</p></li>
+<li><p><code>NULL</code>: Se utiliza para representar la ausencia de datos. La principal diferencia con <code>NA</code> es que <code>NULL</code> aparece cuando se intenta acceder a un dato que no existe, mientras que <code>NA</code> se utiliza para representar explícitamente datos perdidos en un estudio.</p></li>
+</ul>
+<p>Para averiguar el tipo de un dato se puede utilizar la siguiente función:</p>
+<ul>
+<li>
+<code>class(x)</code>: Devuelve el tipo del dato <code>x</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Ejemplo 3.1  </strong></span>A continuación se muestran los tipos de algunos datos.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fl">3.1415</span><span class="op">)</span>
+<span class="co">#&gt; [1] "numeric"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] "numeric"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="st">"Hola"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "character"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; [1] "logical"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>
+<span class="co">#&gt; [1] "logical"</span></code></pre></div>
+</div>
+<div id="conversión-de-tipos" class="section level3" number="3.1.1">
+<h3>
+<span class="header-section-number">3.1.1</span> Conversión de tipos<a class="anchor" aria-label="anchor" href="#conversi%C3%B3n-de-tipos"><i class="fas fa-link"></i></a>
+</h3>
+<p>En muchas ocasiones es posible convertir un dato de un tipo a otro distinto. Para ello se usan las siguientes funciones:</p>
+<ul>
+<li>
+<code>as.numeric(x)</code>: Convierte el dato de <code>x</code> al tipo <code>numeric</code> siempre que sea posible o tenga sentido la conversión. Para convertir una cadena en un número, la cadena tiene que representar un número. El valor lógico <code>TRUE</code> se convierte en 1 y el <code>FALSE</code> en 0.</li>
+<li>
+<code>as.integer(x)</code>: Convierte el dato de <code>x</code> al tipo <code>integer</code> siempre que sea posible o tenga sentido la conversión. Para convertir una cadena en un número entero, la cadena tiene que representar un número entero. El valor lógico <code>TRUE</code> se convierte en 1 y el <code>FALSE</code> en 0.</li>
+<li>
+<code>as.character(x)</code>: Convierte el tipo de dato de <code>x</code> al tipo <code>character</code> simplemente añadiendo comillas.</li>
+<li>
+<code>as.logical(x)</code>: Convierte el tipo de dato de <code>x</code> al tipo lógico. Para datos numéricos, el 0 se convierte en <code>FALSE</code> y cualquier otro número en <code>TRUE</code>. Para cadenas se obtiene <code>NA</code> excepto para las cadenas <code>"TRUE"</code> y <code>"true"</code> que se convierten a <code>TRUE</code> y las cadenas <code>"FALSE"</code> y <code>"false"</code> que se convierten a <code>FALSE</code>.</li>
+</ul>
+<p>El tipo <code>NA</code> no se puede convertir a ningún otro tipo pues representa la ausencia del dato. Lo mismo ocurre con <code>NULL</code>.</p>
+</div>
+</div>
+<div id="operaciones-con-números" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Operaciones con números<a class="anchor" aria-label="anchor" href="#operaciones-con-n%C3%BAmeros"><i class="fas fa-link"></i></a>
+</h2>
+<div id="operadores-aritméticos" class="section level3" number="3.2.1">
+<h3>
+<span class="header-section-number">3.2.1</span> Operadores aritméticos<a class="anchor" aria-label="anchor" href="#operadores-aritm%C3%A9ticos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Los siguientes operadores permiten realizar las clásicas operaciones aritméticas entre datos numéricos:</p>
+<ul>
+<li>
+<code>x + y</code>: Devuelve la suma de <code>x</code> e <code>y</code>.</li>
+<li>
+<code>x - y</code>: Devuelve la resta de <code>x</code> e <code>y</code>.</li>
+<li>
+<code>x * y</code>: Devuelve el producto de <code>x</code> e <code>y</code>.</li>
+<li>
+<code>x / y</code>: Devuelve el cociente de <code>x</code> e <code>y</code>.<br>
+</li>
+<li>
+<code>x %% y</code>: Devuelve el resto de la división entera de <code>x</code> e <code>y</code>.<br>
+</li>
+<li>
+<code>x ^ y</code>: Devuelve la potencia <code>x</code> elevado a <code>y</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Ejemplo 3.2  </strong></span>A continuación se muestran varios ejemplos de operaciones aritméticas.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">+</span> <span class="fl">3</span>
+<span class="co">#&gt; [1] 5</span>
+<span class="fl">5</span> <span class="op">*</span> <span class="op">-</span><span class="fl">2</span>
+<span class="co">#&gt; [1] -10</span>
+<span class="fl">5</span> <span class="op">/</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 2.5</span>
+<span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="fl">2</span> <span class="op">^</span> <span class="fl">3</span>
+<span class="co">#&gt; [1] 8</span></code></pre></div>
+</div>
+</div>
+<div id="operadores-relacionales" class="section level3" number="3.2.2">
+<h3>
+<span class="header-section-number">3.2.2</span> Operadores relacionales<a class="anchor" aria-label="anchor" href="#operadores-relacionales"><i class="fas fa-link"></i></a>
+</h3>
+<p>Comparan dos números y devuelven un valor lógico.</p>
+<ul>
+<li>
+<code>x == y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es igual que el número <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &gt; y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es mayor que el número <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &lt; y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es menor que el número <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &gt;= y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es mayor o igual que el número <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &lt;= y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es menor o igual a que el número <code>y,</code> y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x != y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es distinto del número <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Ejemplo 3.3  </strong></span>A continuación se muestran varios ejemplos de operaciones relacionales.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">3</span> <span class="op">==</span> <span class="fl">3</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fl">3.1</span> <span class="op">&lt;=</span> <span class="fl">3</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="fl">4</span> <span class="op">&gt;</span> <span class="fl">3</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="op">-</span><span class="fl">1</span> <span class="op">!=</span> <span class="fl">1</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="fl">2</span> <span class="op">^</span> <span class="fl">3</span>
+<span class="co">#&gt; [1] 8</span>
+<span class="op">(</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 25</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="operaciones-con-cadenas" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Operaciones con cadenas<a class="anchor" aria-label="anchor" href="#operaciones-con-cadenas"><i class="fas fa-link"></i></a>
+</h2>
+<div id="funciones-de-cadenas" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Funciones de cadenas<a class="anchor" aria-label="anchor" href="#funciones-de-cadenas"><i class="fas fa-link"></i></a>
+</h3>
+<p>Existen muchas funciones para cadenas de texto pero las más comunes son:</p>
+<ul>
+<li>
+<code>nchar(c)</code>: Devuelve un número entero con el número de caracteres de la cadena.</li>
+<li>
+<code>paste(x, y, ..., sep=s)</code>: Concatena las cadenas <code>x</code>, <code>y</code>, etc. separándolas por la cadena <code>s</code>. Por defecto la cadena de separación es un espacio en blanco.</li>
+<li>
+<code>substr(c, start=i, stop=j)</code>: Devuelve la subcadena de la cadena <code>c</code> desde la posición <code>i</code> hasta la posición <code>j</code>. El primer carácter de una cadena ocupa la posición 1.</li>
+<li>
+<code>tolower(c)</code>: Devuelve la cadena que resulta de convertir la cadena <code>c</code> a minúsculas.</li>
+<li>
+<code>toupper(c)</code>: Devuelve la cadena que resulta de convertir la cadena <code>c</code> a mayúsculas.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Ejemplo 3.4  </strong></span>A continuación se muestran varios ejemplos de operaciones con cadenas de texto.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="st">"Me gusta R"</span><span class="op">)</span>
+<span class="co">#&gt; [1] 10</span>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Me"</span>, <span class="st">"gusta"</span>, <span class="st">"R"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "Me gusta R"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Me"</span>, <span class="st">"gusta"</span>, <span class="st">"R"</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "Me-gusta-R"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Me"</span>, <span class="st">"gusta"</span>, <span class="st">"R"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>
+<span class="co">#&gt; [1] "MegustaR"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span><span class="st">"Me gusta R"</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>
+<span class="co">#&gt; [1] "gusta"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="st">"Me gusta R"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "me gusta r"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span><span class="op">(</span><span class="st">"Me gusta R"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "ME GUSTA R"</span></code></pre></div>
+</div>
+</div>
+<div id="operaciones-de-comparación-de-cadenas" class="section level3" number="3.3.2">
+<h3>
+<span class="header-section-number">3.3.2</span> Operaciones de comparación de cadenas<a class="anchor" aria-label="anchor" href="#operaciones-de-comparaci%C3%B3n-de-cadenas"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<code>x == y</code> : Devuelve <code>TRUE</code> si la cadena <code>x</code> es igual que la cadena <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &gt; y</code> : Devuelve <code>TRUE</code> si la cadena <code>x</code> sucede a la cadena <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &lt; y</code> : Devuelve <code>TRUE</code> si la cadena <code>x</code> antecede a la cadena <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &gt;= y</code> : Devuelve <code>TRUE</code> si la cadena <code>x</code> sucede o es igual a la cadena <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &lt;= y</code> : Devuelve <code>TRUE</code> si la cadena <code>x</code> antecede o es igual a la cadena <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x != y</code> : Devuelve <code>TRUE</code> si la cadena <code>x</code> es distinta de la cadena <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+</ul>
+<p><i class="fa fa-exclamation-triangle" style="color:red;"></i> <em>Utilizan el orden alfabético, las minúsculas van antes que las mayúsculas, y los números antes que las letras.</em></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Ejemplo 3.5  </strong></span>A continuación se muestran varios ejemplos de operaciones de comparación de cadenas.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"R"</span> <span class="op">==</span> <span class="st">"R"</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="st">"R"</span> <span class="op">==</span> <span class="st">"r"</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="st">"uno"</span> <span class="op">&lt;</span> <span class="st">"dos"</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="st">"A"</span> <span class="op">&gt;</span> <span class="st">"a"</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="st">""</span> <span class="op">&lt;</span> <span class="st">"R"</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+</div>
+<!-- ### Cadenas formateadas (`format()`) -->
+<!-- - `c.format(valores)`: Devuelve la cadena `c` tras sustituir los valores de la secuencia `valores` en los marcadores de posición de `c`. Los marcadores de posición se indican mediante llaves `{}` en la cadena `c`, y el reemplazo de los valores se puede realizar por posición, indicando en número de orden del valor dentro de las llaves, o por nombre, indicando el nombre del valor, siempre y cuando los valores se pasen con el formato `nombre = valor`. -->
+<!-- ```python -->
+<!-- >>> 'Un {} vale {} {}'.format('€', 1.12, '$') -->
+<!-- 'Un € vale 1.12 $' -->
+<!-- >>> 'Un {2} vale {1} {0}'.format('€', 1.12, '$') -->
+<!-- 'Un $ vale 1.12 €' -->
+<!-- >>> 'Un {moneda1} vale {cambio} {moneda2}'.format(moneda1 = '€', cambio = 1.12, moneda2 = '$') -->
+<!-- 'Un € vale 1.12 $' -->
+<!-- ``` -->
+<!-- Los marcadores de posición, a parte de indicar la posición de los valores de reemplazo, pueden indicar también el formato de estos. Para ello se utiliza la siguiente sintaxis: -->
+<!-- - `{:n}` : Alinea el valor a la izquierda rellenando con espacios por la derecha hasta los `n` caracteres. -->
+<!-- - `{:>n}` : Alinea el valor a la derecha rellenando con espacios por la izquierda hasta los `n` caracteres. -->
+<!-- - `{:^n}` : Alinea el valor en el centro rellenando con espacios por la izquierda y por la derecha hasta los `n` caracteres. -->
+<!-- - `{:nd}` : Formatea el valor como un número entero con `n` caracteres rellenando con espacios blancos por la izquierda. -->
+<!-- - `{:n.mf}` : Formatea el valor como un número real con un tamaño de `n` caracteres (incluído el separador de decimales) y `m` cifras decimales, rellenando con espacios blancos por la izquierda. -->
+<!-- ```python -->
+<!-- >>> 'Hoy es {:^10}, mañana {:10} y pasado {:>10}'.format('lunes', 'martes', 'miércoles') -->
+<!-- 'Hoy es   lunes   , mañana martes     y pasado  miércoles' -->
+<!-- >>> 'Cantidad {:5d}'.format(12)' -->
+<!-- 'Cantidad    12' -->
+<!-- >>> 'Pi vale {:8.4f}'.format(3.141592) -->
+<!-- 'Pi vale   3.1416' -->
+<!-- ``` -->
+</div>
+</div>
+<div id="operaciones-con-datos-lógicos-o-booleanos" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Operaciones con datos lógicos o booleanos<a class="anchor" aria-label="anchor" href="#operaciones-con-datos-l%C3%B3gicos-o-booleanos"><i class="fas fa-link"></i></a>
+</h2>
+<div id="operadores-lógicos" class="section level3" number="3.4.1">
+<h3>
+<span class="header-section-number">3.4.1</span> Operadores lógicos<a class="anchor" aria-label="anchor" href="#operadores-l%C3%B3gicos"><i class="fas fa-link"></i></a>
+</h3>
+<p>A la hora de comparar valores lógicos R asocia a <code>TRUE</code> el valor 1 y a <code>FALSE</code> el valor 0.</p>
+<ul>
+<li>
+<code>x == y</code>: Devuelve <code>TRUE</code> si los booleanos <code>x</code> y <code>y</code> son iguales, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &lt; y</code>: Devuelve <code>TRUE</code> si el booleano <code>x</code> es menor que el booleano <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &lt;= y</code>: Devuelve <code>TRUE</code> si el booleano <code>x</code> es menor o igual que el booleano <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &gt; y</code>: Devuelve <code>TRUE</code> si el booleano <code>x</code> es mayor que el booleano <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x &gt;= y</code>: Devuelve <code>TRUE</code> si el booleano <code>x</code> es mayor o igual que el booleano <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>
+<code>x != y</code>: Devuelve <code>TRUE</code> si el booleano <code>x</code> es distinto que el booleano <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+<li>Negación <code>!b</code>: Devuelve <code>TRUE</code> si el booleano <code>b</code> es <code>FALSE</code>, y <code>FALSE</code> si es <code>TRUE</code>.</li>
+<li>Conjunción <code>x &amp; y</code>: Devuelve <code>TRUE</code> si los booleanos <code>x</code>, y <code>y</code> son <code>TRUE</code> y <code>FALSE</code> en caso contrario.</li>
+<li>Disyunción <code>x | y</code>: Devuelve <code>TRUE</code> si alguno de los booleanos <code>x</code> o <code>y</code> son <code>TRUE</code>, y <code>FALSE</code> en caso contrario.</li>
+</ul>
+<div id="tabla-de-verdad" class="section level4 unnumbered">
+<h4>Tabla de verdad<a class="anchor" aria-label="anchor" href="#tabla-de-verdad"><i class="fas fa-link"></i></a>
+</h4>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="center"><code>x</code></th>
+<th align="center"><code>y</code></th>
+<th align="center"><code>!x</code></th>
+<th align="center"><code>x &amp; y</code></th>
+<th align="center"><code>x | y</code></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>TRUE</code></td>
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>TRUE</code></td>
+<td align="center"><code>TRUE</code></td>
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>TRUE</code></td>
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>TRUE</code></td>
+<td align="center"><code>TRUE</code></td>
+<td align="center"><code>FALSE</code></td>
+<td align="center"><code>TRUE</code></td>
+<td align="center"><code>TRUE</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="example">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Ejemplo 3.6  </strong></span>A continuación se muestran varios ejemplos de operaciones lógicas con booleanos.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">!</span><span class="cn">TRUE</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="cn">FALSE</span> <span class="op">|</span> <span class="cn">TRUE</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="cn">FALSE</span> <span class="op">|</span> <span class="cn">FALSE</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">FALSE</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">TRUE</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="variables" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Variables<a class="anchor" aria-label="anchor" href="#variables"><i class="fas fa-link"></i></a>
+</h2>
+<p>Una variable es un identificador ligado a algún valor.</p>
+<p>Reglas para nombrarlas:</p>
+<ul>
+<li>Comienzan siempre por una letra o punto, seguida de otras letras, números, puntos o guiones bajos. Si empieza por punto no puede seguirle un número.</li>
+<li>No se pueden utilizarse palabras reservadas del lenguaje.</li>
+</ul>
+<p>A diferencia de otros lenguajes de programación, las variables no tienen asociado un tipo y no es necesario declararlas antes de usarlas (tipado dinámico).</p>
+<p>Para asignar un valor a una variable se utiliza el operador de asignación <code>&lt;-</code>:</p>
+<ul>
+<li>
+<code>x &lt;- y</code>: Asigna el valor <code>y</code> a la variable <code>x</code>.</li>
+</ul>
+<p>Aunque es menos común también se puede utilizar el operador <code>=</code>.</p>
+<p>Se puede crear una variable sin ningún valor asociado asignándole el valor <code>NULL</code>.</p>
+<p>Una vez definida una variable, puede utilizarse en cualquier expresión donde tenga sentido el valor que tiene asociado.</p>
+<p>Si una variable ya no va a usarse, es posible eliminarla y liberar el espacio que ocupan sus datos asociados con la siguiente función:</p>
+<ul>
+<li>
+<code>rm(x)</code>: Elimina la variable <code>x</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Ejemplo 3.7  </strong></span>A continuación se muestran varios ejemplos de asignaciones de valores a variables.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">3</span>
+<span class="va">x</span>
+<span class="co">#&gt; [1] 3</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">2</span>
+<span class="va">y</span>
+<span class="co">#&gt; [1] 5</span>
+<span class="co"># Valor no definido</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+<span class="va">x</span>
+<span class="co">#&gt; NULL</span>
+<span class="co"># Eliminar y</span>
+<span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
+<span class="co"># A partir de aquí, una llamada a y produce un error.</span></code></pre></div>
+</div>
+<div id="prioridad-de-los-operadores" class="section level3" number="3.5.1">
+<h3>
+<span class="header-section-number">3.5.1</span> Prioridad de los operadores<a class="anchor" aria-label="anchor" href="#prioridad-de-los-operadores"><i class="fas fa-link"></i></a>
+</h3>
+<p>Al evaluar una expresiones R utiliza el siguiente orden de prioridad de evaluación:</p>
+<div class="inline-table"><table class="table table-sm"><tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">Funciones predefinidas</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">Potencias (<code>^</code>)</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">Productos y cocientes (<code>*</code>, <code>/</code>, <code>%%</code>)</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">Sumas y restas (<code>+</code>, <code>-</code>)</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">Operadores relacionales (<code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>!=</code>)</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">Negación (<code>!</code>)</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">Conjunción (<code>&amp;</code>)</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">Disyunción (<code>|</code>)</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">Asignación (<code>&lt;-</code>)</td>
+</tr>
+</tbody></table></div>
+<p>Se puede saltar el orden de evaluación utilizando paréntesis <code>( )</code>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Ejemplo 3.8  </strong></span>A continuación se muestran varios ejemplos de evaluación de expresiones.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">4</span> <span class="op">+</span> <span class="fl">8</span> <span class="op">/</span> <span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 6</span>
+<span class="fl">4</span> <span class="op">+</span> <span class="op">(</span><span class="fl">8</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 20</span>
+<span class="op">(</span><span class="fl">4</span> <span class="op">+</span> <span class="fl">8</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 3</span>
+<span class="op">(</span><span class="fl">4</span> <span class="op">+</span> <span class="fl">8</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] 64</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">2</span> 
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">3</span>
+<span class="va">z</span> <span class="op">&lt;-</span> <span class="op">!</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">&gt;</span> <span class="va">y</span> <span class="op">&amp;</span> <span class="va">y</span> <span class="op">*</span> <span class="fl">2</span>  <span class="op">&lt;</span> <span class="va">x</span> <span class="op">^</span> <span class="fl">3</span>
+<span class="va">z</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-9" class="exercise"><strong>Ejercicio 3.1  </strong></span>Se dispone de los siguientes datos de una persona:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="center">Variable</th>
+<th align="center">Valor</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">edad</td>
+<td align="center">20</td>
+</tr>
+<tr class="even">
+<td align="center">estatura</td>
+<td align="center">165</td>
+</tr>
+<tr class="odd">
+<td align="center">peso</td>
+<td align="center">60</td>
+</tr>
+<tr class="even">
+<td align="center">sexo</td>
+<td align="center">mujer</td>
+</tr>
+</tbody>
+</table></div>
+<ol style="list-style-type: decimal">
+<li><p>Declarar las variables anteriores y asignarles los valores correspondientes.</p></li>
+<li><p>Definir la variable numérica imc con el índice de masa corporal aplicando la siguiente fórmula a las variables anteriores:</p></li>
+</ol>
+<p><span class="math display">\[\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Definir la variable booleana obesa con el valor correspondiente a la siguiente condición: ser mujer y no tener una edad superior a 60 y tener un índice de masa corporal mayor o igual que 30. ¿Es esta persona obesa?</li>
+</ol>
+</div>
+<div class="solution">
+<p><span id="unlabeled-div-10" class="solution"><em>Solución</em>. </span>Solución el ejercicio.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Declaración de variables</span>
+<span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">20</span>
+<span class="va">estatura</span> <span class="op">&lt;-</span> <span class="fl">165</span>
+<span class="va">peso</span> <span class="op">&lt;-</span> <span class="fl">60</span>
+<span class="va">sexo</span> <span class="op">&lt;-</span> <span class="st">"mujer"</span>
+<span class="co"># Cálculo del índice de masa corporal</span>
+<span class="va">imc</span> <span class="op">&lt;-</span> <span class="va">peso</span> <span class="op">/</span> <span class="op">(</span><span class="va">estatura</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span>
+<span class="va">imc</span>
+<span class="co">#&gt; [1] 22.03857</span>
+<span class="co"># Cálculo de la obesidad</span>
+<span class="va">obesa</span> <span class="op">&lt;-</span> <span class="va">sexo</span> <span class="op">==</span> <span class="st">"mujer"</span> <span class="op">&amp;</span> <span class="op">!</span> <span class="va">edad</span> <span class="op">&gt;</span> <span class="fl">60</span> <span class="op">&amp;</span> <span class="va">imc</span> <span class="op">&gt;=</span> <span class="fl">30</span>
+<span class="va">obesa</span>
+<span class="co">#&gt; [1] FALSE</span></code></pre></div>
+</div>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2021-12-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

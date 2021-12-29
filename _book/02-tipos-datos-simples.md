@@ -2,10 +2,12 @@
 
 En R existen distintos tipos de datos predefinidos simples:
 
-- `numeric`: Es el tipo de los números. Secuencia de dígitos (pueden incluir el - para negativos y el . para decimales) que representan números.  Por ejemplo, `1`, `2.0`, `3.1415` o `4.5e3`.  
+- `numeric`: Es el tipo de los números. Secuencia de dígitos (pueden incluir el - para negativos y el punto como separador de decimales) que representan números.  Por ejemplo, `1`, `-2.0`, `3.1415` o `4.5e3`.  
 Por defecto, cualquier número que se teclee tomará este tipo.
 
-- `integer`: Es el tipo de los números enteros. Secuencia de dígitos sin separador de decimales que representan un número entero.  
+- `double`: Es el tipo de los números reales. Secuencia de dígitos que incluyen decimales separados por punto. Por ejemplo `3.1415` o `-2.0`. Son una subclase del tipo de datos numérico.
+
+- `integer`: Es el tipo de los números enteros. Secuencia de dígitos sin separador de decimales que representan un número entero. Por ejemplo `1` o `-2`. Son una subclase del tipo de datos numérico. 
 
 - `character`: Es cualquier cadena de caracteres alfanuméricos. Secuencia de caracteres alfanuméricos que representan texto. Se escriben entre comillas simples o dobles. Por ejemplo `"Hola"` o `'Hola'`.  
 
@@ -14,6 +16,10 @@ Por defecto, cualquier número que se teclee tomará este tipo.
 - `NA`: Se utiliza para representar datos desconocidos o perdidos. Aunque en realidad es un dato lógico, puede considerarse con un tipo de dato especial.
 
 - `NULL`: Se utiliza para representar la ausencia de datos. La principal diferencia con `NA` es que `NULL` aparece cuando se intenta acceder a un dato que no existe, mientras que `NA` se utiliza para representar explícitamente datos perdidos en un estudio. 
+
+- `factor`: Es un tipo de dato que solo puede tomar valores de un conjunto predefinido conocido como _niveles_ del factor. Los factores se suelen utilizar para representar datos cualitativos o categóricos. Para definir un factor se utiliza la siguiente función: 
+
+  - `factor(x, levels=niveles)`: Crea un dato de tipo factor con el valor `x`. Los niveles del factor pueden indicarse mediante el parámetro `levels`, pasándole un vector con los valores posibles.
 
 Para averiguar el tipo de un dato se puede utilizar la siguiente función:
 
@@ -33,8 +39,23 @@ class(TRUE)
 #> [1] "logical"
 class(NA)
 #> [1] "logical"
+class(NULL)
+#> [1] "NULL"
+class(factor('mujer', levels = c('hombre', 'mujer')))
+#> [1] "factor"
 ```
 :::
+
+También pueden utilizarse las siguientes funciones que devuelven un booleano:
+
+- `is.numeric(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `numeric`. 
+- `is.double(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `double`.
+- `is.integer(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `integer`. 
+- `is.character(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `character`. 
+- `is.logical(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `logical`. 
+- `is.na(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `NA`. 
+- `is.null(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `NULL`. 
+- `is.factor(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `factor`. 
 
 ## Conversión de tipos
 

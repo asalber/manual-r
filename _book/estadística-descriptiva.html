@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 5 Estadística descriptiva | Curso básico de análisis de datos con R</title>
+<title>Capítulo 8 Estadística descriptiva | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta name="description" content="8.1 Tablas de frecuencias  8.1.1 Tablas de frecuencias de una variable   8.1.2 Tablas de frecuencias de dos variables (tablas de contingencia)   8.2 Estadísticos de tendencia central  8.2.1 Media ...">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 5 Estadística descriptiva | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 8 Estadística descriptiva | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://aprendeconalf.es/estadística-descriptiva.html">
-<meta property="og:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta property="og:description" content="8.1 Tablas de frecuencias  8.1.1 Tablas de frecuencias de una variable   8.1.2 Tablas de frecuencias de dos variables (tablas de contingencia)   8.2 Estadísticos de tendencia central  8.2.1 Media ...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 5 Estadística descriptiva | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta name="twitter:title" content="Capítulo 8 Estadística descriptiva | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="8.1 Tablas de frecuencias  8.1.1 Tablas de frecuencias de una variable   8.1.2 Tablas de frecuencias de dos variables (tablas de contingencia)   8.2 Estadísticos de tendencia central  8.2.1 Media ...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -42,11 +42,16 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefacio</a></li>
 <li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
-<li><a class="" href="estructuras-de-control.html"><span class="header-section-number">2</span> Estructuras de control</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">3</span> Funciones</a></li>
-<li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">4</span> Gráficos y visualización de datos</a></li>
-<li><a class="active" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">5</span> Estadística descriptiva</a></li>
-<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis.html"><span class="header-section-number">6</span> Estimación de parámetros y contrastes de hipótesis</a></li>
+<li><a class="" href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></li>
+<li><a class="" href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
+<li><a class="" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">5</span> Funciones</a></li>
+<li><a class="" href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></li>
+<li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></li>
+<li><a class="active" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
+<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
+<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
+<li><a class="" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
 </ul>
 
         <div class="book-extra">
@@ -54,23 +59,160 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estadística-descriptiva" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estadística-descriptiva" class="section level1" number="8">
 <h1>
-<span class="header-section-number">Capítulo 5</span> Estadística descriptiva<a class="anchor" aria-label="anchor" href="#estad%C3%ADstica-descriptiva"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 8</span> Estadística descriptiva<a class="anchor" aria-label="anchor" href="#estad%C3%ADstica-descriptiva"><i class="fas fa-link"></i></a>
 </h1>
+<div id="tablas-de-frecuencias" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Tablas de frecuencias<a class="anchor" aria-label="anchor" href="#tablas-de-frecuencias"><i class="fas fa-link"></i></a>
+</h2>
+<div id="tablas-de-frecuencias-de-una-variable" class="section level3" number="8.1.1">
+<h3>
+<span class="header-section-number">8.1.1</span> Tablas de frecuencias de una variable<a class="anchor" aria-label="anchor" href="#tablas-de-frecuencias-de-una-variable"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia" class="section level3" number="8.1.2">
+<h3>
+<span class="header-section-number">8.1.2</span> Tablas de frecuencias de dos variables (tablas de contingencia)<a class="anchor" aria-label="anchor" href="#tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="estadísticos-de-tendencia-central" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Estadísticos de tendencia central<a class="anchor" aria-label="anchor" href="#estad%C3%ADsticos-de-tendencia-central"><i class="fas fa-link"></i></a>
+</h2>
+<div id="media" class="section level3" number="8.2.1">
+<h3>
+<span class="header-section-number">8.2.1</span> Media<a class="anchor" aria-label="anchor" href="#media"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="mediana" class="section level3" number="8.2.2">
+<h3>
+<span class="header-section-number">8.2.2</span> Mediana<a class="anchor" aria-label="anchor" href="#mediana"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="moda" class="section level3" number="8.2.3">
+<h3>
+<span class="header-section-number">8.2.3</span> Moda<a class="anchor" aria-label="anchor" href="#moda"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="estadísticos-de-posición" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Estadísticos de posición<a class="anchor" aria-label="anchor" href="#estad%C3%ADsticos-de-posici%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+<div id="mínimo-y-máximo" class="section level3" number="8.3.1">
+<h3>
+<span class="header-section-number">8.3.1</span> Mínimo y máximo<a class="anchor" aria-label="anchor" href="#m%C3%ADnimo-y-m%C3%A1ximo"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="percentiles" class="section level3" number="8.3.2">
+<h3>
+<span class="header-section-number">8.3.2</span> Percentiles<a class="anchor" aria-label="anchor" href="#percentiles"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="estadísticos-de-dispersión" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Estadísticos de dispersión<a class="anchor" aria-label="anchor" href="#estad%C3%ADsticos-de-dispersi%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+<div id="rango" class="section level3" number="8.4.1">
+<h3>
+<span class="header-section-number">8.4.1</span> Rango<a class="anchor" aria-label="anchor" href="#rango"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="rango-intercuartílico" class="section level3" number="8.4.2">
+<h3>
+<span class="header-section-number">8.4.2</span> Rango intercuartílico<a class="anchor" aria-label="anchor" href="#rango-intercuart%C3%ADlico"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="varianza-y-cuasivarianza" class="section level3" number="8.4.3">
+<h3>
+<span class="header-section-number">8.4.3</span> Varianza y cuasivarianza<a class="anchor" aria-label="anchor" href="#varianza-y-cuasivarianza"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="desviación-típica-y-cuasidesviación-típica" class="section level3" number="8.4.4">
+<h3>
+<span class="header-section-number">8.4.4</span> Desviación típica y cuasidesviación típica<a class="anchor" aria-label="anchor" href="#desviaci%C3%B3n-t%C3%ADpica-y-cuasidesviaci%C3%B3n-t%C3%ADpica"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="coeficiente-de-variación" class="section level3" number="8.4.5">
+<h3>
+<span class="header-section-number">8.4.5</span> Coeficiente de variación<a class="anchor" aria-label="anchor" href="#coeficiente-de-variaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="estadísticos-de-forma" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Estadísticos de forma<a class="anchor" aria-label="anchor" href="#estad%C3%ADsticos-de-forma"><i class="fas fa-link"></i></a>
+</h2>
+<div id="coeficiente-de-asimetría" class="section level3" number="8.5.1">
+<h3>
+<span class="header-section-number">8.5.1</span> Coeficiente de asimetría<a class="anchor" aria-label="anchor" href="#coeficiente-de-asimetr%C3%ADa"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="coeficiente-de-apuntamiento" class="section level3" number="8.5.2">
+<h3>
+<span class="header-section-number">8.5.2</span> Coeficiente de apuntamiento<a class="anchor" aria-label="anchor" href="#coeficiente-de-apuntamiento"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="resúmenes-descriptivos" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Resúmenes descriptivos<a class="anchor" aria-label="anchor" href="#res%C3%BAmenes-descriptivos"><i class="fas fa-link"></i></a>
+</h2>
 
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">4</span> Gráficos y visualización de datos</a></div>
-<div class="next"><a href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis.html"><span class="header-section-number">6</span> Estimación de parámetros y contrastes de hipótesis</a></div>
+<div class="prev"><a href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></div>
+<div class="next"><a href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#estad%C3%ADstica-descriptiva"><span class="header-section-number">5</span> Estadística descriptiva</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estad%C3%ADstica-descriptiva"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
+<li>
+<a class="nav-link" href="#tablas-de-frecuencias"><span class="header-section-number">8.1</span> Tablas de frecuencias</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tablas-de-frecuencias-de-una-variable"><span class="header-section-number">8.1.1</span> Tablas de frecuencias de una variable</a></li>
+<li><a class="nav-link" href="#tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia"><span class="header-section-number">8.1.2</span> Tablas de frecuencias de dos variables (tablas de contingencia)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#estad%C3%ADsticos-de-tendencia-central"><span class="header-section-number">8.2</span> Estadísticos de tendencia central</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#media"><span class="header-section-number">8.2.1</span> Media</a></li>
+<li><a class="nav-link" href="#mediana"><span class="header-section-number">8.2.2</span> Mediana</a></li>
+<li><a class="nav-link" href="#moda"><span class="header-section-number">8.2.3</span> Moda</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#estad%C3%ADsticos-de-posici%C3%B3n"><span class="header-section-number">8.3</span> Estadísticos de posición</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#m%C3%ADnimo-y-m%C3%A1ximo"><span class="header-section-number">8.3.1</span> Mínimo y máximo</a></li>
+<li><a class="nav-link" href="#percentiles"><span class="header-section-number">8.3.2</span> Percentiles</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#estad%C3%ADsticos-de-dispersi%C3%B3n"><span class="header-section-number">8.4</span> Estadísticos de dispersión</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rango"><span class="header-section-number">8.4.1</span> Rango</a></li>
+<li><a class="nav-link" href="#rango-intercuart%C3%ADlico"><span class="header-section-number">8.4.2</span> Rango intercuartílico</a></li>
+<li><a class="nav-link" href="#varianza-y-cuasivarianza"><span class="header-section-number">8.4.3</span> Varianza y cuasivarianza</a></li>
+<li><a class="nav-link" href="#desviaci%C3%B3n-t%C3%ADpica-y-cuasidesviaci%C3%B3n-t%C3%ADpica"><span class="header-section-number">8.4.4</span> Desviación típica y cuasidesviación típica</a></li>
+<li><a class="nav-link" href="#coeficiente-de-variaci%C3%B3n"><span class="header-section-number">8.4.5</span> Coeficiente de variación</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#estad%C3%ADsticos-de-forma"><span class="header-section-number">8.5</span> Estadísticos de forma</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#coeficiente-de-asimetr%C3%ADa"><span class="header-section-number">8.5.1</span> Coeficiente de asimetría</a></li>
+<li><a class="nav-link" href="#coeficiente-de-apuntamiento"><span class="header-section-number">8.5.2</span> Coeficiente de apuntamiento</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#res%C3%BAmenes-descriptivos"><span class="header-section-number">8.6</span> Resúmenes descriptivos</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/06-estadistica-descriptiva.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/06-estadistica-descriptiva.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/08-estadistica-descriptiva.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/08-estadistica-descriptiva.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -82,7 +224,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2021-12-24.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2021-12-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -90,6 +232,34 @@
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

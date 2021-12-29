@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 9 Estimación de parámetros y contrastes de hipótesis | Curso básico de análisis de datos con R</title>
+<title>Capítulo 12 Estimación de parámetros y contrastes de hipótesis de variables cualitativas | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta name="description" content="12.1 Contraste para la proporción de una población   12.2 Contraste para la comparación de proporciones de dos poblaciones  12.2.1 Poblaciones pareadas   12.2.2 Poblaciones independientes   12.3...">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 9 Estimación de parámetros y contrastes de hipótesis | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 12 Estimación de parámetros y contrastes de hipótesis de variables cualitativas | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://aprendeconalf.es/estimación-de-parámetros-y-contrastes-de-hipótesis.html">
-<meta property="og:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta property="og:url" content="https://aprendeconalf.es/estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cualitativas-1.html">
+<meta property="og:description" content="12.1 Contraste para la proporción de una población   12.2 Contraste para la comparación de proporciones de dos poblaciones  12.2.1 Poblaciones pareadas   12.2.2 Poblaciones independientes   12.3...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 9 Estimación de parámetros y contrastes de hipótesis | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta name="twitter:title" content="Capítulo 12 Estimación de parámetros y contrastes de hipótesis de variables cualitativas | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="12.1 Contraste para la proporción de una población   12.2 Contraste para la comparación de proporciones de dos poblaciones  12.2.1 Poblaciones pareadas   12.2.2 Poblaciones independientes   12.3...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -39,18 +39,43 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 9</span> Estimación de parámetros y contrastes de hipótesis</a></li></ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 12</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/asalber/manual-r">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimación-de-parámetros-y-contrastes-de-hipótesis" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cualitativas-1" class="section level1" number="12">
 <h1>
-<span class="header-section-number">Capítulo 9</span> Estimación de parámetros y contrastes de hipótesis<a class="anchor" aria-label="anchor" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 12</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas<a class="anchor" aria-label="anchor" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas-1"><i class="fas fa-link"></i></a>
 </h1>
+<div id="contraste-para-la-proporción-de-una-población-1" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Contraste para la proporción de una población<a class="anchor" aria-label="anchor" href="#contraste-para-la-proporci%C3%B3n-de-una-poblaci%C3%B3n-1"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="contraste-para-la-comparación-de-proporciones-de-dos-poblaciones-1" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> Contraste para la comparación de proporciones de dos poblaciones<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-proporciones-de-dos-poblaciones-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="poblaciones-pareadas-2" class="section level3" number="12.2.1">
+<h3>
+<span class="header-section-number">12.2.1</span> Poblaciones pareadas<a class="anchor" aria-label="anchor" href="#poblaciones-pareadas-2"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="poblaciones-independientes-2" class="section level3" number="12.2.2">
+<h3>
+<span class="header-section-number">12.2.2</span> Poblaciones independientes<a class="anchor" aria-label="anchor" href="#poblaciones-independientes-2"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="contraste-para-la-comparación-de-proporciones-de-más-de-dos-poblaciones-1" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> Contraste para la comparación de proporciones de más de dos poblaciones<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-proporciones-de-m%C3%A1s-de-dos-poblaciones-1"><i class="fas fa-link"></i></a>
+</h2>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="empty"></div>

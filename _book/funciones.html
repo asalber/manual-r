@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 3 Funciones | Curso básico de análisis de datos con R</title>
+<title>Capítulo 5 Funciones | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta name="description" content="5.1 Definición y llamada a funciones   5.2 Parámetros y argumentos de una función   5.3 Retorno de una fucinón   5.4 Entorno y ámbito de las variables   5.5 Funciones recursivas   5.6 Paquetes">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 3 Funciones | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 5 Funciones | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://aprendeconalf.es/funciones.html">
-<meta property="og:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta property="og:description" content="5.1 Definición y llamada a funciones   5.2 Parámetros y argumentos de una función   5.3 Retorno de una fucinón   5.4 Entorno y ámbito de las variables   5.5 Funciones recursivas   5.6 Paquetes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 3 Funciones | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
+<meta name="twitter:title" content="Capítulo 5 Funciones | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="5.1 Definición y llamada a funciones   5.2 Parámetros y argumentos de una función   5.3 Retorno de una fucinón   5.4 Entorno y ámbito de las variables   5.5 Funciones recursivas   5.6 Paquetes">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -42,11 +42,16 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefacio</a></li>
 <li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
-<li><a class="" href="estructuras-de-control.html"><span class="header-section-number">2</span> Estructuras de control</a></li>
-<li><a class="active" href="funciones.html"><span class="header-section-number">3</span> Funciones</a></li>
-<li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">4</span> Gráficos y visualización de datos</a></li>
-<li><a class="" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">5</span> Estadística descriptiva</a></li>
-<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis.html"><span class="header-section-number">6</span> Estimación de parámetros y contrastes de hipótesis</a></li>
+<li><a class="" href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></li>
+<li><a class="" href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
+<li><a class="" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
+<li><a class="active" href="funciones.html"><span class="header-section-number">5</span> Funciones</a></li>
+<li><a class="" href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></li>
+<li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></li>
+<li><a class="" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
+<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
+<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
+<li><a class="" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
 </ul>
 
         <div class="book-extra">
@@ -54,23 +59,61 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="funciones" class="section level1" number="3">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="funciones" class="section level1" number="5">
 <h1>
-<span class="header-section-number">Capítulo 3</span> Funciones<a class="anchor" aria-label="anchor" href="#funciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 5</span> Funciones<a class="anchor" aria-label="anchor" href="#funciones"><i class="fas fa-link"></i></a>
 </h1>
+<div id="definición-y-llamada-a-funciones" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Definición y llamada a funciones<a class="anchor" aria-label="anchor" href="#definici%C3%B3n-y-llamada-a-funciones"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="parámetros-y-argumentos-de-una-función" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Parámetros y argumentos de una función<a class="anchor" aria-label="anchor" href="#par%C3%A1metros-y-argumentos-de-una-funci%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="retorno-de-una-fucinón" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Retorno de una fucinón<a class="anchor" aria-label="anchor" href="#retorno-de-una-fucin%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="entorno-y-ámbito-de-las-variables" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Entorno y ámbito de las variables<a class="anchor" aria-label="anchor" href="#entorno-y-%C3%A1mbito-de-las-variables"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="funciones-recursivas" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Funciones recursivas<a class="anchor" aria-label="anchor" href="#funciones-recursivas"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="paquetes" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Paquetes<a class="anchor" aria-label="anchor" href="#paquetes"><i class="fas fa-link"></i></a>
+</h2>
 
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="estructuras-de-control.html"><span class="header-section-number">2</span> Estructuras de control</a></div>
-<div class="next"><a href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">4</span> Gráficos y visualización de datos</a></div>
+<div class="prev"><a href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></div>
+<div class="next"><a href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#funciones"><span class="header-section-number">3</span> Funciones</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#funciones"><span class="header-section-number">5</span> Funciones</a></li>
+<li><a class="nav-link" href="#definici%C3%B3n-y-llamada-a-funciones"><span class="header-section-number">5.1</span> Definición y llamada a funciones</a></li>
+<li><a class="nav-link" href="#par%C3%A1metros-y-argumentos-de-una-funci%C3%B3n"><span class="header-section-number">5.2</span> Parámetros y argumentos de una función</a></li>
+<li><a class="nav-link" href="#retorno-de-una-fucin%C3%B3n"><span class="header-section-number">5.3</span> Retorno de una fucinón</a></li>
+<li><a class="nav-link" href="#entorno-y-%C3%A1mbito-de-las-variables"><span class="header-section-number">5.4</span> Entorno y ámbito de las variables</a></li>
+<li><a class="nav-link" href="#funciones-recursivas"><span class="header-section-number">5.5</span> Funciones recursivas</a></li>
+<li><a class="nav-link" href="#paquetes"><span class="header-section-number">5.6</span> Paquetes</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/04-funciones.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/04-funciones.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/05-funciones.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/05-funciones.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -82,7 +125,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2021-12-24.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2021-12-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -90,6 +133,34 @@
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

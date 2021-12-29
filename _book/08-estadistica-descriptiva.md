@@ -1,0 +1,64 @@
+# Estadística descriptiva
+
+
+## Tablas de frecuencias
+
+
+
+### Tablas de frecuencias de una variable
+
+
+### Tablas de frecuencias de dos variables (tablas de contingencia)
+
+
+## Estadísticos de tendencia central
+
+
+### Media
+
+
+### Mediana
+
+
+### Moda
+
+
+## Estadísticos de posición
+
+
+### Mínimo y máximo
+
+
+### Percentiles
+
+
+## Estadísticos de dispersión
+
+
+### Rango
+
+
+### Rango intercuartílico
+
+
+### Varianza y cuasivarianza
+
+
+### Desviación típica y cuasidesviación típica
+
+
+### Coeficiente de variación
+
+
+## Estadísticos de forma
+
+
+### Coeficiente de asimetría
+
+
+### Coeficiente de apuntamiento
+
+
+## Resúmenes descriptivos
+
+
