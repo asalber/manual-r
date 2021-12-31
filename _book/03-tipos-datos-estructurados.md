@@ -250,6 +250,45 @@ y
 
 Para eliminar los elementos de un vector basta con asignar `NULL` a la variable que lo contiene, pero si se quiere liberar la memoria que ocupa la variable se utiliza la función `rm()`.
 
+### Operaciones aritméticas con vectores
+
+#### Operaciones aritméticas elemento a elemento
+
+Para vectores numéricos las operaciones aritméticas habituales se aplican elemento a elemento. Si los vectores tienen distinto tamaño, el tamaño del vector más pequeño se equipara al tamaño del mayor, reutilizando sus elementos, empezando por el primero.
+
+::: {.example}
+A continuación se muestran varios ejemplos de operaciones aritméticas con vectores numéricos. 
+
+```r
+x <- c(1, 2, 3)
+y <- c(0, 1, -1)
+x + y
+#> [1] 1 3 2
+x * y
+#> [1]  0  2 -3
+x / y
+#> [1] Inf   2  -3
+x ^ y
+#> [1] 1.0000000 2.0000000 0.3333333
+```
+:::
+
+#### Producto escalar de vectores
+
+Para calcular el producto escalar de dos vectores numéricos se utiliza el operador `%*%`. Si los vectores tienen distinto tamaño se produce un error.
+
+::: {.example}
+A continuación se muestra un ejemplo del producto escalar de dos vectores.
+
+```r
+x <- c(1, 2, 3)
+y <- c(0, 1, -1)
+x %*% y
+#>      [,1]
+#> [1,]   -1
+```
+:::
+
 ## Listas
 
 Las listas son colecciones ordenadas de elementos de que pueden ser de distintos tipos. Los elementos de una lista también pueden ser de tipos estructurados (vectores o listas), lo que las convierte en el tipo de dato más versátil de R. Como veremos más adelante, otras estructuras de datos como los _data frames_ o los propios modelos estadísticos se construyen usando listas.
@@ -785,8 +824,372 @@ x[c("f1", "f3"), c("c3", "c2")]
 
 Finalmente, es posible combinar distintos tipos de índices (enteros, lógicos o de cadena) para indicar las filas y las columnas a las que acceder.
 
+### Pertenencia a una matriz
+
+Para comprobar si un valor en particular es un elemento de una matriz se puede utilizar el operador `%in%`:
+
+- `x %in% y`: Devuelve el booleano `TRUE` si `x` es un elemento de la matriz `y`, y `FALSE` en caso contrario.
+
+::: {.example}
+A continuación se muestran varios ejemplos de pertenencia de elementos a una matriz.
+
+```r
+x <- matrix(1:9, nrow = 3)
+2 %in% x
+#> [1] TRUE
+-1 %in% x
+#> [1] FALSE
+```
+:::
+
+### Modificación de los elementos de una matriz
+
+Para modificar uno o varios elementos de una matriz basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.
+
+::: {.example}
+A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
+
+```r
+x <- matrix(1:9, nrow = 3)
+x
+#>      [,1] [,2] [,3]
+#> [1,]    1    4    7
+#> [2,]    2    5    8
+#> [3,]    3    6    9
+x[2,3] <- 0
+x
+#>      [,1] [,2] [,3]
+#> [1,]    1    4    7
+#> [2,]    2    5    0
+#> [3,]    3    6    9
+x[c(1, 3), 1:2] <- -1
+x
+#>      [,1] [,2] [,3]
+#> [1,]   -1   -1    7
+#> [2,]    2    5    0
+#> [3,]   -1   -1    9
+```
+:::
+
+### Añadir elementos a una matriz
+
+Para añadir nuevas filas o columnas a una matriz se utilizan las siguientes funciones:
+
+- `rbind(x, y)`: Devuelve la matriz que resulta de añadir nuevas filas a la matriz `x` con los elementos del vector `y`.
+- `rbind(x, y)`: Devuelve la matriz que resulta de añadir nuevas columnas a la matriz `x` con los elementos del vector `y`.
+
+::: {.example}
+A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a una matriz.
+
+```r
+x <- matrix(1:6, nrow = 2)
+x
+#>      [,1] [,2] [,3]
+#> [1,]    1    3    5
+#> [2,]    2    4    6
+# Añadir una nueva fila
+rbind(x, c(7, 8, 9))
+#>      [,1] [,2] [,3]
+#> [1,]    1    3    5
+#> [2,]    2    4    6
+#> [3,]    7    8    9
+# Añadir una nueva columna
+cbind(x, c(7, 8))
+#>      [,1] [,2] [,3] [,4]
+#> [1,]    1    3    5    7
+#> [2,]    2    4    6    8
+```
+:::
+
+<i class="fa fa-exclamation-triangle" style="color:red;"></i> _Obśervese que si el número de elementos proporcionados en el vector es menor del necesario para completar la fila o columna, se reutilizan los elementos del vector empezando desde el principio._
+
+### Trasponer una matriz
+
+Para trasponer una matriz se utiliza la función siguiente:
+
+- `t(x)`: Devuelve la matriz traspuesta de la matriz `x`.
+
+
+::: {.example}
+A continuación se muestran un ejemplo de la trasposición de una matriz.
+
+```r
+x <- matrix(1:6, nrow=2)
+t(x)
+#>      [,1] [,2]
+#> [1,]    1    2
+#> [2,]    3    4
+#> [3,]    5    6
+```
+:::
+
+### Operaciones aritméticas con matrices
+
+#### Operaciones aritméticas elemento a elemento
+
+Para matrices numéricas las operaciones aritméticas habituales se aplican elemento a elemento. Si las dimensiones de las matrices son distintas se produce un error.
+
+::: {.example}
+A continuación se muestran varios ejemplos de operaciones aritméticas elemento a elemento con matrices numéricas.
+
+```r
+x <- matrix(1:6, nrow = 2)
+y <- matrix(c(0, 1, 0, -1, 0, 1), nrow = 2)
+x + y
+#>      [,1] [,2] [,3]
+#> [1,]    1    3    5
+#> [2,]    3    3    7
+x * y
+#>      [,1] [,2] [,3]
+#> [1,]    0    0    0
+#> [2,]    2   -4    6
+x / y
+#>      [,1] [,2] [,3]
+#> [1,]  Inf  Inf  Inf
+#> [2,]    2   -4    6
+x ^ y
+#>      [,1] [,2] [,3]
+#> [1,]    1 1.00    1
+#> [2,]    2 0.25    6
+```
+:::
+
+#### Multiplicación de matrices 
+
+Para multiplicar dos matrices numéricas se utiliza el operador `%*%`. Si el número de columnas de la primera matriz no es igual que el número de filas de la segunda se produce un error.
+
+::: {.example}
+A continuación se muestran varios ejemplos del producto de dos matrices numéricas.
+
+```r
+x <- matrix(1:6, ncol = 3)
+y <- matrix(1:6, nrow = 3)
+x %*% y
+#>      [,1] [,2]
+#> [1,]   22   49
+#> [2,]   28   64
+y %*% x
+#>      [,1] [,2] [,3]
+#> [1,]    9   19   29
+#> [2,]   12   26   40
+#> [3,]   15   33   51
+```
+:::
+
+### Determinante de una matriz
+
+Para calcular el determinante de una matriz numérica cuadrada se utiliza la siguiente función:
+
+- `det(x)`: Devuelve el determinante de la matriz `x`. Si `x` no es una matriz numérica cuadrada produce un error. 
+
+::: {.example}
+A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.
+
+```r
+x <- matrix(1:4, ncol = 2)
+det(x)
+#> [1] -2
+```
+:::
+
+### Inversa de una matriz
+
+Para calcular la matriz inversa de una matriz numérica cuadrada se utiliza la siguiente función:
+
+- `solve(x)`: Devuelve la matriz inversa de la matriz `x`. Si `x` no es una matriz numérica cuadrada produce un error. Si la matriz no es invertible por tener determinante nulo también se obtiene un error.
+
+::: {.example}
+A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.
+
+```r
+x <- matrix(1:4, nrow = 2)
+solve(x)
+#>      [,1] [,2]
+#> [1,]   -2  1.5
+#> [2,]    1 -0.5
+# El producto de una matriz por su inversa es la matriz identidad.
+x %*% solve(x)
+#>      [,1] [,2]
+#> [1,]    1    0
+#> [2,]    0    1
+```
+:::
+
+### Autovalores y autovectores de una matriz
+
+Para calcular los autovalores y los autovectores de una matriz numérica cuadrada se utiliza la siguiente función: 
+
+- `eigen(x)`: Devuelve una lista con los autovalores y los autovectores de la matriz `x`. Para acceder a los autovalores se utiliza el nombre `values` y para acceder a los autovectores se utiliza el nombre `vectors`. 
+
+::: {.example}
+A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada. Si `x` no es una matriz numérica cuadrada produce un error.
+
+
+```r
+x <- matrix(1:4, nrow = 2)
+# Autovalores
+eigen(x)$values
+#> [1]  5.3722813 -0.3722813
+# Autovectores
+eigen(x)$vectors
+#>            [,1]       [,2]
+#> [1,] -0.5657675 -0.9093767
+#> [2,] -0.8245648  0.4159736
+```
+:::
 
 ## Data frames
 
+Un _data frame_ es una estructura bidimensional cuyos elementos se organizan por filas y columnas de manera similar a una matriz. La principal diferencia con las matrices es que sus columnas están formadas por vectores, pero pueden tener tipos de datos distintos. Un data frame es un caso particular de lista formada por vectores del mismo tamaño con nombre. 
+
+Los data frames son las estructuras de datos más utilizadas en R para almacenar los datos en los análisis estadísticos.
+
+### Creación de un data frame
+
+Para crear un data frame se utiliza la siguiente función:
+
+- `data.frame(nombrex = x, nombrey = y, ...)`: Devuelve el data frame con columnas los vectores `x`, `y`, etc. y nombres de columna `nombrex`, `nombrey`, etc.
+
+::: {.example}
+A continuación se muestran varios ejemplos de la creación de data frames.
+
+```r
+df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
+df
+#>    asignatura nota
+#> 1 Matemáticas  8.5
+#> 2      Física  7.0
+#> 3    Economía  4.5
+str(df)
+#> 'data.frame':	3 obs. of  2 variables:
+#>  $ asignatura: chr  "Matemáticas" "Física" "Economía"
+#>  $ nota      : num  8.5 7 4.5
+# Data frame vacío
+data.frame()
+#> data frame with 0 columns and 0 rows
+```
+:::
+
+### Coerción de otras estructuras de datos a data frames
+
+Para convertir otras estructuras de datos en data frames, se utiliza la siguiente función:
+
+- `as.data.frame(x)`: Devuelve el data frame que se obtiene a partir la estructura de datos `x` a plicanco las siguientes reglas de coerción:
+  - Si `x` es un vector se obtiene un data frame con una sola columna.
+  - Si `x` es una lista se obtiene un data frame con tantas columnas como elementos tenga la lista. Si los elementos de la lista tienen tamaños distintos se obtiene un error. 
+  - Si `x` es una matriz se obtiene un data frame con el mismo número de columnas y filas que la matriz.
+
+### Acceso a los elementos de un data frame
+
+Puesto que un data frame es una lista, se puede acceder a sus elementos como se accede a los elementos de una lista utilizando índices. Con corchetes simples `[ ]` se obtiene siempre un data frame, mientras que con corchetes dobles `[[ ]]` o `$` se obtiene un vector. Pero también se puede acceder a los elementos de un data frame como si fuese una matriz, indicando un par de índices para las filas y las columnas respectivamente.
+
+::: {.example}
+A continuación se muestran varios ejemplos de acceso a los elementos de un data frame.
+
+```r
+df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
+df
+#>    asignatura nota
+#> 1 Matemáticas  8.5
+#> 2      Física  7.0
+#> 3    Economía  4.5
+# Acceso como lista
+df["asignatura"]
+#>    asignatura
+#> 1 Matemáticas
+#> 2      Física
+#> 3    Economía
+df$asignatura
+#> [1] "Matemáticas" "Física"      "Economía"
+# Acceso como matriz
+df[2:3, "nota"]
+#> [1] 7.0 4.5
+df[df$nota >= 5, ]
+#>    asignatura nota
+#> 1 Matemáticas  8.5
+#> 2      Física  7.0
+```
+:::
+
+Obsérvese en el último ejemplo anterior cómo se pueden utilizar condiciones lógicas para filtrar un data frame.
+
+Para acceder a las primeras o últimas filas de un data frame se pueden utilizar las siguientes funciones: 
+
+- `head(df, n)`: Devuelve un data frame con las `n` primeras filas del data frame `df`.
+- `tail(df, n)`: Devuelve un data frame con las `n` últimas filas del data frame `df`.
+
+Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.
+
+::: {.example}
+A continuación se muestran varios ejemplos de acceso a las primeras o últimas filas de un data frame.
+
+```r
+df <- data.frame(x = 1:26, y = letters) # letters es un vector predefinido con las letras del abecedario.
+head(df, 3)
+#>   x y
+#> 1 1 a
+#> 2 2 b
+#> 3 3 c
+tail(df, 2)
+#>     x y
+#> 25 25 y
+#> 26 26 z
+```
+:::
+
+### Modificación de los elementos de un data frame
+
+Para modificar uno o varios elementos de un data frame basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.
+
+::: {.example}
+A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
+
+```r
+df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
+df
+#>    asignatura nota
+#> 1 Matemáticas  8.5
+#> 2      Física  7.0
+#> 3    Economía  4.5
+df[3, "nota"] <- 5
+df
+#>    asignatura nota
+#> 1 Matemáticas  8.5
+#> 2      Física  7.0
+#> 3    Economía  5.0
+```
+:::
+
+### Añadir elementos a una matriz
+
+Para añadir nuevas filas o columnas a una matriz se utilizan las mismas funciones que para matrices:
+
+- `rbind(df, x)`: Devuelve el data frame que resulta de añadir nuevas filas al data frame `df` con los elementos de la lista `x`.
+- `cbind(df, nombrex = x)`: Devuelve el data frame que resulta de añadir nuevas columnas al data frame `df` con los elementos del vector `x` con nombre `nombrex`.
 
 
+::: {.example}
+A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
+
+```r
+df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
+df
+#>    asignatura nota
+#> 1 Matemáticas  8.5
+#> 2      Física  7.0
+#> 3    Economía  4.5
+# Añadir una nueva fila
+rbind(df, list("Programación" , 10))
+#>     asignatura nota
+#> 1  Matemáticas  8.5
+#> 2       Física  7.0
+#> 3     Economía  4.5
+#> 4 Programación 10.0
+# Añadir una nueva columna
+cbind(df, créditos = c(6, 4, 3))
+#>    asignatura nota créditos
+#> 1 Matemáticas  8.5        6
+#> 2      Física  7.0        4
+#> 3    Economía  4.5        3
+```
+:::

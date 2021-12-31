@@ -91,6 +91,8 @@ A continuación se muestran varios ejemplos de operaciones aritméticas.
 #> [1] -10
 5 / 2
 #> [1] 2.5
+1 / 0
+#> [1] Inf
 5 %% 2
 #> [1] 1
 2 ^ 3

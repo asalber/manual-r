@@ -1,7 +1,14 @@
 # Funciones
 
+Una función es un bloque de código que tiene asociado un nombre, de manera que cada vez que se quiera ejecutar el bloque de código basta con invocar el nombre de la función. Las funciones permite dividir el código en unidades lógicas que resultan más fáciles de manejar y mantener.
+
 ## Definición y llamada a funciones
 
+Para definir una función se utiliza la siguiente estructura de código:
+
+    nombre.funcion <- function (parámetors) {
+      código
+    }
 
 ## Parámetros y argumentos de una función
 

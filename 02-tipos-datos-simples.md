@@ -24,13 +24,20 @@ Para averiguar el tipo de un dato se puede utilizar la siguiente función:
 
 ::: {.example}
 A continuación se muestran los tipos de algunos datos.
-```{r}
+
+```r
 class(3.1415)
+#> [1] "numeric"
 class(-1)
+#> [1] "numeric"
 class("Hola")
+#> [1] "character"
 class(TRUE)
+#> [1] "logical"
 class(NA)
+#> [1] "logical"
 class(NULL)
+#> [1] "NULL"
 ```
 :::
 
@@ -70,13 +77,20 @@ Los siguientes operadores permiten realizar las clásicas operaciones aritmétic
 
 ::: {.example}
 A continuación se muestran varios ejemplos de operaciones aritméticas.
-```{r}
+
+```r
 2 + 3
+#> [1] 5
 5 * -2
+#> [1] -10
 5 / 2
+#> [1] 2.5
 1 / 0
+#> [1] Inf
 5 %% 2
+#> [1] 1
 2 ^ 3
+#> [1] 8
 ```
 :::
 
@@ -93,14 +107,22 @@ Comparan dos números y devuelven un valor lógico.
 
 ::: {.example}
 A continuación se muestran varios ejemplos de operaciones relacionales.
-```{r}
+
+```r
 3 == 3
+#> [1] TRUE
 3.1 <= 3
+#> [1] FALSE
 4 > 3
+#> [1] TRUE
 -1 != 1
+#> [1] TRUE
 5 %% 2
+#> [1] 1
 2 ^ 3
+#> [1] 8
 (2 + 3) ^ 2
+#> [1] 25
 ```
 :::
 
@@ -118,14 +140,22 @@ Existen muchas funciones para cadenas de texto pero las más comunes son:
 
 ::: {.example}
 A continuación se muestran varios ejemplos de operaciones con cadenas de texto.
-```{r}
+
+```r
 nchar("Me gusta R")
+#> [1] 10
 paste("Me", "gusta", "R")
+#> [1] "Me gusta R"
 paste("Me", "gusta", "R", sep = "-")
+#> [1] "Me-gusta-R"
 paste("Me", "gusta", "R", sep = "")
+#> [1] "MegustaR"
 substr("Me gusta R", 4, 8)
+#> [1] "gusta"
 tolower("Me gusta R")
+#> [1] "me gusta r"
 toupper("Me gusta R")
+#> [1] "ME GUSTA R"
 ```
 :::
 
@@ -142,12 +172,18 @@ toupper("Me gusta R")
 
 ::: {.example}
 A continuación se muestran varios ejemplos de operaciones de comparación de cadenas.
-```{r}
+
+```r
 "R" == "R"
+#> [1] TRUE
 "R" == "r"
+#> [1] FALSE
 "uno" < "dos"
+#> [1] FALSE
 "A" > "a"
+#> [1] TRUE
 "" < "R"
+#> [1] TRUE
 ```
 :::
 
@@ -209,12 +245,18 @@ A la hora de comparar valores lógicos R asocia a `TRUE` el valor 1 y a `FALSE` 
 
 ::: {.example}
 A continuación se muestran varios ejemplos de operaciones lógicas con booleanos.
-```{r}
+
+```r
 !TRUE
+#> [1] FALSE
 FALSE | TRUE
+#> [1] TRUE
 FALSE | FALSE
+#> [1] FALSE
 TRUE & FALSE
+#> [1] FALSE
 TRUE & TRUE
+#> [1] TRUE
 ```
 :::
 
@@ -245,14 +287,18 @@ Si una variable ya no va a usarse, es posible eliminarla y liberar el espacio qu
 
 ::: {.example}
 A continuación se muestran varios ejemplos de asignaciones de valores a variables.
-```{r}
+
+```r
 x <- 3
 x
+#> [1] 3
 y <- x + 2
 y
+#> [1] 5
 # Valor no definido
 x <- NULL
 x
+#> NULL
 # Eliminar y
 rm(y)
 # A partir de aquí, una llamada a y produce un error.
@@ -280,15 +326,21 @@ Se puede saltar el orden de evaluación utilizando paréntesis `( )`.
 
 ::: {.example}
 A continuación se muestran varios ejemplos de evaluación de expresiones.
-```{r}
+
+```r
 4 + 8 / 2 ^ 2
+#> [1] 6
 4 + (8 / 2) ^ 2
+#> [1] 20
 (4 + 8) / 2 ^ 2
+#> [1] 3
 (4 + 8 / 2) ^ 2
+#> [1] 64
 x <- 2 
 y <- 3
 z <- ! x + 1 > y & y * 2  < x ^ 3
 z
+#> [1] TRUE
 ```
 :::
 
@@ -314,7 +366,8 @@ $$\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}$$
 
 ::: {.solution}
 Solución el ejercicio.
-```{r}
+
+```r
 # Declaración de variables
 edad <- 20
 estatura <- 165
@@ -323,9 +376,11 @@ sexo <- "mujer"
 # Cálculo del índice de masa corporal
 imc <- peso / (estatura / 100) ^ 2
 imc
+#> [1] 22.03857
 # Cálculo de la obesidad
 obesa <- sexo == "mujer" & ! edad > 60 & imc >= 30
 obesa
+#> [1] FALSE
 ```
 :::
 

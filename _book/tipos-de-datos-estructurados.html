@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 3 Tipos de datos estructurados | Curso básico de análisis de datos con R</title>
+<title>Capítulo 4 Tipos de datos estructurados | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
 <meta name="description" content="Los tipos estructurados de datos, a diferencia de los simples, son colecciones de datos con una determinada estructura. En R existen varios tipos tipos estructurados de datos que pueden...">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 3 Tipos de datos estructurados | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 4 Tipos de datos estructurados | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://aprendeconalf.es/tipos-de-datos-estructurados.html">
 <meta property="og:description" content="Los tipos estructurados de datos, a diferencia de los simples, son colecciones de datos con una determinada estructura. En R existen varios tipos tipos estructurados de datos que pueden...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 3 Tipos de datos estructurados | Curso básico de análisis de datos con R">
+<meta name="twitter:title" content="Capítulo 4 Tipos de datos estructurados | Curso básico de análisis de datos con R">
 <meta name="twitter:description" content="Los tipos estructurados de datos, a diferencia de los simples, son colecciones de datos con una determinada estructura. En R existen varios tipos tipos estructurados de datos que pueden...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -39,29 +39,16 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Prefacio</a></li>
-<li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
-<li><a class="" href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></li>
-<li><a class="active" href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
-<li><a class="" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">5</span> Funciones</a></li>
-<li><a class="" href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></li>
-<li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></li>
-<li><a class="" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
-<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
-<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
-<li><a class="" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 4</span> Tipos de datos estructurados</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/asalber/manual-r">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tipos-de-datos-estructurados" class="section level1" number="3">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tipos-de-datos-estructurados" class="section level1" number="4">
 <h1>
-<span class="header-section-number">Capítulo 3</span> Tipos de datos estructurados<a class="anchor" aria-label="anchor" href="#tipos-de-datos-estructurados"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 4</span> Tipos de datos estructurados<a class="anchor" aria-label="anchor" href="#tipos-de-datos-estructurados"><i class="fas fa-link"></i></a>
 </h1>
 <p>Los tipos estructurados de datos, a diferencia de los simples, son colecciones de datos con una determinada estructura. En R existen varios tipos tipos estructurados de datos que pueden clasificarse de acuerdo a su dimensión y a si son homogéneos (todos sus elementos son del mismo tipo) o heterogéneos.</p>
 <div class="inline-table"><table class="table table-sm">
@@ -93,14 +80,14 @@
 <li>
 <code>str(x)</code>: Devuelve una cadena de texto con la estructura de <code>x</code> en un formato amigable para los humanos.</li>
 </ul>
-<div id="vectores" class="section level2" number="3.1">
+<div id="vectores" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">3.1</span> Vectores<a class="anchor" aria-label="anchor" href="#vectores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Vectores<a class="anchor" aria-label="anchor" href="#vectores"><i class="fas fa-link"></i></a>
 </h2>
 <p>El vector es el tipo de dato estructurado más básicos en R. Un vector es una colección ordenada de elementos del mismo tipo.</p>
-<div id="creación-de-vectores" class="section level3" number="3.1.1">
+<div id="creación-de-vectores" class="section level3" number="4.1.1">
 <h3>
-<span class="header-section-number">3.1.1</span> Creación de vectores<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-vectores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.1</span> Creación de vectores<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-vectores"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para construir un vector se utiliza la función de combinación <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>:</p>
 <ul>
@@ -113,8 +100,8 @@
 <code>x:y</code>: Devuelve el vector de números enteros consecutivos desde <code>x</code> hasta <code>y</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-11" class="example"><strong>Ejemplo 3.1  </strong></span>A continuación se muestran varios ejemplos de construcción de vectores.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Ejemplo 4.1  </strong></span>A continuación se muestran varios ejemplos de construcción de vectores.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1 2 3</span>
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"uno"</span>, <span class="st">"dos"</span>, <span class="st">"tres"</span><span class="op">)</span>
@@ -129,14 +116,14 @@
 <span class="fl">2</span><span class="op">:</span><span class="fl">6</span>
 <span class="co">#&gt; [1] 2 3 4 5 6</span></code></pre></div>
 </div>
-<div id="vectores-con-nombres" class="section level4" number="3.1.1.1">
+<div id="vectores-con-nombres" class="section level4" number="4.1.1.1">
 <h4>
-<span class="header-section-number">3.1.1.1</span> Vectores con nombres<a class="anchor" aria-label="anchor" href="#vectores-con-nombres"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.1.1</span> Vectores con nombres<a class="anchor" aria-label="anchor" href="#vectores-con-nombres"><i class="fas fa-link"></i></a>
 </h4>
 <p>Es posible asignar un nombre a cada elemento de un vector. Los nombres son etiquetas de texto que se asocian a cada elemento. Para asociar un nombre a un elemento se utiliza la sintaxis <code>nombre = valor</code>, donde <code>nombre</code> es una cadena de caracteres y <code>valor</code> es el elemento del vector.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-12" class="example"><strong>Ejemplo 3.2  </strong></span>A continuación se muestra un ejemplo de creación de un vector con nombres.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Ejemplo 4.2  </strong></span>A continuación se muestra un ejemplo de creación de un vector con nombres.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span> <span class="op">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="op">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="op">=</span> <span class="fl">4.5</span><span class="op">)</span>
 <span class="co">#&gt; Matemáticas      Física    Economía </span>
 <span class="co">#&gt;         8.2         6.5         4.5</span></code></pre></div>
@@ -147,17 +134,17 @@
 <code>names(x)</code>: Devuelve un vector de cadenas de caracteres con los nombres de los elementos del vector <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Ejemplo 3.3  </strong></span>A continuación se muestra un ejemplo de acceso a los nombres de un vector.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Ejemplo 4.3  </strong></span>A continuación se muestra un ejemplo de acceso a los nombres de un vector.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">notas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span> <span class="op">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="op">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="op">=</span> <span class="fl">4.5</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">notas</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Matemáticas" "Física"      "Economía"</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="tamaño-de-un-vector" class="section level3" number="3.1.2">
+<div id="tamaño-de-un-vector" class="section level3" number="4.1.2">
 <h3>
-<span class="header-section-number">3.1.2</span> Tamaño de un vector<a class="anchor" aria-label="anchor" href="#tama%C3%B1o-de-un-vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.2</span> Tamaño de un vector<a class="anchor" aria-label="anchor" href="#tama%C3%B1o-de-un-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>El número de elementos de un vector es su <em>tamaño</em> y puede averiguarse con la siguiente función.</p>
 <ul>
@@ -165,22 +152,22 @@
 <code>lenght(x)</code>: Devuelve el número de elementos del vector <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-14" class="example"><strong>Ejemplo 3.4  </strong></span>A continuación se muestran varios ejemplos de la obtención del tamaño de un vector.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Ejemplo 4.4  </strong></span>A continuación se muestran varios ejemplos de la obtención del tamaño de un vector.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 3</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0</span></code></pre></div>
 </div>
 </div>
-<div id="coerción-de-elementos" class="section level3" number="3.1.3">
+<div id="coerción-de-elementos" class="section level3" number="4.1.3">
 <h3>
-<span class="header-section-number">3.1.3</span> Coerción de elementos<a class="anchor" aria-label="anchor" href="#coerci%C3%B3n-de-elementos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.3</span> Coerción de elementos<a class="anchor" aria-label="anchor" href="#coerci%C3%B3n-de-elementos"><i class="fas fa-link"></i></a>
 </h3>
 <p>Puesto que los elementos de un vector tienen que ser del mismo tipo, cuando se crea un vector con datos de distintos tipos, la función <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> los convertirá al mismo tipo, lo que se conoce como <em>coerción</em> de tipos. La coerción se produce de los tipos menos flexibles a los más flexibles: <code>logical</code> &lt; <code>integer</code> &lt; <code>double</code> &lt; <code>character</code>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-15" class="example"><strong>Ejemplo 3.5  </strong></span>A continuación se muestran varios ejemplos de coerciones.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Ejemplo 4.5  </strong></span>A continuación se muestran varios ejemplos de coerciones.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2.5</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1.0 2.5</span>
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="fl">2</span><span class="op">)</span>
@@ -189,20 +176,20 @@
 <span class="co">#&gt; [1] "FALSE" "TRUE"  "2"     "tres"</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-a-los-elementos-de-un-vector" class="section level3" number="3.1.4">
+<div id="acceso-a-los-elementos-de-un-vector" class="section level3" number="4.1.4">
 <h3>
-<span class="header-section-number">3.1.4</span> Acceso a los elementos de un vector<a class="anchor" aria-label="anchor" href="#acceso-a-los-elementos-de-un-vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.4</span> Acceso a los elementos de un vector<a class="anchor" aria-label="anchor" href="#acceso-a-los-elementos-de-un-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para acceder a los elementos de un vector se utiliza un índice. Como veremos a continuación, este índice puede ser entero, lógico o de cadena de caracteres y se indica siempre entre corchetes <code>[ ]</code> a continuación del vector.</p>
-<div id="acceso-mediante-un-índice-entero" class="section level4" number="3.1.4.1">
+<div id="acceso-mediante-un-índice-entero" class="section level4" number="4.1.4.1">
 <h4>
-<span class="header-section-number">3.1.4.1</span> Acceso mediante un índice entero<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-entero"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.4.1</span> Acceso mediante un índice entero<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-entero"><i class="fas fa-link"></i></a>
 </h4>
 <p>Los elementos de un vector están ordenados y el acceso más simple a ellos es mediante su número de orden, es decir, indicando entre corchetes el entero que corresponde a su número de orden. Se puede acceder simultáneamente a varios elementos mediante un vector con sus números de orden. Por otro lado, también es posible usar enteros negativos y en tal caso se obtendrán todos los elementos del vector excepto los que ocupan las posiciones correspondientes al valor absoluto de los índices negativos. Esta es la forma más habitual de eliminar elementos de un vector.</p>
 <p><i class="fa fa-exclamation-triangle" style="color:red;"></i> <em>En R los índices enteros para acceder a los elementos de un vector comienzan en 1, a diferencia de otros lenguajes de programación que empiezan en 0.</em></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-16" class="example"><strong>Ejemplo 3.6  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices enteros.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Ejemplo 4.6  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices enteros.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">6</span>,<span class="fl">8</span>,<span class="fl">10</span><span class="op">)</span>
 <span class="co"># Acceso al elemento que está en la tercera posición</span>
 <span class="va">x</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>
@@ -215,14 +202,14 @@
 <span class="co">#&gt; [1] 4 6 8</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-mediante-un-índice-lógico" class="section level4" number="3.1.4.2">
+<div id="acceso-mediante-un-índice-lógico" class="section level4" number="4.1.4.2">
 <h4>
-<span class="header-section-number">3.1.4.2</span> Acceso mediante un índice lógico<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-l%C3%B3gico"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.4.2</span> Acceso mediante un índice lógico<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-l%C3%B3gico"><i class="fas fa-link"></i></a>
 </h4>
 <p>Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano <code>TRUE</code>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-17" class="example"><strong>Ejemplo 3.7  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices lógicos.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Ejemplo 4.7  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices lógicos.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">6</span>,<span class="fl">8</span>,<span class="fl">10</span><span class="op">)</span>
 <span class="co"># Acceso al elemento que está en la tercera posición</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">F</span>,<span class="cn">F</span>,<span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">F</span><span class="op">)</span><span class="op">]</span>
@@ -233,8 +220,8 @@
 </div>
 <p>Esta forma de acceder es útil cuando se genera el vector de índices mediante operadores relacionales. Cuando se aplica un operador relacional a un vector se obtiene otro vector lógico que resulta de aplicar el operador relacional a cada uno de los elementos del vector. De esta manera se puede realizar filtros para obtener los elementos de un vector que cumplen una determinada condición.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-18" class="example"><strong>Ejemplo 3.8  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante condiciones.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Ejemplo 4.8  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante condiciones.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>
 <span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span>
 <span class="co">#&gt; [1] FALSE  TRUE FALSE  TRUE FALSE  TRUE</span>
@@ -246,14 +233,14 @@
 <span class="co">#&gt; [1] 2 4</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-mediante-un-índice-de-cadena" class="section level4" number="3.1.4.3">
+<div id="acceso-mediante-un-índice-de-cadena" class="section level4" number="4.1.4.3">
 <h4>
-<span class="header-section-number">3.1.4.3</span> Acceso mediante un índice de cadena<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-de-cadena"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.4.3</span> Acceso mediante un índice de cadena<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-de-cadena"><i class="fas fa-link"></i></a>
 </h4>
 <p>Si los elementos de un vector tienen nombre, es posible acceder a ellos usando sus nombres como índices.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-19" class="example"><strong>Ejemplo 3.9  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices de cadena.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Ejemplo 4.9  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices de cadena.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">notas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span> <span class="op">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="op">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="op">=</span> <span class="fl">4.5</span><span class="op">)</span>
 <span class="va">notas</span><span class="op">[</span><span class="st">"Física"</span><span class="op">]</span>
 <span class="co">#&gt; Física </span>
@@ -264,9 +251,9 @@
 </div>
 </div>
 </div>
-<div id="pertenencia-a-un-vector" class="section level3" number="3.1.5">
+<div id="pertenencia-a-un-vector" class="section level3" number="4.1.5">
 <h3>
-<span class="header-section-number">3.1.5</span> Pertenencia a un vector<a class="anchor" aria-label="anchor" href="#pertenencia-a-un-vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.5</span> Pertenencia a un vector<a class="anchor" aria-label="anchor" href="#pertenencia-a-un-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para comprobar si un valor en particular es un elemento de un vector se puede utilizar el operador <code>%in%</code>:</p>
 <ul>
@@ -274,21 +261,21 @@
 <code>x %in% y</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es un elemento del vector <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-41" class="example"><strong>Ejemplo 3.10  </strong></span>A continuación se muestran varios ejemplos de pertenencia de elementos a un vector.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-33" class="example"><strong>Ejemplo 4.10  </strong></span>A continuación se muestran varios ejemplos de pertenencia de elementos a un vector.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>
 <span class="fl">2</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">x</span>
 <span class="co">#&gt; [1] TRUE</span>
 <span class="fl">4</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">x</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
-<div id="modificación-de-los-elementos-de-un-vector" class="section level3" number="3.1.6">
+<div id="modificación-de-los-elementos-de-un-vector" class="section level3" number="4.1.6">
 <h3>
-<span class="header-section-number">3.1.6</span> Modificación de los elementos de un vector<a class="anchor" aria-label="anchor" href="#modificaci%C3%B3n-de-los-elementos-de-un-vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.6</span> Modificación de los elementos de un vector<a class="anchor" aria-label="anchor" href="#modificaci%C3%B3n-de-los-elementos-de-un-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para modificar uno o varios elementos de un vector basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-20" class="example"><strong>Ejemplo 3.11  </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Ejemplo 4.11  </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
 <span class="va">x</span>
@@ -298,9 +285,9 @@
 <span class="co">#&gt; [1] 1 0 1</span></code></pre></div>
 </div>
 </div>
-<div id="añadir-elementos-a-un-vector" class="section level3" number="3.1.7">
+<div id="añadir-elementos-a-un-vector" class="section level3" number="4.1.7">
 <h3>
-<span class="header-section-number">3.1.7</span> Añadir elementos a un vector<a class="anchor" aria-label="anchor" href="#a%C3%B1adir-elementos-a-un-vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.7</span> Añadir elementos a un vector<a class="anchor" aria-label="anchor" href="#a%C3%B1adir-elementos-a-un-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para añadir nuevos elementos a un vector pueden usarse las siguientes funciones:</p>
 <ul>
@@ -310,8 +297,8 @@
 <code>append(x, y, pos)</code>: Devuelve el vector que resulta de añadir al vector <code>x</code> los elementos del vector <code>y</code>, a continuación de la posición <code>pos</code>. El parámetro <code>pos</code> es opcional y si no se indica, los elementos de <code>y</code> se añaden al final de los de <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-21" class="example"><strong>Ejemplo 3.12  </strong></span>A continuación se muestran varios ejemplos de añadir nuevos elementos a un vector.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Ejemplo 4.12  </strong></span>A continuación se muestran varios ejemplos de añadir nuevos elementos a un vector.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="va">y</span>
@@ -321,20 +308,60 @@
 <span class="co">#&gt; [1] 1 2 4 5 3</span></code></pre></div>
 </div>
 </div>
-<div id="eliminación-de-un-vector" class="section level3" number="3.1.8">
+<div id="eliminación-de-un-vector" class="section level3" number="4.1.8">
 <h3>
-<span class="header-section-number">3.1.8</span> Eliminación de un vector<a class="anchor" aria-label="anchor" href="#eliminaci%C3%B3n-de-un-vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.8</span> Eliminación de un vector<a class="anchor" aria-label="anchor" href="#eliminaci%C3%B3n-de-un-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para eliminar los elementos de un vector basta con asignar <code>NULL</code> a la variable que lo contiene, pero si se quiere liberar la memoria que ocupa la variable se utiliza la función <code><a href="https://rdrr.io/r/base/rm.html">rm()</a></code>.</p>
 </div>
-<div id="listas" class="section level2" number="3.2">
+<div id="operaciones-aritméticas-con-vectores" class="section level3" number="4.1.9">
+<h3>
+<span class="header-section-number">4.1.9</span> Operaciones aritméticas con vectores<a class="anchor" aria-label="anchor" href="#operaciones-aritm%C3%A9ticas-con-vectores"><i class="fas fa-link"></i></a>
+</h3>
+<div id="operaciones-aritméticas-elemento-a-elemento" class="section level4" number="4.1.9.1">
+<h4>
+<span class="header-section-number">4.1.9.1</span> Operaciones aritméticas elemento a elemento<a class="anchor" aria-label="anchor" href="#operaciones-aritm%C3%A9ticas-elemento-a-elemento"><i class="fas fa-link"></i></a>
+</h4>
+<p>Para vectores numéricos las operaciones aritméticas habituales se aplican elemento a elemento. Si los vectores tienen distinto tamaño, el tamaño del vector más pequeño se equipara al tamaño del mayor, reutilizando sus elementos, empezando por el primero.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-12" class="example"><strong>Ejemplo 4.13  </strong></span>A continuación se muestran varios ejemplos de operaciones aritméticas con vectores numéricos.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
+<span class="co">#&gt; [1] 1 3 2</span>
+<span class="va">x</span> <span class="op">*</span> <span class="va">y</span>
+<span class="co">#&gt; [1]  0  2 -3</span>
+<span class="va">x</span> <span class="op">/</span> <span class="va">y</span>
+<span class="co">#&gt; [1] Inf   2  -3</span>
+<span class="va">x</span> <span class="op">^</span> <span class="va">y</span>
+<span class="co">#&gt; [1] 1.0000000 2.0000000 0.3333333</span></code></pre></div>
+</div>
+</div>
+<div id="producto-escalar-de-vectores" class="section level4" number="4.1.9.2">
+<h4>
+<span class="header-section-number">4.1.9.2</span> Producto escalar de vectores<a class="anchor" aria-label="anchor" href="#producto-escalar-de-vectores"><i class="fas fa-link"></i></a>
+</h4>
+<p>Para calcular el producto escalar de dos vectores numéricos se utiliza el operador <code>%*%</code>. Si los vectores tienen distinto tamaño se produce un error.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Ejemplo 4.14  </strong></span>A continuación se muestra un ejemplo del producto escalar de dos vectores.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span>
+<span class="co">#&gt;      [,1]</span>
+<span class="co">#&gt; [1,]   -1</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="listas" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">3.2</span> Listas<a class="anchor" aria-label="anchor" href="#listas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Listas<a class="anchor" aria-label="anchor" href="#listas"><i class="fas fa-link"></i></a>
 </h2>
 <p>Las listas son colecciones ordenadas de elementos de que pueden ser de distintos tipos. Los elementos de una lista también pueden ser de tipos estructurados (vectores o listas), lo que las convierte en el tipo de dato más versátil de R. Como veremos más adelante, otras estructuras de datos como los <em>data frames</em> o los propios modelos estadísticos se construyen usando listas.</p>
-<div id="creación-de-listas" class="section level3" number="3.2.1">
+<div id="creación-de-listas" class="section level3" number="4.2.1">
 <h3>
-<span class="header-section-number">3.2.1</span> Creación de listas<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-listas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.1</span> Creación de listas<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-listas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para construir una lista se utiliza la función <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>:</p>
 <ul>
@@ -342,8 +369,8 @@
 <code>list(x1, x2, ...)</code>: Devuelve la lista con los elementos <code>x1</code>, <code>x2</code>, etc.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Ejemplo 3.13  </strong></span>A continuación se muestran varios ejemplos de creación de listas.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Ejemplo 4.15  </strong></span>A continuación se muestran varios ejemplos de creación de listas.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; [1] 1</span>
@@ -379,13 +406,13 @@
 <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; list()</span></code></pre></div>
 </div>
-<div id="listas-con-nombres" class="section level4" number="3.2.1.1">
+<div id="listas-con-nombres" class="section level4" number="4.2.1.1">
 <h4>
-<span class="header-section-number">3.2.1.1</span> Listas con nombres<a class="anchor" aria-label="anchor" href="#listas-con-nombres"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.1.1</span> Listas con nombres<a class="anchor" aria-label="anchor" href="#listas-con-nombres"><i class="fas fa-link"></i></a>
 </h4>
 <div class="example">
-<p><span id="exm:unlabeled-div-23" class="example"><strong>Ejemplo 3.14  </strong></span>A continuación se muestra un ejemplo de creación de una lista con nombres.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Ejemplo 4.16  </strong></span>A continuación se muestra un ejemplo de creación de una lista con nombres.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="op">=</span> <span class="fl">21</span>, <span class="st">"dirección"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"calle"</span> <span class="op">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="op">=</span> <span class="fl">24</span>, <span class="st">"municipio"</span> <span class="op">=</span> <span class="st">"Madrid"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; $nombre</span>
 <span class="co">#&gt; [1] "María"</span>
@@ -409,17 +436,17 @@
 <code>names(x)</code>: Devuelve un vector de cadenas de caracteres con los nombres de los elementos de la lista <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-24" class="example"><strong>Ejemplo 3.15  </strong></span>A continuación se muestra un ejemplo de acceso a los nombres de una lista.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-16" class="example"><strong>Ejemplo 4.17  </strong></span>A continuación se muestra un ejemplo de acceso a los nombres de una lista.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">persona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="op">=</span> <span class="fl">21</span>, <span class="st">"dirección"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"calle"</span> <span class="op">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="op">=</span> <span class="fl">24</span>, <span class="st">"municipio"</span> <span class="op">=</span> <span class="st">"Madrid"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">persona</span><span class="op">)</span>
 <span class="co">#&gt; [1] "nombre"    "edad"      "dirección"</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="tamaño-de-una-lista" class="section level3" number="3.2.2">
+<div id="tamaño-de-una-lista" class="section level3" number="4.2.2">
 <h3>
-<span class="header-section-number">3.2.2</span> Tamaño de una lista<a class="anchor" aria-label="anchor" href="#tama%C3%B1o-de-una-lista"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.2</span> Tamaño de una lista<a class="anchor" aria-label="anchor" href="#tama%C3%B1o-de-una-lista"><i class="fas fa-link"></i></a>
 </h3>
 <p>El número de elementos de una lista es su <em>tamaño</em> y puede averiguarse con la siguiente función:</p>
 <ul>
@@ -427,8 +454,8 @@
 <code>lenght(x)</code>: Devuelve el número de elementos de la lista <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-25" class="example"><strong>Ejemplo 3.16  </strong></span>A continuación se muestran varios ejemplos la obtención del tamaño de una lista.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-17" class="example"><strong>Ejemplo 4.18  </strong></span>A continuación se muestran varios ejemplos la obtención del tamaño de una lista.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 3</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dos"</span>, <span class="st">"tres"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">"cinco"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
@@ -437,19 +464,19 @@
 <span class="co">#&gt; [1] 0</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-a-los-elementos-de-una-lista" class="section level3" number="3.2.3">
+<div id="acceso-a-los-elementos-de-una-lista" class="section level3" number="4.2.3">
 <h3>
-<span class="header-section-number">3.2.3</span> Acceso a los elementos de una lista<a class="anchor" aria-label="anchor" href="#acceso-a-los-elementos-de-una-lista"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.3</span> Acceso a los elementos de una lista<a class="anchor" aria-label="anchor" href="#acceso-a-los-elementos-de-una-lista"><i class="fas fa-link"></i></a>
 </h3>
 <p>Se accede a los elementos de una lista de forma similar a los vectores, mediante índices enteros, lógicos o de cadena, entre corchetes <code>[ ]</code>.</p>
-<div id="acceso-mediante-un-índice-entero-1" class="section level4" number="3.2.3.1">
+<div id="acceso-mediante-un-índice-entero-1" class="section level4" number="4.2.3.1">
 <h4>
-<span class="header-section-number">3.2.3.1</span> Acceso mediante un índice entero<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-entero-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.3.1</span> Acceso mediante un índice entero<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-entero-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Al igual que los vectores, los elementos de una lista están ordenados y se puede utilizar un índice entero para acceder a los elementos que ocupan una determinada posición.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-26" class="example"><strong>Ejemplo 3.17  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices enteros.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-18" class="example"><strong>Ejemplo 4.19  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices enteros.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>, <span class="fl">4.5</span><span class="op">)</span>
 <span class="co"># Acceso al elemento que está en la segunda posición</span>
 <span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
@@ -471,14 +498,14 @@
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-mediante-un-índice-lógico-1" class="section level4" number="3.2.3.2">
+<div id="acceso-mediante-un-índice-lógico-1" class="section level4" number="4.2.3.2">
 <h4>
-<span class="header-section-number">3.2.3.2</span> Acceso mediante un índice lógico<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-l%C3%B3gico-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.3.2</span> Acceso mediante un índice lógico<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-l%C3%B3gico-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano <code>TRUE</code>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-27" class="example"><strong>Ejemplo 3.18  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices lógicos.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-19" class="example"><strong>Ejemplo 4.20  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices lógicos.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>, <span class="fl">4.5</span><span class="op">)</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">F</span>,<span class="cn">T</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt; [[1]]</span>
@@ -503,14 +530,14 @@
 <p>Obsérvese que para los elementos que no tiene sentido la comparación se obtiene <code>NA</code>, y que el acceso mediante este índice devuelve <code>NULL</code>.</p>
 </div>
 </div>
-<div id="acceso-mediante-un-índice-de-cadena-1" class="section level4" number="3.2.3.3">
+<div id="acceso-mediante-un-índice-de-cadena-1" class="section level4" number="4.2.3.3">
 <h4>
-<span class="header-section-number">3.2.3.3</span> Acceso mediante un índice de cadena<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-de-cadena-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.3.3</span> Acceso mediante un índice de cadena<a class="anchor" aria-label="anchor" href="#acceso-mediante-un-%C3%ADndice-de-cadena-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Si los elementos de una lista tienen nombre, se puede acceder a ellos utilizando sus nombres como índices. La única diferencia con el acceso mediante cadenas de vectores es que se obtiene siempre una lista, incluso cuando sólo se quiere acceder a un elemento. Para obtener un elemento, y no una lista con ese único elemento, se utilizan dobles corchetes <code>[[ ]]</code>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-28" class="example"><strong>Ejemplo 3.19  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices de cadena.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-20" class="example"><strong>Ejemplo 4.21  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices de cadena.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">persona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="op">=</span> <span class="fl">21</span>, <span class="st">"dirección"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"calle"</span> <span class="op">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="op">=</span> <span class="fl">24</span>, <span class="st">"municipio"</span> <span class="op">=</span> <span class="st">"Madrid"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">persona</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"edad"</span>, <span class="st">"nombre"</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt; $edad</span>
@@ -532,8 +559,8 @@
 </div>
 <p>Una alternativa a los dobles corchetes es el operador de acceso a listas <code>$</code>. Este operador además permite utilizar coincidencias parciales en los nombres de los elementos para acceder a ellos.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-29" class="example"><strong>Ejemplo 3.20  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante el operador <code>$</code>.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-21" class="example"><strong>Ejemplo 4.22  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante el operador <code>$</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">persona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="op">=</span> <span class="fl">21</span>, <span class="st">"dirección"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"calle"</span> <span class="op">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="op">=</span> <span class="fl">24</span>, <span class="st">"municipio"</span> <span class="op">=</span> <span class="st">"Madrid"</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># Acceso a un único elemento</span>
 <span class="va">persona</span><span class="op">$</span><span class="va">nombre</span>
@@ -547,14 +574,14 @@
 </div>
 </div>
 </div>
-<div id="modificación-de-los-elementos-de-una-lista" class="section level3" number="3.2.4">
+<div id="modificación-de-los-elementos-de-una-lista" class="section level3" number="4.2.4">
 <h3>
-<span class="header-section-number">3.2.4</span> Modificación de los elementos de una lista<a class="anchor" aria-label="anchor" href="#modificaci%C3%B3n-de-los-elementos-de-una-lista"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.4</span> Modificación de los elementos de una lista<a class="anchor" aria-label="anchor" href="#modificaci%C3%B3n-de-los-elementos-de-una-lista"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para modificar uno o varios elementos de una lista basta con acceder a esos elementos y reasignarles valors con el operador de asignación.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-30" class="example"><strong>Ejemplo 3.21  </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de una lista.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-22" class="example"><strong>Ejemplo 4.23  </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de una lista.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">persona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="op">=</span> <span class="fl">21</span><span class="op">)</span>
 <span class="va">persona</span><span class="op">$</span><span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">22</span>
 <span class="va">persona</span>
@@ -565,9 +592,9 @@
 <span class="co">#&gt; [1] 22</span></code></pre></div>
 </div>
 </div>
-<div id="añadir-elementos-a-una-lista" class="section level3" number="3.2.5">
+<div id="añadir-elementos-a-una-lista" class="section level3" number="4.2.5">
 <h3>
-<span class="header-section-number">3.2.5</span> Añadir elementos a una lista<a class="anchor" aria-label="anchor" href="#a%C3%B1adir-elementos-a-una-lista"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.5</span> Añadir elementos a una lista<a class="anchor" aria-label="anchor" href="#a%C3%B1adir-elementos-a-una-lista"><i class="fas fa-link"></i></a>
 </h3>
 <p>La forma más sencilla de añadir un elemento con nombre a una lista es indicando el nombre con el operador <code>$</code> y asignándole un valor con el operador de asignación <code>&lt;-</code>:</p>
 <ul>
@@ -581,8 +608,8 @@
 <code>append(x, y, pos)</code>: Devuelve la lista vector que resulta de añadir a <code>x</code> los elementos de la lista <code>y</code>, a continuación de la posición <code>pos</code>. El parámetro <code>pos</code> es opcional y si no se indica, los elementos de <code>y</code> se añaden al final de los de <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-31" class="example"><strong>Ejemplo 3.22  </strong></span>A continuación se muestran varios ejemplos de añadir nuevos elementos a una lista.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Ejemplo 4.24  </strong></span>A continuación se muestran varios ejemplos de añadir nuevos elementos a una lista.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">persona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="op">=</span> <span class="fl">21</span><span class="op">)</span>
 <span class="va">persona</span><span class="op">$</span><span class="va">email</span> <span class="op">&lt;-</span> <span class="st">"maria@ceu.es"</span>
 <span class="va">persona</span>
@@ -608,9 +635,9 @@
 <span class="co">#&gt; [1] "maria@ceu.es"</span></code></pre></div>
 </div>
 </div>
-<div id="conversión-de-una-lista-en-un-vector" class="section level3" number="3.2.6">
+<div id="conversión-de-una-lista-en-un-vector" class="section level3" number="4.2.6">
 <h3>
-<span class="header-section-number">3.2.6</span> Conversión de una lista en un vector<a class="anchor" aria-label="anchor" href="#conversi%C3%B3n-de-una-lista-en-un-vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.6</span> Conversión de una lista en un vector<a class="anchor" aria-label="anchor" href="#conversi%C3%B3n-de-una-lista-en-un-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>Es posible convertir una lista en un vector con la siguiente función:</p>
 <ul>
@@ -618,8 +645,8 @@
 <code>unlist(x)</code>: Devuelve el vector que resulta de aplanar recursivamente la lista <code>x</code> y convertir todos los elementos al mismo tipo mediante coerción de tipos.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-32" class="example"><strong>Ejemplo 3.23  </strong></span>A continuación se muestran varios ejemplos de conversión de una lista en un vector.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-24" class="example"><strong>Ejemplo 4.25  </strong></span>A continuación se muestran varios ejemplos de conversión de una lista en un vector.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">persona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="op">=</span> <span class="fl">21</span>, <span class="st">"dirección"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"calle"</span> <span class="op">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="op">=</span> <span class="fl">24</span>, <span class="st">"municipio"</span> <span class="op">=</span> <span class="st">"Madrid"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">persona</span><span class="op">)</span>
 <span class="co">#&gt;              nombre                edad     dirección.calle </span>
@@ -631,14 +658,14 @@
 </div>
 </div>
 </div>
-<div id="matrices" class="section level2" number="3.3">
+<div id="matrices" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">3.3</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
 </h2>
 <p>Una matriz es una estructura de datos bidimensional de elementos del mismo tipo organizados en filas y columnas. Una matriz es similar a un vector pero contiene una atributo adicional con sus dimensiones (número de filas y número de columnas).</p>
-<div id="creación-de-matrices" class="section level3" number="3.3.1">
+<div id="creación-de-matrices" class="section level3" number="4.3.1">
 <h3>
-<span class="header-section-number">3.3.1</span> Creación de matrices<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-matrices"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.1</span> Creación de matrices<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-matrices"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para crear una matriz se utiliza la siguiente función:</p>
 <ul>
@@ -646,8 +673,8 @@
 <code>matrix(x, nrow = m, ncol = n)</code>: Devuelve la matriz con los elementos del vector <code>x</code> organizados en <code>n</code> filas y <code>m</code> columnas. Habitualmente basta con especificar el número de filas o el número de columnas.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-33" class="example"><strong>Ejemplo 3.24  </strong></span>A continuación se muestran varios ejemplos de creación de matrices.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-25" class="example"><strong>Ejemplo 4.26  </strong></span>A continuación se muestran varios ejemplos de creación de matrices.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt;      [,1] [,2] [,3]</span>
 <span class="co">#&gt; [1,]    1    3    5</span>
@@ -667,8 +694,8 @@
 </div>
 <p>Como se puede observar en el ejemplo anterior, los elementos se disponen por columnas, pero se pueden disponer los elementos por filas pasando el parámetro <code>byrow = TRUE</code> a la función <code>matrix</code>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-34" class="example"><strong>Ejemplo 3.25  </strong></span>A continuación se muestran varios ejemplos de creación de matrices.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-26" class="example"><strong>Ejemplo 4.27  </strong></span>A continuación se muestran varios ejemplos de creación de matrices.</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt;      [,1] [,2] [,3]</span>
 <span class="co">#&gt; [1,]    1    3    5</span>
@@ -678,14 +705,14 @@
 <span class="co">#&gt; [1,]    1    2    3</span>
 <span class="co">#&gt; [2,]    4    5    6</span></code></pre></div>
 </div>
-<div id="matrices-con-nombres-de-filas-y-columnas" class="section level4" number="3.3.1.1">
+<div id="matrices-con-nombres-de-filas-y-columnas" class="section level4" number="4.3.1.1">
 <h4>
-<span class="header-section-number">3.3.1.1</span> Matrices con nombres de filas y columnas<a class="anchor" aria-label="anchor" href="#matrices-con-nombres-de-filas-y-columnas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.1.1</span> Matrices con nombres de filas y columnas<a class="anchor" aria-label="anchor" href="#matrices-con-nombres-de-filas-y-columnas"><i class="fas fa-link"></i></a>
 </h4>
 <p>Es posible poner nombres a las filas y a las columnas de una matriz añadiendo el parámetro <code>dimnames</code> y pasándole una lista de dos vectores de cadenas con los nombres de las filas y las columnas respectivamente.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-35" class="example"><strong>Ejemplo 3.26  </strong></span>A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-27" class="example"><strong>Ejemplo 4.28  </strong></span>A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">3</span>, dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fila1"</span>, <span class="st">"fila2"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"columna1"</span>, <span class="st">"columna2"</span>, <span class="st">"columna3"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;       columna1 columna2 columna3</span>
 <span class="co">#&gt; fila1        1        3        5</span>
@@ -699,8 +726,8 @@
 <code>colnames(x)</code>: Devuelve un vector de cadenas de caracteres con los nombres de las columnas de la matriz <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-36" class="example"><strong>Ejemplo 3.27  </strong></span>A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-28" class="example"><strong>Ejemplo 4.29  </strong></span>A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">3</span>, dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fila1"</span>, <span class="st">"fila2"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"columna1"</span>, <span class="st">"columna2"</span>, <span class="st">"columna3"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "fila1" "fila2"</span>
@@ -709,9 +736,9 @@
 </div>
 </div>
 </div>
-<div id="tamaño-y-dimensiones-de-una-matriz" class="section level3" number="3.3.2">
+<div id="tamaño-y-dimensiones-de-una-matriz" class="section level3" number="4.3.2">
 <h3>
-<span class="header-section-number">3.3.2</span> Tamaño y dimensiones de una matriz<a class="anchor" aria-label="anchor" href="#tama%C3%B1o-y-dimensiones-de-una-matriz"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.2</span> Tamaño y dimensiones de una matriz<a class="anchor" aria-label="anchor" href="#tama%C3%B1o-y-dimensiones-de-una-matriz"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para obtener el número de elementos y las dimensiones de una matriz se pueden utilizar las siguientes funciones:</p>
 <ul>
@@ -725,8 +752,8 @@
 <code>dim(x)</code>: Devuelve un vector de dos enteros con el número de filas y el número de columnas de la matriz <code>x</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-37" class="example"><strong>Ejemplo 3.28  </strong></span>A continuación se muestran varios ejemplos de acceso a las dimensiones de una matriz.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-29" class="example"><strong>Ejemplo 4.30  </strong></span>A continuación se muestran varios ejemplos de acceso a las dimensiones de una matriz.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] 6</span>
@@ -739,8 +766,8 @@
 </div>
 <p>Usando esta última función se pueden modificar las dimensiones de una matriz asignando un vector de dos enteros con las nuevas dimensiones. Esto también permite crear una matriz a partir de un vector.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-38" class="example"><strong>Ejemplo 3.29  </strong></span>A continuación se muestran varios ejemplos de modificación de las dimensiones de una matriz.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-30" class="example"><strong>Ejemplo 4.31  </strong></span>A continuación se muestran varios ejemplos de modificación de las dimensiones de una matriz.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="va">x</span>
@@ -755,14 +782,14 @@
 <span class="co">#&gt; [3,]    3    6</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-a-los-elementos-de-una-matriz" class="section level3" number="3.3.3">
+<div id="acceso-a-los-elementos-de-una-matriz" class="section level3" number="4.3.3">
 <h3>
-<span class="header-section-number">3.3.3</span> Acceso a los elementos de una matriz<a class="anchor" aria-label="anchor" href="#acceso-a-los-elementos-de-una-matriz"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.3</span> Acceso a los elementos de una matriz<a class="anchor" aria-label="anchor" href="#acceso-a-los-elementos-de-una-matriz"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para acceder a los elementos de una matriz se utilizan dos índices (uno para las filas y otro para las columnas), separados por comas y entre corchetes <code>[]</code> a continuación de la matriz. Al igual que para los vectores, los índices pueden ser enteros, lógicos o de cadenas de caracteres.</p>
-<div id="acceso-mediante-índices-enteros" class="section level4" number="3.3.3.1">
+<div id="acceso-mediante-índices-enteros" class="section level4" number="4.3.3.1">
 <h4>
-<span class="header-section-number">3.3.3.1</span> Acceso mediante índices enteros<a class="anchor" aria-label="anchor" href="#acceso-mediante-%C3%ADndices-enteros"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.3.1</span> Acceso mediante índices enteros<a class="anchor" aria-label="anchor" href="#acceso-mediante-%C3%ADndices-enteros"><i class="fas fa-link"></i></a>
 </h4>
 <p>Para acceder a los elementos de una matriz mediante índices enteros se indica el número de fila y el número de columna del elemento entre corchetes:</p>
 <ul>
@@ -771,8 +798,8 @@
 </ul>
 <p>Se puede acceder a más de un elemento indicando un vector de enteros para las filas y otro para las columnas. De esta manera se obtiene una submatriz. Si no se indica la fila o la columna se obtienen todos los elementos de todas las filas o columnas. Al igual que para vectores, se pueden utilizar enteros negativos para descartar filas o columnas</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-39" class="example"><strong>Ejemplo 3.30  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-31" class="example"><strong>Ejemplo 4.32  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="va">x</span>
 <span class="co">#&gt;      [,1] [,2] [,3]</span>
@@ -800,14 +827,14 @@
 <span class="co">#&gt; [2,]    2    8</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-mediante-índices-lógicos" class="section level4" number="3.3.3.2">
+<div id="acceso-mediante-índices-lógicos" class="section level4" number="4.3.3.2">
 <h4>
-<span class="header-section-number">3.3.3.2</span> Acceso mediante índices lógicos<a class="anchor" aria-label="anchor" href="#acceso-mediante-%C3%ADndices-l%C3%B3gicos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.3.2</span> Acceso mediante índices lógicos<a class="anchor" aria-label="anchor" href="#acceso-mediante-%C3%ADndices-l%C3%B3gicos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Cuando se utilizan índices lógicos, se obtienen los elementos correspondientes a las filas y columnas donde está el valor booleano <code>TRUE</code>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-40" class="example"><strong>Ejemplo 3.31  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-32" class="example"><strong>Ejemplo 4.33  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="va">x</span>
 <span class="co">#&gt;      [,1] [,2] [,3]</span>
@@ -830,12 +857,12 @@
 <span class="co">#&gt; [1] 4 5 6</span></code></pre></div>
 </div>
 </div>
-<div id="acceso-mediante-índices-de-cadena" class="section level4" number="3.3.3.3">
+<div id="acceso-mediante-índices-de-cadena" class="section level4" number="4.3.3.3">
 <h4>
-<span class="header-section-number">3.3.3.3</span> Acceso mediante índices de cadena<a class="anchor" aria-label="anchor" href="#acceso-mediante-%C3%ADndices-de-cadena"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.3.3</span> Acceso mediante índices de cadena<a class="anchor" aria-label="anchor" href="#acceso-mediante-%C3%ADndices-de-cadena"><i class="fas fa-link"></i></a>
 </h4>
 <p>Si las filas y las columnas de una matriz tienen nombre, es posible acceder a sus elementos usando los nombres de las filas y columnas como índices.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span>, dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"f1"</span>, <span class="st">"f2"</span>, <span class="st">"f3"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c1"</span>, <span class="st">"c2"</span>, <span class="st">"c3"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="va">x</span>
 <span class="co">#&gt;    c1 c2 c3</span>
@@ -856,57 +883,398 @@
 </div>
 <p>Finalmente, es posible combinar distintos tipos de índices (enteros, lógicos o de cadena) para indicar las filas y las columnas a las que acceder.</p>
 </div>
+<div id="pertenencia-a-una-matriz" class="section level3" number="4.3.4">
+<h3>
+<span class="header-section-number">4.3.4</span> Pertenencia a una matriz<a class="anchor" aria-label="anchor" href="#pertenencia-a-una-matriz"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para comprobar si un valor en particular es un elemento de una matriz se puede utilizar el operador <code>%in%</code>:</p>
+<ul>
+<li>
+<code>x %in% y</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es un elemento de la matriz <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-34" class="example"><strong>Ejemplo 4.34  </strong></span>A continuación se muestran varios ejemplos de pertenencia de elementos a una matriz.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="fl">2</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">x</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="op">-</span><span class="fl">1</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">x</span>
+<span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
-<div id="data-frames" class="section level2" number="3.4">
+</div>
+<div id="modificación-de-los-elementos-de-una-matriz" class="section level3" number="4.3.5">
+<h3>
+<span class="header-section-number">4.3.5</span> Modificación de los elementos de una matriz<a class="anchor" aria-label="anchor" href="#modificaci%C3%B3n-de-los-elementos-de-una-matriz"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para modificar uno o varios elementos de una matriz basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-35" class="example"><strong>Ejemplo 4.35  </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="va">x</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    1    4    7</span>
+<span class="co">#&gt; [2,]    2    5    8</span>
+<span class="co">#&gt; [3,]    3    6    9</span>
+<span class="va">x</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="va">x</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    1    4    7</span>
+<span class="co">#&gt; [2,]    2    5    0</span>
+<span class="co">#&gt; [3,]    3    6    9</span>
+<span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">1</span>
+<span class="va">x</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]   -1   -1    7</span>
+<span class="co">#&gt; [2,]    2    5    0</span>
+<span class="co">#&gt; [3,]   -1   -1    9</span></code></pre></div>
+</div>
+</div>
+<div id="añadir-elementos-a-una-matriz" class="section level3" number="4.3.6">
+<h3>
+<span class="header-section-number">4.3.6</span> Añadir elementos a una matriz<a class="anchor" aria-label="anchor" href="#a%C3%B1adir-elementos-a-una-matriz"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para añadir nuevas filas o columnas a una matriz se utilizan las siguientes funciones:</p>
+<ul>
+<li>
+<code>rbind(x, y)</code>: Devuelve la matriz que resulta de añadir nuevas filas a la matriz <code>x</code> con los elementos del vector <code>y</code>.</li>
+<li>
+<code>rbind(x, y)</code>: Devuelve la matriz que resulta de añadir nuevas columnas a la matriz <code>x</code> con los elementos del vector <code>y</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-36" class="example"><strong>Ejemplo 4.36  </strong></span>A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a una matriz.</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">x</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    1    3    5</span>
+<span class="co">#&gt; [2,]    2    4    6</span>
+<span class="co"># Añadir una nueva fila</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    1    3    5</span>
+<span class="co">#&gt; [2,]    2    4    6</span>
+<span class="co">#&gt; [3,]    7    8    9</span>
+<span class="co"># Añadir una nueva columna</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;      [,1] [,2] [,3] [,4]</span>
+<span class="co">#&gt; [1,]    1    3    5    7</span>
+<span class="co">#&gt; [2,]    2    4    6    8</span></code></pre></div>
+</div>
+<p><i class="fa fa-exclamation-triangle" style="color:red;"></i> <em>Obśervese que si el número de elementos proporcionados en el vector es menor del necesario para completar la fila o columna, se reutilizan los elementos del vector empezando desde el principio.</em></p>
+</div>
+<div id="trasponer-una-matriz" class="section level3" number="4.3.7">
+<h3>
+<span class="header-section-number">4.3.7</span> Trasponer una matriz<a class="anchor" aria-label="anchor" href="#trasponer-una-matriz"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para trasponer una matriz se utiliza la función siguiente:</p>
+<ul>
+<li>
+<code>t(x)</code>: Devuelve la matriz traspuesta de la matriz <code>x</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-37" class="example"><strong>Ejemplo 4.37  </strong></span>A continuación se muestran un ejemplo de la trasposición de una matriz.</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]    1    2</span>
+<span class="co">#&gt; [2,]    3    4</span>
+<span class="co">#&gt; [3,]    5    6</span></code></pre></div>
+</div>
+</div>
+<div id="operaciones-aritméticas-con-matrices" class="section level3" number="4.3.8">
+<h3>
+<span class="header-section-number">4.3.8</span> Operaciones aritméticas con matrices<a class="anchor" aria-label="anchor" href="#operaciones-aritm%C3%A9ticas-con-matrices"><i class="fas fa-link"></i></a>
+</h3>
+<div id="operaciones-aritméticas-elemento-a-elemento-1" class="section level4" number="4.3.8.1">
+<h4>
+<span class="header-section-number">4.3.8.1</span> Operaciones aritméticas elemento a elemento<a class="anchor" aria-label="anchor" href="#operaciones-aritm%C3%A9ticas-elemento-a-elemento-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Para matrices numéricas las operaciones aritméticas habituales se aplican elemento a elemento. Si las dimensiones de las matrices son distintas se produce un error.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-38" class="example"><strong>Ejemplo 4.38  </strong></span>A continuación se muestran varios ejemplos de operaciones aritméticas elemento a elemento con matrices numéricas.</p>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    1    3    5</span>
+<span class="co">#&gt; [2,]    3    3    7</span>
+<span class="va">x</span> <span class="op">*</span> <span class="va">y</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    0    0    0</span>
+<span class="co">#&gt; [2,]    2   -4    6</span>
+<span class="va">x</span> <span class="op">/</span> <span class="va">y</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]  Inf  Inf  Inf</span>
+<span class="co">#&gt; [2,]    2   -4    6</span>
+<span class="va">x</span> <span class="op">^</span> <span class="va">y</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    1 1.00    1</span>
+<span class="co">#&gt; [2,]    2 0.25    6</span></code></pre></div>
+</div>
+</div>
+<div id="multiplicación-de-matrices" class="section level4" number="4.3.8.2">
+<h4>
+<span class="header-section-number">4.3.8.2</span> Multiplicación de matrices<a class="anchor" aria-label="anchor" href="#multiplicaci%C3%B3n-de-matrices"><i class="fas fa-link"></i></a>
+</h4>
+<p>Para multiplicar dos matrices numéricas se utiliza el operador <code>%*%</code>. Si el número de columnas de la primera matriz no es igual que el número de filas de la segunda se produce un error.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-39" class="example"><strong>Ejemplo 4.39  </strong></span>A continuación se muestran varios ejemplos del producto de dos matrices numéricas.</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]   22   49</span>
+<span class="co">#&gt; [2,]   28   64</span>
+<span class="va">y</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">x</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    9   19   29</span>
+<span class="co">#&gt; [2,]   12   26   40</span>
+<span class="co">#&gt; [3,]   15   33   51</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="determinante-de-una-matriz" class="section level3" number="4.3.9">
+<h3>
+<span class="header-section-number">4.3.9</span> Determinante de una matriz<a class="anchor" aria-label="anchor" href="#determinante-de-una-matriz"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para calcular el determinante de una matriz numérica cuadrada se utiliza la siguiente función:</p>
+<ul>
+<li>
+<code>det(x)</code>: Devuelve el determinante de la matriz <code>x</code>. Si <code>x</code> no es una matriz numérica cuadrada produce un error.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-40" class="example"><strong>Ejemplo 4.40  </strong></span>A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/det.html">det</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] -2</span></code></pre></div>
+</div>
+</div>
+<div id="inversa-de-una-matriz" class="section level3" number="4.3.10">
+<h3>
+<span class="header-section-number">4.3.10</span> Inversa de una matriz<a class="anchor" aria-label="anchor" href="#inversa-de-una-matriz"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para calcular la matriz inversa de una matriz numérica cuadrada se utiliza la siguiente función:</p>
+<ul>
+<li>
+<code>solve(x)</code>: Devuelve la matriz inversa de la matriz <code>x</code>. Si <code>x</code> no es una matriz numérica cuadrada produce un error. Si la matriz no es invertible por tener determinante nulo también se obtiene un error.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-41" class="example"><strong>Ejemplo 4.41  </strong></span>A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/solve.html">solve</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]   -2  1.5</span>
+<span class="co">#&gt; [2,]    1 -0.5</span>
+<span class="co"># El producto de una matriz por su inversa es la matriz identidad.</span>
+<span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/solve.html">solve</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]    1    0</span>
+<span class="co">#&gt; [2,]    0    1</span></code></pre></div>
+</div>
+</div>
+<div id="autovalores-y-autovectores-de-una-matriz" class="section level3" number="4.3.11">
+<h3>
+<span class="header-section-number">4.3.11</span> Autovalores y autovectores de una matriz<a class="anchor" aria-label="anchor" href="#autovalores-y-autovectores-de-una-matriz"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para calcular los autovalores y los autovectores de una matriz numérica cuadrada se utiliza la siguiente función:</p>
+<ul>
+<li>
+<code>eigen(x)</code>: Devuelve una lista con los autovalores y los autovectores de la matriz <code>x</code>. Para acceder a los autovalores se utiliza el nombre <code>values</code> y para acceder a los autovectores se utiliza el nombre <code>vectors</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-42" class="example"><strong>Ejemplo 4.42  </strong></span>A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada. Si <code>x</code> no es una matriz numérica cuadrada produce un error.</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="co"># Autovalores</span>
+<span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">$</span><span class="va">values</span>
+<span class="co">#&gt; [1]  5.3722813 -0.3722813</span>
+<span class="co"># Autovectores</span>
+<span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">$</span><span class="va">vectors</span>
+<span class="co">#&gt;            [,1]       [,2]</span>
+<span class="co">#&gt; [1,] -0.5657675 -0.9093767</span>
+<span class="co">#&gt; [2,] -0.8245648  0.4159736</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="data-frames" class="section level2" number="4.4">
 <h2>
-<span class="header-section-number">3.4</span> Data frames<a class="anchor" aria-label="anchor" href="#data-frames"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4</span> Data frames<a class="anchor" aria-label="anchor" href="#data-frames"><i class="fas fa-link"></i></a>
 </h2>
+<p>Un <em>data frame</em> es una estructura bidimensional cuyos elementos se organizan por filas y columnas de manera similar a una matriz. La principal diferencia con las matrices es que sus columnas están formadas por vectores, pero pueden tener tipos de datos distintos. Un data frame es un caso particular de lista formada por vectores del mismo tamaño con nombre.</p>
+<p>Los data frames son las estructuras de datos más utilizadas en R para almacenar los datos en los análisis estadísticos.</p>
+<div id="creación-de-un-data-frame" class="section level3" number="4.4.1">
+<h3>
+<span class="header-section-number">4.4.1</span> Creación de un data frame<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-un-data-frame"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para crear un data frame se utiliza la siguiente función:</p>
+<ul>
+<li>
+<code>data.frame(nombrex = x, nombrey = y, ...)</code>: Devuelve el data frame con columnas los vectores <code>x</code>, <code>y</code>, etc. y nombres de columna <code>nombrex</code>, <code>nombrey</code>, etc.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-43" class="example"><strong>Ejemplo 4.43  </strong></span>A continuación se muestran varios ejemplos de la creación de data frames.</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>asignatura <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span><span class="op">)</span>, nota <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.5</span>, <span class="fl">7</span>, <span class="fl">4.5</span><span class="op">)</span><span class="op">)</span>
+<span class="va">df</span>
+<span class="co">#&gt;    asignatura nota</span>
+<span class="co">#&gt; 1 Matemáticas  8.5</span>
+<span class="co">#&gt; 2      Física  7.0</span>
+<span class="co">#&gt; 3    Economía  4.5</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
+<span class="co">#&gt; 'data.frame':    3 obs. of  2 variables:</span>
+<span class="co">#&gt;  $ asignatura: chr  "Matemáticas" "Física" "Economía"</span>
+<span class="co">#&gt;  $ nota      : num  8.5 7 4.5</span>
+<span class="co"># Data frame vacío</span>
+<span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; data frame with 0 columns and 0 rows</span></code></pre></div>
+</div>
+</div>
+<div id="coerción-de-otras-estructuras-de-datos-a-data-frames" class="section level3" number="4.4.2">
+<h3>
+<span class="header-section-number">4.4.2</span> Coerción de otras estructuras de datos a data frames<a class="anchor" aria-label="anchor" href="#coerci%C3%B3n-de-otras-estructuras-de-datos-a-data-frames"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para convertir otras estructuras de datos en data frames, se utiliza la siguiente función:</p>
+<ul>
+<li>
+<code>as.data.frame(x)</code>: Devuelve el data frame que se obtiene a partir la estructura de datos <code>x</code> a plicanco las siguientes reglas de coerción:
+<ul>
+<li>Si <code>x</code> es un vector se obtiene un data frame con una sola columna.</li>
+<li>Si <code>x</code> es una lista se obtiene un data frame con tantas columnas como elementos tenga la lista. Si los elementos de la lista tienen tamaños distintos se obtiene un error.</li>
+<li>Si <code>x</code> es una matriz se obtiene un data frame con el mismo número de columnas y filas que la matriz.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="acceso-a-los-elementos-de-un-data-frame" class="section level3" number="4.4.3">
+<h3>
+<span class="header-section-number">4.4.3</span> Acceso a los elementos de un data frame<a class="anchor" aria-label="anchor" href="#acceso-a-los-elementos-de-un-data-frame"><i class="fas fa-link"></i></a>
+</h3>
+<p>Puesto que un data frame es una lista, se puede acceder a sus elementos como se accede a los elementos de una lista utilizando índices. Con corchetes simples <code>[ ]</code> se obtiene siempre un data frame, mientras que con corchetes dobles <code>[[ ]]</code> o <code>$</code> se obtiene un vector. Pero también se puede acceder a los elementos de un data frame como si fuese una matriz, indicando un par de índices para las filas y las columnas respectivamente.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-44" class="example"><strong>Ejemplo 4.44  </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un data frame.</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>asignatura <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span><span class="op">)</span>, nota <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.5</span>, <span class="fl">7</span>, <span class="fl">4.5</span><span class="op">)</span><span class="op">)</span>
+<span class="va">df</span>
+<span class="co">#&gt;    asignatura nota</span>
+<span class="co">#&gt; 1 Matemáticas  8.5</span>
+<span class="co">#&gt; 2      Física  7.0</span>
+<span class="co">#&gt; 3    Economía  4.5</span>
+<span class="co"># Acceso como lista</span>
+<span class="va">df</span><span class="op">[</span><span class="st">"asignatura"</span><span class="op">]</span>
+<span class="co">#&gt;    asignatura</span>
+<span class="co">#&gt; 1 Matemáticas</span>
+<span class="co">#&gt; 2      Física</span>
+<span class="co">#&gt; 3    Economía</span>
+<span class="va">df</span><span class="op">$</span><span class="va">asignatura</span>
+<span class="co">#&gt; [1] "Matemáticas" "Física"      "Economía"</span>
+<span class="co"># Acceso como matriz</span>
+<span class="va">df</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, <span class="st">"nota"</span><span class="op">]</span>
+<span class="co">#&gt; [1] 7.0 4.5</span>
+<span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">nota</span> <span class="op">&gt;=</span> <span class="fl">5</span>, <span class="op">]</span>
+<span class="co">#&gt;    asignatura nota</span>
+<span class="co">#&gt; 1 Matemáticas  8.5</span>
+<span class="co">#&gt; 2      Física  7.0</span></code></pre></div>
+</div>
+<p>Obsérvese en el último ejemplo anterior cómo se pueden utilizar condiciones lógicas para filtrar un data frame.</p>
+<p>Para acceder a las primeras o últimas filas de un data frame se pueden utilizar las siguientes funciones:</p>
+<ul>
+<li>
+<code>head(df, n)</code>: Devuelve un data frame con las <code>n</code> primeras filas del data frame <code>df</code>.</li>
+<li>
+<code>tail(df, n)</code>: Devuelve un data frame con las <code>n</code> últimas filas del data frame <code>df</code>.</li>
+</ul>
+<p>Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-45" class="example"><strong>Ejemplo 4.45  </strong></span>A continuación se muestran varios ejemplos de acceso a las primeras o últimas filas de un data frame.</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">26</span>, y <span class="op">=</span> <span class="va">letters</span><span class="op">)</span> <span class="co"># letters es un vector predefinido con las letras del abecedario.</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="co">#&gt;   x y</span>
+<span class="co">#&gt; 1 1 a</span>
+<span class="co">#&gt; 2 2 b</span>
+<span class="co">#&gt; 3 3 c</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt;     x y</span>
+<span class="co">#&gt; 25 25 y</span>
+<span class="co">#&gt; 26 26 z</span></code></pre></div>
+</div>
+</div>
+<div id="modificación-de-los-elementos-de-un-data-frame" class="section level3" number="4.4.4">
+<h3>
+<span class="header-section-number">4.4.4</span> Modificación de los elementos de un data frame<a class="anchor" aria-label="anchor" href="#modificaci%C3%B3n-de-los-elementos-de-un-data-frame"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para modificar uno o varios elementos de un data frame basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-46" class="example"><strong>Ejemplo 4.46  </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>asignatura <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span><span class="op">)</span>, nota <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.5</span>, <span class="fl">7</span>, <span class="fl">4.5</span><span class="op">)</span><span class="op">)</span>
+<span class="va">df</span>
+<span class="co">#&gt;    asignatura nota</span>
+<span class="co">#&gt; 1 Matemáticas  8.5</span>
+<span class="co">#&gt; 2      Física  7.0</span>
+<span class="co">#&gt; 3    Economía  4.5</span>
+<span class="va">df</span><span class="op">[</span><span class="fl">3</span>, <span class="st">"nota"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">5</span>
+<span class="va">df</span>
+<span class="co">#&gt;    asignatura nota</span>
+<span class="co">#&gt; 1 Matemáticas  8.5</span>
+<span class="co">#&gt; 2      Física  7.0</span>
+<span class="co">#&gt; 3    Economía  5.0</span></code></pre></div>
+</div>
+</div>
+<div id="añadir-elementos-a-una-matriz-1" class="section level3" number="4.4.5">
+<h3>
+<span class="header-section-number">4.4.5</span> Añadir elementos a una matriz<a class="anchor" aria-label="anchor" href="#a%C3%B1adir-elementos-a-una-matriz-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para añadir nuevas filas o columnas a una matriz se utilizan las mismas funciones que para matrices:</p>
+<ul>
+<li>
+<code>rbind(df, x)</code>: Devuelve el data frame que resulta de añadir nuevas filas al data frame <code>df</code> con los elementos de la lista <code>x</code>.</li>
+<li>
+<code>cbind(df, nombrex = x)</code>: Devuelve el data frame que resulta de añadir nuevas columnas al data frame <code>df</code> con los elementos del vector <code>x</code> con nombre <code>nombrex</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-47" class="example"><strong>Ejemplo 4.47  </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>asignatura <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span><span class="op">)</span>, nota <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.5</span>, <span class="fl">7</span>, <span class="fl">4.5</span><span class="op">)</span><span class="op">)</span>
+<span class="va">df</span>
+<span class="co">#&gt;    asignatura nota</span>
+<span class="co">#&gt; 1 Matemáticas  8.5</span>
+<span class="co">#&gt; 2      Física  7.0</span>
+<span class="co">#&gt; 3    Economía  4.5</span>
+<span class="co"># Añadir una nueva fila</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Programación"</span> , <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;     asignatura nota</span>
+<span class="co">#&gt; 1  Matemáticas  8.5</span>
+<span class="co">#&gt; 2       Física  7.0</span>
+<span class="co">#&gt; 3     Economía  4.5</span>
+<span class="co">#&gt; 4 Programación 10.0</span>
+<span class="co"># Añadir una nueva columna</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">df</span>, créditos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;    asignatura nota créditos</span>
+<span class="co">#&gt; 1 Matemáticas  8.5        6</span>
+<span class="co">#&gt; 2      Física  7.0        4</span>
+<span class="co">#&gt; 3    Economía  4.5        3</span></code></pre></div>
+</div>
 
+</div>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></div>
-<div class="next"><a href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#tipos-de-datos-estructurados"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
-<li>
-<a class="nav-link" href="#vectores"><span class="header-section-number">3.1</span> Vectores</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#creaci%C3%B3n-de-vectores"><span class="header-section-number">3.1.1</span> Creación de vectores</a></li>
-<li><a class="nav-link" href="#tama%C3%B1o-de-un-vector"><span class="header-section-number">3.1.2</span> Tamaño de un vector</a></li>
-<li><a class="nav-link" href="#coerci%C3%B3n-de-elementos"><span class="header-section-number">3.1.3</span> Coerción de elementos</a></li>
-<li><a class="nav-link" href="#acceso-a-los-elementos-de-un-vector"><span class="header-section-number">3.1.4</span> Acceso a los elementos de un vector</a></li>
-<li><a class="nav-link" href="#pertenencia-a-un-vector"><span class="header-section-number">3.1.5</span> Pertenencia a un vector</a></li>
-<li><a class="nav-link" href="#modificaci%C3%B3n-de-los-elementos-de-un-vector"><span class="header-section-number">3.1.6</span> Modificación de los elementos de un vector</a></li>
-<li><a class="nav-link" href="#a%C3%B1adir-elementos-a-un-vector"><span class="header-section-number">3.1.7</span> Añadir elementos a un vector</a></li>
-<li><a class="nav-link" href="#eliminaci%C3%B3n-de-un-vector"><span class="header-section-number">3.1.8</span> Eliminación de un vector</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#listas"><span class="header-section-number">3.2</span> Listas</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#creaci%C3%B3n-de-listas"><span class="header-section-number">3.2.1</span> Creación de listas</a></li>
-<li><a class="nav-link" href="#tama%C3%B1o-de-una-lista"><span class="header-section-number">3.2.2</span> Tamaño de una lista</a></li>
-<li><a class="nav-link" href="#acceso-a-los-elementos-de-una-lista"><span class="header-section-number">3.2.3</span> Acceso a los elementos de una lista</a></li>
-<li><a class="nav-link" href="#modificaci%C3%B3n-de-los-elementos-de-una-lista"><span class="header-section-number">3.2.4</span> Modificación de los elementos de una lista</a></li>
-<li><a class="nav-link" href="#a%C3%B1adir-elementos-a-una-lista"><span class="header-section-number">3.2.5</span> Añadir elementos a una lista</a></li>
-<li><a class="nav-link" href="#conversi%C3%B3n-de-una-lista-en-un-vector"><span class="header-section-number">3.2.6</span> Conversión de una lista en un vector</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#matrices"><span class="header-section-number">3.3</span> Matrices</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#creaci%C3%B3n-de-matrices"><span class="header-section-number">3.3.1</span> Creación de matrices</a></li>
-<li><a class="nav-link" href="#tama%C3%B1o-y-dimensiones-de-una-matriz"><span class="header-section-number">3.3.2</span> Tamaño y dimensiones de una matriz</a></li>
-<li><a class="nav-link" href="#acceso-a-los-elementos-de-una-matriz"><span class="header-section-number">3.3.3</span> Acceso a los elementos de una matriz</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#data-frames"><span class="header-section-number">3.4</span> Data frames</a></li>
-</ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/03-tipos-datos-estructurados.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/03-tipos-datos-estructurados.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>
@@ -926,34 +1294,6 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>
