@@ -289,6 +289,105 @@ x %*% y
 ```
 :::
 
+## Factores
+
+### Operaciones con factores
+
+Un factor es una estructura de datos especial que se utiliza para representar categorías de variables cualitativas y por tanto puede tomar un conjunto finito de valores predefinidos conocido como _niveles_ del factor.
+
+Para definir un factor se utiliza la siguiente función:
+
+- `factor(x, levels = niveles)`: Crea un dato de tipo factor con los elementos del vector `x`. Los niveles del factor pueden indicarse mediante el parámetro `levels`, pasándole un vector con los valores posibles. Si no se indica el parámetro `levels` los niveles del factor se obtienen automáticamente a partir de los elementos del vector `x` (tantos niveles con valores distintos tenga).
+
+Los factores son en realidad vectores de números enteros a los que se le añade un atributo especial para indicar los niveles del factor.
+
+::: {.example}
+A continuación se muestran varios ejemplos de creación de factores.
+
+```r
+sexo <- factor(c("mujer", "hombre", "mujer"))
+sexo
+#> [1] mujer  hombre mujer 
+#> Levels: hombre mujer
+class(sexo)
+#> [1] "factor"
+str(sexo)
+#>  Factor w/ 2 levels "hombre","mujer": 2 1 2
+grupo.sanguineo <- factor(c("B", "A", "A"), levels = c("A", "B", "AB", "0"), )
+grupo.sanguineo
+#> [1] B A A
+#> Levels: A B AB 0
+```
+:::
+
+Es posible establecer un orden entre los niveles de un factor añadiendo el parámetro `ordered = TRUE` a la función anterior. Esto es útil para representar categorías ordinales entre las que existe un orden natural.
+
+::: {.example}
+A continuación se muestra un ejemplo de creación de un factor ordenado.
+
+```r
+nivel.estudio <- factor(c("Secundarios", "Graduado", "Bachiller"), levels = c("Sin estudios", "Primarios", "Secundarios", "Bachiller", "Graduado"), ordered = TRUE)
+nivel.estudio
+#> [1] Secundarios Graduado    Bachiller  
+#> 5 Levels: Sin estudios < Primarios < ... < Graduado
+```
+:::
+
+Para comprobar si una estructura es del tipo factor se utiliza la siguiente función:
+
+- is.factor(`x`): Devuelve el booleano `TRUE` si `x` es del tipo factor, y `FALSE` en caso contrario.
+
+### Acceso a los elementos de un factor
+
+Se puede acceder a los elementos de un factor de la misma manera que se accede a los elementos de un vector. Y para obtener sus niveles se utiliza la siguiente función:
+
+- `levels(x)`: Devuelve un vector con los niveles del factor `x`.
+
+::: {.example}
+A continuación se muestran varios ejemplos de acceso a los elementos y los niveles de un factor.
+
+```r
+sexo <- factor(c("mujer", "hombre", "mujer"))
+sexo[2]
+#> [1] hombre
+#> Levels: hombre mujer
+sexo[c(1, 2)]
+#> [1] mujer  hombre
+#> Levels: hombre mujer
+sexo[-2]
+#> [1] mujer mujer
+#> Levels: hombre mujer
+levels(sexo)
+#> [1] "hombre" "mujer"
+```
+:::
+
+### Modificación de los elementos de un factor
+
+Se puede modificar los elementos de un factor de manera similiar a como se modifican los elementos de un vector, es decir accediendo al elemento que se quiere modificar y reasignándole un nuevo valor. La única diferencia con los vectores es que si el nuevo valor que se quiere asignar no está entre los niveles del factor, se obtiene el valor `NA`.
+
+::: {.example}
+A continuación se muestran varios de modificación de los elementos de un factor.
+
+```r
+grupo.sanguineo <- factor(c("B", "A", "A"), levels = c("A", "B", "AB", "0"))
+grupo.sanguineo
+#> [1] B A A
+#> Levels: A B AB 0
+grupo.sanguineo[2] <- "AB"
+grupo.sanguineo
+#> [1] B  AB A 
+#> Levels: A B AB 0
+grupo.sanguineo[1] <- "C"
+#> Warning in `[<-.factor`(`*tmp*`, 1, value = "C"): invalid
+#> factor level, NA generated
+grupo.sanguineo
+#> [1] <NA> AB   A   
+#> Levels: A B AB 0
+```
+:::
+
+
 ## Listas
 
 Las listas son colecciones ordenadas de elementos de que pueden ser de distintos tipos. Los elementos de una lista también pueden ser de tipos estructurados (vectores o listas), lo que las convierte en el tipo de dato más versátil de R. Como veremos más adelante, otras estructuras de datos como los _data frames_ o los propios modelos estadísticos se construyen usando listas.
@@ -1070,6 +1169,50 @@ data.frame()
 ```
 :::
 
+Para grandes conjuntos de datos es más común crear un data frame a partir de un [fichero en formato csv](https://es.wikipedia.org/wiki/Valores_separados_por_comas) mediante la siguiente función:
+
+- `read.csv(f)`: Devuelve el data frame que se genera a partir de los datos del fichero csv `f`. Cada fila del fichero csv se corresponde con una fila del data frame y por defecto utiliza la coma `,` parara separar los datos de las columnas y punto `.` como separador de decimales de los datos numéricos. Los nombres de las columnas se obtienen automáticamente a partir de la primera fila del fichero.
+- `read.csv2(f)`: Funciona igual que la función anterior pero utiliza como separador de columnas el punto y coma `;` y como separador de decimales la coma `,`.
+
+::: {.example}
+A continuación se muestra un ejemplo de creación de un data frame a partir de un fichero csv.
+
+```r
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+df
+#>                             nombre edad sexo peso altura
+#> 1     José Luis Martínez Izquierdo   18    H   85   1.79
+#> 2                   Rosa Díaz Díaz   32    M   65   1.73
+#> 3            Javier García Sánchez   24    H   NA   1.81
+#> 4              Carmen López Pinzón   35    M   65   1.70
+#> 5             Marisa López Collado   46    M   51   1.58
+#> 6                Antonio Ruiz Cruz   68    H   66   1.74
+#> 7          Antonio Fernández Ocaña   51    H   62   1.72
+#> 8            Pilar Martín González   22    M   60   1.66
+#> 9             Pedro Gálvez Tenorio   35    H   90   1.94
+#> 10         Santiago Reillo Manzano   46    H   75   1.85
+#> 11           Macarena Álvarez Luna   53    M   55   1.62
+#> 12      José María de la Guía Sanz   58    H   78   1.87
+#> 13 Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98
+#> 14           Carolina Rubio Moreno   20    M   61   1.77
+#>    colesterol
+#> 1         182
+#> 2         232
+#> 3         191
+#> 4         200
+#> 5         148
+#> 6         249
+#> 7         276
+#> 8          NA
+#> 9         241
+#> 10        280
+#> 11        262
+#> 12        198
+#> 13        210
+#> 14        194
+```
+:::
+
 ### Coerción de otras estructuras de datos a data frames
 
 Para convertir otras estructuras de datos en data frames, se utiliza la siguiente función:
@@ -1167,9 +1310,8 @@ Para añadir nuevas filas o columnas a una matriz se utilizan las mismas funcion
 - `rbind(df, x)`: Devuelve el data frame que resulta de añadir nuevas filas al data frame `df` con los elementos de la lista `x`.
 - `cbind(df, nombrex = x)`: Devuelve el data frame que resulta de añadir nuevas columnas al data frame `df` con los elementos del vector `x` con nombre `nombrex`.
 
-
 ::: {.example}
-A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
+A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a un data frame.
 
 ```r
 df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
@@ -1193,3 +1335,36 @@ cbind(df, créditos = c(6, 4, 3))
 #> 3    Economía  4.5        3
 ```
 :::
+
+### Eliminar filas y columnas de un data frame
+
+Para eliminar una columna de un data frame basta con acceder a la columna y asignarle el valor `NULL`, mientras que para eliminar una fila basta con acceder a la fila con índice negativo. 
+
+::: {.example}
+A continuación se muestran varios ejemplos de eliminación de filas y columnas de un data frame.
+
+```r
+df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5), créditos = c(6, 4, 3))
+df
+#>    asignatura nota créditos
+#> 1 Matemáticas  8.5        6
+#> 2      Física  7.0        4
+#> 3    Economía  4.5        3
+# Eliminar una columna
+df$nota <- NULL
+df
+#>    asignatura créditos
+#> 1 Matemáticas        6
+#> 2      Física        4
+#> 3    Economía        3
+# Eliminar una fila
+df[-2, ]
+#>    asignatura créditos
+#> 1 Matemáticas        6
+#> 3    Economía        3
+```
+:::
+
+
+
+

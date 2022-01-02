@@ -240,7 +240,7 @@ x %*% y
 
 ## Factores
 
-## Operaciones con factores
+### Operaciones con factores
 
 Un factor es una estructura de datos especial que se utiliza para representar categorías de variables cualitativas y por tanto puede tomar un conjunto finito de valores predefinidos conocido como _niveles_ del factor.
 

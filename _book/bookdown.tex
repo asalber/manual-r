@@ -117,7 +117,7 @@
 
 \title{Curso básico de análisis de datos con R}
 \author{Alfredo Sánchez Alberca}
-\date{2021-12-29}
+\date{2022-01-02}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Teorema}[chapter]
@@ -250,14 +250,6 @@ En R existen distintos tipos de datos predefinidos simples:
   \texttt{NA}: Se utiliza para representar datos desconocidos o perdidos. Aunque en realidad es un dato lógico, puede considerarse con un tipo de dato especial.
 \item
   \texttt{NULL}: Se utiliza para representar la ausencia de datos. La principal diferencia con \texttt{NA} es que \texttt{NULL} aparece cuando se intenta acceder a un dato que no existe, mientras que \texttt{NA} se utiliza para representar explícitamente datos perdidos en un estudio.
-\item
-  \texttt{factor}: Es un tipo de dato que solo puede tomar valores de un conjunto predefinido conocido como \emph{niveles} del factor. Los factores se suelen utilizar para representar datos cualitativos o categóricos. Para definir un factor se utiliza la siguiente función:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \texttt{factor(x,\ levels=niveles)}: Crea un dato de tipo factor con el valor \texttt{x}. Los niveles del factor pueden indicarse mediante el parámetro \texttt{levels}, pasándole un vector con los valores posibles.
-  \end{itemize}
 \end{itemize}
 
 Para averiguar el tipo de un dato se puede utilizar la siguiente función:
@@ -286,8 +278,6 @@ A continuación se muestran los tipos de algunos datos.
 \CommentTok{\#\textgreater{} [1] "logical"}
 \FunctionTok{class}\NormalTok{(}\ConstantTok{NULL}\NormalTok{)}
 \CommentTok{\#\textgreater{} [1] "NULL"}
-\FunctionTok{class}\NormalTok{(}\FunctionTok{factor}\NormalTok{(}\StringTok{\textquotesingle{}mujer\textquotesingle{}}\NormalTok{, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}hombre\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mujer\textquotesingle{}}\NormalTok{)))}
-\CommentTok{\#\textgreater{} [1] "factor"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -311,8 +301,6 @@ También pueden utilizarse las siguientes funciones que devuelven un booleano:
   \texttt{is.na(x)}: Devuelve el booleano \texttt{TRUE} si \texttt{x} es del tipo \texttt{NA}.
 \item
   \texttt{is.null(x)}: Devuelve el booleano \texttt{TRUE} si \texttt{x} es del tipo \texttt{NULL}.
-\item
-  \texttt{is.factor(x)}: Devuelve el booleano \texttt{TRUE} si \texttt{x} es del tipo \texttt{factor}.
 \end{itemize}
 
 \hypertarget{conversiuxf3n-de-tipos}{%
@@ -370,6 +358,8 @@ A continuación se muestran varios ejemplos de operaciones aritméticas.
 \CommentTok{\#\textgreater{} [1] {-}10}
 \DecValTok{5} \SpecialCharTok{/} \DecValTok{2}
 \CommentTok{\#\textgreater{} [1] 2.5}
+\DecValTok{1} \SpecialCharTok{/} \DecValTok{0}
+\CommentTok{\#\textgreater{} [1] Inf}
 \DecValTok{5} \SpecialCharTok{\%\%} \DecValTok{2}
 \CommentTok{\#\textgreater{} [1] 1}
 \DecValTok{2} \SpecialCharTok{\^{}} \DecValTok{3}
@@ -1099,6 +1089,186 @@ A continuación se muestran varios ejemplos de añadir nuevos elementos a un vec
 
 Para eliminar los elementos de un vector basta con asignar \texttt{NULL} a la variable que lo contiene, pero si se quiere liberar la memoria que ocupa la variable se utiliza la función \texttt{rm()}.
 
+\hypertarget{operaciones-aritmuxe9ticas-con-vectores}{%
+\subsection{Operaciones aritméticas con vectores}\label{operaciones-aritmuxe9ticas-con-vectores}}
+
+\hypertarget{operaciones-aritmuxe9ticas-elemento-a-elemento}{%
+\subsubsection{Operaciones aritméticas elemento a elemento}\label{operaciones-aritmuxe9ticas-elemento-a-elemento}}
+
+Para vectores numéricos las operaciones aritméticas habituales se aplican elemento a elemento. Si los vectores tienen distinto tamaño, el tamaño del vector más pequeño se equipara al tamaño del mayor, reutilizando sus elementos, empezando por el primero.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de operaciones aritméticas con vectores numéricos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1] 1 3 2}
+\NormalTok{x }\SpecialCharTok{*}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1]  0  2 {-}3}
+\NormalTok{x }\SpecialCharTok{/}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1] Inf   2  {-}3}
+\NormalTok{x }\SpecialCharTok{\^{}}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1] 1.0000000 2.0000000 0.3333333}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{producto-escalar-de-vectores}{%
+\subsubsection{Producto escalar de vectores}\label{producto-escalar-de-vectores}}
+
+Para calcular el producto escalar de dos vectores numéricos se utiliza el operador \texttt{\%*\%}. Si los vectores tienen distinto tamaño se produce un error.
+
+\begin{example}
+
+A continuación se muestra un ejemplo del producto escalar de dos vectores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{x }\SpecialCharTok{\%*\%}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1]}
+\CommentTok{\#\textgreater{} [1,]   {-}1}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{factores}{%
+\section{Factores}\label{factores}}
+
+\hypertarget{operaciones-con-factores}{%
+\subsection{Operaciones con factores}\label{operaciones-con-factores}}
+
+Un factor es una estructura de datos especial que se utiliza para representar categorías de variables cualitativas y por tanto puede tomar un conjunto finito de valores predefinidos conocido como \emph{niveles} del factor.
+
+Para definir un factor se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{factor(x,\ levels\ =\ niveles)}: Crea un dato de tipo factor con los elementos del vector \texttt{x}. Los niveles del factor pueden indicarse mediante el parámetro \texttt{levels}, pasándole un vector con los valores posibles. Si no se indica el parámetro \texttt{levels} los niveles del factor se obtienen automáticamente a partir de los elementos del vector \texttt{x} (tantos niveles con valores distintos tenga).
+\end{itemize}
+
+Los factores son en realidad vectores de números enteros a los que se le añade un atributo especial para indicar los niveles del factor.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de creación de factores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sexo }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"mujer"}\NormalTok{, }\StringTok{"hombre"}\NormalTok{, }\StringTok{"mujer"}\NormalTok{))}
+\NormalTok{sexo}
+\CommentTok{\#\textgreater{} [1] mujer  hombre mujer }
+\CommentTok{\#\textgreater{} Levels: hombre mujer}
+\FunctionTok{class}\NormalTok{(sexo)}
+\CommentTok{\#\textgreater{} [1] "factor"}
+\FunctionTok{str}\NormalTok{(sexo)}
+\CommentTok{\#\textgreater{}  Factor w/ 2 levels "hombre","mujer": 2 1 2}
+\NormalTok{grupo.sanguineo }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{), }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"AB"}\NormalTok{, }\StringTok{"0"}\NormalTok{), )}
+\NormalTok{grupo.sanguineo}
+\CommentTok{\#\textgreater{} [1] B A A}
+\CommentTok{\#\textgreater{} Levels: A B AB 0}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+Es posible establecer un orden entre los niveles de un factor añadiendo el parámetro \texttt{ordered\ =\ TRUE} a la función anterior. Esto es útil para representar categorías ordinales entre las que existe un orden natural.
+
+\begin{example}
+
+A continuación se muestra un ejemplo de creación de un factor ordenado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nivel.estudio }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Secundarios"}\NormalTok{, }\StringTok{"Graduado"}\NormalTok{, }\StringTok{"Bachiller"}\NormalTok{), }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Sin estudios"}\NormalTok{, }\StringTok{"Primarios"}\NormalTok{, }\StringTok{"Secundarios"}\NormalTok{, }\StringTok{"Bachiller"}\NormalTok{, }\StringTok{"Graduado"}\NormalTok{), }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{nivel.estudio}
+\CommentTok{\#\textgreater{} [1] Secundarios Graduado    Bachiller  }
+\CommentTok{\#\textgreater{} 5 Levels: Sin estudios \textless{} Primarios \textless{} ... \textless{} Graduado}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+Para comprobar si una estructura es del tipo factor se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  is.factor(\texttt{x}): Devuelve el booleano \texttt{TRUE} si \texttt{x} es del tipo factor, y \texttt{FALSE} en caso contrario.
+\end{itemize}
+
+\hypertarget{acceso-a-los-elementos-de-un-factor}{%
+\subsection{Acceso a los elementos de un factor}\label{acceso-a-los-elementos-de-un-factor}}
+
+Se puede acceder a los elementos de un factor de la misma manera que se accede a los elementos de un vector. Y para obtener sus niveles se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{levels(x)}: Devuelve un vector con los niveles del factor \texttt{x}.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de acceso a los elementos y los niveles de un factor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sexo }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"mujer"}\NormalTok{, }\StringTok{"hombre"}\NormalTok{, }\StringTok{"mujer"}\NormalTok{))}
+\NormalTok{sexo[}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] hombre}
+\CommentTok{\#\textgreater{} Levels: hombre mujer}
+\NormalTok{sexo[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)]}
+\CommentTok{\#\textgreater{} [1] mujer  hombre}
+\CommentTok{\#\textgreater{} Levels: hombre mujer}
+\NormalTok{sexo[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] mujer mujer}
+\CommentTok{\#\textgreater{} Levels: hombre mujer}
+\FunctionTok{levels}\NormalTok{(sexo)}
+\CommentTok{\#\textgreater{} [1] "hombre" "mujer"}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{modificaciuxf3n-de-los-elementos-de-un-factor}{%
+\subsection{Modificación de los elementos de un factor}\label{modificaciuxf3n-de-los-elementos-de-un-factor}}
+
+Se puede modificar los elementos de un factor de manera similiar a como se modifican los elementos de un vector, es decir accediendo al elemento que se quiere modificar y reasignándole un nuevo valor. La única diferencia con los vectores es que si el nuevo valor que se quiere asignar no está entre los niveles del factor, se obtiene el valor \texttt{NA}.
+
+\begin{example}
+
+A continuación se muestran varios de modificación de los elementos de un factor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grupo.sanguineo }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{), }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"AB"}\NormalTok{, }\StringTok{"0"}\NormalTok{))}
+\NormalTok{grupo.sanguineo}
+\CommentTok{\#\textgreater{} [1] B A A}
+\CommentTok{\#\textgreater{} Levels: A B AB 0}
+\NormalTok{grupo.sanguineo[}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"AB"}
+\NormalTok{grupo.sanguineo}
+\CommentTok{\#\textgreater{} [1] B  AB A }
+\CommentTok{\#\textgreater{} Levels: A B AB 0}
+\NormalTok{grupo.sanguineo[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"C"}
+\CommentTok{\#\textgreater{} Warning in \textasciigrave{}[\textless{}{-}.factor\textasciigrave{}(\textasciigrave{}*tmp*\textasciigrave{}, 1, value = "C"): invalid}
+\CommentTok{\#\textgreater{} factor level, NA generated}
+\NormalTok{grupo.sanguineo}
+\CommentTok{\#\textgreater{} [1] \textless{}NA\textgreater{} AB   A   }
+\CommentTok{\#\textgreater{} Levels: A B AB 0}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
 \hypertarget{listas}{%
 \section{Listas}\label{listas}}
 
@@ -1773,8 +1943,581 @@ Si las filas y las columnas de una matriz tienen nombre, es posible acceder a su
 
 Finalmente, es posible combinar distintos tipos de índices (enteros, lógicos o de cadena) para indicar las filas y las columnas a las que acceder.
 
+\hypertarget{pertenencia-a-una-matriz}{%
+\subsection{Pertenencia a una matriz}\label{pertenencia-a-una-matriz}}
+
+Para comprobar si un valor en particular es un elemento de una matriz se puede utilizar el operador \texttt{\%in\%}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x\ \%in\%\ y}: Devuelve el booleano \texttt{TRUE} si \texttt{x} es un elemento de la matriz \texttt{y}, y \texttt{FALSE} en caso contrario.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de pertenencia de elementos a una matriz.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
+\DecValTok{2} \SpecialCharTok{\%in\%}\NormalTok{ x}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{\%in\%}\NormalTok{ x}
+\CommentTok{\#\textgreater{} [1] FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{modificaciuxf3n-de-los-elementos-de-una-matriz}{%
+\subsection{Modificación de los elementos de una matriz}\label{modificaciuxf3n-de-los-elementos-de-una-matriz}}
+
+Para modificar uno o varios elementos de una matriz basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    4    7}
+\CommentTok{\#\textgreater{} [2,]    2    5    8}
+\CommentTok{\#\textgreater{} [3,]    3    6    9}
+\NormalTok{x[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    4    7}
+\CommentTok{\#\textgreater{} [2,]    2    5    0}
+\CommentTok{\#\textgreater{} [3,]    3    6    9}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{1}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]   {-}1   {-}1    7}
+\CommentTok{\#\textgreater{} [2,]    2    5    0}
+\CommentTok{\#\textgreater{} [3,]   {-}1   {-}1    9}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{auxf1adir-elementos-a-una-matriz}{%
+\subsection{Añadir elementos a una matriz}\label{auxf1adir-elementos-a-una-matriz}}
+
+Para añadir nuevas filas o columnas a una matriz se utilizan las siguientes funciones:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{rbind(x,\ y)}: Devuelve la matriz que resulta de añadir nuevas filas a la matriz \texttt{x} con los elementos del vector \texttt{y}.
+\item
+  \texttt{rbind(x,\ y)}: Devuelve la matriz que resulta de añadir nuevas columnas a la matriz \texttt{x} con los elementos del vector \texttt{y}.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a una matriz.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    3    5}
+\CommentTok{\#\textgreater{} [2,]    2    4    6}
+\CommentTok{\# Añadir una nueva fila}
+\FunctionTok{rbind}\NormalTok{(x, }\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{))}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    3    5}
+\CommentTok{\#\textgreater{} [2,]    2    4    6}
+\CommentTok{\#\textgreater{} [3,]    7    8    9}
+\CommentTok{\# Añadir una nueva columna}
+\FunctionTok{cbind}\NormalTok{(x, }\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4]}
+\CommentTok{\#\textgreater{} [1,]    1    3    5    7}
+\CommentTok{\#\textgreater{} [2,]    2    4    6    8}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\emph{Obśervese que si el número de elementos proporcionados en el vector es menor del necesario para completar la fila o columna, se reutilizan los elementos del vector empezando desde el principio.}
+
+\hypertarget{trasponer-una-matriz}{%
+\subsection{Trasponer una matriz}\label{trasponer-una-matriz}}
+
+Para trasponer una matriz se utiliza la función siguiente:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{t(x)}: Devuelve la matriz traspuesta de la matriz \texttt{x}.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestran un ejemplo de la trasposición de una matriz.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{t}\NormalTok{(x)}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    2}
+\CommentTok{\#\textgreater{} [2,]    3    4}
+\CommentTok{\#\textgreater{} [3,]    5    6}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{operaciones-aritmuxe9ticas-con-matrices}{%
+\subsection{Operaciones aritméticas con matrices}\label{operaciones-aritmuxe9ticas-con-matrices}}
+
+\hypertarget{operaciones-aritmuxe9ticas-elemento-a-elemento-1}{%
+\subsubsection{Operaciones aritméticas elemento a elemento}\label{operaciones-aritmuxe9ticas-elemento-a-elemento-1}}
+
+Para matrices numéricas las operaciones aritméticas habituales se aplican elemento a elemento. Si las dimensiones de las matrices son distintas se produce un error.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de operaciones aritméticas elemento a elemento con matrices numéricas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    3    5}
+\CommentTok{\#\textgreater{} [2,]    3    3    7}
+\NormalTok{x }\SpecialCharTok{*}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    0    0    0}
+\CommentTok{\#\textgreater{} [2,]    2   {-}4    6}
+\NormalTok{x }\SpecialCharTok{/}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]  Inf  Inf  Inf}
+\CommentTok{\#\textgreater{} [2,]    2   {-}4    6}
+\NormalTok{x }\SpecialCharTok{\^{}}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1 1.00    1}
+\CommentTok{\#\textgreater{} [2,]    2 0.25    6}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{multiplicaciuxf3n-de-matrices}{%
+\subsubsection{Multiplicación de matrices}\label{multiplicaciuxf3n-de-matrices}}
+
+Para multiplicar dos matrices numéricas se utiliza el operador \texttt{\%*\%}. Si el número de columnas de la primera matriz no es igual que el número de filas de la segunda se produce un error.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos del producto de dos matrices numéricas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
+\NormalTok{x }\SpecialCharTok{\%*\%}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]   22   49}
+\CommentTok{\#\textgreater{} [2,]   28   64}
+\NormalTok{y }\SpecialCharTok{\%*\%}\NormalTok{ x}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    9   19   29}
+\CommentTok{\#\textgreater{} [2,]   12   26   40}
+\CommentTok{\#\textgreater{} [3,]   15   33   51}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{determinante-de-una-matriz}{%
+\subsection{Determinante de una matriz}\label{determinante-de-una-matriz}}
+
+Para calcular el determinante de una matriz numérica cuadrada se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{det(x)}: Devuelve el determinante de la matriz \texttt{x}. Si \texttt{x} no es una matriz numérica cuadrada produce un error.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{det}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] {-}2}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{inversa-de-una-matriz}{%
+\subsection{Inversa de una matriz}\label{inversa-de-una-matriz}}
+
+Para calcular la matriz inversa de una matriz numérica cuadrada se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{solve(x)}: Devuelve la matriz inversa de la matriz \texttt{x}. Si \texttt{x} no es una matriz numérica cuadrada produce un error. Si la matriz no es invertible por tener determinante nulo también se obtiene un error.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{solve}\NormalTok{(x)}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]   {-}2  1.5}
+\CommentTok{\#\textgreater{} [2,]    1 {-}0.5}
+\CommentTok{\# El producto de una matriz por su inversa es la matriz identidad.}
+\NormalTok{x }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(x)}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    0}
+\CommentTok{\#\textgreater{} [2,]    0    1}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{autovalores-y-autovectores-de-una-matriz}{%
+\subsection{Autovalores y autovectores de una matriz}\label{autovalores-y-autovectores-de-una-matriz}}
+
+Para calcular los autovalores y los autovectores de una matriz numérica cuadrada se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{eigen(x)}: Devuelve una lista con los autovalores y los autovectores de la matriz \texttt{x}. Para acceder a los autovalores se utiliza el nombre \texttt{values} y para acceder a los autovectores se utiliza el nombre \texttt{vectors}.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada. Si \texttt{x} no es una matriz numérica cuadrada produce un error.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\# Autovalores}
+\FunctionTok{eigen}\NormalTok{(x)}\SpecialCharTok{$}\NormalTok{values}
+\CommentTok{\#\textgreater{} [1]  5.3722813 {-}0.3722813}
+\CommentTok{\# Autovectores}
+\FunctionTok{eigen}\NormalTok{(x)}\SpecialCharTok{$}\NormalTok{vectors}
+\CommentTok{\#\textgreater{}            [,1]       [,2]}
+\CommentTok{\#\textgreater{} [1,] {-}0.5657675 {-}0.9093767}
+\CommentTok{\#\textgreater{} [2,] {-}0.8245648  0.4159736}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
 \hypertarget{data-frames}{%
 \section{Data frames}\label{data-frames}}
+
+Un \emph{data frame} es una estructura bidimensional cuyos elementos se organizan por filas y columnas de manera similar a una matriz. La principal diferencia con las matrices es que sus columnas están formadas por vectores, pero pueden tener tipos de datos distintos. Un data frame es un caso particular de lista formada por vectores del mismo tamaño con nombre.
+
+Los data frames son las estructuras de datos más utilizadas en R para almacenar los datos en los análisis estadísticos.
+
+\hypertarget{creaciuxf3n-de-un-data-frame}{%
+\subsection{Creación de un data frame}\label{creaciuxf3n-de-un-data-frame}}
+
+Para crear un data frame se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{data.frame(nombrex\ =\ x,\ nombrey\ =\ y,\ ...)}: Devuelve el data frame con columnas los vectores \texttt{x}, \texttt{y}, etc. y nombres de columna \texttt{nombrex}, \texttt{nombrey}, etc.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de la creación de data frames.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{asignatura =} \FunctionTok{c}\NormalTok{(}\StringTok{"Matemáticas"}\NormalTok{, }\StringTok{"Física"}\NormalTok{, }\StringTok{"Economía"}\NormalTok{), }\AttributeTok{nota =} \FunctionTok{c}\NormalTok{(}\FloatTok{8.5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\FloatTok{4.5}\NormalTok{))}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}    asignatura nota}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5}
+\CommentTok{\#\textgreater{} 2      Física  7.0}
+\CommentTok{\#\textgreater{} 3    Economía  4.5}
+\FunctionTok{str}\NormalTok{(df)}
+\CommentTok{\#\textgreater{} \textquotesingle{}data.frame\textquotesingle{}:    3 obs. of  2 variables:}
+\CommentTok{\#\textgreater{}  $ asignatura: chr  "Matemáticas" "Física" "Economía"}
+\CommentTok{\#\textgreater{}  $ nota      : num  8.5 7 4.5}
+\CommentTok{\# Data frame vacío}
+\FunctionTok{data.frame}\NormalTok{()}
+\CommentTok{\#\textgreater{} data frame with 0 columns and 0 rows}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+Para grandes conjuntos de datos es más común crear un data frame a partir de un \href{https://es.wikipedia.org/wiki/Valores_separados_por_comas}{fichero en formato csv} mediante la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{read.csv(f)}: Devuelve el data frame que se genera a partir de los datos del fichero csv \texttt{f}. Cada fila del fichero csv se corresponde con una fila del data frame y por defecto utiliza la coma \texttt{,} parara separar los datos de las columnas y punto \texttt{.} como separador de decimales de los datos numéricos. Los nombres de las columnas se obtienen automáticamente a partir de la primera fila del fichero.
+\item
+  \texttt{read.csv2(f)}: Funciona igual que la función anterior pero utiliza como separador de columnas el punto y coma \texttt{;} y como separador de decimales la coma \texttt{,}.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestra un ejemplo de creación de un data frame a partir de un fichero csv.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}                             nombre edad sexo peso altura}
+\CommentTok{\#\textgreater{} 1     José Luis Martínez Izquierdo   18    H   85   1.79}
+\CommentTok{\#\textgreater{} 2                   Rosa Díaz Díaz   32    M   65   1.73}
+\CommentTok{\#\textgreater{} 3            Javier García Sánchez   24    H   NA   1.81}
+\CommentTok{\#\textgreater{} 4              Carmen López Pinzón   35    M   65   1.70}
+\CommentTok{\#\textgreater{} 5             Marisa López Collado   46    M   51   1.58}
+\CommentTok{\#\textgreater{} 6                Antonio Ruiz Cruz   68    H   66   1.74}
+\CommentTok{\#\textgreater{} 7          Antonio Fernández Ocaña   51    H   62   1.72}
+\CommentTok{\#\textgreater{} 8            Pilar Martín González   22    M   60   1.66}
+\CommentTok{\#\textgreater{} 9             Pedro Gálvez Tenorio   35    H   90   1.94}
+\CommentTok{\#\textgreater{} 10         Santiago Reillo Manzano   46    H   75   1.85}
+\CommentTok{\#\textgreater{} 11           Macarena Álvarez Luna   53    M   55   1.62}
+\CommentTok{\#\textgreater{} 12      José María de la Guía Sanz   58    H   78   1.87}
+\CommentTok{\#\textgreater{} 13 Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98}
+\CommentTok{\#\textgreater{} 14           Carolina Rubio Moreno   20    M   61   1.77}
+\CommentTok{\#\textgreater{}    colesterol}
+\CommentTok{\#\textgreater{} 1         182}
+\CommentTok{\#\textgreater{} 2         232}
+\CommentTok{\#\textgreater{} 3         191}
+\CommentTok{\#\textgreater{} 4         200}
+\CommentTok{\#\textgreater{} 5         148}
+\CommentTok{\#\textgreater{} 6         249}
+\CommentTok{\#\textgreater{} 7         276}
+\CommentTok{\#\textgreater{} 8          NA}
+\CommentTok{\#\textgreater{} 9         241}
+\CommentTok{\#\textgreater{} 10        280}
+\CommentTok{\#\textgreater{} 11        262}
+\CommentTok{\#\textgreater{} 12        198}
+\CommentTok{\#\textgreater{} 13        210}
+\CommentTok{\#\textgreater{} 14        194}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{coerciuxf3n-de-otras-estructuras-de-datos-a-data-frames}{%
+\subsection{Coerción de otras estructuras de datos a data frames}\label{coerciuxf3n-de-otras-estructuras-de-datos-a-data-frames}}
+
+Para convertir otras estructuras de datos en data frames, se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{as.data.frame(x)}: Devuelve el data frame que se obtiene a partir la estructura de datos \texttt{x} a plicanco las siguientes reglas de coerción:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Si \texttt{x} es un vector se obtiene un data frame con una sola columna.
+  \item
+    Si \texttt{x} es una lista se obtiene un data frame con tantas columnas como elementos tenga la lista. Si los elementos de la lista tienen tamaños distintos se obtiene un error.
+  \item
+    Si \texttt{x} es una matriz se obtiene un data frame con el mismo número de columnas y filas que la matriz.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{acceso-a-los-elementos-de-un-data-frame}{%
+\subsection{Acceso a los elementos de un data frame}\label{acceso-a-los-elementos-de-un-data-frame}}
+
+Puesto que un data frame es una lista, se puede acceder a sus elementos como se accede a los elementos de una lista utilizando índices. Con corchetes simples \texttt{{[}\ {]}} se obtiene siempre un data frame, mientras que con corchetes dobles \texttt{{[}{[}\ {]}{]}} o \texttt{\$} se obtiene un vector. Pero también se puede acceder a los elementos de un data frame como si fuese una matriz, indicando un par de índices para las filas y las columnas respectivamente.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de acceso a los elementos de un data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{asignatura =} \FunctionTok{c}\NormalTok{(}\StringTok{"Matemáticas"}\NormalTok{, }\StringTok{"Física"}\NormalTok{, }\StringTok{"Economía"}\NormalTok{), }\AttributeTok{nota =} \FunctionTok{c}\NormalTok{(}\FloatTok{8.5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\FloatTok{4.5}\NormalTok{))}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}    asignatura nota}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5}
+\CommentTok{\#\textgreater{} 2      Física  7.0}
+\CommentTok{\#\textgreater{} 3    Economía  4.5}
+\CommentTok{\# Acceso como lista}
+\NormalTok{df[}\StringTok{"asignatura"}\NormalTok{]}
+\CommentTok{\#\textgreater{}    asignatura}
+\CommentTok{\#\textgreater{} 1 Matemáticas}
+\CommentTok{\#\textgreater{} 2      Física}
+\CommentTok{\#\textgreater{} 3    Economía}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{asignatura}
+\CommentTok{\#\textgreater{} [1] "Matemáticas" "Física"      "Economía"}
+\CommentTok{\# Acceso como matriz}
+\NormalTok{df[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\StringTok{"nota"}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 7.0 4.5}
+\NormalTok{df[df}\SpecialCharTok{$}\NormalTok{nota }\SpecialCharTok{\textgreater{}=} \DecValTok{5}\NormalTok{, ]}
+\CommentTok{\#\textgreater{}    asignatura nota}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5}
+\CommentTok{\#\textgreater{} 2      Física  7.0}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+Obsérvese en el último ejemplo anterior cómo se pueden utilizar condiciones lógicas para filtrar un data frame.
+
+Para acceder a las primeras o últimas filas de un data frame se pueden utilizar las siguientes funciones:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{head(df,\ n)}: Devuelve un data frame con las \texttt{n} primeras filas del data frame \texttt{df}.
+\item
+  \texttt{tail(df,\ n)}: Devuelve un data frame con las \texttt{n} últimas filas del data frame \texttt{df}.
+\end{itemize}
+
+Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de acceso a las primeras o últimas filas de un data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{26}\NormalTok{, }\AttributeTok{y =}\NormalTok{ letters) }\CommentTok{\# letters es un vector predefinido con las letras del abecedario.}
+\FunctionTok{head}\NormalTok{(df, }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{}   x y}
+\CommentTok{\#\textgreater{} 1 1 a}
+\CommentTok{\#\textgreater{} 2 2 b}
+\CommentTok{\#\textgreater{} 3 3 c}
+\FunctionTok{tail}\NormalTok{(df, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{}     x y}
+\CommentTok{\#\textgreater{} 25 25 y}
+\CommentTok{\#\textgreater{} 26 26 z}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{modificaciuxf3n-de-los-elementos-de-un-data-frame}{%
+\subsection{Modificación de los elementos de un data frame}\label{modificaciuxf3n-de-los-elementos-de-un-data-frame}}
+
+Para modificar uno o varios elementos de un data frame basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{asignatura =} \FunctionTok{c}\NormalTok{(}\StringTok{"Matemáticas"}\NormalTok{, }\StringTok{"Física"}\NormalTok{, }\StringTok{"Economía"}\NormalTok{), }\AttributeTok{nota =} \FunctionTok{c}\NormalTok{(}\FloatTok{8.5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\FloatTok{4.5}\NormalTok{))}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}    asignatura nota}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5}
+\CommentTok{\#\textgreater{} 2      Física  7.0}
+\CommentTok{\#\textgreater{} 3    Economía  4.5}
+\NormalTok{df[}\DecValTok{3}\NormalTok{, }\StringTok{"nota"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{5}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}    asignatura nota}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5}
+\CommentTok{\#\textgreater{} 2      Física  7.0}
+\CommentTok{\#\textgreater{} 3    Economía  5.0}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{auxf1adir-elementos-a-una-matriz-1}{%
+\subsection{Añadir elementos a una matriz}\label{auxf1adir-elementos-a-una-matriz-1}}
+
+Para añadir nuevas filas o columnas a una matriz se utilizan las mismas funciones que para matrices:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{rbind(df,\ x)}: Devuelve el data frame que resulta de añadir nuevas filas al data frame \texttt{df} con los elementos de la lista \texttt{x}.
+\item
+  \texttt{cbind(df,\ nombrex\ =\ x)}: Devuelve el data frame que resulta de añadir nuevas columnas al data frame \texttt{df} con los elementos del vector \texttt{x} con nombre \texttt{nombrex}.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a un data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{asignatura =} \FunctionTok{c}\NormalTok{(}\StringTok{"Matemáticas"}\NormalTok{, }\StringTok{"Física"}\NormalTok{, }\StringTok{"Economía"}\NormalTok{), }\AttributeTok{nota =} \FunctionTok{c}\NormalTok{(}\FloatTok{8.5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\FloatTok{4.5}\NormalTok{))}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}    asignatura nota}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5}
+\CommentTok{\#\textgreater{} 2      Física  7.0}
+\CommentTok{\#\textgreater{} 3    Economía  4.5}
+\CommentTok{\# Añadir una nueva fila}
+\FunctionTok{rbind}\NormalTok{(df, }\FunctionTok{list}\NormalTok{(}\StringTok{"Programación"}\NormalTok{ , }\DecValTok{10}\NormalTok{))}
+\CommentTok{\#\textgreater{}     asignatura nota}
+\CommentTok{\#\textgreater{} 1  Matemáticas  8.5}
+\CommentTok{\#\textgreater{} 2       Física  7.0}
+\CommentTok{\#\textgreater{} 3     Economía  4.5}
+\CommentTok{\#\textgreater{} 4 Programación 10.0}
+\CommentTok{\# Añadir una nueva columna}
+\FunctionTok{cbind}\NormalTok{(df, créditos }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\CommentTok{\#\textgreater{}    asignatura nota créditos}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5        6}
+\CommentTok{\#\textgreater{} 2      Física  7.0        4}
+\CommentTok{\#\textgreater{} 3    Economía  4.5        3}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{eliminar-filas-y-columnas-de-un-data-frame}{%
+\subsection{Eliminar filas y columnas de un data frame}\label{eliminar-filas-y-columnas-de-un-data-frame}}
+
+Para eliminar una columna de un data frame basta con acceder a la columna y asignarle el valor \texttt{NULL}, mientras que para eliminar una fila basta con acceder a la fila con índice negativo.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de eliminación de filas y columnas de un data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{asignatura =} \FunctionTok{c}\NormalTok{(}\StringTok{"Matemáticas"}\NormalTok{, }\StringTok{"Física"}\NormalTok{, }\StringTok{"Economía"}\NormalTok{), }\AttributeTok{nota =} \FunctionTok{c}\NormalTok{(}\FloatTok{8.5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\FloatTok{4.5}\NormalTok{), créditos }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}    asignatura nota créditos}
+\CommentTok{\#\textgreater{} 1 Matemáticas  8.5        6}
+\CommentTok{\#\textgreater{} 2      Física  7.0        4}
+\CommentTok{\#\textgreater{} 3    Economía  4.5        3}
+\CommentTok{\# Eliminar una columna}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{nota }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{df}
+\CommentTok{\#\textgreater{}    asignatura créditos}
+\CommentTok{\#\textgreater{} 1 Matemáticas        6}
+\CommentTok{\#\textgreater{} 2      Física        4}
+\CommentTok{\#\textgreater{} 3    Economía        3}
+\CommentTok{\# Eliminar una fila}
+\NormalTok{df[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, ]}
+\CommentTok{\#\textgreater{}    asignatura créditos}
+\CommentTok{\#\textgreater{} 1 Matemáticas        6}
+\CommentTok{\#\textgreater{} 3    Economía        3}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
 
 \hypertarget{estructuras-de-control}{%
 \chapter{Estructuras de control}\label{estructuras-de-control}}
@@ -1809,23 +2552,477 @@ Finalmente, es posible combinar distintos tipos de índices (enteros, lógicos o
 \hypertarget{funciones}{%
 \chapter{Funciones}\label{funciones}}
 
+Una función es un bloque de código que tiene asociado un nombre, de manera que cada vez que se quiera ejecutar el bloque de código basta con invocar el nombre de la función. Las funciones permite dividir el código en unidades lógicas que resultan más fáciles de manejar y mantener.
+
+En R las funciones son objetos en sí mimas y pueden usarse como cualquier otro dato. El tipo de dato de las funciones es \texttt{function}.
+
 \hypertarget{definiciuxf3n-y-llamada-a-funciones}{%
 \section{Definición y llamada a funciones}\label{definiciuxf3n-y-llamada-a-funciones}}
+
+Para definir una función se utiliza la siguiente estructura de código:
+
+\begin{verbatim}
+nombre.funcion <- function (parámetros) {
+  código
+}
+\end{verbatim}
+
+El código que va entre llaves se conoce como \emph{cuerpo de la función}.
+
+Para llamar a la función y que se ejecute el código de su cuerpo hay que utilizar el nombre de la función y a continuación los valores pasados a sus parámetros entre paréntesis.
+
+\begin{example}
+
+A continuación se muestra un ejemplo de creación y llamada a una función.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definición de la función}
+\NormalTok{saludo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"¡Hola!"}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{class}\NormalTok{(saludo)}
+\CommentTok{\#\textgreater{} [1] "function"}
+\CommentTok{\# Llamada a la función}
+\FunctionTok{saludo}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] "¡Hola!"}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
 
 \hypertarget{paruxe1metros-y-argumentos-de-una-funciuxf3n}{%
 \section{Parámetros y argumentos de una función}\label{paruxe1metros-y-argumentos-de-una-funciuxf3n}}
 
-\hypertarget{retorno-de-una-fucinuxf3n}{%
-\section{Retorno de una fucinón}\label{retorno-de-una-fucinuxf3n}}
+Una función puede recibir valores cuando se invoca a través de unas variables conocidas como \emph{parámetros} que se definen entre paréntesis en la declaración de la función. En el cuerpo de la función se pueden usar estos parámetros como si fuesen variables.
+
+Los valores que se pasan a la función en una llamada o invocación concreta de ella se conocen como \emph{argumentos} y se asocian a los parámetros de la declaración de la función.
+
+\begin{example}
+A continuación se muestra un ejemplo de una función con parámetros.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Función con un parámetro}
+\NormalTok{saludo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(nombre) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"¡Hola "}\NormalTok{, nombre, }\StringTok{"!"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}
+\NormalTok{\}}
+\CommentTok{\# Llamada a la función con un argumento}
+\FunctionTok{saludo}\NormalTok{(}\StringTok{"Alf"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "¡Hola Alf!"}
+\end{Highlighting}
+\end{Shaded}
+
+En este ejemplo la función \texttt{saludo} tiene un parámetro \texttt{nombre}. En la llamada a la función se pasa la cadena \texttt{Alf} como argumento que se asocia al parámetro \texttt{nombre} en el cuerpo de la función.
+\end{example}
+
+\hypertarget{paso-de-argumentos-a-una-funciuxf3n}{%
+\subsection{Paso de argumentos a una función}\label{paso-de-argumentos-a-una-funciuxf3n}}
+
+Los argumentos de una función pueden pasarse de dos formas:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Argumentos posicionales}: Se asocian a los parámetros de la función en el mismo orden que aparecen en la definición de la función.
+\item
+  \textbf{Argumentos nominales}: Se indica explícitamente el nombre del parámetro al que se asocia un argumento de la forma \texttt{parametro\ =\ argumento}. En este caso el orden de los argumentos no importa.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de pasos de argumentos posicionales y nominales.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Función con un argumento por defecto}
+\NormalTok{area.triangulo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(base, altura) \{}
+\NormalTok{  base }\SpecialCharTok{*}\NormalTok{ altura }\SpecialCharTok{/} \DecValTok{2}
+\NormalTok{\}}
+\CommentTok{\# Cálculo del área de un triángulo de base 4 y altura 3}
+\CommentTok{\# Paso de argumentos por posición. }
+\FunctionTok{area.triangulo}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 6}
+\CommentTok{\# Paso de argumentos por nombre}
+\FunctionTok{area.triangulo}\NormalTok{(}\AttributeTok{altura =} \DecValTok{3}\NormalTok{, }\AttributeTok{base =} \DecValTok{4}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 6}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{argumentos-por-defecto}{%
+\subsection{Argumentos por defecto}\label{argumentos-por-defecto}}
+
+En la definición de una función se puede asignar a cada parámetro un argumento por defecto, de manera que si se invoca la función sin proporcionar ningún argumento para ese parámetro, se utiliza el argumento por defecto.
+
+\begin{example}
+
+A continuación se muestra un ejemplo de definición de una función con un argumento por defecto.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{saludo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(nombre, }\AttributeTok{lenguaje =} \StringTok{"R"}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"¡Hola "}\NormalTok{, nombre, }\StringTok{"! ¡Bienvenido a "}\NormalTok{, lenguaje, }\StringTok{"!"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}
+\NormalTok{\}}
+\CommentTok{\# Llamada a la función con un argumento}
+\FunctionTok{saludo}\NormalTok{(}\StringTok{"Alf"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "¡Hola Alf! ¡Bienvenido a R!"}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{retorno-de-una-funciuxf3n}{%
+\section{Retorno de una función}\label{retorno-de-una-funciuxf3n}}
+
+Una función puede devolver un objeto de cualquier tipo tras su invocación. Para ello se utiliza la función \texttt{return()}, indicando entre paréntesis el valor que devuelve la función. El retorno suele realizarse al final del cuerpo de la función, porque con él finaliza la ejecución de la función y se devuelve el control de la ejecución al punto desde donde se llamó a la función, de manera que cualquier instrucción de cuerpo que vaya después no se ejecutará. Si no se indica ningún objeto, la función devolverá el valor de la última expresión calculada en el cuerpo de la función.
+
+\begin{example}
+
+A continuación se muestran varios ejemplos de retornos de funciones.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Función que devuelve el area de un triángulo}
+\NormalTok{area.triangulo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(base, altura) \{}
+  \FunctionTok{return}\NormalTok{(base }\SpecialCharTok{*}\NormalTok{ altura }\SpecialCharTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{area.triangulo}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 6}
+\CommentTok{\# Función que devuelve el valor absoluto de un número}
+\NormalTok{valor.absoluto }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{)}
+    \FunctionTok{return}\NormalTok{(x }\SpecialCharTok{*} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+  \ControlFlowTok{else}
+    \FunctionTok{return}\NormalTok{(x)}
+\NormalTok{\}}
+\FunctionTok{valor.absoluto}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1}
+\FunctionTok{valor.absoluto}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 2}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+Para devolver más de un valor se pueden utilizar estructuras de datos como vectores, listas, matrices o data frames.
+
+\begin{example}
+
+A continuación se muestra un ejemplo de una función de devuelve una lista.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{circulo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(radio) \{}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{perimetro =} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\SpecialCharTok{*}\NormalTok{ radio, }\AttributeTok{area =}\NormalTok{ pi }\SpecialCharTok{*}\NormalTok{ radio }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{))}
+\NormalTok{\}}
+\FunctionTok{circulo}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\textgreater{} $perimetro}
+\CommentTok{\#\textgreater{} [1] 31.41593}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $area}
+\CommentTok{\#\textgreater{} [1] 78.53982}
+\FunctionTok{circulo}\NormalTok{(}\DecValTok{5}\NormalTok{)}\SpecialCharTok{$}\NormalTok{perimetro}
+\CommentTok{\#\textgreater{} [1] 31.41593}
+\FunctionTok{circulo}\NormalTok{(}\DecValTok{5}\NormalTok{)}\SpecialCharTok{$}\NormalTok{area}
+\CommentTok{\#\textgreater{} [1] 78.53982}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
 
 \hypertarget{entorno-y-uxe1mbito-de-las-variables}{%
 \section{Entorno y ámbito de las variables}\label{entorno-y-uxe1mbito-de-las-variables}}
 
+El entorno de un programa en R es el conjunto de todos los objetos (funciones, variables, etc.) creados durante la ejecución del programa. Cuando se ejecuta el interprete de R siempre se crea un primer entorno \texttt{R\_GlobalEnv} conocido como entorno global. Es posible referirse a él en cualquier momento con la constante \texttt{.GlobalEnv}.
+
+Para ver el entorno activo en cada momento de la ejecución y el contenido del mismo se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{environment()}: Devuelve el nombre del entorno actual.
+\item
+  \texttt{ls()}: Devuelve un vector con los nombres de las objetos (variables, funciones, etc.) que contiene el entorno global.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestra un ejemplo acceso al entorno global de un programa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{4}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{3}
+\NormalTok{area.triangulo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(base, altura) \{}
+\NormalTok{  base }\SpecialCharTok{*}\NormalTok{ altura }\SpecialCharTok{/} \DecValTok{2}
+\NormalTok{\}}
+\FunctionTok{environment}\NormalTok{()}
+\CommentTok{\#\textgreater{} \textless{}environment: R\_GlobalEnv\textgreater{}}
+\FunctionTok{ls}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] "area.triangulo" "x"              "y"}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+Como se puede observar en el ejemplo anterior, los parámetros de la función \texttt{base} y \texttt{altura} no aparecen en el entorno global. En R, cuando se ejecuta una función se crea un nuevo entorno hijo dentro del entorno al que pertenece la función. Durante la ejecución de la función este pasa a ser el entorno activo y cuando termina la ejecución de la función deja de serlo y vuelve a activarse el entorno padre desde donde se llamó a la función.
+
+\begin{example}
+
+A continuación se muestra un ejemplo de activación del entorno de una función.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{4}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{3}
+\NormalTok{area.triangulo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(base, altura) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Entorno de la función area.triangulo"}\NormalTok{) }
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{environment}\NormalTok{())}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{ls}\NormalTok{())}
+  \FunctionTok{return}\NormalTok{(base }\SpecialCharTok{*}\NormalTok{ altura }\SpecialCharTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Entorno fuera de la función"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "Entorno fuera de la función"}
+\FunctionTok{environment}\NormalTok{()}
+\CommentTok{\#\textgreater{} \textless{}environment: R\_GlobalEnv\textgreater{}}
+\FunctionTok{ls}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] "area.triangulo" "x"              "y"}
+\FunctionTok{area.triangulo}\NormalTok{(x, y)}
+\CommentTok{\#\textgreater{} [1] "Entorno de la función area.triangulo"}
+\CommentTok{\#\textgreater{} \textless{}environment: 0x5563c1654550\textgreater{}}
+\CommentTok{\#\textgreater{} [1] "altura" "base"}
+\CommentTok{\#\textgreater{} [1] 6}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+Los parámetros y los objetos (funciones, variables, etc.) definidos dentro de una función son de \emph{ámbito local}, mientras que los objetos definidos fuera de ella en alguno de los entornos ancestros son de \emph{ámbito global}.
+
+Tanto los parámetros como las variables del ámbito local de una función sólo están accesibles durante la ejecución de la función, es decir, cuando termina la ejecución de la función estas variables desaparecen y no son accesibles desde fuera de la función.
+
+Cuando una función declara un objeto (función, variable, etc.) que ya existe en alguno de los entornos ancestros con ámbito global, durante la ejecución de la función el objeto global queda eclipsado por el local y no es accesible hasta que finaliza la ejecución de la función.
+
+\begin{example}
+A continuación se muestra un ejemplo de eclipse de una variable de ámbito global por otra de ámbito local.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lenguaje }\OtherTok{=} \StringTok{"Python"}
+\NormalTok{saludo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(lenguaje) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Bienvenido a"}\NormalTok{, lenguaje))  }
+\NormalTok{\}}
+\FunctionTok{saludo}\NormalTok{(}\StringTok{"R"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "Bienvenido a R"}
+\end{Highlighting}
+\end{Shaded}
+
+Obsérvese cómo al ejecutar la función anterior, la variable \texttt{lenguaje} queda inaccesible al tener la función un parámetro con el mismo nombre.
+\end{example}
+
+Las variables globales están accesibles siempre que no sean eclipsadas por otras con el mismo nombre de ámbito local. Si embargo, cuando se intenta asignar un valor a una variable global en el ámbito local, se crea una nueva variable local. Para asignar valores a variables globales en el ámbito local se tiene que utilizar el operador de superasignación \texttt{\textless{}\textless{}-}. Cuando se utiliza este operador para asignar un valor a una variable, R busca la variable entorno padre, y si no existe continua con la búsqueda en los entornos ancestros hasta llegar a entorno global. Si la búsqueda tiene éxito, asigna el nuevo valor a la variable global, mientras que si no tiene éxito se crea una nueva variable de ámbito local y se le asigna el valor.
+
+\begin{example}
+
+A continuación se muestra un ejemplo del uso del operador de superasignación.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{saludo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  lenguaje }\OtherTok{\textless{}\textless{}{-}} \StringTok{"R"}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Bienvenido a"}\NormalTok{, lenguaje))}
+\NormalTok{\}}
+\NormalTok{lenguaje}
+\CommentTok{\#\textgreater{} [1] "Python"}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
+\hypertarget{componentes-de-una-funciuxf3n}{%
+\section{Componentes de una función}\label{componentes-de-una-funciuxf3n}}
+
+Los tres componentes de una función son:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Cuerpo}: Es el código dentro de la función.
+\item
+  \textbf{Parámetros}: Es la lista de parámetros que requiere la función.
+\item
+  \textbf{Entorno}: Es donde se ubican las variables de la función.
+\end{itemize}
+
+Para acceder a estos componentes se pueden utilizar las siguientes funciones:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{body(f)}: Devuelve el cuerpo de la función \texttt{f}.
+\item
+  \texttt{formals(f)}: Devuelve la lista de parámetros de la función \texttt{f}.
+\item
+  \texttt{environment(f)}: Devuelve el entorno de la función \texttt{f}.
+\end{itemize}
+
+\begin{example}
+
+A continuación se muestra un ejemplo de acceso a los componentes de una función.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definición de la función}
+\NormalTok{area.triangulo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(base, altura) \{}
+\NormalTok{  base }\SpecialCharTok{*}\NormalTok{ altura }\SpecialCharTok{/} \DecValTok{2}
+\NormalTok{\}}
+\FunctionTok{body}\NormalTok{(area.triangulo)}
+\CommentTok{\#\textgreater{} \{}
+\CommentTok{\#\textgreater{}     base * altura/2}
+\CommentTok{\#\textgreater{} \}}
+\FunctionTok{formals}\NormalTok{(area.triangulo)}
+\CommentTok{\#\textgreater{} $base}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $altura}
+\FunctionTok{environment}\NormalTok{(saludo)}
+\CommentTok{\#\textgreater{} \textless{}environment: R\_GlobalEnv\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
 \hypertarget{funciones-recursivas}{%
 \section{Funciones recursivas}\label{funciones-recursivas}}
 
+Una función recursiva es una función que en su cuerpo contiene una llama a sí misma.
+
+La recursión es una práctica común en la mayoría de los lenguajes de programación ya que permite resolver las tareas recursivas de manera más natural.
+
+Para garantizar el final de una función recursiva, las sucesivas llamadas tienen que reducir el grado de complejidad del problema, hasta que este pueda resolverse directamente sin necesidad de volver a llamar a la función. De lo contrario la recursión no tendría fin y nunca terminaría la ejecución de la función.
+
+\begin{example}
+
+A continuación se muestra un ejemplo de una función recursiva.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{factorial }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(n) \{}
+  \ControlFlowTok{if}\NormalTok{ (n }\SpecialCharTok{\textless{}=} \DecValTok{1}\NormalTok{) }\FunctionTok{return}\NormalTok{(n)}
+  \ControlFlowTok{else} \FunctionTok{return}\NormalTok{(n }\SpecialCharTok{*} \FunctionTok{factorial}\NormalTok{(n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{))}
+\NormalTok{\}}
+\FunctionTok{factorial}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 24}
+\end{Highlighting}
+\end{Shaded}
+
+\end{example}
+
 \hypertarget{paquetes}{%
 \section{Paquetes}\label{paquetes}}
+
+Para facilitar la reutilización código y datos R permite la creación de paquetes que pueden importarse desde otros programas. Un paquete es una colección de código, funciones y datos que se almacenan en un fichero dentro de un directorio llamado \texttt{library} en el entorno de R. Para ver la ubicación de este directorio dentro del sistema de archivos local se puede utilizar la función \texttt{.libPaths()}.
+
+A continuación se muestra un ejemplo de la ubicación del directorio \texttt{library}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{.libPaths}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] "/home/alf/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.1"}
+\CommentTok{\#\textgreater{} [2] "/usr/lib/R/library"}
+\end{Highlighting}
+\end{Shaded}
+
+Durante la instalación de R también se instalan varios paquetes básicos que están disponibles en cualquier sesión de trabajo con R. Pero añadir nuevas funciones o procedimientos es necesario instalar el paquete que los contiene y después cargarlo en la sesión de trabajo.
+
+Para ver los paquetes instalados en un ordenador se utiliza la función \texttt{library()}.
+
+\hypertarget{instalaciuxf3n-de-paquetes}{%
+\subsection{Instalación de paquetes}\label{instalaciuxf3n-de-paquetes}}
+
+La mayor parte de los paquetes para R están disponibles en el repositorio oficial \href{Comprehensive\%20R\%20Archive\%20Network}{CRAN} (Comprehensive R Archive Network), aunque cualquier persona puede desarrollar un paquete y ponerlo a disposición de la comunidad en cualquier otro repositorio.
+
+Existen distintas formas de instalar un paquete en R:
+
+\begin{itemize}
+\tightlist
+\item
+  Directamente desde el repositorio oficial CRAN
+\item
+  Desde otros repositorios no oficiales (por ejemplo Github)
+\item
+  Descargando el paquete e instalándolo manualmente.
+\end{itemize}
+
+\hypertarget{instalaciuxf3n-de-paquetes-desde-el-repositorio-cran}{%
+\subsubsection{Instalación de paquetes desde el repositorio CRAN}\label{instalaciuxf3n-de-paquetes-desde-el-repositorio-cran}}
+
+Para instalar un paquete desde el repositorio oficial CRAN se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{install.packages(x)}: Obtiene el paquete con el nombre \texttt{x} desde un servidor con el repositorio CRAN y lo instala localmente en el directorio \texttt{library} del entorno de R. Se puede instalar más de un paquete a la vez pasando un vector con los nombres de los paquetes.
+\end{itemize}
+
+A continuación se muestra un ejemplo de instalación de paquetes desde el repositorio CRAN.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{instalaciuxf3n-desde-otros-repositorios-github-gitlab-etc.}{%
+\subsubsection{Instalación desde otros repositorios (GitHub, GitLab, etc.)}\label{instalaciuxf3n-desde-otros-repositorios-github-gitlab-etc.}}
+
+El paquete \texttt{remotes} incorpora funciones para instalar paquetes alojados en otros repositorios habituales para el desarrollo de software como \href{https://github.com/}{GitHub}, \href{httpsb://gitlab.com/}{GitLab} o \href{https://www.bioconductor.org/}{Bioconductor}.
+
+A continuación se muestra un ejemplo de instalación de paquetes desde GitHub.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"rkward{-}community/rk.Teaching"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{instalaciuxf3n-manual}{%
+\subsubsection{Instalación manual}\label{instalaciuxf3n-manual}}
+
+Finalmente es posible instalar un paquete manualmente a partir de su código fuente. Para ello hay previamente hay que descargar el código fuente del paquete en un fichero comprimido en formato zip y después utilizar la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ìnstall.packages(x,\ repos\ =\ NULL,\ type\ =\ "source")}: Instala el paquete ubicado en la ruta \texttt{x} del sistema de archivos local en la librería \texttt{library}.
+\end{itemize}
+
+Una vez instalado un paquete ya está disponible para cargarlo en cualquier sesión de trabajo de R y no es necesario volver a instalarlo.
+
+\hypertarget{carga-de-un-paquete}{%
+\subsection{Carga de un paquete}\label{carga-de-un-paquete}}
+
+Una vez instalado un paquete, para poder ejecutar su contenido es necesario cargarlo en el entorno de trabajo de R. Para ello se utiliza la siguiente función:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{library(x)}: Ejecuta el código del paquete \texttt{x} en la sesión de trabajo activa.
+\end{itemize}
+
+A continuación se muestra un ejemplo de carga de un paquete.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"remotes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{paquetes-habituales}{%
+\subsection{Paquetes habituales}\label{paquetes-habituales}}
 
 \hypertarget{preprocesamiento-de-datos}{%
 \chapter{Preprocesamiento de datos}\label{preprocesamiento-de-datos}}

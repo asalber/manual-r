@@ -73,13 +73,6 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <li><p><code>logical</code>: Es el tipo de los booleanos. Puede tomar cualquiera de los dos valores lógicos <code>TRUE</code> (verdadero) o <code>FALSE</code> (falso). También se pueden abreviar como <code>T</code> o <code>F</code>.</p></li>
 <li><p><code>NA</code>: Se utiliza para representar datos desconocidos o perdidos. Aunque en realidad es un dato lógico, puede considerarse con un tipo de dato especial.</p></li>
 <li><p><code>NULL</code>: Se utiliza para representar la ausencia de datos. La principal diferencia con <code>NA</code> es que <code>NULL</code> aparece cuando se intenta acceder a un dato que no existe, mientras que <code>NA</code> se utiliza para representar explícitamente datos perdidos en un estudio.</p></li>
-<li>
-<p><code>factor</code>: Es un tipo de dato que solo puede tomar valores de un conjunto predefinido conocido como <em>niveles</em> del factor. Los factores se suelen utilizar para representar datos cualitativos o categóricos. Para definir un factor se utiliza la siguiente función:</p>
-<ul>
-<li>
-<code>factor(x, levels=niveles)</code>: Crea un dato de tipo factor con el valor <code>x</code>. Los niveles del factor pueden indicarse mediante el parámetro <code>levels</code>, pasándole un vector con los valores posibles.</li>
-</ul>
-</li>
 </ul>
 <p>Para averiguar el tipo de un dato se puede utilizar la siguiente función:</p>
 <ul>
@@ -100,9 +93,7 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>
 <span class="co">#&gt; [1] "logical"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
-<span class="co">#&gt; [1] "NULL"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="st">'mujer'</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'hombre'</span>, <span class="st">'mujer'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] "factor"</span></code></pre></div>
+<span class="co">#&gt; [1] "NULL"</span></code></pre></div>
 </div>
 <p>También pueden utilizarse las siguientes funciones que devuelven un booleano:</p>
 <ul>
@@ -120,8 +111,6 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <code>is.na(x)</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es del tipo <code>NA</code>.</li>
 <li>
 <code>is.null(x)</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es del tipo <code>NULL</code>.</li>
-<li>
-<code>is.factor(x)</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es del tipo <code>factor</code>.</li>
 </ul>
 <div id="conversión-de-tipos" class="section level2" number="2.1">
 <h2>
@@ -612,7 +601,7 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2021-12-29.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
