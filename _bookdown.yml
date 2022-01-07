@@ -23,4 +23,5 @@ language:
     edit: Editar
     chapter_name: 'Capítulo '
     appendix_name: 'Apéndice '
+output_dir: "docs"
 

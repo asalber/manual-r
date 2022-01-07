@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 9 Estimación de parámetros y contrastes de hipótesis de variables cuantitativas | Curso básico de análisis de datos con R</title>
+<title>Capítulo 1 Introducción a R | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="9.1 Contraste para la media de una población   9.2 Contraste para la comparación de medias de dos poblaciones  9.2.1 Poblaciones pareadas   9.2.2 Poblaciones independientes   9.3 Contraste para la...">
+<meta name="description" content="La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar...">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 9 Estimación de parámetros y contrastes de hipótesis de variables cuantitativas | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 1 Introducción a R | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://aprendeconalf.es/estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cuantitativas.html">
-<meta property="og:description" content="9.1 Contraste para la media de una población   9.2 Contraste para la comparación de medias de dos poblaciones  9.2.1 Poblaciones pareadas   9.2.2 Poblaciones independientes   9.3 Contraste para la...">
+<meta property="og:url" content="https://aprendeconalf.es/introducción-a-r.html">
+<meta property="og:description" content="La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 9 Estimación de parámetros y contrastes de hipótesis de variables cuantitativas | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="9.1 Contraste para la media de una población   9.2 Contraste para la comparación de medias de dos poblaciones  9.2.1 Poblaciones pareadas   9.2.2 Poblaciones independientes   9.3 Contraste para la...">
+<meta name="twitter:title" content="Capítulo 1 Introducción a R | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -41,7 +41,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefacio</a></li>
-<li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
+<li><a class="active" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
 <li><a class="" href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></li>
 <li><a class="" href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
 <li><a class="" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
@@ -49,7 +49,7 @@
 <li><a class="" href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></li>
 <li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></li>
 <li><a class="" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
-<li><a class="active" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
+<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
 <li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
 <li><a class="" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
 </ul>
@@ -59,65 +59,66 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cuantitativas" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introducción-a-r" class="section level1" number="1">
 <h1>
-<span class="header-section-number">Capítulo 9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas<a class="anchor" aria-label="anchor" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 1</span> Introducción a R<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-a-r"><i class="fas fa-link"></i></a>
 </h1>
-<div id="contraste-para-la-media-de-una-población" class="section level2" number="9.1">
+<p>La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al
+servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar un gran volumen de datos.
+Actualmente, prácticamente nadie se plantea hacer un estudio estadístico serio sin la ayuda de un buen programa de
+análisis de datos.</p>
+<p> es un potente lenguaje de programación que incluye multitud de funciones para la representación y el análisis de
+datos.
+Fue desarrollado por Robert Gentleman y Ross Ihaka en la Universidad de Auckland en Nueva Zelanda, aunque actualmente es mantenido por una enorme comunidad científica en todo el mundo.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:rlogo"></span>
+<img src="img/Rlogo.png" alt="Logotipo de R" width="25%"><p class="caption">
+Figura 1.1: Logotipo de R
+</p>
+</div>
+<p>Las ventajas de R frente a otros programas habituales de análisis de datos, como pueden ser SPSS, SAS o Matlab, son múltiples:</p>
+<ul>
+<li>Es software libre y por tanto gratuito. Puede descargarse desde la web .</li>
+<li>Es multiplataforma. Existen versiones para Windows, Macintosh, Linux y otras plataformas.</li>
+<li>Está avalado y en constante desarrollo por una amplia comunidad científica distribuida por todo el mundo que lo utiliza como estándar para el análisis de datos.</li>
+<li>Cuenta con multitud de paquetes para todo tipo de análisis estadísticos y representaciones gráficas, desde los más
+habituales, hasta los más novedosos y sofisticados que no incluyen otros programas. Los paquetes están organizados y
+documentados en un <a href="https://cran.r-project.org/">repositorio CRAN</a> (Comprehensive R Archive Network) desde donde pueden descargarse libremente.</li>
+<li>Es programable, lo que permite que el usuario pueda crear fácilmente sus propias funciones o paquetes para
+análisis de datos específicos.
+Existen multitud de libros, manuales y tutoriales libres que permiten su aprendizaje e ilustran el análisis
+estadístico de datos en distintas disciplinas científicas como las Matemáticas, la Física, la Biología, la Psicología, la Medicina, etc.</li>
+</ul>
+<div id="entornos-de-desarrollo" class="section level2" number="1.1">
 <h2>
-<span class="header-section-number">9.1</span> Contraste para la media de una población<a class="anchor" aria-label="anchor" href="#contraste-para-la-media-de-una-poblaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1</span> Entornos de desarrollo<a class="anchor" aria-label="anchor" href="#entornos-de-desarrollo"><i class="fas fa-link"></i></a>
 </h2>
-</div>
-<div id="contraste-para-la-comparación-de-medias-de-dos-poblaciones" class="section level2" number="9.2">
-<h2>
-<span class="header-section-number">9.2</span> Contraste para la comparación de medias de dos poblaciones<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-dos-poblaciones"><i class="fas fa-link"></i></a>
-</h2>
-<div id="poblaciones-pareadas" class="section level3" number="9.2.1">
-<h3>
-<span class="header-section-number">9.2.1</span> Poblaciones pareadas<a class="anchor" aria-label="anchor" href="#poblaciones-pareadas"><i class="fas fa-link"></i></a>
-</h3>
-</div>
-<div id="poblaciones-independientes" class="section level3" number="9.2.2">
-<h3>
-<span class="header-section-number">9.2.2</span> Poblaciones independientes<a class="anchor" aria-label="anchor" href="#poblaciones-independientes"><i class="fas fa-link"></i></a>
-</h3>
-</div>
-</div>
-<div id="contraste-para-la-comparación-de-medias-de-más-de-dos-poblaciones-anova" class="section level2" number="9.3">
-<h2>
-<span class="header-section-number">9.3</span> Contraste para la comparación de medias de más de dos poblaciones (ANOVA)<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-m%C3%A1s-de-dos-poblaciones-anova"><i class="fas fa-link"></i></a>
-</h2>
-<div id="contrastes-de-comparación-por-pares-post-hoc." class="section level3" number="9.3.1">
-<h3>
-<span class="header-section-number">9.3.1</span> Contrastes de comparación por pares <em>post-hoc</em>.<a class="anchor" aria-label="anchor" href="#contrastes-de-comparaci%C3%B3n-por-pares-post-hoc."><i class="fas fa-link"></i></a>
-</h3>
-
-</div>
+<p>Por defecto el entorno de trabajo de R es en línea de comandos, lo que significa que los cálculos y los análisis se realizan mediante comandos o instrucciones que el usuario teclea en una ventana de texto. No obstante, existen distintas
+interfaces gráficas de usuario que facilitan su uso, sobre todo para usuarios noveles. Algunas de ellas, como las que se enumeran a continuación, son completos entornos de desarrollo que facilitan la gestión de cualquier proyecto:</p>
+<ul>
+<li>
+<a href="https://www.rstudio.com/">RStudio</a>. Probablemente el entorno de desarrollo más extendido para programar con R ya que incorpora multitud de utilidades para facilitar la programación con R.</li>
+<li>
+<a href="https://rkward.kde.org">RKWard</a>. Es otra otro de los entornos de desarrollo más completos que además incluye a posibilidad de añadir nuevos menús y cuadros de diálogo personalizados.</li>
+<li>
+<a href="https://code.visualstudio.com/">Visual Studio Code</a>. Es un entorno de desarrollo de propósito general ampliamente extendido. Aunque no es un entorno de desarrollo específico para R, incluye una extensión con utilidades que facilitan mucho el desarrollo con R.</li>
+</ul>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></div>
-<div class="next"><a href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></div>
+<div class="prev"><a href="index.html">Prefacio</a></div>
+<div class="next"><a href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
-<li><a class="nav-link" href="#contraste-para-la-media-de-una-poblaci%C3%B3n"><span class="header-section-number">9.1</span> Contraste para la media de una población</a></li>
-<li>
-<a class="nav-link" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-dos-poblaciones"><span class="header-section-number">9.2</span> Contraste para la comparación de medias de dos poblaciones</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#poblaciones-pareadas"><span class="header-section-number">9.2.1</span> Poblaciones pareadas</a></li>
-<li><a class="nav-link" href="#poblaciones-independientes"><span class="header-section-number">9.2.2</span> Poblaciones independientes</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-m%C3%A1s-de-dos-poblaciones-anova"><span class="header-section-number">9.3</span> Contraste para la comparación de medias de más de dos poblaciones (ANOVA)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#contrastes-de-comparaci%C3%B3n-por-pares-post-hoc."><span class="header-section-number">9.3.1</span> Contrastes de comparación por pares post-hoc.</a></li></ul>
-</li>
+<li><a class="nav-link" href="#introducci%C3%B3n-a-r"><span class="header-section-number">1</span> Introducción a R</a></li>
+<li><a class="nav-link" href="#entornos-de-desarrollo"><span class="header-section-number">1.1</span> Entornos de desarrollo</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/09-contrastes-cuantitativos.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/09-contrastes-cuantitativos.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -129,7 +130,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-02.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

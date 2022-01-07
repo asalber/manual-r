@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 11 Análisis de regresión simple | Curso básico de análisis de datos con R</title>
+<title>Capítulo 9 Estimación de parámetros y contrastes de hipótesis de variables cuantitativas | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="11.1 Regresión lineal   11.2 Correlación   11.3 Regresión no lineal   11.4 Regresión múltiple">
+<meta name="description" content="9.1 Contraste para la media de una población   9.2 Contraste para la comparación de medias de dos poblaciones  9.2.1 Poblaciones pareadas   9.2.2 Poblaciones independientes   9.3 Contraste para la...">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 11 Análisis de regresión simple | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 9 Estimación de parámetros y contrastes de hipótesis de variables cuantitativas | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://aprendeconalf.es/análisis-de-regresión-simple.html">
-<meta property="og:description" content="11.1 Regresión lineal   11.2 Correlación   11.3 Regresión no lineal   11.4 Regresión múltiple">
+<meta property="og:url" content="https://aprendeconalf.es/estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cuantitativas.html">
+<meta property="og:description" content="9.1 Contraste para la media de una población   9.2 Contraste para la comparación de medias de dos poblaciones  9.2.1 Poblaciones pareadas   9.2.2 Poblaciones independientes   9.3 Contraste para la...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 11 Análisis de regresión simple | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="11.1 Regresión lineal   11.2 Correlación   11.3 Regresión no lineal   11.4 Regresión múltiple">
+<meta name="twitter:title" content="Capítulo 9 Estimación de parámetros y contrastes de hipótesis de variables cuantitativas | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="9.1 Contraste para la media de una población   9.2 Contraste para la comparación de medias de dos poblaciones  9.2.1 Poblaciones pareadas   9.2.2 Poblaciones independientes   9.3 Contraste para la...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -49,9 +49,9 @@
 <li><a class="" href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></li>
 <li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></li>
 <li><a class="" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
-<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
+<li><a class="active" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
 <li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
-<li><a class="active" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
+<li><a class="" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
 </ul>
 
         <div class="book-extra">
@@ -59,49 +59,65 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="análisis-de-regresión-simple" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cuantitativas" class="section level1" number="9">
 <h1>
-<span class="header-section-number">Capítulo 11</span> Análisis de regresión simple<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-de-regresi%C3%B3n-simple"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas<a class="anchor" aria-label="anchor" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas"><i class="fas fa-link"></i></a>
 </h1>
-<div id="regresión-lineal" class="section level2" number="11.1">
+<div id="contraste-para-la-media-de-una-población" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">11.1</span> Regresión lineal<a class="anchor" aria-label="anchor" href="#regresi%C3%B3n-lineal"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Contraste para la media de una población<a class="anchor" aria-label="anchor" href="#contraste-para-la-media-de-una-poblaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="correlación" class="section level2" number="11.2">
+<div id="contraste-para-la-comparación-de-medias-de-dos-poblaciones" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">11.2</span> Correlación<a class="anchor" aria-label="anchor" href="#correlaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Contraste para la comparación de medias de dos poblaciones<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-dos-poblaciones"><i class="fas fa-link"></i></a>
 </h2>
+<div id="poblaciones-pareadas" class="section level3" number="9.2.1">
+<h3>
+<span class="header-section-number">9.2.1</span> Poblaciones pareadas<a class="anchor" aria-label="anchor" href="#poblaciones-pareadas"><i class="fas fa-link"></i></a>
+</h3>
 </div>
-<div id="regresión-no-lineal" class="section level2" number="11.3">
-<h2>
-<span class="header-section-number">11.3</span> Regresión no lineal<a class="anchor" aria-label="anchor" href="#regresi%C3%B3n-no-lineal"><i class="fas fa-link"></i></a>
-</h2>
+<div id="poblaciones-independientes" class="section level3" number="9.2.2">
+<h3>
+<span class="header-section-number">9.2.2</span> Poblaciones independientes<a class="anchor" aria-label="anchor" href="#poblaciones-independientes"><i class="fas fa-link"></i></a>
+</h3>
 </div>
-<div id="regresión-múltiple" class="section level2" number="11.4">
+</div>
+<div id="contraste-para-la-comparación-de-medias-de-más-de-dos-poblaciones-anova" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">11.4</span> Regresión múltiple<a class="anchor" aria-label="anchor" href="#regresi%C3%B3n-m%C3%BAltiple"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> Contraste para la comparación de medias de más de dos poblaciones (ANOVA)<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-m%C3%A1s-de-dos-poblaciones-anova"><i class="fas fa-link"></i></a>
 </h2>
+<div id="contrastes-de-comparación-por-pares-post-hoc." class="section level3" number="9.3.1">
+<h3>
+<span class="header-section-number">9.3.1</span> Contrastes de comparación por pares <em>post-hoc</em>.<a class="anchor" aria-label="anchor" href="#contrastes-de-comparaci%C3%B3n-por-pares-post-hoc."><i class="fas fa-link"></i></a>
+</h3>
 
 </div>
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></div>
-<div class="empty"></div>
+<div class="prev"><a href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></div>
+<div class="next"><a href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#an%C3%A1lisis-de-regresi%C3%B3n-simple"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
-<li><a class="nav-link" href="#regresi%C3%B3n-lineal"><span class="header-section-number">11.1</span> Regresión lineal</a></li>
-<li><a class="nav-link" href="#correlaci%C3%B3n"><span class="header-section-number">11.2</span> Correlación</a></li>
-<li><a class="nav-link" href="#regresi%C3%B3n-no-lineal"><span class="header-section-number">11.3</span> Regresión no lineal</a></li>
-<li><a class="nav-link" href="#regresi%C3%B3n-m%C3%BAltiple"><span class="header-section-number">11.4</span> Regresión múltiple</a></li>
+<li><a class="nav-link" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
+<li><a class="nav-link" href="#contraste-para-la-media-de-una-poblaci%C3%B3n"><span class="header-section-number">9.1</span> Contraste para la media de una población</a></li>
+<li>
+<a class="nav-link" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-dos-poblaciones"><span class="header-section-number">9.2</span> Contraste para la comparación de medias de dos poblaciones</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#poblaciones-pareadas"><span class="header-section-number">9.2.1</span> Poblaciones pareadas</a></li>
+<li><a class="nav-link" href="#poblaciones-independientes"><span class="header-section-number">9.2.2</span> Poblaciones independientes</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#contraste-para-la-comparaci%C3%B3n-de-medias-de-m%C3%A1s-de-dos-poblaciones-anova"><span class="header-section-number">9.3</span> Contraste para la comparación de medias de más de dos poblaciones (ANOVA)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#contrastes-de-comparaci%C3%B3n-por-pares-post-hoc."><span class="header-section-number">9.3.1</span> Contrastes de comparación por pares post-hoc.</a></li></ul>
+</li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/11-regresion.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/11-regresion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/09-contrastes-cuantitativos.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/09-contrastes-cuantitativos.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -113,7 +129,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-02.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

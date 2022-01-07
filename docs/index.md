@@ -1,7 +1,7 @@
 --- 
 title: "Curso básico de análisis de datos con R"
 author: "Alfredo Sánchez Alberca"
-date: "2022-01-02"
+date: "2022-01-07"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [bibliography.bib]

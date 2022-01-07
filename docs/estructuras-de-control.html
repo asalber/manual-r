@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 10 Estimación de parámetros y contrastes de hipótesis de variables cualitativas | Curso básico de análisis de datos con R</title>
+<title>Capítulo 4 Estructuras de control | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="10.1 Contraste para la proporción de una población   10.2 Contraste para la comparación de proporciones de dos poblaciones  10.2.1 Poblaciones pareadas   10.2.2 Poblaciones independientes   10.3...">
+<meta name="description" content="4.1 Estructuras condicionales  4.1.1 La instrucción if   4.1.2 La función ifelse()   4.1.3 La función switch()   4.2 Bucles  4.2.1 Bucles iterativos (for)   4.2.2 Bucles condicionales  4.2.2.1 La...">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 10 Estimación de parámetros y contrastes de hipótesis de variables cualitativas | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 4 Estructuras de control | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://aprendeconalf.es/estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cualitativas.html">
-<meta property="og:description" content="10.1 Contraste para la proporción de una población   10.2 Contraste para la comparación de proporciones de dos poblaciones  10.2.1 Poblaciones pareadas   10.2.2 Poblaciones independientes   10.3...">
+<meta property="og:url" content="https://aprendeconalf.es/estructuras-de-control.html">
+<meta property="og:description" content="4.1 Estructuras condicionales  4.1.1 La instrucción if   4.1.2 La función ifelse()   4.1.3 La función switch()   4.2 Bucles  4.2.1 Bucles iterativos (for)   4.2.2 Bucles condicionales  4.2.2.1 La...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 10 Estimación de parámetros y contrastes de hipótesis de variables cualitativas | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="10.1 Contraste para la proporción de una población   10.2 Contraste para la comparación de proporciones de dos poblaciones  10.2.1 Poblaciones pareadas   10.2.2 Poblaciones independientes   10.3...">
+<meta name="twitter:title" content="Capítulo 4 Estructuras de control | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="4.1 Estructuras condicionales  4.1.1 La instrucción if   4.1.2 La función ifelse()   4.1.3 La función switch()   4.2 Bucles  4.2.1 Bucles iterativos (for)   4.2.2 Bucles condicionales  4.2.2.1 La...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -44,13 +44,13 @@
 <li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
 <li><a class="" href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></li>
 <li><a class="" href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
-<li><a class="" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
+<li><a class="active" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
 <li><a class="" href="funciones.html"><span class="header-section-number">5</span> Funciones</a></li>
 <li><a class="" href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></li>
 <li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></li>
 <li><a class="" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
 <li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
-<li><a class="active" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
+<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
 <li><a class="" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
 </ul>
 
@@ -59,58 +59,83 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimación-de-parámetros-y-contrastes-de-hipótesis-de-variables-cualitativas" class="section level1" number="10">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estructuras-de-control" class="section level1" number="4">
 <h1>
-<span class="header-section-number">Capítulo 10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas<a class="anchor" aria-label="anchor" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 4</span> Estructuras de control<a class="anchor" aria-label="anchor" href="#estructuras-de-control"><i class="fas fa-link"></i></a>
 </h1>
-<div id="contraste-para-la-proporción-de-una-población" class="section level2" number="10.1">
+<div id="estructuras-condicionales" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">10.1</span> Contraste para la proporción de una población<a class="anchor" aria-label="anchor" href="#contraste-para-la-proporci%C3%B3n-de-una-poblaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Estructuras condicionales<a class="anchor" aria-label="anchor" href="#estructuras-condicionales"><i class="fas fa-link"></i></a>
 </h2>
-</div>
-<div id="contraste-para-la-comparación-de-proporciones-de-dos-poblaciones" class="section level2" number="10.2">
-<h2>
-<span class="header-section-number">10.2</span> Contraste para la comparación de proporciones de dos poblaciones<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-proporciones-de-dos-poblaciones"><i class="fas fa-link"></i></a>
-</h2>
-<div id="poblaciones-pareadas-1" class="section level3" number="10.2.1">
+<div id="la-instrucción-if" class="section level3" number="4.1.1">
 <h3>
-<span class="header-section-number">10.2.1</span> Poblaciones pareadas<a class="anchor" aria-label="anchor" href="#poblaciones-pareadas-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.1</span> La instrucción <code>if</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-if"><i class="fas fa-link"></i></a>
 </h3>
 </div>
-<div id="poblaciones-independientes-1" class="section level3" number="10.2.2">
+<div id="la-función-ifelse" class="section level3" number="4.1.2">
 <h3>
-<span class="header-section-number">10.2.2</span> Poblaciones independientes<a class="anchor" aria-label="anchor" href="#poblaciones-independientes-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.2</span> La función <code>ifelse()</code><a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-ifelse"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="la-función-switch" class="section level3" number="4.1.3">
+<h3>
+<span class="header-section-number">4.1.3</span> La función <code>switch()</code><a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-switch"><i class="fas fa-link"></i></a>
 </h3>
 </div>
 </div>
-<div id="contraste-para-la-comparación-de-proporciones-de-más-de-dos-poblaciones" class="section level2" number="10.3">
+<div id="bucles" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">10.3</span> Contraste para la comparación de proporciones de más de dos poblaciones<a class="anchor" aria-label="anchor" href="#contraste-para-la-comparaci%C3%B3n-de-proporciones-de-m%C3%A1s-de-dos-poblaciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Bucles<a class="anchor" aria-label="anchor" href="#bucles"><i class="fas fa-link"></i></a>
 </h2>
+<div id="bucles-iterativos-for" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Bucles iterativos (<code>for</code>)<a class="anchor" aria-label="anchor" href="#bucles-iterativos-for"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="bucles-condicionales" class="section level3" number="4.2.2">
+<h3>
+<span class="header-section-number">4.2.2</span> Bucles condicionales<a class="anchor" aria-label="anchor" href="#bucles-condicionales"><i class="fas fa-link"></i></a>
+</h3>
+<div id="la-instrucción-while" class="section level4" number="4.2.2.1">
+<h4>
+<span class="header-section-number">4.2.2.1</span> La instrucción <code>while</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-while"><i class="fas fa-link"></i></a>
+</h4>
+</div>
+<div id="la-instrucción-repeat" class="section level4" number="4.2.2.2">
+<h4>
+<span class="header-section-number">4.2.2.2</span> La instrucción <code>repeat</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-repeat"><i class="fas fa-link"></i></a>
+</h4>
 
 </div>
 </div>
+</div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></div>
-<div class="next"><a href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></div>
+<div class="prev"><a href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></div>
+<div class="next"><a href="funciones.html"><span class="header-section-number">5</span> Funciones</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
-<li><a class="nav-link" href="#contraste-para-la-proporci%C3%B3n-de-una-poblaci%C3%B3n"><span class="header-section-number">10.1</span> Contraste para la proporción de una población</a></li>
+<li><a class="nav-link" href="#estructuras-de-control"><span class="header-section-number">4</span> Estructuras de control</a></li>
 <li>
-<a class="nav-link" href="#contraste-para-la-comparaci%C3%B3n-de-proporciones-de-dos-poblaciones"><span class="header-section-number">10.2</span> Contraste para la comparación de proporciones de dos poblaciones</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#poblaciones-pareadas-1"><span class="header-section-number">10.2.1</span> Poblaciones pareadas</a></li>
-<li><a class="nav-link" href="#poblaciones-independientes-1"><span class="header-section-number">10.2.2</span> Poblaciones independientes</a></li>
+<a class="nav-link" href="#estructuras-condicionales"><span class="header-section-number">4.1</span> Estructuras condicionales</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#la-instrucci%C3%B3n-if"><span class="header-section-number">4.1.1</span> La instrucción if</a></li>
+<li><a class="nav-link" href="#la-funci%C3%B3n-ifelse"><span class="header-section-number">4.1.2</span> La función ifelse()</a></li>
+<li><a class="nav-link" href="#la-funci%C3%B3n-switch"><span class="header-section-number">4.1.3</span> La función switch()</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#contraste-para-la-comparaci%C3%B3n-de-proporciones-de-m%C3%A1s-de-dos-poblaciones"><span class="header-section-number">10.3</span> Contraste para la comparación de proporciones de más de dos poblaciones</a></li>
+<li>
+<a class="nav-link" href="#bucles"><span class="header-section-number">4.2</span> Bucles</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#bucles-iterativos-for"><span class="header-section-number">4.2.1</span> Bucles iterativos (for)</a></li>
+<li><a class="nav-link" href="#bucles-condicionales"><span class="header-section-number">4.2.2</span> Bucles condicionales</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/10-contrastes-cualitativos.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/10-contrastes-cualitativos.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/04-estructuras-control.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/04-estructuras-control.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -122,7 +147,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-02.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

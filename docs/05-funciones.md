@@ -194,7 +194,7 @@ ls()
 #> [1] "area.triangulo" "x"              "y"
 area.triangulo(x, y)
 #> [1] "Entorno de la función area.triangulo"
-#> <environment: 0x55685ef6bdf0>
+#> <environment: 0x55fc3fd4bed0>
 #> [1] "altura" "base"
 #> [1] 6
 ```

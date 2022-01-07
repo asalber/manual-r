@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 1 Introducción a R | Curso básico de análisis de datos con R</title>
+<title>Prefacio | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar...">
+<meta name="description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 1 Introducción a R | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Prefacio | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://aprendeconalf.es/introducción-a-r.html">
-<meta property="og:description" content="La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar...">
+<meta property="og:url" content="https://aprendeconalf.es">
+<meta property="og:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 1 Introducción a R | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar...">
+<meta name="twitter:title" content="Prefacio | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="Este es un curso básico de introducción a lenguaje de programación R para el análsisis de datos.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -40,8 +40,8 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Prefacio</a></li>
-<li><a class="active" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
+<li><a class="active" href="index.html">Prefacio</a></li>
+<li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
 <li><a class="" href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></li>
 <li><a class="" href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
 <li><a class="" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
@@ -59,66 +59,44 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introducción-a-r" class="section level1" number="1">
-<h1>
-<span class="header-section-number">Capítulo 1</span> Introducción a R<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-a-r"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="prefacio" class="section level1 unnumbered">
+<h1>Prefacio<a class="anchor" aria-label="anchor" href="#prefacio"><i class="fas fa-link"></i></a>
 </h1>
-<p>La gran potencia de cómputo alcanzada por los ordenadores ha convertido a los mismos en poderosas herramientas al
-servicio de todas aquellas disciplinas que, como la Estadística, requieren manejar un gran volumen de datos.
-Actualmente, prácticamente nadie se plantea hacer un estudio estadístico serio sin la ayuda de un buen programa de
-análisis de datos.</p>
-<p> es un potente lenguaje de programación que incluye multitud de funciones para la representación y el análisis de
-datos.
-Fue desarrollado por Robert Gentleman y Ross Ihaka en la Universidad de Auckland en Nueva Zelanda, aunque actualmente es mantenido por una enorme comunidad científica en todo el mundo.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:rlogo"></span>
-<img src="img/Rlogo.png" alt="Logotipo de R" width="25%"><p class="caption">
-Figura 1.1: Logotipo de R
-</p>
-</div>
-<p>Las ventajas de R frente a otros programas habituales de análisis de datos, como pueden ser SPSS, SAS o Matlab, son múltiples:</p>
-<ul>
-<li>Es software libre y por tanto gratuito. Puede descargarse desde la web .</li>
-<li>Es multiplataforma. Existen versiones para Windows, Macintosh, Linux y otras plataformas.</li>
-<li>Está avalado y en constante desarrollo por una amplia comunidad científica distribuida por todo el mundo que lo utiliza como estándar para el análisis de datos.</li>
-<li>Cuenta con multitud de paquetes para todo tipo de análisis estadísticos y representaciones gráficas, desde los más
-habituales, hasta los más novedosos y sofisticados que no incluyen otros programas. Los paquetes están organizados y
-documentados en un <a href="https://cran.r-project.org/">repositorio CRAN</a> (Comprehensive R Archive Network) desde donde pueden descargarse libremente.</li>
-<li>Es programable, lo que permite que el usuario pueda crear fácilmente sus propias funciones o paquetes para
-análisis de datos específicos.
-Existen multitud de libros, manuales y tutoriales libres que permiten su aprendizaje e ilustran el análisis
-estadístico de datos en distintas disciplinas científicas como las Matemáticas, la Física, la Biología, la Psicología, la Medicina, etc.</li>
-</ul>
-<div id="entornos-de-desarrollo" class="section level2" number="1.1">
-<h2>
-<span class="header-section-number">1.1</span> Entornos de desarrollo<a class="anchor" aria-label="anchor" href="#entornos-de-desarrollo"><i class="fas fa-link"></i></a>
+<div id="propósito-de-este-manual" class="section level2 unnumbered">
+<h2>Propósito de este manual<a class="anchor" aria-label="anchor" href="#prop%C3%B3sito-de-este-manual"><i class="fas fa-link"></i></a>
 </h2>
-<p>Por defecto el entorno de trabajo de R es en línea de comandos, lo que significa que los cálculos y los análisis se realizan mediante comandos o instrucciones que el usuario teclea en una ventana de texto. No obstante, existen distintas
-interfaces gráficas de usuario que facilitan su uso, sobre todo para usuarios noveles. Algunas de ellas, como las que se enumeran a continuación, son completos entornos de desarrollo que facilitan la gestión de cualquier proyecto:</p>
-<ul>
-<li>
-<a href="https://www.rstudio.com/">RStudio</a>. Probablemente el entorno de desarrollo más extendido para programar con R ya que incorpora multitud de utilidades para facilitar la programación con R.</li>
-<li>
-<a href="https://rkward.kde.org">RKWard</a>. Es otra otro de los entornos de desarrollo más completos que además incluye a posibilidad de añadir nuevos menús y cuadros de diálogo personalizados.</li>
-<li>
-<a href="https://code.visualstudio.com/">Visual Studio Code</a>. Es un entorno de desarrollo de propósito general ampliamente extendido. Aunque no es un entorno de desarrollo específico para R, incluye una extensión con utilidades que facilitan mucho el desarrollo con R.</li>
-</ul>
+<p>Este manual proporciona una introducción amigable al <a href="https://www.r-project.org/">lenguaje de programación R</a> para aquellas personas interesadas en utilizar este lenguaje para el análisis de datos.</p>
+<p>El manual empieza con los conceptos básicos del lenguaje de programación R pero enseguida aborda su uso para la visualización y el análisis estadístico de datos, haciendo un recorrido por los test estadísticos más comunes.</p>
+<p>Lo más interesante de este manual es la multitud de ejemplos que ilustran el uso de las técnicas estadísticas presentadas, así como los problemas propuestos.</p>
+<p>El manual no aborda los fundamentos matemáticos de los análisis estadísticos presentados, aunque si explica brevemente cuándo deben usarse y cuándo no, así como las interpretaciones de los resultados obtenidos en los ejemplos. Si alguien está interesado en profundizar en los detalles matemáticos, puede visitar esta <a href="https://aprendeconalf.es/docencia/estadistica/">página</a>.</p>
+<p>No es un curso de programación en R, sino de uso de sus funciones predefinidas y de los paquetes más habituales para el análisis de datos.</p>
+<p>Para cualquier comentario o sugerencia sobre este manual escriba al autor (<a href="mailto:asalber@ceu.es" class="email">asalber@ceu.es</a>).</p>
+</div>
+<div id="licencia" class="section level2 unnumbered">
+<h2>Licencia<a class="anchor" aria-label="anchor" href="#licencia"><i class="fas fa-link"></i></a>
+</h2>
+<p>Este trabajo se libera bajo licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)</a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+<a property="dct:title" rel="cc:attributionURL" href="https://aprendeconalf.es/manual-r">Manual básico de análisis de datos con R</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://aprendeconalf.es">Alfredo Sánchez Alberca</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a>
+</p>
+
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Prefacio</a></div>
-<div class="next"><a href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></div>
+<div class="empty"></div>
+<div class="next"><a href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#introducci%C3%B3n-a-r"><span class="header-section-number">1</span> Introducción a R</a></li>
-<li><a class="nav-link" href="#entornos-de-desarrollo"><span class="header-section-number">1.1</span> Entornos de desarrollo</a></li>
+<li><a class="nav-link" href="#prefacio">Prefacio</a></li>
+<li><a class="nav-link" href="#prop%C3%B3sito-de-este-manual">Propósito de este manual</a></li>
+<li><a class="nav-link" href="#licencia">Licencia</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/index.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/index.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -130,7 +108,7 @@ interfaces gráficas de usuario que facilitan su uso, sobre todo para usuarios n
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-02.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
