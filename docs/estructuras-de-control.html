@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 4 Estructuras de control | Curso básico de análisis de datos con R</title>
+<title>Capítulo 5 Estructuras de control | Curso básico de análisis de datos con R</title>
 <meta name="author" content="Alfredo Sánchez Alberca">
-<meta name="description" content="4.1 Estructuras condicionales  4.1.1 La instrucción if   4.1.2 La función ifelse()   4.1.3 La función switch()   4.2 Bucles  4.2.1 Bucles iterativos (for)   4.2.2 Bucles condicionales  4.2.2.1 La...">
+<meta name="description" content="Como en otros lenguajes de programación, en R existen instrucciones para controlar el flujo de ejecución de un programa. Básicamente existen dos tipos: Condicionales: Son instrucciones que...">
 <meta name="generator" content="bookdown 0.24.4 with bs4_book()">
-<meta property="og:title" content="Capítulo 4 Estructuras de control | Curso básico de análisis de datos con R">
+<meta property="og:title" content="Capítulo 5 Estructuras de control | Curso básico de análisis de datos con R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://aprendeconalf.es/estructuras-de-control.html">
-<meta property="og:description" content="4.1 Estructuras condicionales  4.1.1 La instrucción if   4.1.2 La función ifelse()   4.1.3 La función switch()   4.2 Bucles  4.2.1 Bucles iterativos (for)   4.2.2 Bucles condicionales  4.2.2.1 La...">
+<meta property="og:description" content="Como en otros lenguajes de programación, en R existen instrucciones para controlar el flujo de ejecución de un programa. Básicamente existen dos tipos: Condicionales: Son instrucciones que...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 4 Estructuras de control | Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="4.1 Estructuras condicionales  4.1.1 La instrucción if   4.1.2 La función ifelse()   4.1.3 La función switch()   4.2 Bucles  4.2.1 Bucles iterativos (for)   4.2.2 Bucles condicionales  4.2.2.1 La...">
+<meta name="twitter:title" content="Capítulo 5 Estructuras de control | Curso básico de análisis de datos con R">
+<meta name="twitter:description" content="Como en otros lenguajes de programación, en R existen instrucciones para controlar el flujo de ejecución de un programa. Básicamente existen dos tipos: Condicionales: Son instrucciones que...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -39,103 +39,283 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Prefacio</a></li>
-<li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">1</span> Introducción a R</a></li>
-<li><a class="" href="tipos-de-datos-simples.html"><span class="header-section-number">2</span> Tipos de datos simples</a></li>
-<li><a class="" href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></li>
-<li><a class="active" href="estructuras-de-control.html"><span class="header-section-number">4</span> Estructuras de control</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">5</span> Funciones</a></li>
-<li><a class="" href="preprocesamiento-de-datos.html"><span class="header-section-number">6</span> Preprocesamiento de datos</a></li>
-<li><a class="" href="gr%C3%A1ficos-y-visualizaci%C3%B3n-de-datos.html"><span class="header-section-number">7</span> Gráficos y visualización de datos</a></li>
-<li><a class="" href="estad%C3%ADstica-descriptiva.html"><span class="header-section-number">8</span> Estadística descriptiva</a></li>
-<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cuantitativas.html"><span class="header-section-number">9</span> Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</a></li>
-<li><a class="" href="estimaci%C3%B3n-de-par%C3%A1metros-y-contrastes-de-hip%C3%B3tesis-de-variables-cualitativas.html"><span class="header-section-number">10</span> Estimación de parámetros y contrastes de hipótesis de variables cualitativas</a></li>
-<li><a class="" href="an%C3%A1lisis-de-regresi%C3%B3n-simple.html"><span class="header-section-number">11</span> Análisis de regresión simple</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 5</span> Estructuras de control</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/asalber/manual-r">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estructuras-de-control" class="section level1" number="4">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estructuras-de-control" class="section level1" number="5">
 <h1>
-<span class="header-section-number">Capítulo 4</span> Estructuras de control<a class="anchor" aria-label="anchor" href="#estructuras-de-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 5</span> Estructuras de control<a class="anchor" aria-label="anchor" href="#estructuras-de-control"><i class="fas fa-link"></i></a>
 </h1>
-<div id="estructuras-condicionales" class="section level2" number="4.1">
+<p>Como en otros lenguajes de programación, en R existen instrucciones para controlar el flujo de ejecución de un programa. Básicamente existen dos tipos:</p>
+<ul>
+<li>Condicionales: Son instrucciones que bifurcan el flujo del programa en función de si se cumple o no una condición.</li>
+<li>Bucles: Son instrucciones que repiten un bloque de código un numero determinado de veces o hasta que se cumple una condición.</li>
+</ul>
+<div id="estructuras-condicionales" class="section level2" number="5.1">
 <h2>
-<span class="header-section-number">4.1</span> Estructuras condicionales<a class="anchor" aria-label="anchor" href="#estructuras-condicionales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> Estructuras condicionales<a class="anchor" aria-label="anchor" href="#estructuras-condicionales"><i class="fas fa-link"></i></a>
 </h2>
-<div id="la-instrucción-if" class="section level3" number="4.1.1">
+<p>Las estructuras condicionales permiten evaluar el estado del programa y tomar decisiones sobre qué código ejecutar en función del mismo.</p>
+<div id="condicionales-if" class="section level3" number="5.1.1">
 <h3>
-<span class="header-section-number">4.1.1</span> La instrucción <code>if</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-if"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1.1</span> Condicionales (<code>if</code>)<a class="anchor" aria-label="anchor" href="#condicionales-if"><i class="fas fa-link"></i></a>
 </h3>
+<p>La principal estructura condicional comienza con la palabra reservada <code>if</code>, lleva asociada expresión de tipo lógico o booleano y permite ejecutar un bloque de código dependiendo de si la evaluación de esa expresión es <code>TRUE</code> o <code>FALSE</code>.</p>
+<blockquote>
+<p><code>if (</code><em><code>&lt;exp&gt;</code></em><code>) {</code><br>
+  <em><code>&lt;código&gt;</code></em><br><code>}</code></p>
+</blockquote>
+<p>Si el resultado de evaluar la expresión <code>&lt;exp&gt;</code> es <code>TRUE</code> entonces se ejecuta el código <code>&lt;código&gt;</code>, mientras que si es <code>FALSE</code> no.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:condicional-simple"></span>
+<img src="img/condicional-simple.png" alt="Diagrama de flujo de la estructura condicional simple" width="70%"><p class="caption">
+Figura 5.1: Diagrama de flujo de la estructura condicional simple
+</p>
 </div>
-<div id="la-función-ifelse" class="section level3" number="4.1.2">
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Ejemplo 5.1  </strong></span>A continuación se muestra un ejemplo de estructura condicional con <code>if</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="va">y</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+</div>
+<p>Si se desea ejecutar un bloque de código alternativo cuando no se cumpla la condición se puede añadir a continuación con la palabra reservada <code>else</code>.</p>
+<blockquote>
+<p><code>if (</code><em><code>&lt;exp&gt;</code></em><code>) {</code><br>
+  <em><code>&lt;código 1&gt;</code></em><br><code>} else {</code><br>
+  <em><code>&lt;código 2&gt;</code></em><br><code>}</code></p>
+</blockquote>
+<p>En este caso, si la evaluación de la condición es <code>TRUE</code> se ejecuta el código <code>&lt;código 1&gt;</code> y si es <code>FALSE</code> se ejecuta el código <code>&lt;código 2&gt;</code>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:condicional-doble"></span>
+<img src="img/condicional-doble.png" alt="Diagrama de flujo de la estructura condicional doble" width="100%"><p class="caption">
+Figura 5.2: Diagrama de flujo de la estructura condicional doble
+</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Ejemplo 5.2  </strong></span>A continuación se muestra un ejemplo de estructura condicional con <code>if</code> y <code>else</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nota</span> <span class="op">&lt;-</span> <span class="fl">8.5</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">nota</span> <span class="op">&lt;</span> <span class="fl">5</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Suspenso"</span><span class="op">)</span>
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Aprobado"</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] "Aprobado"</span></code></pre></div>
+</div>
+<p>Se puede comprobar más de una condición encadenando otra instrucción <code>if</code> tras las instrucción <code>else</code>.</p>
+<blockquote>
+<p><code>if (</code><em><code>&lt;exp 1&gt;</code></em><code>) {</code><br>
+  <em><code>&lt;código 1&gt;</code></em><br><code>} else if (</code><em><code>&lt;exp 2&gt;</code></em><code>) {</code><br>
+  <em><code>&lt;código 2&gt;</code></em><code>) {</code><br>
+…<br><code>} else {</code><br>
+  <em><code>&lt;código n&gt;</code></em><br><code>}</code></p>
+</blockquote>
+<p>Cuando se encadenan múltiples condiciones de esta forma, solamente se ejecuta el bloque de código asociado a la primera condición cuya evaluación sea <code>TRUE</code>. El último bloque de código solamente se ejecuta si todas las condiciones son falsas.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:condicional-multiple"></span>
+<img src="img/condicional-multiple.png" alt="Diagrama de flujo de la estructura condicional múltiple" width="70%"><p class="caption">
+Figura 5.3: Diagrama de flujo de la estructura condicional múltiple
+</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Ejemplo 5.3  </strong></span>A continuación se muestra un ejemplo de estructura condicional múltiple.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nota</span> <span class="op">&lt;-</span> <span class="fl">8.5</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">nota</span> <span class="op">&lt;</span> <span class="fl">5</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Suspenso"</span><span class="op">)</span>
+<span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">nota</span> <span class="op">&lt;</span> <span class="fl">7</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Aprobado"</span><span class="op">)</span>
+<span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">nota</span> <span class="op">&lt;</span> <span class="fl">9</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Notable"</span><span class="op">)</span>
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Sobresaliente"</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] "Notable"</span></code></pre></div>
+</div>
+</div>
+<div id="la-función-switch" class="section level3" number="5.1.2">
 <h3>
-<span class="header-section-number">4.1.2</span> La función <code>ifelse()</code><a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-ifelse"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1.2</span> La función <code>switch()</code><a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-switch"><i class="fas fa-link"></i></a>
 </h3>
+<p>Otra forma de tomar decisiones sobre el código a ejecutar es la función <code>switch</code>.</p>
+<ul>
+<li>
+<code>switch(x, l)</code>: Ejecuta el código del valor de la lista <code>l</code> cuyo nombre asociado coincide con el resultado de evaluar la expresión <code>x</code>. Si el resultado de evaluar <code>x</code> no es ningún nombre de los elementos de la lista devuelve <code>NULL</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Ejemplo 5.4  </strong></span>A continuación se muestra un ejemplo de uso de la función <code>switch</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tipo.iva</span> <span class="op">&lt;-</span> <span class="st">"reducido"</span>
+<span class="va">precio</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
+<span class="va">iva</span> <span class="op">&lt;-</span> <span class="va">precio</span> <span class="op">*</span> <span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">tipo.iva</span>, <span class="st">"superreducido"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"reducido"</span> <span class="op">=</span> <span class="fl">10</span>, <span class="st">"normal"</span> <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span>
+<span class="va">iva</span>
+<span class="co">#&gt; [1] 100</span></code></pre></div>
 </div>
-<div id="la-función-switch" class="section level3" number="4.1.3">
-<h3>
-<span class="header-section-number">4.1.3</span> La función <code>switch()</code><a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-switch"><i class="fas fa-link"></i></a>
-</h3>
 </div>
 </div>
-<div id="bucles" class="section level2" number="4.2">
+<div id="bucles" class="section level2" number="5.2">
 <h2>
-<span class="header-section-number">4.2</span> Bucles<a class="anchor" aria-label="anchor" href="#bucles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2</span> Bucles<a class="anchor" aria-label="anchor" href="#bucles"><i class="fas fa-link"></i></a>
 </h2>
-<div id="bucles-iterativos-for" class="section level3" number="4.2.1">
+<p>Un bucle es una estructura que permite la repetición de un bloque de código. En R existen dos tipos de bucles, los <em>bucles iterativos</em> y los <em>bucles condicionales</em>.</p>
+<div id="bucles-iterativos-for" class="section level3" number="5.2.1">
 <h3>
-<span class="header-section-number">4.2.1</span> Bucles iterativos (<code>for</code>)<a class="anchor" aria-label="anchor" href="#bucles-iterativos-for"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2.1</span> Bucles iterativos (<code>for</code>)<a class="anchor" aria-label="anchor" href="#bucles-iterativos-for"><i class="fas fa-link"></i></a>
 </h3>
+<p>Lo bucles iterativos repiten un bloque de código un número determinado de veces. Comienzan por la palabra reservada <code>for</code> y llevan asociado un <em>iterador</em>, que es una variable que recorre una secuencia de un tipo de datos compuesto, normalmente un vector o una lista. El bloque de código se ejecuta tantas veces como elementos tenga la secuencia, y en cada repetición el iterador toma como valor un elemento distinto de la secuencia.</p>
+<blockquote>
+<p><code>for (</code><em><code>i</code></em><code>in</code><em><code>&lt;secuencia&gt;</code></em><code>) {</code><br>
+  <em><code>&lt;código&gt;</code></em><br><code>}</code></p>
+</blockquote>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:bucle-for"></span>
+<img src="img/bucle-for.png" alt="Diagrama de flujo de un bucle iterativo" width="60%"><p class="caption">
+Figura 5.4: Diagrama de flujo de un bucle iterativo
+</p>
 </div>
-<div id="bucles-condicionales" class="section level3" number="4.2.2">
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Ejemplo 5.5  </strong></span>A continuación se muestra varios ejemplos de uso del bucle <code>for</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">asignaturas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Programación"</span><span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">asignaturas</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] "Matemáticas"</span>
+<span class="co">#&gt; [1] "Física"</span>
+<span class="co">#&gt; [1] "Programación"</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"El cuadrado de "</span>, <span class="va">i</span>, <span class="st">" es "</span>, <span class="va">i</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] "El cuadrado de  1  es  1"</span>
+<span class="co">#&gt; [1] "El cuadrado de  2  es  4"</span>
+<span class="co">#&gt; [1] "El cuadrado de  3  es  9"</span>
+<span class="co">#&gt; [1] "El cuadrado de  4  es  16"</span>
+<span class="co">#&gt; [1] "El cuadrado de  5  es  25"</span></code></pre></div>
+</div>
+<p>También es posible recorrer los elementos de la secuencia por posición ayudándonos de la siguiente función:</p>
+<ul>
+<li>
+<code>seq_along(x)</code>: que devuelve un vector con los enteros desde 1 hasta el número de elementos de la secuencia <code>x</code>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Ejemplo 5.6  </strong></span>A continuación se muestra un ejemplo de bucle <code>for</code> que recorre los elementos de un vector por posición.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">asignaturas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Programación"</span><span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">asignaturas</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Asignatura "</span>, <span class="va">i</span>, <span class="st">":"</span>, <span class="va">asignaturas</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] "Asignatura  1 : Matemáticas"</span>
+<span class="co">#&gt; [1] "Asignatura  2 : Física"</span>
+<span class="co">#&gt; [1] "Asignatura  3 : Programación"</span></code></pre></div>
+</div>
+<p>Los bucles iterativos se utilizan habitualmente para recorrer estructuras de una dimensión como los vectores y las listas, donde se sabe de antemano el número de elementos que contiene y, por tanto, el número de iteraciones del bucle. No obstante, también se pueden recorrer estructuras de más de una dimensión, como por ejemplo matrices, utilizando varios bucles <code>for</code> anidados.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Ejemplo 5.7  </strong></span>A continuación se muestra varios ejemplos de dos bucles <code>for</code> anidados para recorrer los elementos de una matriz.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">for</span> <span class="op">(</span><span class="va">j</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">i</span>,<span class="va">j</span><span class="op">]</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; [1] 3</span>
+<span class="co">#&gt; [1] 5</span>
+<span class="co">#&gt; [1] 2</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="co">#&gt; [1] 6</span></code></pre></div>
+</div>
+</div>
+<div id="bucles-condicionales-while" class="section level3" number="5.2.2">
 <h3>
-<span class="header-section-number">4.2.2</span> Bucles condicionales<a class="anchor" aria-label="anchor" href="#bucles-condicionales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2.2</span> Bucles condicionales <code>while</code><a class="anchor" aria-label="anchor" href="#bucles-condicionales-while"><i class="fas fa-link"></i></a>
 </h3>
-<div id="la-instrucción-while" class="section level4" number="4.2.2.1">
-<h4>
-<span class="header-section-number">4.2.2.1</span> La instrucción <code>while</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-while"><i class="fas fa-link"></i></a>
-</h4>
+<p>Los bucles condicionales repiten un bloque de código mientras se cumpla una condición. Comienzan con la palabra reservada <code>while</code> y llevan asociada una expresión lógica, de manera que mientras la evaluación de la expresión lógica sea <code>TRUE</code> se repite la ejecución del bloque de código que contiene.</p>
+<blockquote>
+<p><code>while (</code><em><code>&lt;condición&gt;</code></em><code>) {</code><br>
+  <em><code>&lt;código&gt;</code></em><br><code>}</code></p>
+</blockquote>
+<p>La expresión lógica <code>&lt;condición&gt;</code> se evalúa antes de ejecutar el bloque de código y solo se ejecuta el <code>&lt;código&gt;</code> si el resultado de la evaluación es <code>TRUE</code>. Obsérvese que cuando el flujo de ejecución del programa llega al bucle <code>while</code> si la condición no es cierta, el código no se ejecuta ni tan siquiera una vez.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:bucle-while"></span>
+<img src="img/bucle-while.png" alt="Diagrama de flujo de un bucle condicional" width="50%"><p class="caption">
+Figura 5.5: Diagrama de flujo de un bucle condicional
+</p>
 </div>
-<div id="la-instrucción-repeat" class="section level4" number="4.2.2.2">
-<h4>
-<span class="header-section-number">4.2.2.2</span> La instrucción <code>repeat</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-repeat"><i class="fas fa-link"></i></a>
-</h4>
+<div class="example">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Ejemplo 5.8  </strong></span>A continuación se muestra un ejemplo de bucle <code>while</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">5</span>
+<span class="kw">while</span> <span class="op">(</span><span class="va">i</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>
+  <span class="va">i</span> <span class="op">&lt;-</span> <span class="va">i</span> <span class="op">-</span> <span class="fl">1</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] 5</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="co">#&gt; [1] 3</span>
+<span class="co">#&gt; [1] 2</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; [1] 0</span></code></pre></div>
+</div>
+</div>
+<div id="la-instrucción-break" class="section level3" number="5.2.3">
+<h3>
+<span class="header-section-number">5.2.3</span> La instrucción <code>break</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-break"><i class="fas fa-link"></i></a>
+</h3>
+<p>La instrucción <code><a href="https://rdrr.io/r/base/Control.html">break</a></code> se utiliza para detener un bucle y salir de él, tanto en bucles iterativos como en bucles condicionales. Normalmente se suele utilizar esta instrucción cuando se cumple una determinada condición en bloque de código del bucle y se decide parar su ejecución y salir del bucle.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Ejemplo 5.9  </strong></span>A continuación se muestra un ejemplo de uso de la instrucción <code><a href="https://rdrr.io/r/base/Control.html">break</a></code>.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw">break</span>
+  <span class="op">}</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] -2</span>
+<span class="co">#&gt; [1] -1</span></code></pre></div>
+</div>
+</div>
+<div id="la-instrucción-next" class="section level3" number="5.2.4">
+<h3>
+<span class="header-section-number">5.2.4</span> La instrucción <code>next</code><a class="anchor" aria-label="anchor" href="#la-instrucci%C3%B3n-next"><i class="fas fa-link"></i></a>
+</h3>
+<p>La instrucción <code><a href="https://rdrr.io/r/base/Control.html">next</a></code> se utiliza para interrumpir la ejecución del bloque de código de un bucle, pero en lugar de salir del bucle pasa a la siguiente iteración. Si se trata de un bucle iterativo el iterador pasa al siguiente elemento de la secuencia de iteración y si se trata de un bucle condicional se pasa evaluar de nuevo la condición de repetición.</p>
+<p>::: {.example}
+A continuación se muestra un ejemplo de uso de la instrucción <code><a href="https://rdrr.io/r/base/Control.html">break</a></code>.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw">next</span>
+  <span class="op">}</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">#&gt; [1] 2</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="co">#&gt; [1] 6</span>
+<span class="co">#&gt; [1] 8</span>
+<span class="co">#&gt; [1] 10</span></code></pre></div>
 
-</div>
 </div>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="tipos-de-datos-estructurados.html"><span class="header-section-number">3</span> Tipos de datos estructurados</a></div>
-<div class="next"><a href="funciones.html"><span class="header-section-number">5</span> Funciones</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estructuras-de-control"><span class="header-section-number">4</span> Estructuras de control</a></li>
-<li>
-<a class="nav-link" href="#estructuras-condicionales"><span class="header-section-number">4.1</span> Estructuras condicionales</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#la-instrucci%C3%B3n-if"><span class="header-section-number">4.1.1</span> La instrucción if</a></li>
-<li><a class="nav-link" href="#la-funci%C3%B3n-ifelse"><span class="header-section-number">4.1.2</span> La función ifelse()</a></li>
-<li><a class="nav-link" href="#la-funci%C3%B3n-switch"><span class="header-section-number">4.1.3</span> La función switch()</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#bucles"><span class="header-section-number">4.2</span> Bucles</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#bucles-iterativos-for"><span class="header-section-number">4.2.1</span> Bucles iterativos (for)</a></li>
-<li><a class="nav-link" href="#bucles-condicionales"><span class="header-section-number">4.2.2</span> Bucles condicionales</a></li>
-</ul>
-</li>
-</ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/asalber/manual-r/blob/master/04-estructuras-control.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/asalber/manual-r/edit/master/04-estructuras-control.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>
@@ -147,7 +327,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-07.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -155,34 +335,6 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

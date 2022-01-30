@@ -76,8 +76,8 @@
 <p>El código que va entre llaves se conoce como <em>cuerpo de la función</em>.</p>
 <p>Para llamar a la función y que se ejecute el código de su cuerpo hay que utilizar el nombre de la función y a continuación los valores pasados a sus parámetros entre paréntesis.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-64" class="example"><strong>Ejemplo 5.1  </strong></span>A continuación se muestra un ejemplo de creación y llamada a una función.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-69" class="example"><strong>Ejemplo 5.1  </strong></span>A continuación se muestra un ejemplo de creación y llamada a una función.</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definición de la función</span>
 <span class="va">saludo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"¡Hola!"</span><span class="op">)</span>
@@ -96,8 +96,8 @@
 <p>Una función puede recibir valores cuando se invoca a través de unas variables conocidas como <em>parámetros</em> que se definen entre paréntesis en la declaración de la función. En el cuerpo de la función se pueden usar estos parámetros como si fuesen variables.</p>
 <p>Los valores que se pasan a la función en una llamada o invocación concreta de ella se conocen como <em>argumentos</em> y se asocian a los parámetros de la declaración de la función.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-65" class="example"><strong>Ejemplo 5.2  </strong></span>A continuación se muestra un ejemplo de una función con parámetros.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-70" class="example"><strong>Ejemplo 5.2  </strong></span>A continuación se muestra un ejemplo de una función con parámetros.</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Función con un parámetro</span>
 <span class="va">saludo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">nombre</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"¡Hola "</span>, <span class="va">nombre</span>, <span class="st">"!"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span>
@@ -119,8 +119,8 @@
 <strong>Argumentos nominales</strong>: Se indica explícitamente el nombre del parámetro al que se asocia un argumento de la forma <code>parametro = argumento</code>. En este caso el orden de los argumentos no importa.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-66" class="example"><strong>Ejemplo 5.3  </strong></span>A continuación se muestran varios ejemplos de pasos de argumentos posicionales y nominales.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-71" class="example"><strong>Ejemplo 5.3  </strong></span>A continuación se muestran varios ejemplos de pasos de argumentos posicionales y nominales.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Función con un argumento por defecto</span>
 <span class="va">area.triangulo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span>, <span class="va">altura</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">base</span> <span class="op">*</span> <span class="va">altura</span> <span class="op">/</span> <span class="fl">2</span>
@@ -140,8 +140,8 @@
 </h3>
 <p>En la definición de una función se puede asignar a cada parámetro un argumento por defecto, de manera que si se invoca la función sin proporcionar ningún argumento para ese parámetro, se utiliza el argumento por defecto.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-67" class="example"><strong>Ejemplo 5.4  </strong></span>A continuación se muestra un ejemplo de definición de una función con un argumento por defecto.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-72" class="example"><strong>Ejemplo 5.4  </strong></span>A continuación se muestra un ejemplo de definición de una función con un argumento por defecto.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">saludo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">nombre</span>, <span class="va">lenguaje</span> <span class="op">=</span> <span class="st">"R"</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"¡Hola "</span>, <span class="va">nombre</span>, <span class="st">"! ¡Bienvenido a "</span>, <span class="va">lenguaje</span>, <span class="st">"!"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
@@ -157,8 +157,8 @@
 </h2>
 <p>Una función puede devolver un objeto de cualquier tipo tras su invocación. Para ello se utiliza la función <code><a href="https://rdrr.io/r/base/function.html">return()</a></code>, indicando entre paréntesis el valor que devuelve la función. El retorno suele realizarse al final del cuerpo de la función, porque con él finaliza la ejecución de la función y se devuelve el control de la ejecución al punto desde donde se llamó a la función, de manera que cualquier instrucción de cuerpo que vaya después no se ejecutará. Si no se indica ningún objeto, la función devolverá el valor de la última expresión calculada en el cuerpo de la función.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-68" class="example"><strong>Ejemplo 5.5  </strong></span>A continuación se muestran varios ejemplos de retornos de funciones.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-73" class="example"><strong>Ejemplo 5.5  </strong></span>A continuación se muestran varios ejemplos de retornos de funciones.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Función que devuelve el area de un triángulo</span>
 <span class="va">area.triangulo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span>, <span class="va">altura</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">base</span> <span class="op">*</span> <span class="va">altura</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>
@@ -179,8 +179,8 @@
 </div>
 <p>Para devolver más de un valor se pueden utilizar estructuras de datos como vectores, listas, matrices o data frames.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-69" class="example"><strong>Ejemplo 5.6  </strong></span>A continuación se muestra un ejemplo de una función de devuelve una lista.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-74" class="example"><strong>Ejemplo 5.6  </strong></span>A continuación se muestra un ejemplo de una función de devuelve una lista.</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">circulo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">radio</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>perimetro <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span> <span class="op">*</span> <span class="va">radio</span>, area <span class="op">=</span> <span class="va">pi</span> <span class="op">*</span> <span class="va">radio</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
@@ -209,8 +209,8 @@
 <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code>: Devuelve un vector con los nombres de las objetos (variables, funciones, etc.) que contiene el entorno global.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-70" class="example"><strong>Ejemplo 5.7  </strong></span>A continuación se muestra un ejemplo acceso al entorno global de un programa.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-75" class="example"><strong>Ejemplo 5.7  </strong></span>A continuación se muestra un ejemplo acceso al entorno global de un programa.</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">4</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">3</span>
 <span class="va">area.triangulo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span>, <span class="va">altura</span><span class="op">)</span> <span class="op">{</span>
@@ -223,8 +223,8 @@
 </div>
 <p>Como se puede observar en el ejemplo anterior, los parámetros de la función <code>base</code> y <code>altura</code> no aparecen en el entorno global. En R, cuando se ejecuta una función se crea un nuevo entorno hijo dentro del entorno al que pertenece la función. Durante la ejecución de la función este pasa a ser el entorno activo y cuando termina la ejecución de la función deja de serlo y vuelve a activarse el entorno padre desde donde se llamó a la función.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-71" class="example"><strong>Ejemplo 5.8  </strong></span>A continuación se muestra un ejemplo de activación del entorno de una función.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-76" class="example"><strong>Ejemplo 5.8  </strong></span>A continuación se muestra un ejemplo de activación del entorno de una función.</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">4</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">3</span>
 <span class="va">area.triangulo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span>, <span class="va">altura</span><span class="op">)</span> <span class="op">{</span>
@@ -241,7 +241,7 @@
 <span class="co">#&gt; [1] "area.triangulo" "x"              "y"</span>
 <span class="fu">area.triangulo</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Entorno de la función area.triangulo"</span>
-<span class="co">#&gt; &lt;environment: 0x55a064a9d108&gt;</span>
+<span class="co">#&gt; &lt;environment: 0x55e174cbaf30&gt;</span>
 <span class="co">#&gt; [1] "altura" "base"</span>
 <span class="co">#&gt; [1] 6</span></code></pre></div>
 </div>
@@ -249,8 +249,8 @@
 <p>Tanto los parámetros como las variables del ámbito local de una función sólo están accesibles durante la ejecución de la función, es decir, cuando termina la ejecución de la función estas variables desaparecen y no son accesibles desde fuera de la función.</p>
 <p>Cuando una función declara un objeto (función, variable, etc.) que ya existe en alguno de los entornos ancestros con ámbito global, durante la ejecución de la función el objeto global queda eclipsado por el local y no es accesible hasta que finaliza la ejecución de la función.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-72" class="example"><strong>Ejemplo 5.9  </strong></span>A continuación se muestra un ejemplo de eclipse de una variable de ámbito global por otra de ámbito local.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-77" class="example"><strong>Ejemplo 5.9  </strong></span>A continuación se muestra un ejemplo de eclipse de una variable de ámbito global por otra de ámbito local.</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lenguaje</span> <span class="op">=</span> <span class="st">"Python"</span>
 <span class="va">saludo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lenguaje</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Bienvenido a"</span>, <span class="va">lenguaje</span><span class="op">)</span><span class="op">)</span>  
@@ -261,8 +261,8 @@
 </div>
 <p>Las variables globales están accesibles siempre que no sean eclipsadas por otras con el mismo nombre de ámbito local. Si embargo, cuando se intenta asignar un valor a una variable global en el ámbito local, se crea una nueva variable local. Para asignar valores a variables globales en el ámbito local se tiene que utilizar el operador de superasignación <code>&lt;&lt;-</code>. Cuando se utiliza este operador para asignar un valor a una variable, R busca la variable entorno padre, y si no existe continua con la búsqueda en los entornos ancestros hasta llegar a entorno global. Si la búsqueda tiene éxito, asigna el nuevo valor a la variable global, mientras que si no tiene éxito se crea una nueva variable de ámbito local y se le asigna el valor.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-73" class="example"><strong>Ejemplo 5.10  </strong></span>A continuación se muestra un ejemplo del uso del operador de superasignación.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-78" class="example"><strong>Ejemplo 5.10  </strong></span>A continuación se muestra un ejemplo del uso del operador de superasignación.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">saludo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">lenguaje</span> <span class="op">&lt;&lt;-</span> <span class="st">"R"</span>
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Bienvenido a"</span>, <span class="va">lenguaje</span><span class="op">)</span><span class="op">)</span>
@@ -294,8 +294,8 @@
 <code>environment(f)</code>: Devuelve el entorno de la función <code>f</code>.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-74" class="example"><strong>Ejemplo 5.11  </strong></span>A continuación se muestra un ejemplo de acceso a los componentes de una función.</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-79" class="example"><strong>Ejemplo 5.11  </strong></span>A continuación se muestra un ejemplo de acceso a los componentes de una función.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definición de la función</span>
 <span class="va">area.triangulo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span>, <span class="va">altura</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">base</span> <span class="op">*</span> <span class="va">altura</span> <span class="op">/</span> <span class="fl">2</span>
@@ -321,8 +321,8 @@
 <p>La recursión es una práctica común en la mayoría de los lenguajes de programación ya que permite resolver las tareas recursivas de manera más natural.</p>
 <p>Para garantizar el final de una función recursiva, las sucesivas llamadas tienen que reducir el grado de complejidad del problema, hasta que este pueda resolverse directamente sin necesidad de volver a llamar a la función. De lo contrario la recursión no tendría fin y nunca terminaría la ejecución de la función.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-75" class="example"><strong>Ejemplo 5.12  </strong></span>A continuación se muestra un ejemplo de una función recursiva.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<p><span id="exm:unlabeled-div-80" class="example"><strong>Ejemplo 5.12  </strong></span>A continuación se muestra un ejemplo de una función recursiva.</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">factorial</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">if</span> <span class="op">(</span><span class="va">n</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>
   <span class="kw">else</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
@@ -338,7 +338,7 @@
 <p>Para facilitar la reutilización código y datos R permite la creación de paquetes que pueden importarse desde otros programas. Un paquete es una colección de código, funciones y datos que se almacenan en un fichero dentro de un directorio llamado <code>library</code> en el entorno de R. Para ver la ubicación de este directorio dentro del sistema de archivos local se puede utilizar la función <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code>.</p>
 <div class="exmple">
 <p>A continuación se muestra un ejemplo de la ubicación del directorio <code>library</code>.</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] "/home/alf/R/x86_64-pc-linux-gnu-library/4.1"</span>
 <span class="co">#&gt; [2] "/usr/lib/R/library"</span></code></pre></div>
@@ -367,7 +367,7 @@
 </ul>
 <div class="exmple">
 <p>A continuación se muestra un ejemplo de instalación de paquetes desde el repositorio CRAN.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -378,7 +378,7 @@
 <p>El paquete <code>remotes</code> incorpora funciones para instalar paquetes alojados en otros repositorios habituales para el desarrollo de software como <a href="https://github.com/">GitHub</a>, <a href="httpsb://gitlab.com/">GitLab</a> o <a href="https://www.bioconductor.org/">Bioconductor</a>.</p>
 <div class="exmple">
 <p>A continuación se muestra un ejemplo de instalación de paquetes desde GitHub.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rkward-community/rk.Teaching"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -406,7 +406,7 @@
 </ul>
 <div class="exmple">
 <p>A continuación se muestra un ejemplo de carga de un paquete.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org">"remotes"</a></span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -460,7 +460,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-07.</p>
+    <p>"<strong>Curso básico de análisis de datos con R</strong>" was written by Alfredo Sánchez Alberca. It was last built on 2022-01-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
