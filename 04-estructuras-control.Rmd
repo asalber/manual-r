@@ -201,6 +201,7 @@ La instrucción `break` se utiliza para detener un bucle y salir de él, tanto e
 ::: {.example}
 A continuación se muestra un ejemplo de uso de la instrucción `break`.
 ```{r}
+# Bucle que recorre los números enteros del -2 al 2 pero termina al llegar al 0.
 for (i in -2:2) {
   if (i == 0) {
     break
@@ -215,8 +216,9 @@ for (i in -2:2) {
 La instrucción `next` se utiliza para interrumpir la ejecución del bloque de código de un bucle, pero en lugar de salir del bucle pasa a la siguiente iteración. Si se trata de un bucle iterativo el iterador pasa al siguiente elemento de la secuencia de iteración y si se trata de un bucle condicional se pasa evaluar de nuevo la condición de repetición. 
 
 ::: {.example}
-A continuación se muestra un ejemplo de uso de la instrucción `break`.
+A continuación se muestra un ejemplo de uso de la instrucción `next`.
 ```{r}
+# Bucle que recorre los enteros del 1 al 10 pero solo imprime los números pares.
 for (i in 1:10) {
   if (i %% 2) {
     next

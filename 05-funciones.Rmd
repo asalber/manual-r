@@ -319,4 +319,15 @@ library("remotes")
 
 ### Paquetes habituales
 
+A continuación se presenta una lista ordenada alfabéticamente (no por importancia) de los paquetes más populares para el análisis de datos:
 
+- [`caret`](https://topepo.github.io/caret/index.html) es un paquete para la creación de modelos de clasificación y regresión mediante aprendizaje automático.
+- [`data.table`](https://www.rdocumentation.org/packages/data.table/) es un paquete para la manipulación de grandes conjuntos de datos (de hasta 100GB) de manera rápida y eficiente. 
+- [`devtools`](https://www.rdocumentation.org/packages/devtools/) es un paquete con herramientas para el desarrollo de paquetes en R.
+- [`knitr`](https://www.r-project.org/nosvn/pandoc/knitr.html) es un paquete que proporciona un motor para la generación de informes dinámicos que permite la integración de código en R con los lenguajes de procesamiento de textos LaTeX, HTML, Markdown, AsciiDoc o reStructuredText.
+- [`mlr3`](https://mlr3.mlr-org.com/) es un paquete que proporciona funciones para las principales técnicas de aprendizaje automático.
+- [`plotly`](https://plotly.com/r/) es un paquete para la creación de gráficos interactivos.
+- [`rmarkdown`](https://rmarkdown.rstudio.com/) es un paquete que facilita el uso del paquete `knitr` para la elaboración de documentos en múltiples formatos (HTML, pdf, Word y otros) permitiendo la integración de código R en el lenguaje Markdown.
+- [`shiny`](https://shiny.rstudio.com/) es un paquete para la construcción de aplicaciones web interactivas.
+- [`tidymodels`](https://www.tidymodels.org/) es una colección de paquetes para la construcción y evalucación de modelos con técnicas de aprendizaje automático.
+- [`tidyverse`](https://www.tidyverse.org/) es una colección de paquetes para la Ciencia de Datos que incluye paquetes para la carga, limpieza, manipulación y representación gráfica de datos.
