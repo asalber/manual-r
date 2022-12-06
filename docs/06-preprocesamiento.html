@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alfredo Sánchez Alberca">
 
-<title>Curso básico de análisis de datos con R</title>
+<title>Curso básico de análisis de datos con R - 6&nbsp; Preprocesamiento de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-intro.html" rel="next">
+<link href="./07-graficos.html" rel="next">
+<link href="./05-funciones.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -65,11 +65,11 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Curso básico de análisis de datos con R">
-<meta property="og:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta property="og:title" content="Curso básico de análisis de datos con R - 6&nbsp; Preprocesamiento de datos">
+<meta property="og:description" content="Cualquier análisis de datos comienza con la carga de datos en un data frame. Normalmente los datos brutos deben limpiarse y prepararse para su análisis.">
 <meta property="og:site-name" content="Curso básico de análisis de datos con R">
-<meta name="twitter:title" content="Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta name="twitter:title" content="Curso básico de análisis de datos con R - 6&nbsp; Preprocesamiento de datos">
+<meta name="twitter:description" content="Cualquier análisis de datos comienza con la carga de datos en un data frame. Normalmente los datos brutos deben limpiarse y prepararse para su análisis.">
 <meta name="twitter:site" content="@aprendeconalf">
 <meta name="twitter:card" content="summary">
 </head>
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Curso básico de análisis de datos con R</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -142,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Prefacio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -172,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
+  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -209,11 +209,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a>
-  <ul class="collapse">
-  <li><a href="#propósito-de-este-manual" id="toc-propósito-de-este-manual" class="nav-link" data-scroll-target="#propósito-de-este-manual">Propósito de este manual</a></li>
-  <li><a href="#licencia" id="toc-licencia" class="nav-link" data-scroll-target="#licencia">Licencia</a></li>
-  </ul></li>
+  <li><a href="#la-colección-de-paquetes-tidyverse" id="toc-la-colección-de-paquetes-tidyverse" class="nav-link active" data-scroll-target="#la-colección-de-paquetes-tidyverse"><span class="toc-section-number">6.1</span>  La colección de paquetes <code>tidyverse</code></a></li>
+  <li><a href="#datos-limpios-y-tibbles" id="toc-datos-limpios-y-tibbles" class="nav-link" data-scroll-target="#datos-limpios-y-tibbles"><span class="toc-section-number">6.2</span>  Datos limpios y tibbles</a></li>
+  <li><a href="#creación-de-nuevas-variables" id="toc-creación-de-nuevas-variables" class="nav-link" data-scroll-target="#creación-de-nuevas-variables"><span class="toc-section-number">6.3</span>  Creación de nuevas variables</a></li>
+  <li><a href="#selección-de-variables" id="toc-selección-de-variables" class="nav-link" data-scroll-target="#selección-de-variables"><span class="toc-section-number">6.4</span>  Selección de variables</a></li>
+  <li><a href="#filtrado-de-datos" id="toc-filtrado-de-datos" class="nav-link" data-scroll-target="#filtrado-de-datos"><span class="toc-section-number">6.5</span>  Filtrado de datos</a></li>
+  <li><a href="#agrupación-de-datos" id="toc-agrupación-de-datos" class="nav-link" data-scroll-target="#agrupación-de-datos"><span class="toc-section-number">6.6</span>  Agrupación de datos</a></li>
+  <li><a href="#resumen-de-datos" id="toc-resumen-de-datos" class="nav-link" data-scroll-target="#resumen-de-datos"><span class="toc-section-number">6.7</span>  Resumen de datos</a></li>
   </ul>
 </nav>
     </div>
@@ -222,27 +224,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Curso básico de análisis de datos con R</h1>
-<p class="subtitle lead">Con ejemplos aplicados a las Ciencias de la Salud</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alfredo Sánchez Alberca </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">6 de enero de 2022</p>
-    </div>
-  </div>
   
     
   </div>
@@ -250,38 +239,51 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-<section id="prefacio" class="level1 unnumbered">
-<p><img src="img/logos/Rlogo.png" title="Curso básico de análisis de datos con R" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Prefacio</h1>
-<section id="propósito-de-este-manual" class="level2">
-<h2 class="anchored" data-anchor-id="propósito-de-este-manual">Propósito de este manual</h2>
-<p>Este manual proporciona una introducción amigable al <a href="https://www.r-project.org/">lenguaje de programación R</a> para aquellas personas interesadas en utilizar este lenguaje para el análisis de datos.</p>
-<p>El manual empieza con los conceptos básicos del lenguaje de programación R pero enseguida aborda su uso para la visualización y el análisis estadístico de datos, haciendo un recorrido por los test estadísticos más comunes.</p>
-<p>Lo más interesante de este manual es la multitud de ejemplos que ilustran el uso de las técnicas estadísticas presentadas, así como los problemas propuestos.</p>
-<p>El manual no aborda los fundamentos matemáticos de los análisis estadísticos presentados, aunque si explica brevemente cuándo deben usarse y cuándo no, así como las interpretaciones de los resultados obtenidos en los ejemplos. Si alguien está interesado en profundizar en los detalles matemáticos, puede visitar esta <a href="https://aprendeconalf.es/docencia/estadistica/">página</a>.</p>
-<p>No es un curso de programación en R, sino de uso de sus funciones predefinidas y de los paquetes más habituales para el análisis de datos.</p>
-<p>Para cualquier comentario o sugerencia sobre este manual escriba al autor (asalber@ceu.es).</p>
-</section>
-<section id="licencia" class="level2">
-<h2 class="anchored" data-anchor-id="licencia">Licencia</h2>
-<p>Esta obra está bajo una licencia Reconocimiento – No comercial – Compartir bajo la misma licencia 3.0 España de Creative Commons. Para ver una copia de esta licencia, visite <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/es/">https://creativecommons.org/licenses/by-nc-sa/3.0/es/</a>.</p>
-<p>Con esta licencia eres libre de:</p>
+<p>Cualquier análisis de datos comienza con la carga de datos en un <em>data frame</em>. Normalmente los datos brutos deben limpiarse y prepararse para su análisis. Este proceso se conoce como preprocesamiento de datos y suele incluir las siguientes tareas:</p>
 <ul>
-<li>Copiar, distribuir y mostrar este trabajo.</li>
-<li>Realizar modificaciones de este trabajo.</li>
+<li>Selección de las variables (columnas) de interés.</li>
+<li>Filtrado de los casos (filas) de interés.</li>
+<li>Reestructuración del data frame.</li>
+<li>Cálculo de nuevas variables a partir de las existentes.</li>
+<li>Ordenación de datos.</li>
+<li>Agrupación de datos.</li>
+<li>Tratamiento de datos perdidos (<code>NA</code>, <code>NaN</code>).</li>
 </ul>
-<p>Bajo las siguientes condiciones:</p>
+<p>Estas tareas pueden realizarse con las funciones básicas de R pero actualmente existen paquetes que facilitan mucho su realización como por ejemplo la colección de paquetes <code>tidyverse</code>.</p>
+<section id="la-colección-de-paquetes-tidyverse" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="la-colección-de-paquetes-tidyverse"><span class="header-section-number">6.1</span> La colección de paquetes <code>tidyverse</code></h2>
+<p><a href="https://www.tidyverse.org/"><code>tidyverse</code></a> es una colección de paquetes para la Ciencia de Datos. Incluye los siguientes paquetes:</p>
 <ul>
-<li><p><strong>Reconocimiento</strong>. Debe reconocer los créditos de la obra de la manera especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).</p></li>
-<li><p><strong>No comercial</strong>. No puede utilizar esta obra para fines comerciales.</p></li>
-<li><p><strong>Compartir bajo la misma licencia</strong>. Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.</p></li>
+<li><code>tibble</code>: Define la estructura de datos <code>tibble</code> que es una versión mejorada de los <code>data frames</code>.</li>
+<li><code>readr</code>: Proporciona funciones para la lectura y escritura de tablas de datos en formato plano <code>csv</code> y <code>tsv</code>.</li>
+<li><code>tidyr</code>: Proporciona funciones para la limpieza y preparación de los datos de manera consistente.</li>
+<li><code>dplyr</code>: Proporciona una gramática de funciones para la manipulación de datos y las tareas más habituales de preprocesamiento.</li>
+<li><code>stringr</code>: Proporciona funciones especializadas en la manipulación de cadenas.</li>
+<li><code>forcats</code>: Proporciona funciones especializadas en la manipulación de factores.</li>
+<li><code>purrr</code>: Proporciona funciones para la programación funcional que mejoran las ya existentes en R.</li>
+<li><code>ggplot2</code>: Proporciona una gramática de funciones para la realización de gráficos.</li>
 </ul>
-<p>Al reutilizar o distribuir la obra, tiene que dejar bien claro los términos de la licencia de esta obra.</p>
-<p>Estas condiciones pueden no aplicarse si se obtiene el permiso del titular de los derechos de autor.</p>
-<p>Nada en esta licencia menoscaba o restringe los derechos morales del autor.</p>
-
-
+<p>Estos paquetes están diseñados bajo una misma filosofía por lo interactúan y se complementan a la perfección.</p>
 </section>
+<section id="datos-limpios-y-tibbles" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="datos-limpios-y-tibbles"><span class="header-section-number">6.2</span> Datos limpios y tibbles</h2>
+</section>
+<section id="creación-de-nuevas-variables" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="creación-de-nuevas-variables"><span class="header-section-number">6.3</span> Creación de nuevas variables</h2>
+</section>
+<section id="selección-de-variables" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="selección-de-variables"><span class="header-section-number">6.4</span> Selección de variables</h2>
+</section>
+<section id="filtrado-de-datos" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="filtrado-de-datos"><span class="header-section-number">6.5</span> Filtrado de datos</h2>
+</section>
+<section id="agrupación-de-datos" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="agrupación-de-datos"><span class="header-section-number">6.6</span> Agrupación de datos</h2>
+</section>
+<section id="resumen-de-datos" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="resumen-de-datos"><span class="header-section-number">6.7</span> Resumen de datos</h2>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -535,10 +537,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./05-funciones.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07-graficos.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

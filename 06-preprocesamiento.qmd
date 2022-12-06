@@ -1,0 +1,52 @@
+---
+lang: es
+---
+
+# Preprocesamiento de datos
+
+Cualquier análisis de datos comienza con la carga de datos en un _data frame_. Normalmente los datos brutos deben limpiarse y prepararse para su análisis. Este proceso se conoce como preprocesamiento de datos y suele incluir las siguientes tareas:
+
+- Selección de las variables (columnas) de interés.
+- Filtrado de los casos (filas) de interés.
+- Reestructuración del data frame.
+- Cálculo de nuevas variables a partir de las existentes.
+- Ordenación de datos.
+- Agrupación de datos.
+- Tratamiento de datos perdidos (`NA`, `NaN`).
+
+Estas tareas pueden realizarse con las funciones básicas de R pero actualmente existen paquetes que facilitan mucho su realización como por ejemplo la colección de paquetes `tidyverse`.
+
+## La colección de paquetes `tidyverse`
+
+[`tidyverse`](https://www.tidyverse.org/) es una colección de paquetes para la Ciencia de Datos. Incluye los siguientes paquetes:
+
+- `tibble`: Define la estructura de datos `tibble` que es una versión mejorada de los `data frames`. 
+- `readr`: Proporciona funciones para la lectura y escritura de tablas de datos en formato plano `csv` y `tsv`.
+- `tidyr`: Proporciona funciones para la limpieza y preparación de los datos de manera consistente.
+- `dplyr`: Proporciona una gramática de funciones para la manipulación de datos y las tareas más habituales de preprocesamiento.
+- `stringr`: Proporciona funciones especializadas en la manipulación de cadenas.
+- `forcats`: Proporciona funciones especializadas en la manipulación de factores.
+- `purrr`: Proporciona funciones para la programación funcional que mejoran las ya existentes en R.
+- `ggplot2`: Proporciona una gramática de funciones para la realización de gráficos.
+
+Estos paquetes están diseñados bajo una misma filosofía por lo interactúan y se complementan a la perfección.
+
+## Datos limpios y tibbles
+
+
+
+## Creación de nuevas variables
+
+
+## Selección de variables
+
+
+## Filtrado de datos
+
+
+## Agrupación de datos
+
+
+## Resumen de datos
+
+

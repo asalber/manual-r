@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alfredo Sánchez Alberca">
 
-<title>Curso básico de análisis de datos con R</title>
+<title>Curso básico de análisis de datos con R - 8&nbsp; Estadística descriptiva</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-intro.html" rel="next">
+<link href="./09-contrastes-cuantitativos.html" rel="next">
+<link href="./07-graficos.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -65,11 +65,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Curso básico de análisis de datos con R">
-<meta property="og:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta property="og:title" content="Curso básico de análisis de datos con R - 8&nbsp; Estadística descriptiva">
 <meta property="og:site-name" content="Curso básico de análisis de datos con R">
-<meta name="twitter:title" content="Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta name="twitter:title" content="Curso básico de análisis de datos con R - 8&nbsp; Estadística descriptiva">
 <meta name="twitter:site" content="@aprendeconalf">
 <meta name="twitter:card" content="summary">
 </head>
@@ -80,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Curso básico de análisis de datos con R</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -142,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Prefacio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></a>
+  <a href="./08-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -209,11 +207,36 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a>
+  <li><a href="#tablas-de-frecuencias" id="toc-tablas-de-frecuencias" class="nav-link active" data-scroll-target="#tablas-de-frecuencias"><span class="toc-section-number">8.1</span>  Tablas de frecuencias</a>
   <ul class="collapse">
-  <li><a href="#propósito-de-este-manual" id="toc-propósito-de-este-manual" class="nav-link" data-scroll-target="#propósito-de-este-manual">Propósito de este manual</a></li>
-  <li><a href="#licencia" id="toc-licencia" class="nav-link" data-scroll-target="#licencia">Licencia</a></li>
+  <li><a href="#tablas-de-frecuencias-de-una-variable" id="toc-tablas-de-frecuencias-de-una-variable" class="nav-link" data-scroll-target="#tablas-de-frecuencias-de-una-variable"><span class="toc-section-number">8.1.1</span>  Tablas de frecuencias de una variable</a></li>
+  <li><a href="#tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia" id="toc-tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia" class="nav-link" data-scroll-target="#tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia"><span class="toc-section-number">8.1.2</span>  Tablas de frecuencias de dos variables (tablas de contingencia)</a></li>
   </ul></li>
+  <li><a href="#estadísticos-de-tendencia-central" id="toc-estadísticos-de-tendencia-central" class="nav-link" data-scroll-target="#estadísticos-de-tendencia-central"><span class="toc-section-number">8.2</span>  Estadísticos de tendencia central</a>
+  <ul class="collapse">
+  <li><a href="#media" id="toc-media" class="nav-link" data-scroll-target="#media"><span class="toc-section-number">8.2.1</span>  Media</a></li>
+  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="toc-section-number">8.2.2</span>  Mediana</a></li>
+  <li><a href="#moda" id="toc-moda" class="nav-link" data-scroll-target="#moda"><span class="toc-section-number">8.2.3</span>  Moda</a></li>
+  </ul></li>
+  <li><a href="#estadísticos-de-posición" id="toc-estadísticos-de-posición" class="nav-link" data-scroll-target="#estadísticos-de-posición"><span class="toc-section-number">8.3</span>  Estadísticos de posición</a>
+  <ul class="collapse">
+  <li><a href="#mínimo-y-máximo" id="toc-mínimo-y-máximo" class="nav-link" data-scroll-target="#mínimo-y-máximo"><span class="toc-section-number">8.3.1</span>  Mínimo y máximo</a></li>
+  <li><a href="#percentiles" id="toc-percentiles" class="nav-link" data-scroll-target="#percentiles"><span class="toc-section-number">8.3.2</span>  Percentiles</a></li>
+  </ul></li>
+  <li><a href="#estadísticos-de-dispersión" id="toc-estadísticos-de-dispersión" class="nav-link" data-scroll-target="#estadísticos-de-dispersión"><span class="toc-section-number">8.4</span>  Estadísticos de dispersión</a>
+  <ul class="collapse">
+  <li><a href="#rango" id="toc-rango" class="nav-link" data-scroll-target="#rango"><span class="toc-section-number">8.4.1</span>  Rango</a></li>
+  <li><a href="#rango-intercuartílico" id="toc-rango-intercuartílico" class="nav-link" data-scroll-target="#rango-intercuartílico"><span class="toc-section-number">8.4.2</span>  Rango intercuartílico</a></li>
+  <li><a href="#varianza-y-cuasivarianza" id="toc-varianza-y-cuasivarianza" class="nav-link" data-scroll-target="#varianza-y-cuasivarianza"><span class="toc-section-number">8.4.3</span>  Varianza y cuasivarianza</a></li>
+  <li><a href="#desviación-típica-y-cuasidesviación-típica" id="toc-desviación-típica-y-cuasidesviación-típica" class="nav-link" data-scroll-target="#desviación-típica-y-cuasidesviación-típica"><span class="toc-section-number">8.4.4</span>  Desviación típica y cuasidesviación típica</a></li>
+  <li><a href="#coeficiente-de-variación" id="toc-coeficiente-de-variación" class="nav-link" data-scroll-target="#coeficiente-de-variación"><span class="toc-section-number">8.4.5</span>  Coeficiente de variación</a></li>
+  </ul></li>
+  <li><a href="#estadísticos-de-forma" id="toc-estadísticos-de-forma" class="nav-link" data-scroll-target="#estadísticos-de-forma"><span class="toc-section-number">8.5</span>  Estadísticos de forma</a>
+  <ul class="collapse">
+  <li><a href="#coeficiente-de-asimetría" id="toc-coeficiente-de-asimetría" class="nav-link" data-scroll-target="#coeficiente-de-asimetría"><span class="toc-section-number">8.5.1</span>  Coeficiente de asimetría</a></li>
+  <li><a href="#coeficiente-de-apuntamiento" id="toc-coeficiente-de-apuntamiento" class="nav-link" data-scroll-target="#coeficiente-de-apuntamiento"><span class="toc-section-number">8.5.2</span>  Coeficiente de apuntamiento</a></li>
+  </ul></li>
+  <li><a href="#resúmenes-descriptivos" id="toc-resúmenes-descriptivos" class="nav-link" data-scroll-target="#resúmenes-descriptivos"><span class="toc-section-number">8.6</span>  Resúmenes descriptivos</a></li>
   </ul>
 </nav>
     </div>
@@ -222,27 +245,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Curso básico de análisis de datos con R</h1>
-<p class="subtitle lead">Con ejemplos aplicados a las Ciencias de la Salud</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alfredo Sánchez Alberca </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">6 de enero de 2022</p>
-    </div>
-  </div>
   
     
   </div>
@@ -250,38 +260,67 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-<section id="prefacio" class="level1 unnumbered">
-<p><img src="img/logos/Rlogo.png" title="Curso básico de análisis de datos con R" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Prefacio</h1>
-<section id="propósito-de-este-manual" class="level2">
-<h2 class="anchored" data-anchor-id="propósito-de-este-manual">Propósito de este manual</h2>
-<p>Este manual proporciona una introducción amigable al <a href="https://www.r-project.org/">lenguaje de programación R</a> para aquellas personas interesadas en utilizar este lenguaje para el análisis de datos.</p>
-<p>El manual empieza con los conceptos básicos del lenguaje de programación R pero enseguida aborda su uso para la visualización y el análisis estadístico de datos, haciendo un recorrido por los test estadísticos más comunes.</p>
-<p>Lo más interesante de este manual es la multitud de ejemplos que ilustran el uso de las técnicas estadísticas presentadas, así como los problemas propuestos.</p>
-<p>El manual no aborda los fundamentos matemáticos de los análisis estadísticos presentados, aunque si explica brevemente cuándo deben usarse y cuándo no, así como las interpretaciones de los resultados obtenidos en los ejemplos. Si alguien está interesado en profundizar en los detalles matemáticos, puede visitar esta <a href="https://aprendeconalf.es/docencia/estadistica/">página</a>.</p>
-<p>No es un curso de programación en R, sino de uso de sus funciones predefinidas y de los paquetes más habituales para el análisis de datos.</p>
-<p>Para cualquier comentario o sugerencia sobre este manual escriba al autor (asalber@ceu.es).</p>
+<section id="tablas-de-frecuencias" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="tablas-de-frecuencias"><span class="header-section-number">8.1</span> Tablas de frecuencias</h2>
+<section id="tablas-de-frecuencias-de-una-variable" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="tablas-de-frecuencias-de-una-variable"><span class="header-section-number">8.1.1</span> Tablas de frecuencias de una variable</h3>
 </section>
-<section id="licencia" class="level2">
-<h2 class="anchored" data-anchor-id="licencia">Licencia</h2>
-<p>Esta obra está bajo una licencia Reconocimiento – No comercial – Compartir bajo la misma licencia 3.0 España de Creative Commons. Para ver una copia de esta licencia, visite <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/es/">https://creativecommons.org/licenses/by-nc-sa/3.0/es/</a>.</p>
-<p>Con esta licencia eres libre de:</p>
-<ul>
-<li>Copiar, distribuir y mostrar este trabajo.</li>
-<li>Realizar modificaciones de este trabajo.</li>
-</ul>
-<p>Bajo las siguientes condiciones:</p>
-<ul>
-<li><p><strong>Reconocimiento</strong>. Debe reconocer los créditos de la obra de la manera especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).</p></li>
-<li><p><strong>No comercial</strong>. No puede utilizar esta obra para fines comerciales.</p></li>
-<li><p><strong>Compartir bajo la misma licencia</strong>. Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.</p></li>
-</ul>
-<p>Al reutilizar o distribuir la obra, tiene que dejar bien claro los términos de la licencia de esta obra.</p>
-<p>Estas condiciones pueden no aplicarse si se obtiene el permiso del titular de los derechos de autor.</p>
-<p>Nada en esta licencia menoscaba o restringe los derechos morales del autor.</p>
-
-
+<section id="tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="tablas-de-frecuencias-de-dos-variables-tablas-de-contingencia"><span class="header-section-number">8.1.2</span> Tablas de frecuencias de dos variables (tablas de contingencia)</h3>
 </section>
+</section>
+<section id="estadísticos-de-tendencia-central" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="estadísticos-de-tendencia-central"><span class="header-section-number">8.2</span> Estadísticos de tendencia central</h2>
+<section id="media" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="media"><span class="header-section-number">8.2.1</span> Media</h3>
+</section>
+<section id="mediana" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="mediana"><span class="header-section-number">8.2.2</span> Mediana</h3>
+</section>
+<section id="moda" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="moda"><span class="header-section-number">8.2.3</span> Moda</h3>
+</section>
+</section>
+<section id="estadísticos-de-posición" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="estadísticos-de-posición"><span class="header-section-number">8.3</span> Estadísticos de posición</h2>
+<section id="mínimo-y-máximo" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="mínimo-y-máximo"><span class="header-section-number">8.3.1</span> Mínimo y máximo</h3>
+</section>
+<section id="percentiles" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="percentiles"><span class="header-section-number">8.3.2</span> Percentiles</h3>
+</section>
+</section>
+<section id="estadísticos-de-dispersión" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="estadísticos-de-dispersión"><span class="header-section-number">8.4</span> Estadísticos de dispersión</h2>
+<section id="rango" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="rango"><span class="header-section-number">8.4.1</span> Rango</h3>
+</section>
+<section id="rango-intercuartílico" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="rango-intercuartílico"><span class="header-section-number">8.4.2</span> Rango intercuartílico</h3>
+</section>
+<section id="varianza-y-cuasivarianza" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="varianza-y-cuasivarianza"><span class="header-section-number">8.4.3</span> Varianza y cuasivarianza</h3>
+</section>
+<section id="desviación-típica-y-cuasidesviación-típica" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="desviación-típica-y-cuasidesviación-típica"><span class="header-section-number">8.4.4</span> Desviación típica y cuasidesviación típica</h3>
+</section>
+<section id="coeficiente-de-variación" class="level3" data-number="8.4.5">
+<h3 data-number="8.4.5" class="anchored" data-anchor-id="coeficiente-de-variación"><span class="header-section-number">8.4.5</span> Coeficiente de variación</h3>
+</section>
+</section>
+<section id="estadísticos-de-forma" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="estadísticos-de-forma"><span class="header-section-number">8.5</span> Estadísticos de forma</h2>
+<section id="coeficiente-de-asimetría" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="coeficiente-de-asimetría"><span class="header-section-number">8.5.1</span> Coeficiente de asimetría</h3>
+</section>
+<section id="coeficiente-de-apuntamiento" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="coeficiente-de-apuntamiento"><span class="header-section-number">8.5.2</span> Coeficiente de apuntamiento</h3>
+</section>
+</section>
+<section id="resúmenes-descriptivos" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="resúmenes-descriptivos"><span class="header-section-number">8.6</span> Resúmenes descriptivos</h2>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -535,10 +574,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./07-graficos.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./09-contrastes-cuantitativos.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

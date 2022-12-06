@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alfredo Sánchez Alberca">
 
-<title>Curso básico de análisis de datos con R</title>
+<title>Curso básico de análisis de datos con R - 11&nbsp; Análisis de regresión simple</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-intro.html" rel="next">
+<link href="./10-contrastes-cualitativos.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -65,11 +64,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Curso básico de análisis de datos con R">
-<meta property="og:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta property="og:title" content="Curso básico de análisis de datos con R - 11&nbsp; Análisis de regresión simple">
 <meta property="og:site-name" content="Curso básico de análisis de datos con R">
-<meta name="twitter:title" content="Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta name="twitter:title" content="Curso básico de análisis de datos con R - 11&nbsp; Análisis de regresión simple">
 <meta name="twitter:site" content="@aprendeconalf">
 <meta name="twitter:card" content="summary">
 </head>
@@ -80,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Curso básico de análisis de datos con R</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -142,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Prefacio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -197,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-regresion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></a>
+  <a href="./11-regresion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></a>
   </div>
 </li>
     </ul>
@@ -209,11 +206,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a>
-  <ul class="collapse">
-  <li><a href="#propósito-de-este-manual" id="toc-propósito-de-este-manual" class="nav-link" data-scroll-target="#propósito-de-este-manual">Propósito de este manual</a></li>
-  <li><a href="#licencia" id="toc-licencia" class="nav-link" data-scroll-target="#licencia">Licencia</a></li>
-  </ul></li>
+  <li><a href="#regresión-lineal" id="toc-regresión-lineal" class="nav-link active" data-scroll-target="#regresión-lineal"><span class="toc-section-number">11.1</span>  Regresión lineal</a></li>
+  <li><a href="#correlación" id="toc-correlación" class="nav-link" data-scroll-target="#correlación"><span class="toc-section-number">11.2</span>  Correlación</a></li>
+  <li><a href="#regresión-no-lineal" id="toc-regresión-no-lineal" class="nav-link" data-scroll-target="#regresión-no-lineal"><span class="toc-section-number">11.3</span>  Regresión no lineal</a></li>
+  <li><a href="#regresión-múltiple" id="toc-regresión-múltiple" class="nav-link" data-scroll-target="#regresión-múltiple"><span class="toc-section-number">11.4</span>  Regresión múltiple</a></li>
   </ul>
 </nav>
     </div>
@@ -222,27 +218,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Curso básico de análisis de datos con R</h1>
-<p class="subtitle lead">Con ejemplos aplicados a las Ciencias de la Salud</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alfredo Sánchez Alberca </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">6 de enero de 2022</p>
-    </div>
-  </div>
   
     
   </div>
@@ -250,38 +233,19 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-<section id="prefacio" class="level1 unnumbered">
-<p><img src="img/logos/Rlogo.png" title="Curso básico de análisis de datos con R" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Prefacio</h1>
-<section id="propósito-de-este-manual" class="level2">
-<h2 class="anchored" data-anchor-id="propósito-de-este-manual">Propósito de este manual</h2>
-<p>Este manual proporciona una introducción amigable al <a href="https://www.r-project.org/">lenguaje de programación R</a> para aquellas personas interesadas en utilizar este lenguaje para el análisis de datos.</p>
-<p>El manual empieza con los conceptos básicos del lenguaje de programación R pero enseguida aborda su uso para la visualización y el análisis estadístico de datos, haciendo un recorrido por los test estadísticos más comunes.</p>
-<p>Lo más interesante de este manual es la multitud de ejemplos que ilustran el uso de las técnicas estadísticas presentadas, así como los problemas propuestos.</p>
-<p>El manual no aborda los fundamentos matemáticos de los análisis estadísticos presentados, aunque si explica brevemente cuándo deben usarse y cuándo no, así como las interpretaciones de los resultados obtenidos en los ejemplos. Si alguien está interesado en profundizar en los detalles matemáticos, puede visitar esta <a href="https://aprendeconalf.es/docencia/estadistica/">página</a>.</p>
-<p>No es un curso de programación en R, sino de uso de sus funciones predefinidas y de los paquetes más habituales para el análisis de datos.</p>
-<p>Para cualquier comentario o sugerencia sobre este manual escriba al autor (asalber@ceu.es).</p>
+<section id="regresión-lineal" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="regresión-lineal"><span class="header-section-number">11.1</span> Regresión lineal</h2>
 </section>
-<section id="licencia" class="level2">
-<h2 class="anchored" data-anchor-id="licencia">Licencia</h2>
-<p>Esta obra está bajo una licencia Reconocimiento – No comercial – Compartir bajo la misma licencia 3.0 España de Creative Commons. Para ver una copia de esta licencia, visite <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/es/">https://creativecommons.org/licenses/by-nc-sa/3.0/es/</a>.</p>
-<p>Con esta licencia eres libre de:</p>
-<ul>
-<li>Copiar, distribuir y mostrar este trabajo.</li>
-<li>Realizar modificaciones de este trabajo.</li>
-</ul>
-<p>Bajo las siguientes condiciones:</p>
-<ul>
-<li><p><strong>Reconocimiento</strong>. Debe reconocer los créditos de la obra de la manera especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).</p></li>
-<li><p><strong>No comercial</strong>. No puede utilizar esta obra para fines comerciales.</p></li>
-<li><p><strong>Compartir bajo la misma licencia</strong>. Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.</p></li>
-</ul>
-<p>Al reutilizar o distribuir la obra, tiene que dejar bien claro los términos de la licencia de esta obra.</p>
-<p>Estas condiciones pueden no aplicarse si se obtiene el permiso del titular de los derechos de autor.</p>
-<p>Nada en esta licencia menoscaba o restringe los derechos morales del autor.</p>
-
-
+<section id="correlación" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="correlación"><span class="header-section-number">11.2</span> Correlación</h2>
 </section>
+<section id="regresión-no-lineal" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="regresión-no-lineal"><span class="header-section-number">11.3</span> Regresión no lineal</h2>
+</section>
+<section id="regresión-múltiple" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="regresión-múltiple"><span class="header-section-number">11.4</span> Regresión múltiple</h2>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -535,11 +499,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./10-contrastes-cualitativos.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cualitativas</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -1,0 +1,80 @@
+project:
+  type: book
+  output-dir: "docs"
+
+website:
+  favicon: img/logos/favicon.ico
+  reader-mode: true
+  comments: 
+    hypothesis:
+      theme: clean
+      openSidebar: true
+
+book:
+  title: "Curso básico de análisis de datos con R"
+  subtitle: "Con ejemplos aplicados a las Ciencias de la Salud"
+  author: "Alfredo Sánchez Alberca"
+  date: "1/6/2022"
+  output-file: "curso-r"
+  image: cover.png
+  cover-image: img/logos/Rlogo.png
+  sharing: [twitter, linkedin]
+  downloads: [pdf, epub]
+  favicon: "img/logos/favicon.ico"
+  sidebar:
+    style: docked 
+    background: light
+    logo: img/logos/aprendeconalf.png
+    tools:
+      - icon: house-fill
+        href: https://aprendeconalf.es
+  open-graph: true
+  twitter-card: 
+    site: "@aprendeconalf"
+  chapters:
+    - index.qmd
+    - 01-intro.qmd
+    - 02-tipos-datos-simples.qmd
+    - 03-tipos-datos-estructurados.qmd
+    - 04-estructuras-control.qmd
+    - 05-funciones.qmd
+    - 06-preprocesamiento.qmd
+    - 07-graficos.qmd
+    - 08-estadistica-descriptiva.qmd
+    - 09-contrastes-cuantitativos.qmd
+    - 10-contrastes-cualitativos.qmd
+    - 11-regresion.qmd
+    
+#bibliography: references.bib
+
+format:
+  html:
+    highlight-style: a11y
+    theme:
+      dark: darkly
+      light: flatly
+    html-math-method: mathjax
+  pdf:
+    documentclass: scrreport
+    papersize: a4
+    template-partials:
+      - before-body.tex
+    titlegraphic: img/logos/Rlogo.png
+    institution: CEU San Pablo
+    email: asalber@ceu.es
+    web: https://aprendeconalf.es
+    logo: img/logos/aprendeconalf.png
+    include-in-header:
+      - preamble.tex
+      - macros.tex
+    keep-tex: true
+    #mainfont: TeX Gyre Termes
+    #mainfontoptions:
+    #  - Numbers=Lowercase
+    #  - Numbers=Proportional    
+    
+  epub:
+    cover-image: img/logos/Rlogo.png
+
+
+

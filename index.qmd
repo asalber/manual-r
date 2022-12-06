@@ -1,0 +1,42 @@
+--- 
+lang: es
+---
+
+# Prefacio {.unnumbered}
+
+## Propósito de este manual
+
+Este manual proporciona una introducción amigable al [lenguaje de programación R](https://www.r-project.org/) para aquellas personas interesadas en utilizar este lenguaje para el análisis de datos. 
+
+El manual empieza con los conceptos básicos del lenguaje de programación R pero enseguida aborda su uso para la visualización y el análisis estadístico de datos, haciendo un recorrido por los test estadísticos más comunes.
+
+Lo más interesante de este manual es la multitud de ejemplos que ilustran el uso de las técnicas estadísticas presentadas, así como los problemas propuestos. 
+
+El manual no aborda los fundamentos matemáticos de los análisis estadísticos presentados, aunque si explica brevemente cuándo deben usarse y cuándo no, así como las interpretaciones de los resultados obtenidos en los ejemplos. Si alguien está interesado en profundizar en los detalles matemáticos, puede visitar esta [página](https://aprendeconalf.es/docencia/estadistica/).
+
+No es un curso de programación en R, sino de uso de sus funciones predefinidas y de los paquetes más habituales para el análisis de datos.
+
+Para cualquier comentario o sugerencia sobre este manual escriba al autor (asalber@ceu.es).
+
+## Licencia
+
+Esta obra está bajo una licencia Reconocimiento – No comercial – Compartir bajo la misma licencia 3.0 España de Creative Commons. Para ver una copia de esta licencia, visite [https://creativecommons.org/licenses/by-nc-sa/3.0/es/](https://creativecommons.org/licenses/by-nc-sa/3.0/es/).
+
+Con esta licencia eres libre de:
+
+- Copiar, distribuir y mostrar este trabajo.
+- Realizar modificaciones de este trabajo.
+
+Bajo las siguientes condiciones:
+
+- **Reconocimiento**. Debe reconocer los créditos de la obra de la manera especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
+
+- **No comercial**. No puede utilizar esta obra para fines comerciales.
+
+- **Compartir bajo la misma licencia**. Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
+
+Al reutilizar o distribuir la obra, tiene que dejar bien claro los términos de la licencia de esta obra.
+
+Estas condiciones pueden no aplicarse si se obtiene el permiso del titular de los derechos de autor.
+
+Nada en esta licencia menoscaba o restringe los derechos morales del autor.
