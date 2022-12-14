@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -263,6 +263,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./11-regresion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-referencias.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Referencias</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -364,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>x:y</code>: Devuelve el vector de números enteros consecutivos desde <code>x</code> hasta <code>y</code>.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de construcción de vectores.</p>
+<div id="exm-construccion-vectores" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 3.1 </strong></span>A continuación se muestran varios ejemplos de construcción de vectores.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -395,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="vectores-con-nombres" class="level4" data-number="3.1.1.1">
 <h4 data-number="3.1.1.1" class="anchored" data-anchor-id="vectores-con-nombres"><span class="header-section-number">3.1.1.1</span> Vectores con nombres</h4>
 <p>Es posible asignar un nombre a cada elemento de un vector. Los nombres son etiquetas de texto que se asocian a cada elemento. Para asociar un nombre a un elemento se utiliza la sintaxis <code>nombre = valor</code>, donde <code>nombre</code> es una cadena de caracteres y <code>valor</code> es el elemento del vector.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo de creación de un vector con nombres.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Matemáticas"</span> <span class="ot">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="ot">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="ot">=</span> <span class="fl">4.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -409,7 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>names(x)</code>: Devuelve un vector de cadenas de caracteres con los nombres de los elementos del vector <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo de acceso a los nombres de un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>notas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span> <span class="ot">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="ot">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="ot">=</span> <span class="fl">4.5</span>)</span>
@@ -427,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>lenght(x)</code>: Devuelve el número de elementos del vector <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de la obtención del tamaño de un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -444,7 +449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="coerción-de-elementos" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="coerción-de-elementos"><span class="header-section-number">3.1.3</span> Coerción de elementos</h3>
 <p>Puesto que los elementos de un vector tienen que ser del mismo tipo, cuando se crea un vector con datos de distintos tipos, la función <code>c()</code> los convertirá al mismo tipo, lo que se conoce como <em>coerción</em> de tipos. La coerción se produce de los tipos menos flexibles a los más flexibles: <code>logical</code> &lt; <code>integer</code> &lt; <code>double</code> &lt; <code>character</code>.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de coerciones.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -469,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 data-number="3.1.4.1" class="anchored" data-anchor-id="acceso-mediante-un-índice-entero"><span class="header-section-number">3.1.4.1</span> Acceso mediante un índice entero</h4>
 <p>Los elementos de un vector están ordenados y el acceso más simple a ellos es mediante su número de orden, es decir, indicando entre corchetes el entero que corresponde a su número de orden. Se puede acceder simultáneamente a varios elementos mediante un vector con sus números de orden. Por otro lado, también es posible usar enteros negativos y en tal caso se obtendrán todos los elementos del vector excepto los que ocupan las posiciones correspondientes al valor absoluto de los índices negativos. Esta es la forma más habitual de eliminar elementos de un vector.</p>
 <p><i class="fa fa-exclamation-triangle" style="color:red;"></i> <em>En R los índices enteros para acceder a los elementos de un vector comienzan en 1, a diferencia de otros lenguajes de programación que empiezan en 0.</em></p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices enteros.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
@@ -494,7 +499,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="acceso-mediante-un-índice-lógico" class="level4" data-number="3.1.4.2">
 <h4 data-number="3.1.4.2" class="anchored" data-anchor-id="acceso-mediante-un-índice-lógico"><span class="header-section-number">3.1.4.2</span> Acceso mediante un índice lógico</h4>
 <p>Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano <code>TRUE</code>.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices lógicos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
@@ -511,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Esta forma de acceder es útil cuando se genera el vector de índices mediante operadores relacionales. Cuando se aplica un operador relacional a un vector se obtiene otro vector lógico que resulta de aplicar el operador relacional a cada uno de los elementos del vector. De esta manera se puede realizar filtros para obtener los elementos de un vector que cumplen una determinada condición.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante condiciones.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
@@ -535,7 +540,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="acceso-mediante-un-índice-de-cadena" class="level4" data-number="3.1.4.3">
 <h4 data-number="3.1.4.3" class="anchored" data-anchor-id="acceso-mediante-un-índice-de-cadena"><span class="header-section-number">3.1.4.3</span> Acceso mediante un índice de cadena</h4>
 <p>Si los elementos de un vector tienen nombre, es posible acceder a ellos usando sus nombres como índices.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices de cadena.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>notas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span> <span class="ot">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="ot">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="ot">=</span> <span class="fl">4.5</span>)</span>
@@ -559,7 +564,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>x %in% y</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es un elemento del vector <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de pertenencia de elementos a un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
@@ -575,7 +580,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="modificación-de-los-elementos-de-un-vector" class="level3" data-number="3.1.6">
 <h3 data-number="3.1.6" class="anchored" data-anchor-id="modificación-de-los-elementos-de-un-vector"><span class="header-section-number">3.1.6</span> Modificación de los elementos de un vector</h3>
 <p>Para modificar uno o varios elementos de un vector basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
@@ -599,7 +604,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>c(x, y)</code>: Devuelve el vector que resulta de añadir al vector <code>x</code> los elementos del vector <code>y</code>.</li>
 <li><code>append(x, y, pos)</code>: Devuelve el vector que resulta de añadir al vector <code>x</code> los elementos del vector <code>y</code>, a continuación de la posición <code>pos</code>. El parámetro <code>pos</code> es opcional y si no se indica, los elementos de <code>y</code> se añaden al final de los de <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de añadir nuevos elementos a un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
@@ -625,7 +630,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="operaciones-aritméticas-elemento-a-elemento" class="level4" data-number="3.1.9.1">
 <h4 data-number="3.1.9.1" class="anchored" data-anchor-id="operaciones-aritméticas-elemento-a-elemento"><span class="header-section-number">3.1.9.1</span> Operaciones aritméticas elemento a elemento</h4>
 <p>Para vectores numéricos las operaciones aritméticas habituales se aplican elemento a elemento. Si los vectores tienen distinto tamaño, el tamaño del vector más pequeño se equipara al tamaño del mayor, reutilizando sus elementos, empezando por el primero.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de operaciones aritméticas con vectores numéricos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
@@ -652,7 +657,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="producto-escalar-de-vectores" class="level4" data-number="3.1.9.2">
 <h4 data-number="3.1.9.2" class="anchored" data-anchor-id="producto-escalar-de-vectores"><span class="header-section-number">3.1.9.2</span> Producto escalar de vectores</h4>
 <p>Para calcular el producto escalar de dos vectores numéricos se utiliza el operador <code>%*%</code>. Si los vectores tienen distinto tamaño se produce un error.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo del producto escalar de dos vectores.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
@@ -676,7 +681,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>factor(x, levels = niveles)</code>: Crea un dato de tipo factor con los elementos del vector <code>x</code>. Los niveles del factor pueden indicarse mediante el parámetro <code>levels</code>, pasándole un vector con los valores posibles. Si no se indica el parámetro <code>levels</code> los niveles del factor se obtienen automáticamente a partir de los elementos del vector <code>x</code> (tantos niveles con valores distintos tenga).</li>
 </ul>
 <p>Los factores son en realidad vectores de números enteros a los que se le añade un atributo especial para indicar los niveles del factor.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de creación de factores.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"mujer"</span>, <span class="st">"hombre"</span>, <span class="st">"mujer"</span>))</span>
@@ -702,7 +707,7 @@ Levels: A B AB 0</code></pre>
 </div>
 </div>
 <p>Es posible establecer un orden entre los niveles de un factor añadiendo el parámetro <code>ordered = TRUE</code> a la función anterior. Esto es útil para representar categorías ordinales entre las que existe un orden natural.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo de creación de un factor ordenado.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>nivel.estudio <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Secundarios"</span>, <span class="st">"Graduado"</span>, <span class="st">"Bachiller"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Sin estudios"</span>, <span class="st">"Primarios"</span>, <span class="st">"Secundarios"</span>, <span class="st">"Bachiller"</span>, <span class="st">"Graduado"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
@@ -724,7 +729,7 @@ Levels: Sin estudios &lt; Primarios &lt; Secundarios &lt; Bachiller &lt; Graduad
 <ul>
 <li><code>levels(x)</code>: Devuelve un vector con los niveles del factor <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos y los niveles de un factor.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"mujer"</span>, <span class="st">"hombre"</span>, <span class="st">"mujer"</span>))</span>
@@ -753,7 +758,7 @@ Levels: hombre mujer</code></pre>
 <section id="modificación-de-los-elementos-de-un-factor" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="modificación-de-los-elementos-de-un-factor"><span class="header-section-number">3.2.3</span> Modificación de los elementos de un factor</h3>
 <p>Se puede modificar los elementos de un factor de manera similiar a como se modifican los elementos de un vector, es decir accediendo al elemento que se quiere modificar y reasignándole un nuevo valor. La única diferencia con los vectores es que si el nuevo valor que se quiere asignar no está entre los niveles del factor, se obtiene el valor <code>NA</code>.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios de modificación de los elementos de un factor.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>grupo.sanguineo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"AB"</span>, <span class="st">"0"</span>))</span>
@@ -791,7 +796,7 @@ Levels: A B AB 0</code></pre>
 <ul>
 <li><code>list(x1, x2, ...)</code>: Devuelve la lista con los elementos <code>x1</code>, <code>x2</code>, etc.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de creación de listas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -840,7 +845,7 @@ Levels: A B AB 0</code></pre>
 </div>
 <section id="listas-con-nombres" class="level4" data-number="3.3.1.1">
 <h4 data-number="3.3.1.1" class="anchored" data-anchor-id="listas-con-nombres"><span class="header-section-number">3.3.1.1</span> Listas con nombres</h4>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo de creación de una lista con nombres.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -867,7 +872,7 @@ $dirección$municipio
 <ul>
 <li><code>names(x)</code>: Devuelve un vector de cadenas de caracteres con los nombres de los elementos de la lista <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo de acceso a los nombres de una lista.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
@@ -885,7 +890,7 @@ $dirección$municipio
 <ul>
 <li><code>lenght(x)</code>: Devuelve el número de elementos de la lista <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos la obtención del tamaño de una lista.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -909,7 +914,7 @@ $dirección$municipio
 <section id="acceso-mediante-un-índice-entero-1" class="level4" data-number="3.3.3.1">
 <h4 data-number="3.3.3.1" class="anchored" data-anchor-id="acceso-mediante-un-índice-entero-1"><span class="header-section-number">3.3.3.1</span> Acceso mediante un índice entero</h4>
 <p>Al igual que los vectores, los elementos de una lista están ordenados y se puede utilizar un índice entero para acceder a los elementos que ocupan una determinada posición.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices enteros.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>, <span class="fl">4.5</span>)</span>
@@ -943,7 +948,7 @@ $dirección$municipio
 <section id="acceso-mediante-un-índice-lógico-1" class="level4" data-number="3.3.3.2">
 <h4 data-number="3.3.3.2" class="anchored" data-anchor-id="acceso-mediante-un-índice-lógico-1"><span class="header-section-number">3.3.3.2</span> Acceso mediante un índice lógico</h4>
 <p>Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano <code>TRUE</code>.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices lógicos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>, <span class="fl">4.5</span>)</span>
@@ -957,7 +962,7 @@ $dirección$municipio
 </div>
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre><code>Warning: NAs introducidos por coerción</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE    NA  TRUE FALSE</code></pre>
@@ -965,7 +970,7 @@ $dirección$municipio
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrado de valores menores que 2</span></span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&lt;</span> <span class="dv">2</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre><code>Warning: NAs introducidos por coerción</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -984,7 +989,7 @@ NULL
 <section id="acceso-mediante-un-índice-de-cadena-1" class="level4" data-number="3.3.3.3">
 <h4 data-number="3.3.3.3" class="anchored" data-anchor-id="acceso-mediante-un-índice-de-cadena-1"><span class="header-section-number">3.3.3.3</span> Acceso mediante un índice de cadena</h4>
 <p>Si los elementos de una lista tienen nombre, se puede acceder a ellos utilizando sus nombres como índices. La única diferencia con el acceso mediante cadenas de vectores es que se obtiene siempre una lista, incluso cuando sólo se quiere acceder a un elemento. Para obtener un elemento, y no una lista con ese único elemento, se utilizan dobles corchetes <code>[[ ]]</code>.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices de cadena.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
@@ -1018,7 +1023,7 @@ $nombre
 </div>
 </div>
 <p>Una alternativa a los dobles corchetes es el operador de acceso a listas <code>$</code>. Este operador además permite utilizar coincidencias parciales en los nombres de los elementos para acceder a ellos.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante el operador <code>$</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
@@ -1044,7 +1049,7 @@ $nombre
 <section id="modificación-de-los-elementos-de-una-lista" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="modificación-de-los-elementos-de-una-lista"><span class="header-section-number">3.3.4</span> Modificación de los elementos de una lista</h3>
 <p>Para modificar uno o varios elementos de una lista basta con acceder a esos elementos y reasignarles valors con el operador de asignación.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de modificación de los elementos de una lista.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>)</span>
@@ -1071,7 +1076,7 @@ $edad
 <ul>
 <li><code>append(x, y, pos)</code>: Devuelve la lista vector que resulta de añadir a <code>x</code> los elementos de la lista <code>y</code>, a continuación de la posición <code>pos</code>. El parámetro <code>pos</code> es opcional y si no se indica, los elementos de <code>y</code> se añaden al final de los de <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de añadir nuevos elementos a una lista.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>)</span>
@@ -1110,7 +1115,7 @@ $email
 <ul>
 <li><code>unlist(x)</code>: Devuelve el vector que resulta de aplanar recursivamente la lista <code>x</code> y convertir todos los elementos al mismo tipo mediante coerción de tipos.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de conversión de una lista en un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
@@ -1138,7 +1143,7 @@ dirección.municipio
 <ul>
 <li><code>matrix(x, nrow = m, ncol = n)</code>: Devuelve la matriz con los elementos del vector <code>x</code> organizados en <code>n</code> filas y <code>m</code> columnas. Habitualmente basta con especificar el número de filas o el número de columnas.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de creación de matrices.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1168,7 +1173,7 @@ dirección.municipio
 </div>
 </div>
 <p>Como se puede observar en el ejemplo anterior, los elementos se disponen por columnas, pero se pueden disponer los elementos por filas pasando el parámetro <code>byrow = TRUE</code> a la función <code>matrix</code>.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de creación de matrices.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1188,7 +1193,7 @@ dirección.municipio
 <section id="matrices-con-nombres-de-filas-y-columnas" class="level4" data-number="3.4.1.1">
 <h4 data-number="3.4.1.1" class="anchored" data-anchor-id="matrices-con-nombres-de-filas-y-columnas"><span class="header-section-number">3.4.1.1</span> Matrices con nombres de filas y columnas</h4>
 <p>Es posible poner nombres a las filas y a las columnas de una matriz añadiendo el parámetro <code>dimnames</code> y pasándole una lista de dos vectores de cadenas con los nombres de las filas y las columnas respectivamente.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"fila1"</span>, <span class="st">"fila2"</span>), <span class="fu">c</span>(<span class="st">"columna1"</span>, <span class="st">"columna2"</span>, <span class="st">"columna3"</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1204,7 +1209,7 @@ fila2        2        4        6</code></pre>
 <li><code>rownames(x)</code>: Devuelve un vector de cadenas de caracteres con los nombres de las filas de la matriz <code>x</code>.</li>
 <li><code>colnames(x)</code>: Devuelve un vector de cadenas de caracteres con los nombres de las columnas de la matriz <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"fila1"</span>, <span class="st">"fila2"</span>), <span class="fu">c</span>(<span class="st">"columna1"</span>, <span class="st">"columna2"</span>, <span class="st">"columna3"</span>)))</span>
@@ -1229,7 +1234,7 @@ fila2        2        4        6</code></pre>
 <li><code>ncol(x)</code>: Devuelve un entero con el número de columnas de la matriz <code>x</code>.</li>
 <li><code>dim(x)</code>: Devuelve un vector de dos enteros con el número de filas y el número de columnas de la matriz <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a las dimensiones de una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
@@ -1252,7 +1257,7 @@ fila2        2        4        6</code></pre>
 </div>
 </div>
 <p>Usando esta última función se pueden modificar las dimensiones de una matriz asignando un vector de dos enteros con las nuevas dimensiones. Esto también permite crear una matriz a partir de un vector.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de modificación de las dimensiones de una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb177"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
@@ -1284,7 +1289,7 @@ fila2        2        4        6</code></pre>
 <li><code>x[i,j]</code>: Devuelve el elemento de la matriz <code>x</code> que está en la fila <code>i</code> y la columna <code>j</code>.</li>
 </ul>
 <p>Se puede acceder a más de un elemento indicando un vector de enteros para las filas y otro para las columnas. De esta manera se obtiene una submatriz. Si no se indica la fila o la columna se obtienen todos los elementos de todas las filas o columnas. Al igual que para vectores, se pueden utilizar enteros negativos para descartar filas o columnas</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
@@ -1330,7 +1335,7 @@ fila2        2        4        6</code></pre>
 <section id="acceso-mediante-índices-lógicos" class="level4" data-number="3.4.3.2">
 <h4 data-number="3.4.3.2" class="anchored" data-anchor-id="acceso-mediante-índices-lógicos"><span class="header-section-number">3.4.3.2</span> Acceso mediante índices lógicos</h4>
 <p>Cuando se utilizan índices lógicos, se obtienen los elementos correspondientes a las filas y columnas donde está el valor booleano <code>TRUE</code>.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb193"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
@@ -1403,7 +1408,7 @@ f3  9  6</code></pre>
 <ul>
 <li><code>x %in% y</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es un elemento de la matriz <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de pertenencia de elementos a una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb209"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
@@ -1421,7 +1426,7 @@ f3  9  6</code></pre>
 <section id="modificación-de-los-elementos-de-una-matriz" class="level3" data-number="3.4.5">
 <h3 data-number="3.4.5" class="anchored" data-anchor-id="modificación-de-los-elementos-de-una-matriz"><span class="header-section-number">3.4.5</span> Modificación de los elementos de una matriz</h3>
 <p>Para modificar uno o varios elementos de una matriz basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb213"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb213-1"><a href="#cb213-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
@@ -1458,7 +1463,7 @@ f3  9  6</code></pre>
 <li><code>rbind(x, y)</code>: Devuelve la matriz que resulta de añadir nuevas filas a la matriz <code>x</code> con los elementos del vector <code>y</code>.</li>
 <li><code>rbind(x, y)</code>: Devuelve la matriz que resulta de añadir nuevas columnas a la matriz <code>x</code> con los elementos del vector <code>y</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb219"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
@@ -1493,7 +1498,7 @@ f3  9  6</code></pre>
 <ul>
 <li><code>t(x)</code>: Devuelve la matriz traspuesta de la matriz <code>x</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran un ejemplo de la trasposición de una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb225"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb225-1"><a href="#cb225-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow=</span><span class="dv">2</span>)</span>
@@ -1512,7 +1517,7 @@ f3  9  6</code></pre>
 <section id="operaciones-aritméticas-elemento-a-elemento-1" class="level4" data-number="3.4.8.1">
 <h4 data-number="3.4.8.1" class="anchored" data-anchor-id="operaciones-aritméticas-elemento-a-elemento-1"><span class="header-section-number">3.4.8.1</span> Operaciones aritméticas elemento a elemento</h4>
 <p>Para matrices numéricas las operaciones aritméticas habituales se aplican elemento a elemento. Si las dimensiones de las matrices son distintas se produce un error.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de operaciones aritméticas elemento a elemento con matrices numéricas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb227"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb227-1"><a href="#cb227-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
@@ -1547,7 +1552,7 @@ f3  9  6</code></pre>
 <section id="multiplicación-de-matrices" class="level4" data-number="3.4.8.2">
 <h4 data-number="3.4.8.2" class="anchored" data-anchor-id="multiplicación-de-matrices"><span class="header-section-number">3.4.8.2</span> Multiplicación de matrices</h4>
 <p>Para multiplicar dos matrices numéricas se utiliza el operador <code>%*%</code>. Si el número de columnas de la primera matriz no es igual que el número de filas de la segunda se produce un error.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos del producto de dos matrices numéricas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb235"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb235-1"><a href="#cb235-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
@@ -1575,7 +1580,7 @@ f3  9  6</code></pre>
 <ul>
 <li><code>det(x)</code>: Devuelve el determinante de la matriz <code>x</code>. Si <code>x</code> no es una matriz numérica cuadrada produce un error.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb239"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb239-1"><a href="#cb239-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
@@ -1592,7 +1597,7 @@ f3  9  6</code></pre>
 <ul>
 <li><code>solve(x)</code>: Devuelve la matriz inversa de la matriz <code>x</code>. Si <code>x</code> no es una matriz numérica cuadrada produce un error. Si la matriz no es invertible por tener determinante nulo también se obtiene un error.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb241"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb241-1"><a href="#cb241-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
@@ -1618,7 +1623,7 @@ f3  9  6</code></pre>
 <ul>
 <li><code>eigen(x)</code>: Devuelve una lista con los autovalores y los autovectores de la matriz <code>x</code>. Para acceder a los autovalores se utiliza el nombre <code>values</code> y para acceder a los autovectores se utiliza el nombre <code>vectors</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada. Si <code>x</code> no es una matriz numérica cuadrada produce un error.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb245"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb245-1"><a href="#cb245-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
@@ -1648,7 +1653,7 @@ f3  9  6</code></pre>
 <ul>
 <li><code>data.frame(nombrex = x, nombrey = y, ...)</code>: Devuelve el data frame con columnas los vectores <code>x</code>, <code>y</code>, etc. y nombres de columna <code>nombrex</code>, <code>nombrey</code>, etc.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de la creación de data frames.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb249"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb249-1"><a href="#cb249-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
@@ -1677,7 +1682,7 @@ f3  9  6</code></pre>
 <li><code>read.csv(f)</code>: Devuelve el data frame que se genera a partir de los datos del fichero csv <code>f</code>. Cada fila del fichero csv se corresponde con una fila del data frame y por defecto utiliza la coma <code>,</code> parara separar los datos de las columnas y punto <code>.</code> como separador de decimales de los datos numéricos. Los nombres de las columnas se obtienen automáticamente a partir de la primera fila del fichero.</li>
 <li><code>read.csv2(f)</code>: Funciona igual que la función anterior pero utiliza como separador de columnas el punto y coma <code>;</code> y como separador de decimales la coma <code>,</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestra un ejemplo de creación de un data frame a partir de un fichero csv.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb255"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb255-1"><a href="#cb255-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
@@ -1717,7 +1722,7 @@ f3  9  6</code></pre>
 <section id="acceso-a-los-elementos-de-un-data-frame" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="acceso-a-los-elementos-de-un-data-frame"><span class="header-section-number">3.5.3</span> Acceso a los elementos de un data frame</h3>
 <p>Puesto que un data frame es una lista, se puede acceder a sus elementos como se accede a los elementos de una lista utilizando índices. Con corchetes simples <code>[ ]</code> se obtiene siempre un data frame, mientras que con corchetes dobles <code>[[ ]]</code> o <code>$</code> se obtiene un vector. Pero también se puede acceder a los elementos de un data frame como si fuese una matriz, indicando un par de índices para las filas y las columnas respectivamente.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de un data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb257"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb257-1"><a href="#cb257-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
@@ -1760,7 +1765,7 @@ f3  9  6</code></pre>
 <li><code>tail(df, n)</code>: Devuelve un data frame con las <code>n</code> últimas filas del data frame <code>df</code>.</li>
 </ul>
 <p>Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de acceso a las primeras o últimas filas de un data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb267"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb267-1"><a href="#cb267-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>, <span class="at">y =</span> letters) <span class="co"># letters es un vector predefinido con las letras del abecedario.</span></span>
@@ -1783,7 +1788,7 @@ f3  9  6</code></pre>
 <section id="modificación-de-los-elementos-de-un-data-frame" class="level3" data-number="3.5.4">
 <h3 data-number="3.5.4" class="anchored" data-anchor-id="modificación-de-los-elementos-de-un-data-frame"><span class="header-section-number">3.5.4</span> Modificación de los elementos de un data frame</h3>
 <p>Para modificar uno o varios elementos de un data frame basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb271"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb271-1"><a href="#cb271-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
@@ -1812,7 +1817,7 @@ f3  9  6</code></pre>
 <li><code>rbind(df, x)</code>: Devuelve el data frame que resulta de añadir nuevas filas al data frame <code>df</code> con los elementos de la lista <code>x</code>.</li>
 <li><code>cbind(df, nombrex = x)</code>: Devuelve el data frame que resulta de añadir nuevas columnas al data frame <code>df</code> con los elementos del vector <code>x</code> con nombre <code>nombrex</code>.</li>
 </ul>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a un data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb275"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb275-1"><a href="#cb275-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
@@ -1846,7 +1851,7 @@ f3  9  6</code></pre>
 <section id="eliminar-filas-y-columnas-de-un-data-frame" class="level3" data-number="3.5.6">
 <h3 data-number="3.5.6" class="anchored" data-anchor-id="eliminar-filas-y-columnas-de-un-data-frame"><span class="header-section-number">3.5.6</span> Eliminar filas y columnas de un data frame</h3>
 <p>Para eliminar una columna de un data frame basta con acceder a la columna y asignarle el valor <code>NULL</code>, mientras que para eliminar una fila basta con acceder a la fila con índice negativo.</p>
-<div class="example">
+<div id="exm">
 <p>A continuación se muestran varios ejemplos de eliminación de filas y columnas de un data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb281"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb281-1"><a href="#cb281-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>), créditos <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span>

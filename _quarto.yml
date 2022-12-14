@@ -1,6 +1,9 @@
 project:
   type: book
   output-dir: "docs"
+  preview:
+    port: 1313
+    browser: false
 
 website:
   favicon: img/logos/favicon.ico
@@ -22,8 +25,8 @@ book:
   downloads: [pdf, epub]
   favicon: "img/logos/favicon.ico"
   sidebar:
-    style: docked 
-    background: light
+    # style: docked 
+    # background: light
     logo: img/logos/aprendeconalf.png
     tools:
       - icon: house-fill
@@ -44,6 +47,7 @@ book:
     - 09-contrastes-cuantitativos.qmd
     - 10-contrastes-cualitativos.qmd
     - 11-regresion.qmd
+    - 20-referencias.qmd
     
 #bibliography: references.bib
 
