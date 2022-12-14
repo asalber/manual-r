@@ -1,0 +1,26 @@
+---
+title: Referencias
+lang: es
+---
+
+## Sitos web
+
+- [CRAN](https://cran.r-project.org/) Sitio principal de R.
+- [Posit](https://posit.co/) Sitio web de Posit (antiguo RStudio).
+
+## Libros y tutoriales
+
+- [Exploratory Data Analysis with R](https://bookdown.org/rdpeng/exdata/)
+
+## Chuletas
+
+- [dplyr](https://github.com/rstudio/cheatsheets/raw/main/data-transformation.pdf) Preprocesamiento y transformación de datos.
+- [forcats](https://github.com/rstudio/cheatsheets/raw/main/factors.pdf) Operaciones con datos categóricos (factores).
+- [ggplot2](https://github.com/rstudio/cheatsheets/raw/main/data-visualization-2.1.pdf) Visualización de datos.
+- [lubridate](https://github.com/rstudio/cheatsheets/raw/main/lubridate.pdf) Operaciones con fechas y datos temporales.
+- [stringr](https://github.com/rstudio/cheatsheets/raw/main/strings.pdf) Operaciones con cadenas.
+- [purrr](https://github.com/rstudio/cheatsheets/raw/main/purrr.pdf) Programación funcional. Aplicación de funciones a los elementos de listas y vectores.
+- [R Markdown](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf) Creación de informes con código de R reproducible en formato markdown.
+- [RStudio IDE](https://github.com/rstudio/cheatsheets/raw/main/rstudio-ide.pdf) Entorno de desarrollo RStudio.
+- [Shiny](https://github.com/rstudio/cheatsheets/raw/main/shiny.pdf) Creación de aplicaciones interactivas con R.
+
