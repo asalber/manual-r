@@ -33,9 +33,33 @@ Estos paquetes están diseñados bajo una misma filosofía por lo interactúan y
 
 ## Datos limpios y tibbles
 
-L
+El paquete `tibble` define la estructura de datos _tibble_ que es similiar a los data frames, pero optimizada, ya que realiza una carga en memoria y evaluación perezosa, lo que hace más eficiente el manejo de grandes volúmenes de datos estructurados en forma de tabla. Los tibbles, además, suelen dar más información sobre el contenido y la estructura de los datos, así como de incoherencias en los datos. 
+
+Los tibbles nunca cambian el tipo de los datos (por ejemplo de cadenas a factores), nunca cambian los nombres de las variables, ni crean nombres de filas, como suelen hacer los data frames.
+
+Aunque los paquetes de `tidyverse` trabajan perfectamente con data frames, están optimizados para trabajar con tibbles.
+
+Para convertir un data frame en un tibble se utiliza la función 
+
+- `as_tibble(df)`: Convierte el data frame `df` en un tibble.
+
+:::{#exm-creacion-tibble}
+```{r}
+library(tibble)
+df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
+df
+as_tibble(df)
+```
+:::
+
+Al igual que los data frames, las columnas de los tibbles son vectores cuyos elementos son del mismo tipo, de manera que suelen representar variables en los estudios estadísticos, mientras que las filas representan individuos. No obstante, existen dos formas habituales de disponer los datos de un estudio en un data frame o un tibble: formato ancho y formato largo.
+
+![Formatos de un data frame](img/05-preprocesamiento/formatos-dataframe.png)
+
+La mayoría de los paquetes de `tidyverse` asumen que los datos del data frame o tibble están en formado largo (_tidy_), lo que significa que las columnas del data frame representan variables y las filas observaciones, de manera que cada dato pertenece a una variable y una observación única. Las variables (columnas) contienen valores que miden la misma característica o atributo (edad, estatura, etc.) en cada unidad experimental. Una observación (fila) contiene los valores medidos en la misma unidad experimental (una persona, un día, etc.) en todos atributos estudiados.
 
 ## Creación de nuevas variables
+
 
 
 ## Selección de variables

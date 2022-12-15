@@ -93,7 +93,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06-preprocesamiento.html" rel="next">
 <link href="./04-estructuras-control.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -233,41 +232,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./05-funciones.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07-graficos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-contrastes-cuantitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-contrastes-cualitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cualitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11-regresion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./20-referencias.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Referencias</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -321,24 +285,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="definición-y-llamada-a-funciones" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="definición-y-llamada-a-funciones"><span class="header-section-number">5.1</span> Definición y llamada a funciones</h2>
 <p>Para definir una función se utiliza la siguiente estructura de código:</p>
-<pre><code>nombre.funcion &lt;- function (parámetros) {
-  código
-}</code></pre>
+<blockquote class="blockquote">
+<p><em><code>nombre.funcion</code></em> <code>&lt;- function (</code><em><code>parámetros</code></em><code>) {</code>   <em><code>&lt;código&gt;</code></em><br>
+<code>}</code></p>
+</blockquote>
 <p>El código que va entre llaves se conoce como <em>cuerpo de la función</em>.</p>
 <p>Para llamar a la función y que se ejecute el código de su cuerpo hay que utilizar el nombre de la función y a continuación los valores pasados a sus parámetros entre paréntesis.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de creación y llamada a una función.</p>
+<div id="exm-creacion-funcion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.1 </strong></span>A continuación se muestra un ejemplo de creación y llamada a una función.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la función</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"¡Hola!"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(saludo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la función</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"¡Hola!"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(saludo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "function"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamada a la función</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamada a la función</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "¡Hola!"</code></pre>
 </div>
@@ -349,15 +314,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="5.2" class="anchored" data-anchor-id="parámetros-y-argumentos-de-una-función"><span class="header-section-number">5.2</span> Parámetros y argumentos de una función</h2>
 <p>Una función puede recibir valores cuando se invoca a través de unas variables conocidas como <em>parámetros</em> que se definen entre paréntesis en la declaración de la función. En el cuerpo de la función se pueden usar estos parámetros como si fuesen variables.</p>
 <p>Los valores que se pasan a la función en una llamada o invocación concreta de ella se conocen como <em>argumentos</em> y se asocian a los parámetros de la declaración de la función.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de una función con parámetros.</p>
+<div id="exm-funcion-con-parametros" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.2 </strong></span>A continuación se muestra un ejemplo de una función con parámetros.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función con un parámetro</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre) {</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"¡Hola "</span>, nombre, <span class="st">"!"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamada a la función con un argumento</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>(<span class="st">"Alf"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función con un parámetro</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"¡Hola "</span>, nombre, <span class="st">"!"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamada a la función con un argumento</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>(<span class="st">"Alf"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "¡Hola Alf!"</code></pre>
 </div>
@@ -371,21 +336,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Argumentos posicionales</strong>: Se asocian a los parámetros de la función en el mismo orden que aparecen en la definición de la función.</li>
 <li><strong>Argumentos nominales</strong>: Se indica explícitamente el nombre del parámetro al que se asocia un argumento de la forma <code>parametro = argumento</code>. En este caso el orden de los argumentos no importa.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de pasos de argumentos posicionales y nominales.</p>
+<div id="exm-paso-parametros-funcion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.3 </strong></span>A continuación se muestran varios ejemplos de pasos de argumentos posicionales y nominales.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función con un argumento por defecto</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo del área de un triángulo de base 4 y altura 3</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso de argumentos por posición. </span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(<span class="dv">4</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función con un argumento por defecto</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo del área de un triángulo de base 4 y altura 3</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso de argumentos por posición. </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(<span class="dv">4</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso de argumentos por nombre</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(<span class="at">altura =</span> <span class="dv">3</span>, <span class="at">base =</span> <span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso de argumentos por nombre</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(<span class="at">altura =</span> <span class="dv">3</span>, <span class="at">base =</span> <span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
@@ -395,14 +360,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="argumentos-por-defecto" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="argumentos-por-defecto"><span class="header-section-number">5.2.2</span> Argumentos por defecto</h3>
 <p>En la definición de una función se puede asignar a cada parámetro un argumento por defecto, de manera que si se invoca la función sin proporcionar ningún argumento para ese parámetro, se utiliza el argumento por defecto.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de definición de una función con un argumento por defecto.</p>
+<div id="exm-argumento-defecto-funcion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.4 </strong></span>A continuación se muestra un ejemplo de definición de una función con un argumento por defecto.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre, <span class="at">lenguaje =</span> <span class="st">"R"</span>) {</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"¡Hola "</span>, nombre, <span class="st">"! ¡Bienvenido a "</span>, lenguaje, <span class="st">"!"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamada a la función con un argumento</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>(<span class="st">"Alf"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre, <span class="at">lenguaje =</span> <span class="st">"R"</span>) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"¡Hola "</span>, nombre, <span class="st">"! ¡Bienvenido a "</span>, lenguaje, <span class="st">"!"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamada a la función con un argumento</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>(<span class="st">"Alf"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "¡Hola Alf! ¡Bienvenido a R!"</code></pre>
 </div>
@@ -413,42 +378,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="retorno-de-una-función" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="retorno-de-una-función"><span class="header-section-number">5.3</span> Retorno de una función</h2>
 <p>Una función puede devolver un objeto de cualquier tipo tras su invocación. Para ello se utiliza la función <code>return()</code>, indicando entre paréntesis el valor que devuelve la función. El retorno suele realizarse al final del cuerpo de la función, porque con él finaliza la ejecución de la función y se devuelve el control de la ejecución al punto desde donde se llamó a la función, de manera que cualquier instrucción de cuerpo que vaya después no se ejecutará. Si no se indica ningún objeto, la función devolverá el valor de la última expresión calculada en el cuerpo de la función.</p>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de retornos de funciones.</p>
+<div id="exm-retorno-funciones" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.5 </strong></span>A continuación se muestran varios ejemplos de retornos de funciones.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función que devuelve el area de un triángulo</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(<span class="dv">4</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función que devuelve el area de un triángulo</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(<span class="dv">4</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función que devuelve el valor absoluto de un número</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>valor.absoluto <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">valor.absoluto</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función que devuelve el valor absoluto de un número</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>valor.absoluto <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">valor.absoluto</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">valor.absoluto</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">valor.absoluto</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
 </div>
 <p>Para devolver más de un valor se pueden utilizar estructuras de datos como vectores, listas, matrices o data frames.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de una función de devuelve una lista.</p>
+<div id="exm-retorno-funcion-lista" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.6 </strong></span>A continuación se muestra un ejemplo de una función de devuelve una lista.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>circulo <span class="ot">&lt;-</span> <span class="cf">function</span>(radio) {</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">perimetro =</span> <span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> radio, <span class="at">area =</span> pi <span class="sc">*</span> radio <span class="sc">^</span> <span class="dv">2</span>))</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">circulo</span>(<span class="dv">5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>circulo <span class="ot">&lt;-</span> <span class="cf">function</span>(radio) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">perimetro =</span> <span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> radio, <span class="at">area =</span> pi <span class="sc">*</span> radio <span class="sc">^</span> <span class="dv">2</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">circulo</span>(<span class="dv">5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$perimetro
 [1] 31.41593
@@ -456,11 +421,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 $area
 [1] 78.53982</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">circulo</span>(<span class="dv">5</span>)<span class="sc">$</span>perimetro</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">circulo</span>(<span class="dv">5</span>)<span class="sc">$</span>perimetro</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 31.41593</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">circulo</span>(<span class="dv">5</span>)<span class="sc">$</span>area</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">circulo</span>(<span class="dv">5</span>)<span class="sc">$</span>area</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 78.53982</code></pre>
 </div>
@@ -478,52 +443,52 @@ $area
 <div class="cell">
 
 </div>
-<div class="example">
-<p>A continuación se muestra un ejemplo acceso al entorno global de un programa.</p>
+<div id="exm-acceso-entorno-global" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.7 </strong></span>A continuación se muestra un ejemplo acceso al entorno global de un programa.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "area.triangulo" "x"              "y"             </code></pre>
 </div>
 </div>
 </div>
 <p>Como se puede observar en el ejemplo anterior, los parámetros de la función <code>base</code> y <code>altura</code> no aparecen en el entorno global. En R, cuando se ejecuta una función se crea un nuevo entorno hijo dentro del entorno al que pertenece la función. Durante la ejecución de la función este pasa a ser el entorno activo y cuando termina la ejecución de la función deja de serlo y vuelve a activarse el entorno padre desde donde se llamó a la función.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de activación del entorno de una función.</p>
+<div id="exm-activacion-entorno-funcion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.8 </strong></span>A continuación se muestra un ejemplo de activación del entorno de una función.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Entorno de la función area.triangulo"</span>) </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">environment</span>())</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">ls</span>())</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Entorno fuera de la función"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Entorno de la función area.triangulo"</span>) </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">environment</span>())</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">ls</span>())</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Entorno fuera de la función"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Entorno fuera de la función"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "area.triangulo" "x"              "y"             </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(x, y)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">area.triangulo</span>(x, y)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Entorno de la función area.triangulo"
-&lt;environment: 0x555ec5b0c600&gt;
+&lt;environment: 0x5601d8563f38&gt;
 [1] "altura" "base"  </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -534,14 +499,14 @@ $area
 <p>Los parámetros y los objetos (funciones, variables, etc.) definidos dentro de una función son de <em>ámbito local</em>, mientras que los objetos definidos fuera de ella en alguno de los entornos ancestros son de <em>ámbito global</em>.</p>
 <p>Tanto los parámetros como las variables del ámbito local de una función sólo están accesibles durante la ejecución de la función, es decir, cuando termina la ejecución de la función estas variables desaparecen y no son accesibles desde fuera de la función.</p>
 <p>Cuando una función declara un objeto (función, variable, etc.) que ya existe en alguno de los entornos ancestros con ámbito global, durante la ejecución de la función el objeto global queda eclipsado por el local y no es accesible hasta que finaliza la ejecución de la función.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de eclipse de una variable de ámbito global por otra de ámbito local.</p>
+<div id="exm-eclise-variables-globales-por-locales" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.9 </strong></span>A continuación se muestra un ejemplo de eclipse de una variable de ámbito global por otra de ámbito local.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lenguaje <span class="ot">=</span> <span class="st">"Python"</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(lenguaje) {</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Bienvenido a"</span>, lenguaje))  </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>(<span class="st">"R"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>lenguaje <span class="ot">=</span> <span class="st">"Python"</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(lenguaje) {</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Bienvenido a"</span>, lenguaje))  </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saludo</span>(<span class="st">"R"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Bienvenido a R"</code></pre>
 </div>
@@ -549,14 +514,14 @@ $area
 <p>Obsérvese cómo al ejecutar la función anterior, la variable <code>lenguaje</code> queda inaccesible al tener la función un parámetro con el mismo nombre.</p>
 </div>
 <p>Las variables globales están accesibles siempre que no sean eclipsadas por otras con el mismo nombre de ámbito local. Si embargo, cuando se intenta asignar un valor a una variable global en el ámbito local, se crea una nueva variable local. Para asignar valores a variables globales en el ámbito local se tiene que utilizar el operador de superasignación <code>&lt;&lt;-</code>. Cuando se utiliza este operador para asignar un valor a una variable, R busca la variable entorno padre, y si no existe continua con la búsqueda en los entornos ancestros hasta llegar a entorno global. Si la búsqueda tiene éxito, asigna el nuevo valor a la variable global, mientras que si no tiene éxito se crea una nueva variable de ámbito local y se le asigna el valor.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo del uso del operador de superasignación.</p>
+<div id="exm-superasignacion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.10 </strong></span>A continuación se muestra un ejemplo del uso del operador de superasignación.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  lenguaje <span class="ot">&lt;&lt;-</span> <span class="st">"R"</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">paste</span>(<span class="st">"Bienvenido a"</span>, lenguaje))</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>lenguaje</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  lenguaje <span class="ot">&lt;&lt;-</span> <span class="st">"R"</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">paste</span>(<span class="st">"Bienvenido a"</span>, lenguaje))</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>lenguaje</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Python"</code></pre>
 </div>
@@ -577,27 +542,27 @@ $area
 <li><code>formals(f)</code>: Devuelve la lista de parámetros de la función <code>f</code>.</li>
 <li><code>environment(f)</code>: Devuelve el entorno de la función <code>f</code>.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestra un ejemplo de acceso a los componentes de una función.</p>
+<div id="exm-componentes-funcion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.11 </strong></span>A continuación se muestra un ejemplo de acceso a los componentes de una función.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la función</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(area.triangulo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la función</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  base <span class="sc">*</span> altura <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(area.triangulo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{
     base * altura/2
 }</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">formals</span>(area.triangulo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">formals</span>(area.triangulo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$base
 
 
 $altura</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>(saludo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>(saludo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
@@ -609,14 +574,14 @@ $altura</code></pre>
 <p>Una función recursiva es una función que en su cuerpo contiene una llama a sí misma.</p>
 <p>La recursión es una práctica común en la mayoría de los lenguajes de programación ya que permite resolver las tareas recursivas de manera más natural.</p>
 <p>Para garantizar el final de una función recursiva, las sucesivas llamadas tienen que reducir el grado de complejidad del problema, hasta que este pueda resolverse directamente sin necesidad de volver a llamar a la función. De lo contrario la recursión no tendría fin y nunca terminaría la ejecución de la función.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de una función recursiva.</p>
+<div id="exm-funcion-recursiva" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.12 </strong></span>A continuación se muestra un ejemplo de una función recursiva.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>factorial <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="fu">return</span>(n)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="fu">return</span>(n <span class="sc">*</span> <span class="fu">factorial</span>(n <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>factorial <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="fu">return</span>(n)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="fu">return</span>(n <span class="sc">*</span> <span class="fu">factorial</span>(n <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24</code></pre>
 </div>
@@ -626,10 +591,10 @@ $altura</code></pre>
 <section id="paquetes" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="paquetes"><span class="header-section-number">5.7</span> Paquetes</h2>
 <p>Para facilitar la reutilización código y datos R permite la creación de paquetes que pueden importarse desde otros programas. Un paquete es una colección de código, funciones y datos que se almacenan en un fichero dentro de un directorio llamado <code>library</code> en el entorno de R. Para ver la ubicación de este directorio dentro del sistema de archivos local se puede utilizar la función <code>.libPaths()</code>.</p>
-<div class="exmple">
-<p>A continuación se muestra un ejemplo de la ubicación del directorio <code>library</code>.</p>
+<div id="exm-ubiacion-biblioteca-paquetes" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.13 </strong></span>A continuación se muestra un ejemplo de la ubicación del directorio <code>library</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/home/alf/R/x86_64-pc-linux-gnu-library/4.2"
 [2] "/usr/lib/R/library"                         </code></pre>
@@ -653,21 +618,21 @@ $altura</code></pre>
 <ul>
 <li><code>install.packages(x)</code>: Obtiene el paquete con el nombre <code>x</code> desde un servidor con el repositorio CRAN y lo instala localmente en el directorio <code>library</code> del entorno de R. Se puede instalar más de un paquete a la vez pasando un vector con los nombres de los paquetes.</li>
 </ul>
-<div class="exmple">
-<p>A continuación se muestra un ejemplo de instalación de paquetes desde el repositorio CRAN.</p>
+<div id="exm-instalacion-paquetes" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.14 </strong></span>A continuación se muestra un ejemplo de instalación de paquetes desde el repositorio CRAN.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="instalación-desde-otros-repositorios-github-gitlab-etc." class="level4" data-number="5.7.1.2">
 <h4 data-number="5.7.1.2" class="anchored" data-anchor-id="instalación-desde-otros-repositorios-github-gitlab-etc."><span class="header-section-number">5.7.1.2</span> Instalación desde otros repositorios (GitHub, GitLab, etc.)</h4>
 <p>El paquete <code>remotes</code> incorpora funciones para instalar paquetes alojados en otros repositorios habituales para el desarrollo de software como <a href="https://github.com/">GitHub</a>, <a href="httpsb://gitlab.com/">GitLab</a> o <a href="https://www.bioconductor.org/">Bioconductor</a>.</p>
-<div class="exmple">
-<p>A continuación se muestra un ejemplo de instalación de paquetes desde GitHub.</p>
+<div id="exm-instalacion-paquetes-github" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.15 </strong></span>A continuación se muestra un ejemplo de instalación de paquetes desde GitHub.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rkward-community/rk.Teaching"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rkward-community/rk.Teaching"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -675,7 +640,7 @@ $altura</code></pre>
 <h4 data-number="5.7.1.3" class="anchored" data-anchor-id="instalación-manual"><span class="header-section-number">5.7.1.3</span> Instalación manual</h4>
 <p>Finalmente es posible instalar un paquete manualmente a partir de su código fuente. Para ello hay previamente hay que descargar el código fuente del paquete en un fichero comprimido en formato zip y después utilizar la siguiente función:</p>
 <ul>
-<li><code>ìnstall.packages(x, repos = NULL, type = "source")</code>: Instala el paquete ubicado en la ruta <code>x</code> del sistema de archivos local en la librería <code>library</code>.</li>
+<li><code>install.packages(x, repos = NULL, type = "source")</code>: Instala el paquete ubicado en la ruta <code>x</code> del sistema de archivos local en la librería <code>library</code>.</li>
 </ul>
 <p>Una vez instalado un paquete ya está disponible para cargarlo en cualquier sesión de trabajo de R y no es necesario volver a instalarlo.</p>
 </section>
@@ -686,10 +651,10 @@ $altura</code></pre>
 <ul>
 <li><code>library(x)</code>: Ejecuta el código del paquete <code>x</code> en la sesión de trabajo activa.</li>
 </ul>
-<div class="exmple">
-<p>A continuación se muestra un ejemplo de carga de un paquete.</p>
+<div id="exm-carga-paquetes" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.16 </strong></span>A continuación se muestra un ejemplo de carga de un paquete.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"remotes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"remotes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -969,9 +934,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06-preprocesamiento.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

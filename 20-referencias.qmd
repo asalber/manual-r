@@ -5,7 +5,8 @@ lang: es
 
 ## Sitos web
 
-- [CRAN](https://cran.r-project.org/) Sitio principal de R.
+- [R project](https://www.r-project.org/) Sitio oficial de R.
+- [CRAN](https://cran.r-project.org/) Repositorio principal de paquetes de R.
 - [Posit](https://posit.co/) Sitio web de Posit (antiguo RStudio).
 
 ## Libros y tutoriales

@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -233,36 +233,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./05-funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07-graficos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-contrastes-cuantitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-contrastes-cualitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cualitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11-regresion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -280,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#bucles" id="toc-bucles" class="nav-link" data-scroll-target="#bucles"><span class="toc-section-number">4.2</span>  Bucles</a>
   <ul class="collapse">
   <li><a href="#bucles-iterativos-for" id="toc-bucles-iterativos-for" class="nav-link" data-scroll-target="#bucles-iterativos-for"><span class="toc-section-number">4.2.1</span>  Bucles iterativos (<code>for</code>)</a></li>
-  <li><a href="#bucles-condicionales-while" id="toc-bucles-condicionales-while" class="nav-link" data-scroll-target="#bucles-condicionales-while"><span class="toc-section-number">4.2.2</span>  Bucles condicionales <code>while</code></a></li>
+  <li><a href="#bucles-condicionales-while" id="toc-bucles-condicionales-while" class="nav-link" data-scroll-target="#bucles-condicionales-while"><span class="toc-section-number">4.2.2</span>  Bucles condicionales (<code>while</code>)</a></li>
   <li><a href="#la-instrucción-break" id="toc-la-instrucción-break" class="nav-link" data-scroll-target="#la-instrucción-break"><span class="toc-section-number">4.2.3</span>  La instrucción <code>break</code></a></li>
   <li><a href="#la-instrucción-next" id="toc-la-instrucción-next" class="nav-link" data-scroll-target="#la-instrucción-next"><span class="toc-section-number">4.2.4</span>  La instrucción <code>next</code></a></li>
   </ul></li>
@@ -324,18 +294,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>}</code></p>
 </blockquote>
 <p>Si el resultado de evaluar la expresión <code>&lt;exp&gt;</code> es <code>TRUE</code> entonces se ejecuta el código <code>&lt;código&gt;</code>, mientras que si es <code>FALSE</code> no.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/04-estructuras-control/condicional-simple.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Diagrama de flujo de la estructura condicional simple</figcaption><p></p>
+</figure>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/condicional-simple.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="img/04-estructuras-control/condicional-simple.png" class="img-fluid figure-img" style="width:70.0%"></p>
 <p></p><figcaption class="figure-caption">Diagrama de flujo de la estructura condicional simple</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="example">
-<p>A continuación se muestra un ejemplo de estructura condicional con <code>if</code>.</p>
+<div id="exm-condicional-simple" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.1 </strong></span>A continuación se muestra un ejemplo de estructura condicional con <code>if</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -353,18 +329,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>}</code></p>
 </blockquote>
 <p>En este caso, si la evaluación de la condición es <code>TRUE</code> se ejecuta el código <code>&lt;código 1&gt;</code> y si es <code>FALSE</code> se ejecuta el código <code>&lt;código 2&gt;</code>.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/condicional-doble.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="img/04-estructuras-control/condicional-doble.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Diagrama de flujo de la estructura condicional doble</figcaption><p></p>
 </figure>
 </div>
-</div>
-</div>
-<div class="example">
-<p>A continuación se muestra un ejemplo de estructura condicional con <code>if</code> y <code>else</code>.</p>
+<div id="exm-condicional-doble" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.2 </strong></span>A continuación se muestra un ejemplo de estructura condicional con <code>if</code> y <code>else</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nota <span class="ot">&lt;-</span> <span class="fl">8.5</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (nota <span class="sc">&lt;</span> <span class="dv">5</span>){</span>
@@ -389,18 +361,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>}</code></p>
 </blockquote>
 <p>Cuando se encadenan múltiples condiciones de esta forma, solamente se ejecuta el bloque de código asociado a la primera condición cuya evaluación sea <code>TRUE</code>. El último bloque de código solamente se ejecuta si todas las condiciones son falsas.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/condicional-multiple.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="img/04-estructuras-control/condicional-multiple.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Diagrama de flujo de la estructura condicional múltiple</figcaption><p></p>
 </figure>
 </div>
-</div>
-</div>
-<div class="example">
-<p>A continuación se muestra un ejemplo de estructura condicional múltiple.</p>
+<div id="exm-condicional-multiple" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.3 </strong></span>A continuación se muestra un ejemplo de estructura condicional múltiple.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nota <span class="ot">&lt;-</span> <span class="fl">8.5</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (nota <span class="sc">&lt;</span> <span class="dv">5</span>){</span>
@@ -424,8 +392,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>switch(x, l)</code>: Ejecuta el código del valor de la lista <code>l</code> cuyo nombre asociado coincide con el resultado de evaluar la expresión <code>x</code>. Si el resultado de evaluar <code>x</code> no es ningún nombre de los elementos de la lista devuelve <code>NULL</code>.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestra un ejemplo de uso de la función <code>switch</code>.</p>
+<div id="exm-condicional-switch" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.4 </strong></span>A continuación se muestra un ejemplo de uso de la función <code>switch</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tipo.iva <span class="ot">&lt;-</span> <span class="st">"reducido"</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>precio <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
@@ -449,18 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <em><code>&lt;código&gt;</code></em><br>
 <code>}</code></p>
 </blockquote>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/bucle-for.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p><img src="img/04-estructuras-control/bucle-for.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Diagrama de flujo de un bucle iterativo</figcaption><p></p>
 </figure>
 </div>
-</div>
-</div>
-<div class="example">
-<p>A continuación se muestra varios ejemplos de uso del bucle <code>for</code>.</p>
+<div id="exm-bucle-iterarivo" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.5 </strong></span>A continuación se muestra varios ejemplos de uso del bucle <code>for</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>asignaturas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Programación"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> asignaturas) {</span>
@@ -487,8 +451,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>seq_along(x)</code>: que devuelve un vector con los enteros desde 1 hasta el número de elementos de la secuencia <code>x</code>.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestra un ejemplo de bucle <code>for</code> que recorre los elementos de un vector por posición.</p>
+<div id="exm-bucle-iterativo-posicion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.6 </strong></span>A continuación se muestra un ejemplo de bucle <code>for</code> que recorre los elementos de un vector por posición.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>asignaturas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Programación"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(asignaturas)){</span>
@@ -502,8 +466,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Los bucles iterativos se utilizan habitualmente para recorrer estructuras de una dimensión como los vectores y las listas, donde se sabe de antemano el número de elementos que contiene y, por tanto, el número de iteraciones del bucle. No obstante, también se pueden recorrer estructuras de más de una dimensión, como por ejemplo matrices, utilizando varios bucles <code>for</code> anidados.</p>
-<div class="example">
-<p>A continuación se muestra varios ejemplos de dos bucles <code>for</code> anidados para recorrer los elementos de una matriz.</p>
+<div id="exm-bucles-anidados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.7 </strong></span>A continuación se muestra varios ejemplos de dos bucles <code>for</code> anidados para recorrer los elementos de una matriz.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)) {</span>
@@ -523,7 +487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="bucles-condicionales-while" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="bucles-condicionales-while"><span class="header-section-number">4.2.2</span> Bucles condicionales <code>while</code></h3>
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="bucles-condicionales-while"><span class="header-section-number">4.2.2</span> Bucles condicionales (<code>while</code>)</h3>
 <p>Los bucles condicionales repiten un bloque de código mientras se cumpla una condición. Comienzan con la palabra reservada <code>while</code> y llevan asociada una expresión lógica, de manera que mientras la evaluación de la expresión lógica sea <code>TRUE</code> se repite la ejecución del bloque de código que contiene.</p>
 <blockquote class="blockquote">
 <p><code>while (</code><em><code>&lt;condición&gt;</code></em><code>) {</code><br>
@@ -531,18 +495,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>}</code></p>
 </blockquote>
 <p>La expresión lógica <code>&lt;condición&gt;</code> se evalúa antes de ejecutar el bloque de código y solo se ejecuta el <code>&lt;código&gt;</code> si el resultado de la evaluación es <code>TRUE</code>. Obsérvese que cuando el flujo de ejecución del programa llega al bucle <code>while</code> si la condición no es cierta, el código no se ejecuta ni tan siquiera una vez.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/bucle-while.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="img/04-estructuras-control/bucle-while.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Diagrama de flujo de un bucle condicional</figcaption><p></p>
 </figure>
 </div>
-</div>
-</div>
-<div class="example">
-<p>A continuación se muestra un ejemplo de bucle <code>while</code>.</p>
+<div id="exm-bucle-condicional" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.8 </strong></span>A continuación se muestra un ejemplo de bucle <code>while</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&gt;=</span> <span class="dv">0</span>) {</span>
@@ -563,8 +523,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="la-instrucción-break" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="la-instrucción-break"><span class="header-section-number">4.2.3</span> La instrucción <code>break</code></h3>
 <p>La instrucción <code>break</code> se utiliza para detener un bucle y salir de él, tanto en bucles iterativos como en bucles condicionales. Normalmente se suele utilizar esta instrucción cuando se cumple una determinada condición en bloque de código del bucle y se decide parar su ejecución y salir del bucle.</p>
-<div class="example">
-<p>A continuación se muestra un ejemplo de uso de la instrucción <code>break</code>.</p>
+<div id="exm-salida-bucle-break" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 4.9 </strong></span>A continuación se muestra un ejemplo de uso de la instrucción <code>break</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bucle que recorre los números enteros del -2 al 2 pero termina al llegar al 0.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span>) {</span>
@@ -583,7 +543,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="la-instrucción-next" class="level3" data-number="4.2.4">
 <h3 data-number="4.2.4" class="anchored" data-anchor-id="la-instrucción-next"><span class="header-section-number">4.2.4</span> La instrucción <code>next</code></h3>
 <p>La instrucción <code>next</code> se utiliza para interrumpir la ejecución del bloque de código de un bucle, pero en lugar de salir del bucle pasa a la siguiente iteración. Si se trata de un bucle iterativo el iterador pasa al siguiente elemento de la secuencia de iteración y si se trata de un bucle condicional se pasa evaluar de nuevo la condición de repetición.</p>
-<p>:::{#exm} A continuación se muestra un ejemplo de uso de la instrucción <code>next</code>.</p>
+<p>:::{#exm-continuacion-bucle-next} A continuación se muestra un ejemplo de uso de la instrucción <code>next</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bucle que recorre los enteros del 1 al 10 pero solo imprime los números pares.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>

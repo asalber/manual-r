@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -170,41 +170,6 @@ ul.task-list li input[type="checkbox"] {
   <a href="./05-funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07-graficos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-contrastes-cuantitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-contrastes-cualitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cualitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11-regresion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./20-referencias.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Referencias</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -214,7 +179,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#entornos-de-desarrollo" id="toc-entornos-de-desarrollo" class="nav-link active" data-scroll-target="#entornos-de-desarrollo"><span class="toc-section-number">1.1</span>  Entornos de desarrollo</a></li>
+  <li><a href="#instalación-de-r" id="toc-instalación-de-r" class="nav-link active" data-scroll-target="#instalación-de-r"><span class="toc-section-number">1.1</span>  Instalación de R</a></li>
+  <li><a href="#entornos-de-desarrollo" id="toc-entornos-de-desarrollo" class="nav-link" data-scroll-target="#entornos-de-desarrollo"><span class="toc-section-number">1.2</span>  Entornos de desarrollo</a></li>
   </ul>
 </nav>
     </div>
@@ -258,13 +224,18 @@ ul.task-list li input[type="checkbox"] {
 <li>Cuenta con multitud de paquetes para todo tipo de análisis estadísticos y representaciones gráficas, desde los más habituales, hasta los más novedosos y sofisticados que no incluyen otros programas. Los paquetes están organizados y documentados en un <a href="https://cran.r-project.org/">repositorio CRAN</a> (Comprehensive R Archive Network) desde donde pueden descargarse libremente.</li>
 <li>Es programable, lo que permite que el usuario pueda crear fácilmente sus propias funciones o paquetes para análisis de datos específicos. Existen multitud de libros, manuales y tutoriales libres que permiten su aprendizaje e ilustran el análisis estadístico de datos en distintas disciplinas científicas como las Matemáticas, la Física, la Biología, la Psicología, la Medicina, etc.</li>
 </ul>
-<section id="entornos-de-desarrollo" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="entornos-de-desarrollo"><span class="header-section-number">1.1</span> Entornos de desarrollo</h2>
+<section id="instalación-de-r" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="instalación-de-r"><span class="header-section-number">1.1</span> Instalación de R</h2>
+<p>R puede descargarse desde el <a href="https://www.r-project.org/">sitio web oficial de R</a> o desde el repositorio principal de paquetes de R <a href="https://cran.r-project.org/">CRAN</a>. Basta con descargar el archivo de instalación correspondiente al sistema operativo de nuestro ordenador y realizar la instalación como cualquier otro programa.</p>
+<p>El intérprete de R se arranca desde la terminal, aunque en Windows incorpora su propia aplicación, pero es muy básica. En general, para trabajos serios, conviene utilizar un entorno de desarrollo para R.</p>
+</section>
+<section id="entornos-de-desarrollo" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="entornos-de-desarrollo"><span class="header-section-number">1.2</span> Entornos de desarrollo</h2>
 <p>Por defecto el entorno de trabajo de R es en línea de comandos, lo que significa que los cálculos y los análisis se realizan mediante comandos o instrucciones que el usuario teclea en una ventana de texto. No obstante, existen distintas interfaces gráficas de usuario que facilitan su uso, sobre todo para usuarios noveles. Algunas de ellas, como las que se enumeran a continuación, son completos entornos de desarrollo que facilitan la gestión de cualquier proyecto:</p>
 <ul>
-<li><a href="https://www.rstudio.com/">RStudio</a>. Probablemente el entorno de desarrollo más extendido para programar con R ya que incorpora multitud de utilidades para facilitar la programación con R.</li>
-<li><a href="https://rkward.kde.org">RKWard</a>. Es otra otro de los entornos de desarrollo más completos que además incluye a posibilidad de añadir nuevos menús y cuadros de diálogo personalizados.</li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a>. Es un entorno de desarrollo de propósito general ampliamente extendido. Aunque no es un entorno de desarrollo específico para R, incluye una extensión con utilidades que facilitan mucho el desarrollo con R.</li>
+<li><p><a href="https://www.rstudio.com/">RStudio</a>. Probablemente el entorno de desarrollo más extendido para programar con R ya que incorpora multitud de utilidades para facilitar la programación con R.</p></li>
+<li><p><a href="https://rkward.kde.org">RKWard</a>. Es otra otro de los entornos de desarrollo más completos que además incluye a posibilidad de añadir nuevos menús y cuadros de diálogo personalizados.</p></li>
+<li><p><a href="https://code.visualstudio.com/">Visual Studio Code</a>. Es un entorno de desarrollo de propósito general ampliamente extendido. Aunque no es un entorno de desarrollo específico para R, incluye una extensión con utilidades que facilitan mucho el desarrollo con R.</p></li>
 </ul>
 
 

@@ -26,7 +26,7 @@ Para averiguar el tipo de un dato se puede utilizar la siguiente función:
 
 - `class(x)`: Devuelve el tipo del dato `x`.
 
-:::{#exm}
+:::{#exm-tipos-datos}
 A continuación se muestran los tipos de algunos datos.
 ```{r}
 class(3.1415)
@@ -72,7 +72,7 @@ Los siguientes operadores permiten realizar las clásicas operaciones aritmétic
 - `x %% y`: Devuelve el resto de la división entera de `x` e `y`.  
 - `x ^ y`: Devuelve la potencia `x` elevado a `y`.
 
-:::{#exm}
+:::{#exm-operadores-aritmeticos}
 A continuación se muestran varios ejemplos de operaciones aritméticas.
 ```{r}
 2 + 3
@@ -95,7 +95,7 @@ Comparan dos números y devuelven un valor lógico.
 - `x <= y` : Devuelve `TRUE` si el número `x` es menor o igual a que el número `y,` y `FALSE` en caso contrario.
 - `x != y` : Devuelve `TRUE` si el número `x` es distinto del número `y`, y `FALSE` en caso contrario.
 
-:::{#exm}
+:::{#exm-operadores-relacionales}
 A continuación se muestran varios ejemplos de operaciones relacionales.
 ```{r}
 3 == 3
@@ -120,7 +120,7 @@ Existen muchas funciones para cadenas de texto pero las más comunes son:
 - `tolower(c)`: Devuelve la cadena que resulta de convertir la cadena `c` a minúsculas.
 - `toupper(c)`: Devuelve la cadena que resulta de convertir la cadena `c` a mayúsculas.
 
-:::{#exm}
+:::{#exm-operaciones-cadenas}
 A continuación se muestran varios ejemplos de operaciones con cadenas de texto.
 ```{r}
 nchar("Me gusta R")
@@ -144,7 +144,7 @@ toupper("Me gusta R")
 
 <i class="fa fa-exclamation-triangle" style="color:red;"></i> _Utilizan el orden alfabético, las minúsculas van antes que las mayúsculas, y los números antes que las letras._
 
-:::{#exm}
+:::{#exm-operaciones-comparacion-cadenas}
 A continuación se muestran varios ejemplos de operaciones de comparación de cadenas.
 ```{r}
 "R" == "R"
@@ -211,7 +211,7 @@ A la hora de comparar valores lógicos R asocia a `TRUE` el valor 1 y a `FALSE` 
 | `TRUE`  | `FALSE` | `FALSE` |  `FALSE`  |  `TRUE`  |
 | `TRUE`  | `TRUE`  | `FALSE` |  `TRUE`   |  `TRUE`  |
 
-:::{#exm}
+:::{#exm-operadores-logicos}
 A continuación se muestran varios ejemplos de operaciones lógicas con booleanos.
 ```{r}
 !TRUE
@@ -226,10 +226,12 @@ TRUE & TRUE
 
 Una variable es un identificador ligado a algún valor.
 
-Reglas para nombrarlas:
+:::{.callout-note}
+## Reglas para nombrar variables
 
 - Comienzan siempre por una letra o punto, seguida de otras letras, números, puntos o guiones bajos. Si empieza por punto no puede seguirle un número.
 - No se pueden utilizarse palabras reservadas del lenguaje.
+:::
 
 A diferencia de otros lenguajes de programación, las variables no tienen asociado un tipo y no es necesario declararlas antes de usarlas (tipado dinámico).
 
@@ -247,7 +249,7 @@ Si una variable ya no va a usarse, es posible eliminarla y liberar el espacio qu
 
 - `rm(x)`: Elimina la variable `x`.
 
-:::{#exm}
+:::{#exm-variables}
 A continuación se muestran varios ejemplos de asignaciones de valores a variables.
 ```{r}
 x <- 3
@@ -282,7 +284,7 @@ Al evaluar una expresiones R utiliza el siguiente orden de prioridad de evaluaci
 
 Se puede saltar el orden de evaluación utilizando paréntesis `( )`.
 
-:::{#exm}
+:::{#exm-prioridad-evaluacion}
 A continuación se muestran varios ejemplos de evaluación de expresiones.
 ```{r}
 4 + 8 / 2 ^ 2
@@ -296,7 +298,10 @@ z
 ```
 :::
 
-::: {.exercise}
+
+## Ejercicios
+
+:::{#exr-tipos-datos-1}
 Se dispone de los siguientes datos de una persona:
 
 | Variable | Valor |
@@ -306,27 +311,38 @@ Se dispone de los siguientes datos de una persona:
 | peso | 60 |
 | sexo | mujer |
 
-1. Declarar las variables anteriores y asignarles los valores correspondientes.
+a. Declarar las variables anteriores y asignarles los valores correspondientes.
 
-2. Definir la variable numérica imc con el índice de masa corporal aplicando la siguiente fórmula a las variables anteriores: 
-
-$$\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}$$
-
-3. Definir la variable booleana obesa con el valor correspondiente a la siguiente condición: ser mujer y no tener una edad superior a 60 y tener un índice de masa corporal mayor o igual que 30. ¿Es esta persona obesa?
-:::
-
-
-::: {.solution}
-Solución el ejercicio.
+:::{.callout-note collapse="true"}
+## Solución 
 ```{r}
 # Declaración de variables
 edad <- 20
 estatura <- 165
 peso <- 60
 sexo <- "mujer"
+```
+:::
+
+b. Definir la variable numérica imc con el índice de masa corporal aplicando la siguiente fórmula a las variables anteriores: 
+
+$$\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}$$
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
 # Cálculo del índice de masa corporal
 imc <- peso / (estatura / 100) ^ 2
 imc
+```
+:::
+
+c. Definir la variable booleana obesa con el valor correspondiente a la siguiente condición: ser mujer y no tener una edad superior a 60 y tener un índice de masa corporal mayor o igual que 30. ¿Es esta persona obesa?
+:::
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
 # Cálculo de la obesidad
 obesa <- sexo == "mujer" & ! edad > 60 & imc >= 30
 obesa

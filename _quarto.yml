@@ -41,13 +41,13 @@ book:
     - 03-tipos-datos-estructurados.qmd
     - 04-estructuras-control.qmd
     - 05-funciones.qmd
-    - 06-preprocesamiento.qmd
-    - 07-graficos.qmd
-    - 08-estadistica-descriptiva.qmd
-    - 09-contrastes-cuantitativos.qmd
-    - 10-contrastes-cualitativos.qmd
-    - 11-regresion.qmd
-    - 20-referencias.qmd
+    # - 06-preprocesamiento.qmd
+    # - 07-graficos.qmd
+    # - 08-estadistica-descriptiva.qmd
+    # - 09-contrastes-cuantitativos.qmd
+    # - 10-contrastes-cualitativos.qmd
+    # - 11-regresion.qmd
+    # - 20-referencias.qmd
     
 #bibliography: references.bib
 

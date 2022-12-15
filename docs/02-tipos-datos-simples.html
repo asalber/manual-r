@@ -138,7 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -154,7 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -234,36 +234,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./05-funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07-graficos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estadística descriptiva</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-contrastes-cuantitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cuantitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-contrastes-cualitativos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimación de parámetros y contrastes de hipótesis de variables cualitativas</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11-regresion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de regresión simple</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -292,6 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#prioridad-de-los-operadores" id="toc-prioridad-de-los-operadores" class="nav-link" data-scroll-target="#prioridad-de-los-operadores"><span class="toc-section-number">2.5.1</span>  Prioridad de los operadores</a></li>
   </ul></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">2.6</span>  Ejercicios</a></li>
   </ul>
 </nav>
     </div>
@@ -330,8 +301,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <ul>
 <li><code>class(x)</code>: Devuelve el tipo del dato <code>x</code>.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestran los tipos de algunos datos.</p>
+<div id="exm-tipos-datos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.1 </strong></span>A continuación se muestran los tipos de algunos datos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fl">3.1415</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -395,8 +366,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 </li>
 <li><code>x ^ y</code>: Devuelve la potencia <code>x</code> elevado a <code>y</code>.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de operaciones aritméticas.</p>
+<div id="exm-operadores-aritmeticos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.2 </strong></span>A continuación se muestran varios ejemplos de operaciones aritméticas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -436,8 +407,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <li><code>x &lt;= y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es menor o igual a que el número <code>y,</code> y <code>FALSE</code> en caso contrario.</li>
 <li><code>x != y</code> : Devuelve <code>TRUE</code> si el número <code>x</code> es distinto del número <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de operaciones relacionales.</p>
+<div id="exm-operadores-relacionales" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.3 </strong></span>A continuación se muestran varios ejemplos de operaciones relacionales.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">==</span> <span class="dv">3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -483,8 +454,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <li><code>tolower(c)</code>: Devuelve la cadena que resulta de convertir la cadena <code>c</code> a minúsculas.</li>
 <li><code>toupper(c)</code>: Devuelve la cadena que resulta de convertir la cadena <code>c</code> a mayúsculas.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de operaciones con cadenas de texto.</p>
+<div id="exm-operaciones-cadenas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.4 </strong></span>A continuación se muestran varios ejemplos de operaciones con cadenas de texto.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(<span class="st">"Me gusta R"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -528,8 +499,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <li><code>x != y</code> : Devuelve <code>TRUE</code> si la cadena <code>x</code> es distinta de la cadena <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
 </ul>
 <p><i class="fa fa-exclamation-triangle" style="color:red;"></i> <em>Utilizan el orden alfabético, las minúsculas van antes que las mayúsculas, y los números antes que las letras.</em></p>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de operaciones de comparación de cadenas.</p>
+<div id="exm-operaciones-comparacion-cadenas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.5 </strong></span>A continuación se muestran varios ejemplos de operaciones de comparación de cadenas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="st">"R"</span> <span class="sc">==</span> <span class="st">"R"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -638,8 +609,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 </tr>
 </tbody>
 </table>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de operaciones lógicas con booleanos.</p>
+<div id="exm-operadores-logicos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.6 </strong></span>A continuación se muestran varios ejemplos de operaciones lógicas con booleanos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -669,11 +640,22 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <section id="variables" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="variables"><span class="header-section-number">2.5</span> Variables</h2>
 <p>Una variable es un identificador ligado a algún valor.</p>
-<p>Reglas para nombrarlas:</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Reglas para nombrar variables
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>Comienzan siempre por una letra o punto, seguida de otras letras, números, puntos o guiones bajos. Si empieza por punto no puede seguirle un número.</li>
 <li>No se pueden utilizarse palabras reservadas del lenguaje.</li>
 </ul>
+</div>
+</div>
 <p>A diferencia de otros lenguajes de programación, las variables no tienen asociado un tipo y no es necesario declararlas antes de usarlas (tipado dinámico).</p>
 <p>Para asignar un valor a una variable se utiliza el operador de asignación <code>&lt;-</code>:</p>
 <ul>
@@ -686,8 +668,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 <ul>
 <li><code>rm(x)</code>: Elimina la variable <code>x</code>.</li>
 </ul>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de asignaciones de valores a variables.</p>
+<div id="exm-variables" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.7 </strong></span>A continuación se muestran varios ejemplos de asignaciones de valores a variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -754,8 +736,8 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 </tbody>
 </table>
 <p>Se puede saltar el orden de evaluación utilizando paréntesis <code>( )</code>.</p>
-<div class="example">
-<p>A continuación se muestran varios ejemplos de evaluación de expresiones.</p>
+<div id="exm-prioridad-evaluacion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.8 </strong></span>A continuación se muestran varios ejemplos de evaluación de expresiones.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">^</span> <span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -782,8 +764,12 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 </div>
 </div>
 </div>
-<div class="exercise">
-<p>Se dispone de los siguientes datos de una persona:</p>
+</section>
+</section>
+<section id="ejercicios" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">2.6</span> Ejercicios</h2>
+<div id="exr-tipos-datos-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.1 </strong></span>Se dispone de los siguientes datos de una persona:</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -810,40 +796,87 @@ Por defecto, cualquier número que se teclee tomará este tipo.</p></li>
 </tr>
 </tbody>
 </table>
-<ol type="1">
-<li><p>Declarar las variables anteriores y asignarles los valores correspondientes.</p></li>
-<li><p>Definir la variable numérica imc con el índice de masa corporal aplicando la siguiente fórmula a las variables anteriores:</p></li>
+<ol type="a">
+<li>Declarar las variables anteriores y asignarles los valores correspondientes.</li>
 </ol>
-<p><span class="math display">\[\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}\]</span></p>
-<ol start="3" type="1">
-<li>Definir la variable booleana obesa con el valor correspondiente a la siguiente condición: ser mujer y no tener una edad superior a 60 y tener un índice de masa corporal mayor o igual que 30. ¿Es esta persona obesa?</li>
-</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="solution proof">
-<p><span class="proof-title"><em>Solución</em>. </span>Solución el ejercicio.</p>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Declaración de variables</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>edad <span class="ot">&lt;-</span> <span class="dv">20</span></span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>estatura <span class="ot">&lt;-</span> <span class="dv">165</span></span>
 <span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>peso <span class="ot">&lt;-</span> <span class="dv">60</span></span>
-<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="st">"mujer"</span></span>
-<span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo del índice de masa corporal</span></span>
-<span id="cb90-7"><a href="#cb90-7" aria-hidden="true" tabindex="-1"></a>imc <span class="ot">&lt;-</span> peso <span class="sc">/</span> (estatura <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb90-8"><a href="#cb90-8" aria-hidden="true" tabindex="-1"></a>imc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="st">"mujer"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Definir la variable numérica imc con el índice de masa corporal aplicando la siguiente fórmula a las variables anteriores:</li>
+</ol>
+<p><span class="math display">\[\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo del índice de masa corporal</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>imc <span class="ot">&lt;-</span> peso <span class="sc">/</span> (estatura <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>imc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 22.03857</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de la obesidad</span></span>
-<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>obesa <span class="ot">&lt;-</span> sexo <span class="sc">==</span> <span class="st">"mujer"</span> <span class="sc">&amp;</span> <span class="sc">!</span> edad <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">&amp;</span> imc <span class="sc">&gt;=</span> <span class="dv">30</span></span>
-<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>obesa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Definir la variable booleana obesa con el valor correspondiente a la siguiente condición: ser mujer y no tener una edad superior a 60 y tener un índice de masa corporal mayor o igual que 30. ¿Es esta persona obesa?</li>
+</ol>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de la obesidad</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>obesa <span class="ot">&lt;-</span> sexo <span class="sc">==</span> <span class="st">"mujer"</span> <span class="sc">&amp;</span> <span class="sc">!</span> edad <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">&amp;</span> imc <span class="sc">&gt;=</span> <span class="dv">30</span></span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>obesa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 </div>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

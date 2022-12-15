@@ -30,6 +30,12 @@ análisis de datos específicos.
 Existen multitud de libros, manuales y tutoriales libres que permiten su aprendizaje e ilustran el análisis
 estadístico de datos en distintas disciplinas científicas como las Matemáticas, la Física, la Biología, la Psicología, la Medicina, etc.
 
+## Instalación de R
+
+R puede descargarse desde el [sitio web oficial de R](https://www.r-project.org/) o desde el repositorio principal de paquetes de R [CRAN](https://cran.r-project.org/). Basta con descargar el archivo de instalación correspondiente al sistema operativo de nuestro ordenador y realizar la instalación como cualquier otro programa.
+
+El intérprete de R se arranca desde la terminal, aunque en Windows incorpora su propia aplicación, pero es muy básica. En general, para trabajos serios, conviene utilizar un entorno de desarrollo para R. 
+
 ## Entornos de desarrollo 
 
 Por defecto el entorno de trabajo de R es en línea de comandos, lo que significa que los cálculos y los análisis se realizan mediante comandos o instrucciones que el usuario teclea en una ventana de texto. No obstante, existen distintas
@@ -37,6 +43,7 @@ interfaces gráficas de usuario que facilitan su uso, sobre todo para usuarios n
 
 - [RStudio](https://www.rstudio.com/). Probablemente el entorno de desarrollo más extendido para programar con R ya que incorpora multitud de utilidades para facilitar la programación con R.
 - [RKWard](https://rkward.kde.org). Es otra otro de los entornos de desarrollo más completos que además incluye a posibilidad de añadir nuevos menús y cuadros de diálogo personalizados.
+
 - [Visual Studio Code](https://code.visualstudio.com/). Es un entorno de desarrollo de propósito general ampliamente extendido. Aunque no es un entorno de desarrollo específico para R, incluye una extensión con utilidades que facilitan mucho el desarrollo con R.
 
 
