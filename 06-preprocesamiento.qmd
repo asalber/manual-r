@@ -6,13 +6,13 @@ lang: es
 
 Cualquier análisis de datos comienza con la carga de datos en un _data frame_. Normalmente los datos brutos deben limpiarse y prepararse para su análisis. Este proceso se conoce como preprocesamiento de datos y suele incluir las siguientes tareas:
 
+- Reestructuración del data frame.
 - Selección de las variables (columnas) de interés.
 - Filtrado de los casos (filas) de interés.
-- Reestructuración del data frame.
 - Cálculo de nuevas variables a partir de las existentes.
 - Ordenación de datos.
 - Agrupación de datos.
-- Tratamiento de datos perdidos (`NA`, `NaN`).
+- Tratamiento de datos no disponibles (`NA`, `NaN`).
 
 Estas tareas pueden realizarse con las funciones básicas de R pero actualmente existen paquetes que facilitan mucho su realización como por ejemplo la colección de paquetes `tidyverse`.
 
@@ -31,7 +31,7 @@ Estas tareas pueden realizarse con las funciones básicas de R pero actualmente 
 
 Estos paquetes están diseñados bajo una misma filosofía por lo interactúan y se complementan a la perfección.
 
-## Datos limpios y tibbles
+## Tibbles
 
 El paquete `tibble` define la estructura de datos _tibble_ que es similiar a los data frames, pero optimizada, ya que realiza una carga en memoria y evaluación perezosa, lo que hace más eficiente el manejo de grandes volúmenes de datos estructurados en forma de tabla. Los tibbles, además, suelen dar más información sobre el contenido y la estructura de los datos, así como de incoherencias en los datos. 
 
@@ -52,25 +52,202 @@ as_tibble(df)
 ```
 :::
 
-Al igual que los data frames, las columnas de los tibbles son vectores cuyos elementos son del mismo tipo, de manera que suelen representar variables en los estudios estadísticos, mientras que las filas representan individuos. No obstante, existen dos formas habituales de disponer los datos de un estudio en un data frame o un tibble: formato ancho y formato largo.
+Al igual que los data frames, las columnas de los tibbles son vectores cuyos elementos son del mismo tipo, de manera que suelen representar variables en los estudios estadísticos, mientras que las filas representan individuos, aunque no siempre es así.
+
+## Conjuntos de datos ordenados
+
+Existen dos formas habituales de disponer los datos de un estudio en un data frame o un tibble: formato ancho y formato largo.
 
 ![Formatos de un data frame](img/05-preprocesamiento/formatos-dataframe.png)
 
-La mayoría de los paquetes de `tidyverse` asumen que los datos del data frame o tibble están en formado largo (_tidy_), lo que significa que las columnas del data frame representan variables y las filas observaciones, de manera que cada dato pertenece a una variable y una observación única. Las variables (columnas) contienen valores que miden la misma característica o atributo (edad, estatura, etc.) en cada unidad experimental. Una observación (fila) contiene los valores medidos en la misma unidad experimental (una persona, un día, etc.) en todos atributos estudiados.
+La mayoría de los paquetes de `tidyverse` asumen que los datos del data frame o tibble están en formado largo, lo que significa que las columnas del data frame representan variables y las filas observaciones, de manera que cada dato pertenece a una variable y una observación única. Las variables (columnas) contienen valores que miden la misma característica o atributo (edad, estatura, etc.) en cada unidad experimental. Una observación (fila) contiene los valores medidos en la misma unidad experimental (una persona, un día, etc.) en todos atributos estudiados. En resumen, un data frame o tibble esta ordenado (_tidy_) si 
 
-## Creación de nuevas variables
+- Cada columna es una variable
+- Cada fila es una observación
+- Cada casilla es un valor
+
+A menudo los conjuntos de datos no están ordenados y violan alguna de de estas condiciones. Lo más común es encontrarnos 
+
+- Encabezados de columnas que son valores en lugar de variables.
+- Una misma columna contiene varias variables.
+- Variables que están almacenadas tanto en filas como en columnas.
+
+Para facilitar el preprocesado y posterior análisis de los datos es recomendable ordenar el data frame. Para ello el paquete `tidyr` proporciona dos funciones que permiten pivotar un data frame:
+
+- `pivot_longer(df, columnas, names_to = columna-nombres, values_to = columna-valores)`: Devuelve el tibble que resulta de convertir las columnas indicadas en el parámetro `columnas` del data frame `df` a formato largo, es decir, las columnas se reestructuran en dos nuevas columnas con nombres `columna-nombres` y `columna-valores` que contienen los nombres de las columnas originales y sus valores, respectivamente.
+
+- `pivot_wider(df, names_from = columna-nombres, values_from = columna-valores)`: Devuelve el tibble que resulta de convertir el data frame `df` a formato ancho, es decir, se crean tantas columnas como nombres distintos haya en la columna `columna-nombres`, usando estos nombres como los nombres de las columnas, mientras que los valores se toman de la columna `columna-valores`.
 
 
+:::{.exm-pivotar-formato-ancho-a-largo}
+```{r, message=F}
+library(tidyr)
+df <- data.frame(nombre = c('María', 'Luis', 'Carmen'), 
+edad = c(18, 22, 20), 
+Matemáticas = c(8.5, 7, 3.5),
+Economía = c(8, 6.5, 5),
+Programación = c(6.5, 4, 9))
+df
+# Pivotar de formato ancho a formato largo
+df_largo <- pivot_longer(df, Matemáticas:Programación, names_to = "Asignatura", values_to = "Nota")
+df_largo
+# Pivotar de formato largo a formato ancho
+df_ancho <- pivot_wider(df_largo, names_from = Asignatura, values_from = Nota)
+df_ancho
+```
+:::
+
+## El paquete `dplyr`
+
+El paquete `dplyr` proporciona una gramática para el preprocesamiento de data frames o tibbles, de manera que cada acción sobre data frame se corresponde con un verbo y las funciones que realizan esa acción tienen como nombre el verbo correspondiente. Las funciones de preprocesamiento más habituales incluidas en el paquete `dplyr` son:
+
+- `select`: Selecciona un subconjunto de columnas de un data frame.
+- `filter`: Selecciona un subconjunto de filas de un data frame.
+- `arrange`: Reordena las filas de un data frame.
+- `rename`: Renombra las columnas de un data frame.
+- `mutate`: Añade nuevas columnas a un data frame o transforma las existentes.
+- `summarise`: Genera resúmenes estadísticos de las columnas de un data frame.
+- `group_by`: Divide las filas de un data frame en grupos de acuerdo a una columna categórica.
 
 ## Selección de variables
 
+Para seleccionar un subconjunto de variables de un data frame se utiliza la función
+
+- `select(df, columnas)`: Devuelve un tibble con las columnas indicadas en el parámetro `columnas` del data frame `df`.
+
+:::{.exm-select}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Seleccionar las columnas nombre, sexo y edad
+select(df, nombre, sexo, edad)
+# Seleccionar la primera y tercera columnas
+select(df, 1, 3)
+# Seleccionar las columnas desde el peso hasta el colesterol
+select(df, peso:colesterol)
+# Seleccionar todas las columnas menos la edad
+select(df, -edad)
+```
+:::
 
 ## Filtrado de datos
 
+Para filtrar un data frame y quedarse con las filas que cumplen una condición se usa la función
 
-## Agrupación de datos
+- `filter(df, condicion)`: Devuelve el tibble con las filas del data frame `df` que cumplen la condición indicada en el parámetro `condición`.
 
+:::{.exm-filter}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Filtrar las mujeres
+filter(df, sexo == "M")
+# Filtrar los hombres mayores de 30 
+filter(df, sexo == "H" & edad > 30)
+# Filtrar las filas con valores de colesterol
+filter(df, !is.na(colesterol))
+```
+:::
+
+Existe un filtro bastante habitual que consiste en eliminar las filas de un data frame que contienen algún dado no disponible (`NA`). Para ello `dplyr` dispone de la función 
+
+- `na.omit(df)`: Devuelve el tibble que resulta de eliminar las filas del data frame `df` con algún valor `NA`.
+
+:::{.exm-filter-na}
+```{r, message=F}
+na.omit(df)
+```
+:::
+
+## Reordenación de datos
+
+Para reordenar las filas de un data frame se utiliza la función
+
+- `arrange(df, columnas)`: Devuelve un tibble con las mismas filas del data frame `df` pero ordenadas de acuerdo a los valores de las columnas indicadas en el parámetro `columnas`. Por defecto, la ordenación es ascendente, para hacerla descendente, hay que aplicar la función `desc()` a la columna con respecto se quiere ordenar descendentemente.
+
+:::{.exm-arrange}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Ordenar según alfabéticamente por nombre
+arrange(df, nombre)
+# Ordenar según sexo y edad
+arrange(df, sexo, edad)
+# Ordenar ascendentemente por sexo y descendentemente por colesterol
+arrange(df, sexo, desc(colesterol))
+```
+:::
+
+## Renombrado de columnas
+
+Para cambiar el nombre de las columnas se utiliza la función 
+
+- `rename(df, nuevo-nombre = columna)`: Devuelve un tibble con los mismos datos del data frame `df` pero cambiando el nombre de la columna de nombre `columna` por `nuevo-nombre`.
+
+:::{.exm-rename}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Ordenar según alfabéticamente por nombre
+rename(df, estatura = altura)
+```
+:::
+
+## Creación de nuevas columnas o transformación de las existentes
+
+Para crear una nueva columna a partir de otras columnas del data frame se utiliza la función
+
+- `mutate(df, columna = formula)`: Devuelve el tibble que resulta de añadir una nueva columna al data frame `df` con el resultado de aplicar el procedimiento indicado por `formula` y con el nombre indicado en `columna`. Si `columna` es el nombre de una columna ya existente, entonces esa columna se reescribe con los resultados de aplicar la `formula`.
+
+:::{.exm-mutate}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Cambiar las unidades de la altura a centímetros
+mutate(df, altura = altura*100)
+# Calcular el índice de masa corporal
+mutate(df, imc = round(peso/altura^2))
+```
+:::
 
 ## Resumen de datos
+
+Para aplicar una función resumen a una o varias columnas de un data frame se utiliza la función
+
+- `sumarise(df, nombre-columna = funcion-resumen(columnas))`: Devuelve el tibble con la columna de nombre `nombre-columna` y el valor que resulta de aplicar la función indicada en `funcion-resumen` a las columnas del data frame `df` indicadas en `columnas`.
+
+:::{.exm-sumarise}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Calcular la media de la edad
+summarise(df, edad_media = mean(edad))
+# Calcular la media y la desviación típica del colesterol
+summarise(df, media = mean(colesterol, na.rm=T), sd = sd(colesterol, na.rm=T))
+```
+:::
+
+## Resúmenes por grupos
+
+La función `summarise` suele combinarse con la siguiente función para obtener resúmenes estratificados por grupos.
+
+- `group_by(df, columnas)`: Devuelve un tibble estratificado de acuerdo a las categorías de las columnas indicadas en `columnas`. En combinación con la función `summarise` permite hacer resúmenes estadísticos por grupos.
+
+:::{.exm-group_by}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Estratificar por sexo 
+df.sexo <- group_by(df, sexo)
+# Edades medias por sexo
+summarise(df.sexo, edad_media = mean(edad))
+# Media y desviación típica del colesterol por sexo
+summarise(df.sexo, media = mean(colesterol, na.rm=T), sd = sd(colesterol, na.rm=T))
+```
+:::
+
+## Ejercicios
+
+Crear un data frame con los datos del fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.xlsx). 
 
 

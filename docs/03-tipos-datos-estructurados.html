@@ -233,6 +233,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./05-funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -290,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#coerción-de-otras-estructuras-de-datos-a-data-frames" id="toc-coerción-de-otras-estructuras-de-datos-a-data-frames" class="nav-link" data-scroll-target="#coerción-de-otras-estructuras-de-datos-a-data-frames"><span class="toc-section-number">3.5.2</span>  Coerción de otras estructuras de datos a data frames</a></li>
   <li><a href="#acceso-a-los-elementos-de-un-data-frame" id="toc-acceso-a-los-elementos-de-un-data-frame" class="nav-link" data-scroll-target="#acceso-a-los-elementos-de-un-data-frame"><span class="toc-section-number">3.5.3</span>  Acceso a los elementos de un data frame</a></li>
   <li><a href="#modificación-de-los-elementos-de-un-data-frame" id="toc-modificación-de-los-elementos-de-un-data-frame" class="nav-link" data-scroll-target="#modificación-de-los-elementos-de-un-data-frame"><span class="toc-section-number">3.5.4</span>  Modificación de los elementos de un data frame</a></li>
-  <li><a href="#añadir-elementos-a-una-matriz-1" id="toc-añadir-elementos-a-una-matriz-1" class="nav-link" data-scroll-target="#añadir-elementos-a-una-matriz-1"><span class="toc-section-number">3.5.5</span>  Añadir elementos a una matriz</a></li>
+  <li><a href="#añadir-elementos-a-un-data-frame" id="toc-añadir-elementos-a-un-data-frame" class="nav-link" data-scroll-target="#añadir-elementos-a-un-data-frame"><span class="toc-section-number">3.5.5</span>  Añadir elementos a un data frame</a></li>
   <li><a href="#eliminar-filas-y-columnas-de-un-data-frame" id="toc-eliminar-filas-y-columnas-de-un-data-frame" class="nav-link" data-scroll-target="#eliminar-filas-y-columnas-de-un-data-frame"><span class="toc-section-number">3.5.6</span>  Eliminar filas y columnas de un data frame</a></li>
   </ul></li>
   <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">3.6</span>  Ejercicios</a></li>
@@ -1858,8 +1863,8 @@ Advertencia
 <p>Obsérvese en el último ejemplo anterior cómo se pueden utilizar condiciones lógicas para filtrar un data frame.</p>
 <p>Para acceder a las primeras o últimas filas de un data frame se pueden utilizar las siguientes funciones:</p>
 <ul>
-<li><code>head(df, n)</code>: Devuelve un data frame con las <code>n</code> primeras filas del data frame <code>df</code>.</li>
-<li><code>tail(df, n)</code>: Devuelve un data frame con las <code>n</code> últimas filas del data frame <code>df</code>.</li>
+<li><p><code>head(df, n)</code>: Devuelve un data frame con las <code>n</code> primeras filas del data frame <code>df</code>.</p></li>
+<li><p><code>tail(df, n)</code>: Devuelve un data frame con las <code>n</code> últimas filas del data frame <code>df</code>.</p></li>
 </ul>
 <p>Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.</p>
 <div id="exm-acceso-primeras-ultimas-filas-data-frame" class="theorem example">
@@ -1907,12 +1912,12 @@ Advertencia
 </div>
 </div>
 </section>
-<section id="añadir-elementos-a-una-matriz-1" class="level3" data-number="3.5.5">
-<h3 data-number="3.5.5" class="anchored" data-anchor-id="añadir-elementos-a-una-matriz-1"><span class="header-section-number">3.5.5</span> Añadir elementos a una matriz</h3>
-<p>Para añadir nuevas filas o columnas a una matriz se utilizan las mismas funciones que para matrices:</p>
+<section id="añadir-elementos-a-un-data-frame" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="añadir-elementos-a-un-data-frame"><span class="header-section-number">3.5.5</span> Añadir elementos a un data frame</h3>
+<p>Para añadir nuevas filas o columnas a una data frame se utilizan las mismas funciones que para matrices:</p>
 <ul>
-<li><code>rbind(df, x)</code>: Devuelve el data frame que resulta de añadir nuevas filas al data frame <code>df</code> con los elementos de la lista <code>x</code>.</li>
-<li><code>cbind(df, nombrex = x)</code>: Devuelve el data frame que resulta de añadir nuevas columnas al data frame <code>df</code> con los elementos del vector <code>x</code> con nombre <code>nombrex</code>.</li>
+<li><p><code>rbind(df, x)</code>: Devuelve el data frame que resulta de añadir nuevas filas al data frame <code>df</code> con los elementos de la lista <code>x</code>.</p></li>
+<li><p><code>cbind(df, nombrex = x)</code>: Devuelve el data frame que resulta de añadir nuevas columnas al data frame <code>df</code> con los elementos del vector <code>x</code> con nombre <code>nombrex</code>.</p></li>
 </ul>
 <div id="exm-añadir-filas-columnas-data-frame" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.52 </strong></span>A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a un data frame.</p>
@@ -1981,8 +1986,8 @@ Advertencia
 </section>
 <section id="ejercicios" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">3.6</span> Ejercicios</h2>
-<div class="exr-vectores">
-<p>La siguiente tabla recoge las notas de los alumnos de un curso con dos asignaturas.</p>
+<div id="exr-datos-estructurados-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 3.1 </strong></span>La siguiente tabla recoge las notas de los alumnos de un curso con dos asignaturas.</p>
 <table class="table">
 <thead>
 <tr class="header">

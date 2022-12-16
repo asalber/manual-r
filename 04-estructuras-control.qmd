@@ -222,3 +222,55 @@ for (i in 1:10) {
   print(i)
 }
 ```
+
+## Ejercicios
+
+:::{#exr-estructuras-control-1}
+Considérese el data frame creado en el @exr-datos-estructurados-1.
+
+```{r}
+#| hide: true
+nombre <- c("Carlos", "María", "Carmen", "Pedro", "Luis", "Sara")
+sexo <- c("H", "M", "M", "H", "H", "M")
+fisica <- c(6.7, 7.2, 5.5, NA, 3.5, 6.2)
+quimica <- c(8.1, 9.5, 5, 4.5, 5, 4)
+df <- data.frame(nombre, sexo, fisica, quimica)
+```
+
+a. Usando la función `mean()`, calcular la media de Física y de Química usando un bucle iterativo.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+medias <- NULL
+for (i in 3:4){
+  medias <- c(medias, mean(df[[i]], na.rm=TRUE))
+}
+medias
+```
+:::
+
+
+ crear una nueva columna con la calificación (suspenso, aprobado, notable, sobresaliente) de las notas de Física y Química.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+#| hide: true
+nombre <- c("Carlos", "María", "Carmen", "Pedro", "Luis", "Sara")
+sexo <- c("H", "M", "M", "H", "H", "M")
+fisica <- c(6.7, 7.2, 5.5, NA, 3.5, 6.2)
+quimica <- c(8.1, 9.5, 5, 4.5, 5, 4)
+df <- data.frame(nombre, sexo, fisica, quimica)
+```
+
+```{r}
+for (i in 1:nrow(df)){
+  
+}
+```
+
+:::
+
+
+:::

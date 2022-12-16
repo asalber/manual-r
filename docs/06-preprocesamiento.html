@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Curso básico de análisis de datos con R - 6&nbsp; Preprocesamiento de datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-funciones.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+
+<meta property="og:title" content="Curso básico de análisis de datos con R - 6&nbsp; Preprocesamiento de datos">
+<meta property="og:description" content="Cualquier análisis de datos comienza con la carga de datos en un data frame. Normalmente los datos brutos deben limpiarse y prepararse para su análisis.">
+<meta property="og:site-name" content="Curso básico de análisis de datos con R">
+<meta name="twitter:title" content="Curso básico de análisis de datos con R - 6&nbsp; Preprocesamiento de datos">
+<meta name="twitter:description" content="Cualquier análisis de datos comienza con la carga de datos en un data frame. Normalmente los datos brutos deben limpiarse y prepararse para su análisis.">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Curso básico de análisis de datos con R</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="sidebar-tool px-1"><i class="bi bi-house-fill"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./curso-r.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./curso-r.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+            <i class="bi bi-bi-linkedin pe-1"></i>
+          LinkedIn
+          </a>
+        </li>
+    </ul>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-tipos-datos-simples.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tipos de datos simples</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-tipos-datos-estructurados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tipos de datos estructurados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estructuras-control.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructuras de control</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-preprocesamiento.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#la-colección-de-paquetes-tidyverse" id="toc-la-colección-de-paquetes-tidyverse" class="nav-link active" data-scroll-target="#la-colección-de-paquetes-tidyverse"><span class="toc-section-number">6.1</span>  La colección de paquetes <code>tidyverse</code></a></li>
+  <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"><span class="toc-section-number">6.2</span>  Tibbles</a></li>
+  <li><a href="#conjuntos-de-datos-ordenados" id="toc-conjuntos-de-datos-ordenados" class="nav-link" data-scroll-target="#conjuntos-de-datos-ordenados"><span class="toc-section-number">6.3</span>  Conjuntos de datos ordenados</a></li>
+  <li><a href="#el-paquete-dplyr" id="toc-el-paquete-dplyr" class="nav-link" data-scroll-target="#el-paquete-dplyr"><span class="toc-section-number">6.4</span>  El paquete <code>dplyr</code></a></li>
+  <li><a href="#selección-de-variables" id="toc-selección-de-variables" class="nav-link" data-scroll-target="#selección-de-variables"><span class="toc-section-number">6.5</span>  Selección de variables</a></li>
+  <li><a href="#filtrado-de-datos" id="toc-filtrado-de-datos" class="nav-link" data-scroll-target="#filtrado-de-datos"><span class="toc-section-number">6.6</span>  Filtrado de datos</a></li>
+  <li><a href="#reordenación-de-datos" id="toc-reordenación-de-datos" class="nav-link" data-scroll-target="#reordenación-de-datos"><span class="toc-section-number">6.7</span>  Reordenación de datos</a></li>
+  <li><a href="#renombrado-de-columnas" id="toc-renombrado-de-columnas" class="nav-link" data-scroll-target="#renombrado-de-columnas"><span class="toc-section-number">6.8</span>  Renombrado de columnas</a></li>
+  <li><a href="#creación-de-nuevas-columnas-o-transformación-de-las-existentes" id="toc-creación-de-nuevas-columnas-o-transformación-de-las-existentes" class="nav-link" data-scroll-target="#creación-de-nuevas-columnas-o-transformación-de-las-existentes"><span class="toc-section-number">6.9</span>  Creación de nuevas columnas o transformación de las existentes</a></li>
+  <li><a href="#resumen-de-datos" id="toc-resumen-de-datos" class="nav-link" data-scroll-target="#resumen-de-datos"><span class="toc-section-number">6.10</span>  Resumen de datos</a></li>
+  <li><a href="#resúmenes-por-grupos" id="toc-resúmenes-por-grupos" class="nav-link" data-scroll-target="#resúmenes-por-grupos"><span class="toc-section-number">6.11</span>  Resúmenes por grupos</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">6.12</span>  Ejercicios</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Cualquier análisis de datos comienza con la carga de datos en un <em>data frame</em>. Normalmente los datos brutos deben limpiarse y prepararse para su análisis. Este proceso se conoce como preprocesamiento de datos y suele incluir las siguientes tareas:</p>
+<ul>
+<li>Reestructuración del data frame.</li>
+<li>Selección de las variables (columnas) de interés.</li>
+<li>Filtrado de los casos (filas) de interés.</li>
+<li>Cálculo de nuevas variables a partir de las existentes.</li>
+<li>Ordenación de datos.</li>
+<li>Agrupación de datos.</li>
+<li>Tratamiento de datos no disponibles (<code>NA</code>, <code>NaN</code>).</li>
+</ul>
+<p>Estas tareas pueden realizarse con las funciones básicas de R pero actualmente existen paquetes que facilitan mucho su realización como por ejemplo la colección de paquetes <code>tidyverse</code>.</p>
+<section id="la-colección-de-paquetes-tidyverse" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="la-colección-de-paquetes-tidyverse"><span class="header-section-number">6.1</span> La colección de paquetes <code>tidyverse</code></h2>
+<p><a href="https://www.tidyverse.org/"><code>tidyverse</code></a> es una colección de paquetes para la Ciencia de Datos. Incluye los siguientes paquetes:</p>
+<ul>
+<li><code>tibble</code>: Define la estructura de datos <code>tibble</code> que es una versión mejorada de los <code>data frames</code>.</li>
+<li><code>readr</code>: Proporciona funciones para la lectura y escritura de tablas de datos en formato plano <code>csv</code> y <code>tsv</code>.</li>
+<li><code>tidyr</code>: Proporciona funciones para la limpieza y preparación de los datos de manera consistente.</li>
+<li><code>dplyr</code>: Proporciona una gramática de funciones para la manipulación de datos y las tareas más habituales de preprocesamiento.</li>
+<li><code>stringr</code>: Proporciona funciones especializadas en la manipulación de cadenas.</li>
+<li><code>forcats</code>: Proporciona funciones especializadas en la manipulación de factores.</li>
+<li><code>purrr</code>: Proporciona funciones para la programación funcional que mejoran las ya existentes en R.</li>
+<li><code>ggplot2</code>: Proporciona una gramática de funciones para la realización de gráficos.</li>
+</ul>
+<p>Estos paquetes están diseñados bajo una misma filosofía por lo interactúan y se complementan a la perfección.</p>
+</section>
+<section id="tibbles" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="tibbles"><span class="header-section-number">6.2</span> Tibbles</h2>
+<p>El paquete <code>tibble</code> define la estructura de datos <em>tibble</em> que es similiar a los data frames, pero optimizada, ya que realiza una carga en memoria y evaluación perezosa, lo que hace más eficiente el manejo de grandes volúmenes de datos estructurados en forma de tabla. Los tibbles, además, suelen dar más información sobre el contenido y la estructura de los datos, así como de incoherencias en los datos.</p>
+<p>Los tibbles nunca cambian el tipo de los datos (por ejemplo de cadenas a factores), nunca cambian los nombres de las variables, ni crean nombres de filas, como suelen hacer los data frames.</p>
+<p>Aunque los paquetes de <code>tidyverse</code> trabajan perfectamente con data frames, están optimizados para trabajar con tibbles.</p>
+<p>Para convertir un data frame en un tibble se utiliza la función</p>
+<ul>
+<li><code>as_tibble(df)</code>: Convierte el data frame <code>df</code> en un tibble.</li>
+</ul>
+<div id="exm-creacion-tibble" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.1 </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   asignatura nota
+1 Matemáticas  8.5
+2      Física  7.0
+3    Economía  4.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  asignatura   nota
+  &lt;chr&gt;       &lt;dbl&gt;
+1 Matemáticas   8.5
+2 Física        7  
+3 Economía      4.5</code></pre>
+</div>
+</div>
+</div>
+<p>Al igual que los data frames, las columnas de los tibbles son vectores cuyos elementos son del mismo tipo, de manera que suelen representar variables en los estudios estadísticos, mientras que las filas representan individuos, aunque no siempre es así.</p>
+</section>
+<section id="conjuntos-de-datos-ordenados" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="conjuntos-de-datos-ordenados"><span class="header-section-number">6.3</span> Conjuntos de datos ordenados</h2>
+<p>Existen dos formas habituales de disponer los datos de un estudio en un data frame o un tibble: formato ancho y formato largo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/05-preprocesamiento/formatos-dataframe.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Formatos de un data frame</figcaption><p></p>
+</figure>
+</div>
+<p>La mayoría de los paquetes de <code>tidyverse</code> asumen que los datos del data frame o tibble están en formado largo, lo que significa que las columnas del data frame representan variables y las filas observaciones, de manera que cada dato pertenece a una variable y una observación única. Las variables (columnas) contienen valores que miden la misma característica o atributo (edad, estatura, etc.) en cada unidad experimental. Una observación (fila) contiene los valores medidos en la misma unidad experimental (una persona, un día, etc.) en todos atributos estudiados. En resumen, un data frame o tibble esta ordenado (<em>tidy</em>) si</p>
+<ul>
+<li>Cada columna es una variable</li>
+<li>Cada fila es una observación</li>
+<li>Cada casilla es un valor</li>
+</ul>
+<p>A menudo los conjuntos de datos no están ordenados y violan alguna de de estas condiciones. Lo más común es encontrarnos</p>
+<ul>
+<li>Encabezados de columnas que son valores en lugar de variables.</li>
+<li>Una misma columna contiene varias variables.</li>
+<li>Variables que están almacenadas tanto en filas como en columnas.</li>
+</ul>
+<p>Para facilitar el preprocesado y posterior análisis de los datos es recomendable ordenar el data frame. Para ello el paquete <code>tidyr</code> proporciona dos funciones que permiten pivotar un data frame:</p>
+<ul>
+<li><p><code>pivot_longer(df, columnas, names_to = columna-nombres, values_to = columna-valores)</code>: Devuelve el tibble que resulta de convertir las columnas indicadas en el parámetro <code>columnas</code> del data frame <code>df</code> a formato largo, es decir, las columnas se reestructuran en dos nuevas columnas con nombres <code>columna-nombres</code> y <code>columna-valores</code> que contienen los nombres de las columnas originales y sus valores, respectivamente.</p></li>
+<li><p><code>pivot_wider(df, names_from = columna-nombres, values_from = columna-valores)</code>: Devuelve el tibble que resulta de convertir el data frame <code>df</code> a formato ancho, es decir, se crean tantas columnas como nombres distintos haya en la columna <code>columna-nombres</code>, usando estos nombres como los nombres de las columnas, mientras que los valores se toman de la columna <code>columna-valores</code>.</p></li>
+</ul>
+<div class="exm-pivotar-formato-ancho-a-largo">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombre =</span> <span class="fu">c</span>(<span class="st">'María'</span>, <span class="st">'Luis'</span>, <span class="st">'Carmen'</span>), </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">20</span>), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Matemáticas <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">3.5</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>Economía <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="fl">6.5</span>, <span class="dv">5</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Programación <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">6.5</span>, <span class="dv">4</span>, <span class="dv">9</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  nombre edad Matemáticas Economía Programación
+1  María   18         8.5      8.0          6.5
+2   Luis   22         7.0      6.5          4.0
+3 Carmen   20         3.5      5.0          9.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivotar de formato ancho a formato largo</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_largo <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(df, Matemáticas<span class="sc">:</span>Programación, <span class="at">names_to =</span> <span class="st">"Asignatura"</span>, <span class="at">values_to =</span> <span class="st">"Nota"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df_largo</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 4
+  nombre  edad Asignatura    Nota
+  &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;
+1 María     18 Matemáticas    8.5
+2 María     18 Economía       8  
+3 María     18 Programación   6.5
+4 Luis      22 Matemáticas    7  
+5 Luis      22 Economía       6.5
+6 Luis      22 Programación   4  
+7 Carmen    20 Matemáticas    3.5
+8 Carmen    20 Economía       5  
+9 Carmen    20 Programación   9  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivotar de formato largo a formato ancho</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_ancho <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(df_largo, <span class="at">names_from =</span> Asignatura, <span class="at">values_from =</span> Nota)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_ancho</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  nombre  edad Matemáticas Economía Programación
+  &lt;chr&gt;  &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
+1 María     18         8.5      8            6.5
+2 Luis      22         7        6.5          4  
+3 Carmen    20         3.5      5            9  </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="el-paquete-dplyr" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="el-paquete-dplyr"><span class="header-section-number">6.4</span> El paquete <code>dplyr</code></h2>
+<p>El paquete <code>dplyr</code> proporciona una gramática para el preprocesamiento de data frames o tibbles, de manera que cada acción sobre data frame se corresponde con un verbo y las funciones que realizan esa acción tienen como nombre el verbo correspondiente. Las funciones de preprocesamiento más habituales incluidas en el paquete <code>dplyr</code> son:</p>
+<ul>
+<li><code>select</code>: Selecciona un subconjunto de columnas de un data frame.</li>
+<li><code>filter</code>: Selecciona un subconjunto de filas de un data frame.</li>
+<li><code>arrange</code>: Reordena las filas de un data frame.</li>
+<li><code>rename</code>: Renombra las columnas de un data frame.</li>
+<li><code>mutate</code>: Añade nuevas columnas a un data frame o transforma las existentes.</li>
+<li><code>summarise</code>: Genera resúmenes estadísticos de las columnas de un data frame.</li>
+<li><code>group_by</code>: Divide las filas de un data frame en grupos de acuerdo a una columna categórica.</li>
+</ul>
+</section>
+<section id="selección-de-variables" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="selección-de-variables"><span class="header-section-number">6.5</span> Selección de variables</h2>
+<p>Para seleccionar un subconjunto de variables de un data frame se utiliza la función</p>
+<ul>
+<li><code>select(df, columnas)</code>: Devuelve un tibble con las columnas indicadas en el parámetro <code>columnas</code> del data frame <code>df</code>.</li>
+</ul>
+<div class="exm-select">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas nombre, sexo y edad</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, nombre, sexo, edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre sexo edad
+1     José Luis Martínez Izquierdo    H   18
+2                   Rosa Díaz Díaz    M   32
+3            Javier García Sánchez    H   24
+4              Carmen López Pinzón    M   35
+5             Marisa López Collado    M   46
+6                Antonio Ruiz Cruz    H   68
+7          Antonio Fernández Ocaña    H   51
+8            Pilar Martín González    M   22
+9             Pedro Gálvez Tenorio    H   35
+10         Santiago Reillo Manzano    H   46
+11           Macarena Álvarez Luna    M   53
+12      José María de la Guía Sanz    H   58
+13 Miguel Angel Cuadrado Gutiérrez    H   27
+14           Carolina Rubio Moreno    M   20</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar la primera y tercera columnas</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre sexo
+1     José Luis Martínez Izquierdo    H
+2                   Rosa Díaz Díaz    M
+3            Javier García Sánchez    H
+4              Carmen López Pinzón    M
+5             Marisa López Collado    M
+6                Antonio Ruiz Cruz    H
+7          Antonio Fernández Ocaña    H
+8            Pilar Martín González    M
+9             Pedro Gálvez Tenorio    H
+10         Santiago Reillo Manzano    H
+11           Macarena Álvarez Luna    M
+12      José María de la Guía Sanz    H
+13 Miguel Angel Cuadrado Gutiérrez    H
+14           Carolina Rubio Moreno    M</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas desde el peso hasta el colesterol</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, peso<span class="sc">:</span>colesterol)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   peso altura colesterol
+1    85   1.79        182
+2    65   1.73        232
+3    NA   1.81        191
+4    65   1.70        200
+5    51   1.58        148
+6    66   1.74        249
+7    62   1.72        276
+8    60   1.66         NA
+9    90   1.94        241
+10   75   1.85        280
+11   55   1.62        262
+12   78   1.87        198
+13  109   1.98        210
+14   61   1.77        194</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar todas las columnas menos la edad</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="sc">-</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre sexo peso altura colesterol
+1     José Luis Martínez Izquierdo    H   85   1.79        182
+2                   Rosa Díaz Díaz    M   65   1.73        232
+3            Javier García Sánchez    H   NA   1.81        191
+4              Carmen López Pinzón    M   65   1.70        200
+5             Marisa López Collado    M   51   1.58        148
+6                Antonio Ruiz Cruz    H   66   1.74        249
+7          Antonio Fernández Ocaña    H   62   1.72        276
+8            Pilar Martín González    M   60   1.66         NA
+9             Pedro Gálvez Tenorio    H   90   1.94        241
+10         Santiago Reillo Manzano    H   75   1.85        280
+11           Macarena Álvarez Luna    M   55   1.62        262
+12      José María de la Guía Sanz    H   78   1.87        198
+13 Miguel Angel Cuadrado Gutiérrez    H  109   1.98        210
+14           Carolina Rubio Moreno    M   61   1.77        194</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="filtrado-de-datos" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="filtrado-de-datos"><span class="header-section-number">6.6</span> Filtrado de datos</h2>
+<p>Para filtrar un data frame y quedarse con las filas que cumplen una condición se usa la función</p>
+<ul>
+<li><code>filter(df, condicion)</code>: Devuelve el tibble con las filas del data frame <code>df</code> que cumplen la condición indicada en el parámetro <code>condición</code>.</li>
+</ul>
+<div class="exm-filter">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las mujeres</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, sexo <span class="sc">==</span> <span class="st">"M"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 nombre edad sexo peso altura colesterol
+1        Rosa Díaz Díaz   32    M   65   1.73        232
+2   Carmen López Pinzón   35    M   65   1.70        200
+3  Marisa López Collado   46    M   51   1.58        148
+4 Pilar Martín González   22    M   60   1.66         NA
+5 Macarena Álvarez Luna   53    M   55   1.62        262
+6 Carolina Rubio Moreno   20    M   61   1.77        194</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar los hombres mayores de 30 </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, sexo <span class="sc">==</span> <span class="st">"H"</span> <span class="sc">&amp;</span> edad <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      nombre edad sexo peso altura colesterol
+1          Antonio Ruiz Cruz   68    H   66   1.74        249
+2    Antonio Fernández Ocaña   51    H   62   1.72        276
+3       Pedro Gálvez Tenorio   35    H   90   1.94        241
+4    Santiago Reillo Manzano   46    H   75   1.85        280
+5 José María de la Guía Sanz   58    H   78   1.87        198</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las filas con valores de colesterol</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, <span class="sc">!</span><span class="fu">is.na</span>(colesterol))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso altura colesterol
+1     José Luis Martínez Izquierdo   18    H   85   1.79        182
+2                   Rosa Díaz Díaz   32    M   65   1.73        232
+3            Javier García Sánchez   24    H   NA   1.81        191
+4              Carmen López Pinzón   35    M   65   1.70        200
+5             Marisa López Collado   46    M   51   1.58        148
+6                Antonio Ruiz Cruz   68    H   66   1.74        249
+7          Antonio Fernández Ocaña   51    H   62   1.72        276
+8             Pedro Gálvez Tenorio   35    H   90   1.94        241
+9          Santiago Reillo Manzano   46    H   75   1.85        280
+10           Macarena Álvarez Luna   53    M   55   1.62        262
+11      José María de la Guía Sanz   58    H   78   1.87        198
+12 Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98        210
+13           Carolina Rubio Moreno   20    M   61   1.77        194</code></pre>
+</div>
+</div>
+</div>
+<p>Existe un filtro bastante habitual que consiste en eliminar las filas de un data frame que contienen algún dado no disponible (<code>NA</code>). Para ello <code>dplyr</code> dispone de la función</p>
+<ul>
+<li><code>na.omit(df)</code>: Devuelve el tibble que resulta de eliminar las filas del data frame <code>df</code> con algún valor <code>NA</code>.</li>
+</ul>
+<div class="exm-filter-na">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso altura colesterol
+1     José Luis Martínez Izquierdo   18    H   85   1.79        182
+2                   Rosa Díaz Díaz   32    M   65   1.73        232
+4              Carmen López Pinzón   35    M   65   1.70        200
+5             Marisa López Collado   46    M   51   1.58        148
+6                Antonio Ruiz Cruz   68    H   66   1.74        249
+7          Antonio Fernández Ocaña   51    H   62   1.72        276
+9             Pedro Gálvez Tenorio   35    H   90   1.94        241
+10         Santiago Reillo Manzano   46    H   75   1.85        280
+11           Macarena Álvarez Luna   53    M   55   1.62        262
+12      José María de la Guía Sanz   58    H   78   1.87        198
+13 Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98        210
+14           Carolina Rubio Moreno   20    M   61   1.77        194</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="reordenación-de-datos" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="reordenación-de-datos"><span class="header-section-number">6.7</span> Reordenación de datos</h2>
+<p>Para reordenar las filas de un data frame se utiliza la función</p>
+<ul>
+<li><code>arrange(df, columnas)</code>: Devuelve un tibble con las mismas filas del data frame <code>df</code> pero ordenadas de acuerdo a los valores de las columnas indicadas en el parámetro <code>columnas</code>. Por defecto, la ordenación es ascendente, para hacerla descendente, hay que aplicar la función <code>desc()</code> a la columna con respecto se quiere ordenar descendentemente.</li>
+</ul>
+<div class="exm-arrange">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, nombre)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso altura colesterol
+1          Antonio Fernández Ocaña   51    H   62   1.72        276
+2                Antonio Ruiz Cruz   68    H   66   1.74        249
+3              Carmen López Pinzón   35    M   65   1.70        200
+4            Carolina Rubio Moreno   20    M   61   1.77        194
+5            Javier García Sánchez   24    H   NA   1.81        191
+6     José Luis Martínez Izquierdo   18    H   85   1.79        182
+7       José María de la Guía Sanz   58    H   78   1.87        198
+8            Macarena Álvarez Luna   53    M   55   1.62        262
+9             Marisa López Collado   46    M   51   1.58        148
+10 Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98        210
+11            Pedro Gálvez Tenorio   35    H   90   1.94        241
+12           Pilar Martín González   22    M   60   1.66         NA
+13                  Rosa Díaz Díaz   32    M   65   1.73        232
+14         Santiago Reillo Manzano   46    H   75   1.85        280</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según sexo y edad</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, sexo, edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso altura colesterol
+1     José Luis Martínez Izquierdo   18    H   85   1.79        182
+2            Javier García Sánchez   24    H   NA   1.81        191
+3  Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98        210
+4             Pedro Gálvez Tenorio   35    H   90   1.94        241
+5          Santiago Reillo Manzano   46    H   75   1.85        280
+6          Antonio Fernández Ocaña   51    H   62   1.72        276
+7       José María de la Guía Sanz   58    H   78   1.87        198
+8                Antonio Ruiz Cruz   68    H   66   1.74        249
+9            Carolina Rubio Moreno   20    M   61   1.77        194
+10           Pilar Martín González   22    M   60   1.66         NA
+11                  Rosa Díaz Díaz   32    M   65   1.73        232
+12             Carmen López Pinzón   35    M   65   1.70        200
+13            Marisa López Collado   46    M   51   1.58        148
+14           Macarena Álvarez Luna   53    M   55   1.62        262</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar ascendentemente por sexo y descendentemente por colesterol</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, sexo, <span class="fu">desc</span>(colesterol))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso altura colesterol
+1          Santiago Reillo Manzano   46    H   75   1.85        280
+2          Antonio Fernández Ocaña   51    H   62   1.72        276
+3                Antonio Ruiz Cruz   68    H   66   1.74        249
+4             Pedro Gálvez Tenorio   35    H   90   1.94        241
+5  Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98        210
+6       José María de la Guía Sanz   58    H   78   1.87        198
+7            Javier García Sánchez   24    H   NA   1.81        191
+8     José Luis Martínez Izquierdo   18    H   85   1.79        182
+9            Macarena Álvarez Luna   53    M   55   1.62        262
+10                  Rosa Díaz Díaz   32    M   65   1.73        232
+11             Carmen López Pinzón   35    M   65   1.70        200
+12           Carolina Rubio Moreno   20    M   61   1.77        194
+13            Marisa López Collado   46    M   51   1.58        148
+14           Pilar Martín González   22    M   60   1.66         NA</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="renombrado-de-columnas" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="renombrado-de-columnas"><span class="header-section-number">6.8</span> Renombrado de columnas</h2>
+<p>Para cambiar el nombre de las columnas se utiliza la función</p>
+<ul>
+<li><code>rename(df, nuevo-nombre = columna)</code>: Devuelve un tibble con los mismos datos del data frame <code>df</code> pero cambiando el nombre de la columna de nombre <code>columna</code> por <code>nuevo-nombre</code>.</li>
+</ul>
+<div class="exm-rename">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(df, <span class="at">estatura =</span> altura)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso estatura colesterol
+1     José Luis Martínez Izquierdo   18    H   85     1.79        182
+2                   Rosa Díaz Díaz   32    M   65     1.73        232
+3            Javier García Sánchez   24    H   NA     1.81        191
+4              Carmen López Pinzón   35    M   65     1.70        200
+5             Marisa López Collado   46    M   51     1.58        148
+6                Antonio Ruiz Cruz   68    H   66     1.74        249
+7          Antonio Fernández Ocaña   51    H   62     1.72        276
+8            Pilar Martín González   22    M   60     1.66         NA
+9             Pedro Gálvez Tenorio   35    H   90     1.94        241
+10         Santiago Reillo Manzano   46    H   75     1.85        280
+11           Macarena Álvarez Luna   53    M   55     1.62        262
+12      José María de la Guía Sanz   58    H   78     1.87        198
+13 Miguel Angel Cuadrado Gutiérrez   27    H  109     1.98        210
+14           Carolina Rubio Moreno   20    M   61     1.77        194</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="creación-de-nuevas-columnas-o-transformación-de-las-existentes" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="creación-de-nuevas-columnas-o-transformación-de-las-existentes"><span class="header-section-number">6.9</span> Creación de nuevas columnas o transformación de las existentes</h2>
+<p>Para crear una nueva columna a partir de otras columnas del data frame se utiliza la función</p>
+<ul>
+<li><code>mutate(df, columna = formula)</code>: Devuelve el tibble que resulta de añadir una nueva columna al data frame <code>df</code> con el resultado de aplicar el procedimiento indicado por <code>formula</code> y con el nombre indicado en <code>columna</code>. Si <code>columna</code> es el nombre de una columna ya existente, entonces esa columna se reescribe con los resultados de aplicar la <code>formula</code>.</li>
+</ul>
+<div class="exm-mutate">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Cambiar las unidades de la altura a centímetros</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(df, <span class="at">altura =</span> altura<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso altura colesterol
+1     José Luis Martínez Izquierdo   18    H   85    179        182
+2                   Rosa Díaz Díaz   32    M   65    173        232
+3            Javier García Sánchez   24    H   NA    181        191
+4              Carmen López Pinzón   35    M   65    170        200
+5             Marisa López Collado   46    M   51    158        148
+6                Antonio Ruiz Cruz   68    H   66    174        249
+7          Antonio Fernández Ocaña   51    H   62    172        276
+8            Pilar Martín González   22    M   60    166         NA
+9             Pedro Gálvez Tenorio   35    H   90    194        241
+10         Santiago Reillo Manzano   46    H   75    185        280
+11           Macarena Álvarez Luna   53    M   55    162        262
+12      José María de la Guía Sanz   58    H   78    187        198
+13 Miguel Angel Cuadrado Gutiérrez   27    H  109    198        210
+14           Carolina Rubio Moreno   20    M   61    177        194</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular el índice de masa corporal</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(df, <span class="at">imc =</span> <span class="fu">round</span>(peso<span class="sc">/</span>altura<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            nombre edad sexo peso altura colesterol imc
+1     José Luis Martínez Izquierdo   18    H   85   1.79        182  27
+2                   Rosa Díaz Díaz   32    M   65   1.73        232  22
+3            Javier García Sánchez   24    H   NA   1.81        191  NA
+4              Carmen López Pinzón   35    M   65   1.70        200  22
+5             Marisa López Collado   46    M   51   1.58        148  20
+6                Antonio Ruiz Cruz   68    H   66   1.74        249  22
+7          Antonio Fernández Ocaña   51    H   62   1.72        276  21
+8            Pilar Martín González   22    M   60   1.66         NA  22
+9             Pedro Gálvez Tenorio   35    H   90   1.94        241  24
+10         Santiago Reillo Manzano   46    H   75   1.85        280  22
+11           Macarena Álvarez Luna   53    M   55   1.62        262  21
+12      José María de la Guía Sanz   58    H   78   1.87        198  22
+13 Miguel Angel Cuadrado Gutiérrez   27    H  109   1.98        210  28
+14           Carolina Rubio Moreno   20    M   61   1.77        194  19</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="resumen-de-datos" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="resumen-de-datos"><span class="header-section-number">6.10</span> Resumen de datos</h2>
+<p>Para aplicar una función resumen a una o varias columnas de un data frame se utiliza la función</p>
+<ul>
+<li><code>sumarise(df, nombre-columna = funcion-resumen(columnas))</code>: Devuelve el tibble con la columna de nombre <code>nombre-columna</code> y el valor que resulta de aplicar la función indicada en <code>funcion-resumen</code> a las columnas del data frame <code>df</code> indicadas en <code>columnas</code>.</li>
+</ul>
+<div class="exm-sumarise">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de la edad</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df, <span class="at">edad_media =</span> <span class="fu">mean</span>(edad))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  edad_media
+1   38.21429</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media y la desviación típica del colesterol</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df, <span class="at">media =</span> <span class="fu">mean</span>(colesterol, <span class="at">na.rm=</span>T), <span class="at">sd =</span> <span class="fu">sd</span>(colesterol, <span class="at">na.rm=</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     media       sd
+1 220.2308 39.84795</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="resúmenes-por-grupos" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="resúmenes-por-grupos"><span class="header-section-number">6.11</span> Resúmenes por grupos</h2>
+<p>La función <code>summarise</code> suele combinarse con la siguiente función para obtener resúmenes estratificados por grupos.</p>
+<ul>
+<li><code>group_by(df, columnas)</code>: Devuelve un tibble estratificado de acuerdo a las categorías de las columnas indicadas en <code>columnas</code>. En combinación con la función <code>summarise</code> permite hacer resúmenes estadísticos por grupos.</li>
+</ul>
+<div class="exm-group_by">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Estratificar por sexo </span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>df.sexo <span class="ot">&lt;-</span> <span class="fu">group_by</span>(df, sexo)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Edades medias por sexo</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df.sexo, <span class="at">edad_media =</span> <span class="fu">mean</span>(edad))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  sexo  edad_media
+  &lt;chr&gt;      &lt;dbl&gt;
+1 H           40.9
+2 M           34.7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Media y desviación típica del colesterol por sexo</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df.sexo, <span class="at">media =</span> <span class="fu">mean</span>(colesterol, <span class="at">na.rm=</span>T), <span class="at">sd =</span> <span class="fu">sd</span>(colesterol, <span class="at">na.rm=</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  sexo  media    sd
+  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 H      228.  38.4
+2 M      207.  42.9</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicios" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">6.12</span> Ejercicios</h2>
+<p>Crear un data frame con los datos del fichero <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.xlsx"><code>genetica</code></a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-funciones.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Funciones</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

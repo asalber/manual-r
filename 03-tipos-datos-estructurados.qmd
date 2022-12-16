@@ -899,6 +899,7 @@ Obsérvese en el último ejemplo anterior cómo se pueden utilizar condiciones l
 Para acceder a las primeras o últimas filas de un data frame se pueden utilizar las siguientes funciones: 
 
 - `head(df, n)`: Devuelve un data frame con las `n` primeras filas del data frame `df`.
+
 - `tail(df, n)`: Devuelve un data frame con las `n` últimas filas del data frame `df`.
 
 Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.
@@ -926,11 +927,12 @@ df
 ```
 :::
 
-### Añadir elementos a una matriz
+### Añadir elementos a un data frame
 
-Para añadir nuevas filas o columnas a una matriz se utilizan las mismas funciones que para matrices:
+Para añadir nuevas filas o columnas a una data frame se utilizan las mismas funciones que para matrices:
 
 - `rbind(df, x)`: Devuelve el data frame que resulta de añadir nuevas filas al data frame `df` con los elementos de la lista `x`.
+
 - `cbind(df, nombrex = x)`: Devuelve el data frame que resulta de añadir nuevas columnas al data frame `df` con los elementos del vector `x` con nombre `nombrex`.
 
 :::{#exm-añadir-filas-columnas-data-frame}
@@ -964,7 +966,7 @@ df[-2, ]
 
 ## Ejercicios
 
-:::{.exr-vectores}
+:::{#exr-datos-estructurados-1}
 La siguiente tabla recoge las notas de los alumnos de un curso con dos asignaturas. 
 
 | Alumno | Sexo | Física | Química |
