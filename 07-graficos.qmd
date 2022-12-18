@@ -61,7 +61,21 @@ ggplot(df, aes(x=sexo, fill=sexo)) +
 ```
 :::
 
+:::{.exm-barras-3}
+```{r, message=F}
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv')
+# Inicializar el gráfico con los atributos
+ggplot(df, aes(x=Ciudad)) +
+# Añadir la capa de las barras
+    geom_bar()
+```
+:::
+
+
+
+
 ## Diagramas de líneas
+
 
 
 ## Histogramas
