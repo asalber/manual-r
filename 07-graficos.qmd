@@ -1,17 +1,65 @@
 ---
+title: Gráficos y visualización de datos
 lang: es
 ---
 
-# Gráficos y visualización de datos
+R incorpora funciones para realizar gráficos de distintos tipos, pero actualmente existen paquetes especializados para la visualización de datos como `ggplot2` que permiten realizar multitud de gráficos de manera más estructurada.
 
 ## Gramática de gráficos y el paquete `ggplot2`
 
+El paquete `ggplot2` forma parte de la colección de paquetes `tidyverse` que ya se introdujo en la sección anterior. 
 
-## Diagramas de puntos
+Este paquete implementa la [gramática de gráficos](https://www.academia.edu/54823545/The_grammar_of_graphics) descrita por Leland Wilkinson, que proporciona un sistema formal para representar distintas variables mediante distintos atributos gráficos (aesthetics) como la forma, el tamaño o el color de objetos geométricos como puntos, líneas o barras. Esto hace que la creación de gráficos con este paquete sea, en general, más intuitiva una vez se entiende la lógica de la gramática. 
 
+En general, para definir un gráfico con `ggplot2` se suelen definir los siguientes elementos:
 
+- **Datos**. Los datos deben estar contenidos en un data frame o tibble en formato ordenado (_tidy_).
+- **Atributos (_aesthetics_)**. Las variables que quieren representarse en el gráfico deben asociarse a atributos gráficos como los ejes x, y, z, el color, el tamaño, la forma de los objetos geométricos.
+- **Capas de objetos geométricos (_geoms_)**. Están formadas por elementos geométricos (puntos, líneas, barras, etc.) cuya posición, forma, tamaño y color, depende de los atributos. 
+- **Escalas**. Definen la escala para los ejes del diagrama así como las leyendas para el resto de atributos.
+- **Sistema de coordenadas**. Describe el sistema de coordenadas utilizado para representar los objetos geométricos en el plano o en el espacio (normalmente el sistema cartesiano).
+- **Facetas**. Permite descomponer un gráfico en múltiples gráficos para distintos subconjuntos del conjunto de datos.
+- **Tema**. Permite cambiar elementos secundarios del gráfico como el tipo de letra de las etiquetas y leyendas, el tamaño de la fuente, el color de fondo, aspecto final del los gráficos.
+
+## Inicialización de un gráfico
+
+Para dibujar un gráfico con `ggplot2` debemos comenzar por la siguiente función
+
+- `ggplot(df, aes(atributo1=var1, atributo2=var2, ...))`: Inicializa un gráfico con las variables `var1`, `var2`, etc. del data frame `df` asociadas a los atributos `atributo1`, `atributo2`, etc. respectivamente. Los atributos pueden ser:
+    - x: Posición en el eje x del objeto geométrico.
+    - y: Posición en el eje y del objeto geométrico.
+    - z: Posición en el eje z del objeto geométrico.
+    - shape: Forma del objeto geométrico.
+    - size: Tamaño del objeto geométrico.
+    - colour: Color del objeto geométrico.
+    - fill: Color de relleno del objeto geométrico.
+    
 ## Diagramas de barras
 
+Para dibujar un diagrama de barras se utiliza la capa de objetos geométricos
+
+- geom_bar(): Dibuja un diagrama de barras con la variable asociada al atributo $x$. Por defecto, la altura de las barras representa la frecuencia absoluta de cada valor de la variable.
+
+:::{.exm-barras-1}
+```{r, message=F}
+library(dplyr)
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con los atributos
+ggplot(df, aes(x=sexo)) +
+# Añadir la capa de las barras
+    geom_bar()
+```
+:::
+
+:::{.exm-barras-2}
+```{r}
+# Inicializar el gráfico con los atributos
+ggplot(df, aes(x=sexo, fill=sexo)) +
+# Añadir la capa de las barras
+    geom_bar() 
+```
+:::
 
 ## Diagramas de líneas
 

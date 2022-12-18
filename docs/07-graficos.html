@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alfredo Sánchez Alberca">
 
-<title>Curso básico de análisis de datos con R</title>
+<title>Curso básico de análisis de datos con R - 7&nbsp; Gráficos y visualización de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -31,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-intro.html" rel="next">
+<link href="./06-preprocesamiento.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -64,12 +126,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Curso básico de análisis de datos con R">
-<meta property="og:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta property="og:title" content="Curso básico de análisis de datos con R - 7&nbsp; Gráficos y visualización de datos">
+<meta property="og:description" content="R incorpora funciones para realizar gráficos de distintos tipos, pero actualmente existen paquetes especializados para la visualización de datos como ggplot2 que permiten realizar multitud de…">
 <meta property="og:site-name" content="Curso básico de análisis de datos con R">
-<meta name="twitter:title" content="Curso básico de análisis de datos con R">
-<meta name="twitter:description" content="Con ejemplos aplicados a las Ciencias de la Salud">
+<meta name="twitter:title" content="Curso básico de análisis de datos con R - 7&nbsp; Gráficos y visualización de datos">
+<meta name="twitter:description" content="R incorpora funciones para realizar gráficos de distintos tipos, pero actualmente existen paquetes especializados para la visualización de datos como ggplot2 que permiten realizar multitud de…">
 <meta name="twitter:site" content="@aprendeconalf">
 <meta name="twitter:card" content="summary">
 </head>
@@ -80,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Curso básico de análisis de datos con R</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -142,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Prefacio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -177,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-graficos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></a>
+  <a href="./07-graficos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></a>
   </div>
 </li>
     </ul>
@@ -189,10 +252,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a>
+  <li><a href="#gramática-de-gráficos-y-el-paquete-ggplot2" id="toc-gramática-de-gráficos-y-el-paquete-ggplot2" class="nav-link active" data-scroll-target="#gramática-de-gráficos-y-el-paquete-ggplot2"><span class="toc-section-number">7.1</span>  Gramática de gráficos y el paquete <code>ggplot2</code></a></li>
+  <li><a href="#inicialización-de-un-gráfico" id="toc-inicialización-de-un-gráfico" class="nav-link" data-scroll-target="#inicialización-de-un-gráfico"><span class="toc-section-number">7.2</span>  Inicialización de un gráfico</a></li>
+  <li><a href="#diagramas-de-barras" id="toc-diagramas-de-barras" class="nav-link" data-scroll-target="#diagramas-de-barras"><span class="toc-section-number">7.3</span>  Diagramas de barras</a></li>
+  <li><a href="#diagramas-de-líneas" id="toc-diagramas-de-líneas" class="nav-link" data-scroll-target="#diagramas-de-líneas"><span class="toc-section-number">7.4</span>  Diagramas de líneas</a></li>
+  <li><a href="#histogramas" id="toc-histogramas" class="nav-link" data-scroll-target="#histogramas"><span class="toc-section-number">7.5</span>  Histogramas</a></li>
+  <li><a href="#diagramas-de-cajas" id="toc-diagramas-de-cajas" class="nav-link" data-scroll-target="#diagramas-de-cajas"><span class="toc-section-number">7.6</span>  Diagramas de cajas</a></li>
+  <li><a href="#diagramas-de-dispersión" id="toc-diagramas-de-dispersión" class="nav-link" data-scroll-target="#diagramas-de-dispersión"><span class="toc-section-number">7.7</span>  Diagramas de dispersión</a></li>
+  <li><a href="#personalización-de-gráficos" id="toc-personalización-de-gráficos" class="nav-link" data-scroll-target="#personalización-de-gráficos"><span class="toc-section-number">7.8</span>  Personalización de gráficos</a>
   <ul class="collapse">
-  <li><a href="#propósito-de-este-manual" id="toc-propósito-de-este-manual" class="nav-link" data-scroll-target="#propósito-de-este-manual">Propósito de este manual</a></li>
-  <li><a href="#licencia" id="toc-licencia" class="nav-link" data-scroll-target="#licencia">Licencia</a></li>
+  <li><a href="#ejes" id="toc-ejes" class="nav-link" data-scroll-target="#ejes"><span class="toc-section-number">7.8.1</span>  Ejes</a></li>
+  <li><a href="#leyendas" id="toc-leyendas" class="nav-link" data-scroll-target="#leyendas"><span class="toc-section-number">7.8.2</span>  Leyendas</a></li>
+  <li><a href="#facetas" id="toc-facetas" class="nav-link" data-scroll-target="#facetas"><span class="toc-section-number">7.8.3</span>  Facetas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,27 +273,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Curso básico de análisis de datos con R</h1>
-<p class="subtitle lead">Con ejemplos aplicados a las Ciencias de la Salud</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alfredo Sánchez Alberca </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">6 de enero de 2022</p>
-    </div>
-  </div>
   
     
   </div>
@@ -230,35 +288,92 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-<section id="prefacio" class="level1 unnumbered">
-<p><img src="img/logos/Rlogo.png" title="Curso básico de análisis de datos con R" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Prefacio</h1>
-<section id="propósito-de-este-manual" class="level2">
-<h2 class="anchored" data-anchor-id="propósito-de-este-manual">Propósito de este manual</h2>
-<p>Este manual proporciona una introducción amigable al <a href="https://www.r-project.org/">lenguaje de programación R</a> para aquellas personas interesadas en utilizar este lenguaje para el análisis de datos.</p>
-<p>El manual empieza con los conceptos básicos del lenguaje de programación R pero enseguida aborda su uso para la visualización y el análisis estadístico de datos, haciendo un recorrido por los test estadísticos más comunes.</p>
-<p>Lo más interesante de este manual es la multitud de ejemplos que ilustran el uso de las técnicas estadísticas presentadas, así como los problemas propuestos.</p>
-<p>El manual no aborda los fundamentos matemáticos de los análisis estadísticos presentados, aunque si explica brevemente cuándo deben usarse y cuándo no, así como las interpretaciones de los resultados obtenidos en los ejemplos. Si alguien está interesado en profundizar en los detalles matemáticos, puede visitar esta <a href="https://aprendeconalf.es/docencia/estadistica/">página</a>.</p>
-<p>No es un curso de programación en R, sino de uso de sus funciones predefinidas y de los paquetes más habituales para el análisis de datos.</p>
-<p>Para cualquier comentario o sugerencia sobre este manual escriba al autor (asalber@ceu.es).</p>
+<p>R incorpora funciones para realizar gráficos de distintos tipos, pero actualmente existen paquetes especializados para la visualización de datos como <code>ggplot2</code> que permiten realizar multitud de gráficos de manera más estructurada.</p>
+<section id="gramática-de-gráficos-y-el-paquete-ggplot2" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="gramática-de-gráficos-y-el-paquete-ggplot2"><span class="header-section-number">7.1</span> Gramática de gráficos y el paquete <code>ggplot2</code></h2>
+<p>El paquete <code>ggplot2</code> forma parte de la colección de paquetes <code>tidyverse</code> que ya se introdujo en la sección anterior.</p>
+<p>Este paquete implementa la <a href="https://www.academia.edu/54823545/The_grammar_of_graphics">gramática de gráficos</a> descrita por Leland Wilkinson, que proporciona un sistema formal para representar distintas variables mediante distintos atributos gráficos (aesthetics) como la forma, el tamaño o el color de objetos geométricos como puntos, líneas o barras. Esto hace que la creación de gráficos con este paquete sea, en general, más intuitiva una vez se entiende la lógica de la gramática.</p>
+<p>En general, para definir un gráfico con <code>ggplot2</code> se suelen definir los siguientes elementos:</p>
+<ul>
+<li><strong>Datos</strong>. Los datos deben estar contenidos en un data frame o tibble en formato ordenado (<em>tidy</em>).</li>
+<li><strong>Atributos (<em>aesthetics</em>)</strong>. Las variables que quieren representarse en el gráfico deben asociarse a atributos gráficos como los ejes x, y, z, el color, el tamaño, la forma de los objetos geométricos.</li>
+<li><strong>Capas de objetos geométricos (<em>geoms</em>)</strong>. Están formadas por elementos geométricos (puntos, líneas, barras, etc.) cuya posición, forma, tamaño y color, depende de los atributos.</li>
+<li><strong>Escalas</strong>. Definen la escala para los ejes del diagrama así como las leyendas para el resto de atributos.</li>
+<li><strong>Sistema de coordenadas</strong>. Describe el sistema de coordenadas utilizado para representar los objetos geométricos en el plano o en el espacio (normalmente el sistema cartesiano).</li>
+<li><strong>Facetas</strong>. Permite descomponer un gráfico en múltiples gráficos para distintos subconjuntos del conjunto de datos.</li>
+<li><strong>Tema</strong>. Permite cambiar elementos secundarios del gráfico como el tipo de letra de las etiquetas y leyendas, el tamaño de la fuente, el color de fondo, aspecto final del los gráficos.</li>
+</ul>
 </section>
-<section id="licencia" class="level2">
-<h2 class="anchored" data-anchor-id="licencia">Licencia</h2>
-<p>Esta obra está bajo una licencia Reconocimiento – No comercial – Compartir bajo la misma licencia 3.0 España de Creative Commons. Para ver una copia de esta licencia, visite <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/es/">https://creativecommons.org/licenses/by-nc-sa/3.0/es/</a>.</p>
-<p>Con esta licencia eres libre de:</p>
+<section id="inicialización-de-un-gráfico" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="inicialización-de-un-gráfico"><span class="header-section-number">7.2</span> Inicialización de un gráfico</h2>
+<p>Para dibujar un gráfico con <code>ggplot2</code> debemos comenzar por la siguiente función</p>
 <ul>
-<li>Copiar, distribuir y mostrar este trabajo.</li>
-<li>Realizar modificaciones de este trabajo.</li>
-</ul>
-<p>Bajo las siguientes condiciones:</p>
+<li><code>ggplot(df, aes(atributo1=var1, atributo2=var2, ...))</code>: Inicializa un gráfico con las variables <code>var1</code>, <code>var2</code>, etc. del data frame <code>df</code> asociadas a los atributos <code>atributo1</code>, <code>atributo2</code>, etc. respectivamente. Los atributos pueden ser:
 <ul>
-<li><p><strong>Reconocimiento</strong>. Debe reconocer los créditos de la obra de la manera especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).</p></li>
-<li><p><strong>No comercial</strong>. No puede utilizar esta obra para fines comerciales.</p></li>
-<li><p><strong>Compartir bajo la misma licencia</strong>. Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.</p></li>
+<li>x: Posición en el eje x del objeto geométrico.</li>
+<li>y: Posición en el eje y del objeto geométrico.</li>
+<li>z: Posición en el eje z del objeto geométrico.</li>
+<li>shape: Forma del objeto geométrico.</li>
+<li>size: Tamaño del objeto geométrico.</li>
+<li>colour: Color del objeto geométrico.</li>
+<li>fill: Color de relleno del objeto geométrico.</li>
+</ul></li>
 </ul>
-<p>Al reutilizar o distribuir la obra, tiene que dejar bien claro los términos de la licencia de esta obra.</p>
-<p>Estas condiciones pueden no aplicarse si se obtiene el permiso del titular de los derechos de autor.</p>
-<p>Nada en esta licencia menoscaba o restringe los derechos morales del autor.</p>
+</section>
+<section id="diagramas-de-barras" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="diagramas-de-barras"><span class="header-section-number">7.3</span> Diagramas de barras</h2>
+<p>Para dibujar un diagrama de barras se utiliza la capa de objetos geométricos</p>
+<ul>
+<li>geom_bar(): Dibuja un diagrama de barras con la variable asociada al atributo <span class="math inline">\(x\)</span>. Por defecto, la altura de las barras representa la frecuencia absoluta de cada valor de la variable.</li>
+</ul>
+<div class="exm-barras-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con los atributos</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>sexo)) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las barras</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="07-graficos_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div class="exm-barras-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con los atributos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>sexo, <span class="at">fill=</span>sexo)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las barras</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="07-graficos_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="diagramas-de-líneas" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="diagramas-de-líneas"><span class="header-section-number">7.4</span> Diagramas de líneas</h2>
+</section>
+<section id="histogramas" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">7.5</span> Histogramas</h2>
+</section>
+<section id="diagramas-de-cajas" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="diagramas-de-cajas"><span class="header-section-number">7.6</span> Diagramas de cajas</h2>
+</section>
+<section id="diagramas-de-dispersión" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="diagramas-de-dispersión"><span class="header-section-number">7.7</span> Diagramas de dispersión</h2>
+</section>
+<section id="personalización-de-gráficos" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="personalización-de-gráficos"><span class="header-section-number">7.8</span> Personalización de gráficos</h2>
+<section id="ejes" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="ejes"><span class="header-section-number">7.8.1</span> Ejes</h3>
+</section>
+<section id="leyendas" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="leyendas"><span class="header-section-number">7.8.2</span> Leyendas</h3>
+</section>
+<section id="facetas" class="level3" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="facetas"><span class="header-section-number">7.8.3</span> Facetas</h3>
 
 
 </section>
@@ -515,11 +630,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./06-preprocesamiento.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Preprocesamiento de datos</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

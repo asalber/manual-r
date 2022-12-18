@@ -264,5 +264,61 @@
     "title": "6  Preprocesamiento de datos",
     "section": "6.12 Ejercicios",
     "text": "6.12 Ejercicios\nCrear un data frame con los datos del fichero genetica."
+  },
+  {
+    "objectID": "07-graficos.html#gramática-de-gráficos-y-el-paquete-ggplot2",
+    "href": "07-graficos.html#gramática-de-gráficos-y-el-paquete-ggplot2",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.1 Gramática de gráficos y el paquete ggplot2",
+    "text": "7.1 Gramática de gráficos y el paquete ggplot2\nEl paquete ggplot2 forma parte de la colección de paquetes tidyverse que ya se introdujo en la sección anterior.\nEste paquete implementa la gramática de gráficos descrita por Leland Wilkinson, que proporciona un sistema formal para representar distintas variables mediante distintos atributos gráficos (aesthetics) como la forma, el tamaño o el color de objetos geométricos como puntos, líneas o barras. Esto hace que la creación de gráficos con este paquete sea, en general, más intuitiva una vez se entiende la lógica de la gramática.\nEn general, para definir un gráfico con ggplot2 se suelen definir los siguientes elementos:\n\nDatos. Los datos deben estar contenidos en un data frame o tibble en formato ordenado (tidy).\nAtributos (aesthetics). Las variables que quieren representarse en el gráfico deben asociarse a atributos gráficos como los ejes x, y, z, el color, el tamaño, la forma de los objetos geométricos.\nCapas de objetos geométricos (geoms). Están formadas por elementos geométricos (puntos, líneas, barras, etc.) cuya posición, forma, tamaño y color, depende de los atributos.\nEscalas. Definen la escala para los ejes del diagrama así como las leyendas para el resto de atributos.\nSistema de coordenadas. Describe el sistema de coordenadas utilizado para representar los objetos geométricos en el plano o en el espacio (normalmente el sistema cartesiano).\nFacetas. Permite descomponer un gráfico en múltiples gráficos para distintos subconjuntos del conjunto de datos.\nTema. Permite cambiar elementos secundarios del gráfico como el tipo de letra de las etiquetas y leyendas, el tamaño de la fuente, el color de fondo, aspecto final del los gráficos."
+  },
+  {
+    "objectID": "07-graficos.html#inicialización-de-un-gráfico",
+    "href": "07-graficos.html#inicialización-de-un-gráfico",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.2 Inicialización de un gráfico",
+    "text": "7.2 Inicialización de un gráfico\nPara dibujar un gráfico con ggplot2 debemos comenzar por la siguiente función\n\nggplot(df, aes(atributo1=var1, atributo2=var2, ...)): Inicializa un gráfico con las variables var1, var2, etc. del data frame df asociadas a los atributos atributo1, atributo2, etc. respectivamente. Los atributos pueden ser:\n\nx: Posición en el eje x del objeto geométrico.\ny: Posición en el eje y del objeto geométrico.\nz: Posición en el eje z del objeto geométrico.\nshape: Forma del objeto geométrico.\nsize: Tamaño del objeto geométrico.\ncolour: Color del objeto geométrico.\nfill: Color de relleno del objeto geométrico."
+  },
+  {
+    "objectID": "07-graficos.html#diagramas-de-barras",
+    "href": "07-graficos.html#diagramas-de-barras",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.3 Diagramas de barras",
+    "text": "7.3 Diagramas de barras\nPara dibujar un diagrama de barras se utiliza la capa de objetos geométricos\n\ngeom_bar(): Dibuja un diagrama de barras con la variable asociada al atributo \\(x\\). Por defecto, la altura de las barras representa la frecuencia absoluta de cada valor de la variable.\n\n\n\nlibrary(dplyr)\nlibrary(ggplot2)\ndf <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')\n# Inicializar el gráfico con los atributos\nggplot(df, aes(x=sexo)) +\n# Añadir la capa de las barras\n    geom_bar()\n\n\n\n\n\n\n\n# Inicializar el gráfico con los atributos\nggplot(df, aes(x=sexo, fill=sexo)) +\n# Añadir la capa de las barras\n    geom_bar()"
+  },
+  {
+    "objectID": "07-graficos.html#diagramas-de-líneas",
+    "href": "07-graficos.html#diagramas-de-líneas",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.4 Diagramas de líneas",
+    "text": "7.4 Diagramas de líneas"
+  },
+  {
+    "objectID": "07-graficos.html#histogramas",
+    "href": "07-graficos.html#histogramas",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.5 Histogramas",
+    "text": "7.5 Histogramas"
+  },
+  {
+    "objectID": "07-graficos.html#diagramas-de-cajas",
+    "href": "07-graficos.html#diagramas-de-cajas",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.6 Diagramas de cajas",
+    "text": "7.6 Diagramas de cajas"
+  },
+  {
+    "objectID": "07-graficos.html#diagramas-de-dispersión",
+    "href": "07-graficos.html#diagramas-de-dispersión",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.7 Diagramas de dispersión",
+    "text": "7.7 Diagramas de dispersión"
+  },
+  {
+    "objectID": "07-graficos.html#personalización-de-gráficos",
+    "href": "07-graficos.html#personalización-de-gráficos",
+    "title": "7  Gráficos y visualización de datos",
+    "section": "7.8 Personalización de gráficos",
+    "text": "7.8 Personalización de gráficos\n\n7.8.1 Ejes\n\n\n7.8.2 Leyendas\n\n\n7.8.3 Facetas"
   }
 ]
