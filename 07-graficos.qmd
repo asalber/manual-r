@@ -25,77 +25,431 @@ En general, para definir un gráfico con `ggplot2` se suelen definir los siguien
 
 Para dibujar un gráfico con `ggplot2` debemos comenzar por la siguiente función
 
-- `ggplot(df, aes(atributo1=var1, atributo2=var2, ...))`: Inicializa un gráfico con las variables `var1`, `var2`, etc. del data frame `df` asociadas a los atributos `atributo1`, `atributo2`, etc. respectivamente. Los atributos pueden ser:
+- `ggplot(df, aes(atributo1 = var1, atributo2 = var2, ...))`: Inicializa un gráfico con las variables `var1`, `var2`, etc. del data frame `df` asociadas a los atributos `atributo1`, `atributo2`, etc. respectivamente. Los atributos pueden más comunes son:
     - x: Posición en el eje x del objeto geométrico.
     - y: Posición en el eje y del objeto geométrico.
     - z: Posición en el eje z del objeto geométrico.
-    - shape: Forma del objeto geométrico.
-    - size: Tamaño del objeto geométrico.
+    - shape: Forma del punto.
+    - size: Tamaño del punto.
+    - linetype: Forma de la línea.
+    - linewidth: Anchura de la línea.
     - colour: Color del objeto geométrico.
     - fill: Color de relleno del objeto geométrico.
-    
+
+
+:::{.callout-important}
+Todos los atributos se indican dentro de la función `aes()`.
+:::
+
+## Diagramas de puntos
+
+Para dibujar un diagrama de puntos se utiliza la capa de objetos geométricos
+
+- `geom_point()`: Dibuja un diagrama de líneas que unen los puntos con coordenadas dadas por los pares de valores de las variables asociadas a los atributos `x` e `y`. 
+
+Esta capa es ideal para representar diagramas de dispersión.
+
+:::{.exm-puntos-1}
+```{r, message=F}
+library(dplyr)
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv') %>%
+    mutate(Día = factor(Día, levels = c("L", "M", "X", "J", "V", "S", "D")))
+# Filtrar los datos de Madrid
+df.madrid = filter(df, Ciudad == "Madrid")
+# Inicializar el gráfico con el día en el atributo x y la temperatura en el atributo y.
+ggplot(df.madrid, aes(x = Día, y = Temperatura)) +
+# Añadir la capa de los puntos.
+    geom_point()
+```
+:::
+
+:::{.exm-puntos-2}
+```{r}
+# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo shape.
+ggplot(df, aes(x = Día, y = Temperatura, shape = Ciudad)) +
+# Añadir la capa de los puntos.
+    geom_point()
+```
+:::
+
+:::{.exm-puntos-3}
+```{r}
+# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo colour.
+ggplot(df, aes(x = Día, y = Temperatura, colour = Ciudad)) +
+# Añadir la capa de los puntos.
+    geom_point()
+```
+:::
+
+:::{.exm-puntos-4}
+```{r, message=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
+ggplot(df, aes(x = altura, y = peso)) +
+# Añadir la capa de los puntos.
+    geom_point()
+```
+:::
+
+:::{.exm-puntos-5}
+```{r}
+# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.
+ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
+# Añadir la capa de los puntos.
+    geom_point()
+```
+:::
+
+[Más información sobre `geom_point`](https://ggplot2.tidyverse.org/reference/geom_point.html).
+
+## Diagramas de líneas
+
+Para dibujar un diagrama de líneas se utiliza la capa de objetos geométricos
+
+- `geom_line()`: Dibuja un diagrama de líneas que unen los puntos con coordenadas dadas por los pares de valores de las variables asociadas a los atributos `x`
+e `y`. Cuando la variable asociada al atributo `x` es un factor, debe asociarse también una variable al atributo `group` para determina los grupos que se unirán mediante líneas. Si solo hay un grupo debe indicarse `group = 1`. 
+
+Esta capa es ideal para representar series temporales.
+
+:::{.exm-lineas-1}
+```{r, message=F}
+library(dplyr)
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv') %>%
+    mutate(Día = factor(Día, levels = c("L", "M", "X", "J", "V", "S", "D")))
+# Filtrar los datos de Madrid
+df.madrid = filter(df, Ciudad == "Madrid")
+# Inicializar el gráfico con el día en el atributo x y la temperatura en el atributo y. 
+ggplot(df.madrid, aes(x = Día, y = Temperatura, group = 1)) +
+# Añadir la capa de las lineas.
+    geom_line()
+```
+:::
+
+:::{.exm-lineas-2}
+```{r, message=F}
+# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y linetype.
+ggplot(df, aes(x = Día, y = Temperatura, group = Ciudad, linetype = Ciudad)) +
+# Añadir la capa de las lineas.
+    geom_line()
+```
+:::
+
+:::{.exm-lineas-3}
+```{r, message=F}
+# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y colour.
+ggplot(df, aes(x = Día, y = Temperatura, group = Ciudad, colour = Ciudad)) +
+# Añadir la capa de las lineas.
+    geom_line()
+```
+:::
+
+[Más información sobre `geom_line`](https://ggplot2.tidyverse.org/reference/geom_path.html).
+
 ## Diagramas de barras
 
 Para dibujar un diagrama de barras se utiliza la capa de objetos geométricos
 
-- geom_bar(): Dibuja un diagrama de barras con la variable asociada al atributo $x$. Por defecto, la altura de las barras representa la frecuencia absoluta de cada valor de la variable.
+- `geom_bar(aes(weight = var))`: Dibuja un diagrama de barras con la variable asociada al atributo `x` o `y` (si se usa el atributo `x` las barras son verticales y se usa `y` horizontales), donde la altura de las barras viene dada por la variable `var`. Si no se indica   Por defecto, la altura de las barras representa la frecuencia absoluta de cada valor de la variable. Si no se indica el atributo `weight` la altura de las barras es la frecuencia absoluta de los valores de la variable asociada a los atributos `x` o `y`.
 
 :::{.exm-barras-1}
 ```{r, message=F}
 library(dplyr)
 library(ggplot2)
-df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
-# Inicializar el gráfico con los atributos
-ggplot(df, aes(x=sexo)) +
-# Añadir la capa de las barras
-    geom_bar()
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv') %>%
+    mutate(Día = factor(Día, levels = c("L", "M", "X", "J", "V", "S", "D")))
+df
+# Filtrar los datos de Madrid
+df.madrid = filter(df, Ciudad == "Madrid")
+# Inicializar el gráfico con el día en el atributo x.
+ggplot(df.madrid, aes(x = Día)) +
+# Añadir la capa de las barras con altura la temperatura.
+    geom_bar(aes(weight = Temperatura))
 ```
 :::
 
 :::{.exm-barras-2}
 ```{r}
-# Inicializar el gráfico con los atributos
-ggplot(df, aes(x=sexo, fill=sexo)) +
-# Añadir la capa de las barras
-    geom_bar() 
+# Inicializar el gráfico con el día en el atributo y.
+ggplot(df.madrid, aes(y = Día)) +
+# Añadir la capa de las barras con altura la temperatura.
+    geom_bar(aes(weight = Temperatura))
 ```
 :::
 
 :::{.exm-barras-3}
-```{r, message=F}
-df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv')
-# Inicializar el gráfico con los atributos
-ggplot(df, aes(x=Ciudad)) +
-# Añadir la capa de las barras
+```{r}
+# Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.
+ggplot(df, aes(x = Día, fill = Ciudad)) +
+# Añadir la capa de las barras con altura la temperatura (por defecto barras acumuladas).
+    geom_bar(aes(weight = Temperatura))
+```
+:::
+
+:::{.exm-barras-4}
+```{r}
+# Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.
+ggplot(df, aes(x = Día, fill = Ciudad)) +
+# Añadir la capa de las barras con altura la temperatura indicando barras separadas.
+    geom_bar(aes(weight = Temperatura), position = "dodge")
+```
+:::
+
+:::{.exm-barras-5}
+```{r}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con el sexo en el atributo x.
+ggplot(df, aes(x = sexo)) +
+# Añadir la capa de las barras.
     geom_bar()
 ```
 :::
 
+:::{.exm-barras-6}
+```{r}
+# Inicializar el gráfico con el sexo en los atributos x y fill.
+ggplot(df, aes(x = sexo, fill = sexo)) +
+# Añadir la capa de las barras.
+    geom_bar() 
+```
+:::
 
-
-
-## Diagramas de líneas
-
-
+[Más información sobre `geom_bar`](https://ggplot2.tidyverse.org/reference/geom_bar.html).
 
 ## Histogramas
 
+Para dibujar un histograma se utiliza la capa de objetos geométricos
+
+- `geom_histogram(stat_bin(bindwidth = anchura))`: Dibuja un histograma de la variable asociada al atributo `x` usando clases de amplitud indicada por `anchura`. Si no se indica el parámetro `bindwidth` se toman 30 clases por defecto.
+
+:::{.exm-histograma-1}
+```{r, message=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la edad en el atributo x.
+ggplot(df, aes(x = edad)) +
+# Añadir la capa del histograma.
+    geom_histogram()
+```
+:::
+
+:::{.exm-histograma-2}
+```{r}
+# Inicializar el gráfico con la edad en el atributo x.
+ggplot(df, aes(x = edad)) +
+# Añadir la capa del histograma con anchura de clases 5.
+    geom_histogram(binwidth = 5)
+```
+:::
+
+:::{.exm-histograma-3}
+```{r}
+# Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.
+ggplot(df, aes(x = edad, fill = sexo)) +
+# Añadir la capa del histograma con anchura de clases 10.
+    geom_histogram(binwidth = 10)
+```
+:::
+
+[Más información sobre `geom_histogram`](https://ggplot2.tidyverse.org/reference/geom_histogram.html).
 
 ## Diagramas de cajas
 
+Para dibujar un diagrama de caja y bigotes se utiliza la capa de objetos geométricos
 
-## Diagramas de dispersión
+- `geom_boxplot()`: Dibuja un diagrama de caja y bigotes de la variable asociada al atributo `x` o `y`. Si se utiliza el atributo `x` la caja se representa horizontalmente, y si se utiliza el atributo `y` verticalmente.
 
+:::{.exm-cajas-1}
+```{r, message=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con el colesterol en el atributo x.
+ggplot(df, aes(x = colesterol)) +
+# Añadir la capa de la caja.
+    geom_boxplot()
+```
+:::
+
+:::{.exm-cajas-2}
+```{r}
+# Inicializar el gráfico con la altura en el atributo y y el sexo en el atributo fill.
+ggplot(df, aes(y = altura, fill = sexo)) +
+# Añadir la capa de la caja.
+    geom_boxplot()
+```
+:::
+
+[Más información sobre `geom_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html).
+
+## Diagrama de sectores
+
+Para dibujar un diagrama de sectores se utiliza la misma capa de objetos geométricos que para los diagramas de barras (`geom_bar`) pero añadiendo el sistema de coordenadas polares.
+
+- `coor_polar(theta = "x"|"y")`: Cambia al sistema de coordenadas cartesianas polares, donde el ángulo viene dado por la variable asociada al atributo "x" o el atributo "y".
+
+:::{.exm-sectores-1}
+```{r}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con el sexo en el atributo x.
+ggplot(df, aes(x = factor(1), fill = sexo)) +
+# Añadir la capa de las barras.
+    geom_bar() +
+# Añadir el sistema de coordenadas polares
+    coord_polar(theta = "y")
+```
+:::
+
+## Interpolación y ajustes de regresión
+
+Para dibujar una línea de interpolación o de ajuste de regresión se utiliza la capa de objetos geométricos
+
+- `geom_smooth(method = ajuste, formula = ecuación)`: Dibuja una línea de ajuste para los puntos con coordenadas dadas por los pares de valores de las variables asociadas a los atributos `x` e `y`, usando el método de ajuste dado por por `ajuste` y la fórmula dada por `ecuación`. Los métodos de ajuste más habituales son:
+    - [`"loess"`](https://rdrr.io/r/stats/loess.html): Ajuste de regresión polinomial local. Es la que se utiliza por defecto.
+    - [`"lm"`](https://rdrr.io/r/stats/lm.html): Ajuste de regresión de modelos lineal por mínimos cuadrados.
+    - [`"glm"`](https://rdrr.io/r/stats/glm.html): Ajuste de regresión modelos lineales generalizados por mínimos cuadrados.
+Por defecto se dibujan también las bandas con el error estándar del ajuste. Para desactivar estas bandas se debe indicar también el parámetro `se = FALSE`.
+
+Esta capa suele usarse en combinación con la capa de puntos para diagramas de dispersión.
+
+:::{.exm-ajuste-1}
+```{r, message=F, warning=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
+ggplot(df, aes(x = altura, y = peso)) +
+# Añadir la capa de puntos.
+    geom_point() +
+# Añadir la capa de ajuste de regresión polinomial local loess
+    geom_smooth()
+```
+:::
+
+:::{.exm-ajuste-2}
+```{r, message=F, warning=F}
+# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
+ggplot(df, aes(x = altura, y = peso)) +
+# Añadir la capa de puntos.
+    geom_point() +
+# Añadir la capa de ajuste de regresión lineal por mínimos cuadrados.
+    geom_smooth(method = "lm")
+```
+:::
+
+:::{.exm-ajuste-3}
+```{r, message=F, warning=F}
+# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.
+ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
+# Añadir la capa de puntos.
+    geom_point() +
+# Añadir la capa de ajuste de regresión lineal por mínimos cuadrados sin las bandas de error.
+    geom_smooth(method = "lm", se = FALSE)
+```
+:::
+
+[Más información sobre `geom_smooth`](https://ggplot2.tidyverse.org/reference/geom_smooth.html).
+
+## Facetas
+
+Las facetas permiten desagregar un gráfico según los grupos de uno o varios factores del conjunto de datos. Para añadir facetas a un gráfico se añade la función 
+
+- `facet_wrap(vars(var1, var2,...), nrow = n, ncol = m)`: Crea un un gráfico para cada combinación de valores de las variables `var1`, `var2`, etc. y los coloca en una tabla de `n` filas y `m` columnas.
+
+:::{.exm-facetas-1}
+```{r, message=F, warning=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
+ggplot(df, aes(x = altura, y = peso)) +
+# Añadir la capa de puntos
+    geom_point() +
+# Añadir la capa de ajuste de regresión lineal por mínimos cuadrados.
+    geom_smooth(method = "lm") +
+# Añadir la faceta del sexo.
+    facet_wrap(vars(sexo))
+```
+:::
+
+[Más información sobre facetas](https://ggplot2.tidyverse.org/reference/facet_wrap.html?q=facet_wrap).
 
 ## Personalización de gráficos
 
+`ggplot` incluye multitud de posibilidades de personalización de gráficos. Aquí veremos solo las más habituales.
 
-### Ejes
+### Títulos
 
+Para poner un título al gráfico, a los ejes o a la leyenda se añade la función 
 
-### Leyendas
+- `labs(title = título, x = titulo-x, y = titulo-y,`  
+    `colour = leyenda-color, shape  = leyenda-forma)`
 
+:::{.exm-titulos-1}
+```{r, message=F, warning=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
+ggplot(df, aes(x = altura, y = peso)) +
+# Añadir la capa de puntos.
+    geom_point() +
+# Añadir un título al gráfico y a los ejes.
+    labs(title = "Diagrama de dispersión", x = "Altura (m)", y = "Peso (kg)")
+```
+:::
 
-### Facetas
+### Temas
 
+Finalmente se para cambiar otros aspectos del gráfico como las fuentes o los colores de fondos se utilizan temas. Para indicar o modificar un tema se añade la función
 
+- `theme(propiedades)`: Modifica las propiedades del tema indicadas. La lista es demasiado grande para cubrirla en este tutorial, por lo que se recomienda ver todas las opciones en la documentación de `ggplot2`.
+
+:::{.exm-temas-1}
+```{r, message=F, warning=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
+ggplot(df, aes(x = altura, y = peso)) +
+# Añadir la capa de puntos.
+    geom_point() +
+# Añadir un título al gráfico.
+    labs(title = "Diagrama de dispersión") +
+# Cambiar el tamaño y el color de la fuente del título.
+    theme(plot.title = element_text(size = 20, colour = "blue"))
+```
+:::
+
+:::{.exm-temas-2}
+```{r, message=F, warning=F}
+# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.
+ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
+# Añadir la capa de puntos.
+    geom_point() +
+# Cambiar el la posición de la leyenda
+    theme(legend.position = "top")
+```
+:::
+
+[Más información sobre temas](https://ggplot2.tidyverse.org/reference/theme.html).
+
+`ggplot2` incorpora los siguientes temas predefinidos:
+
+    - `theme_gray()`: Tema en escala de grises. Es el tema por defecto.
+    - `theme_bw()`: Tema en blanco y negro.
+    - `theme_light()`: Tema con las líneas de los ejes y de la rejilla delgadas y atenuadas para dar más protagonismo a los datos.
+    - `theme_dark()`: Similar al tema anterior pero con fondo oscuro.
+    - `theme_minimal()`: Tema sin fondo.
+    - `theme_classic()`: Tema sin rejilla.
+    - `theme_void()`: Tema vacío.
+
+:::{.exm-temas-3}
+```{r, message=F, warning=F}
+# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.
+ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
+# Añadir la capa de puntos.
+    geom_point() +
+# Usar el tema sin rejilla
+    theme_classic()
+```
+:::

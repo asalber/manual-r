@@ -253,7 +253,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, interior hidden, frame hidden, enhanced, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, boxrule=0pt, enhanced, borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Indice de contenidos}
 {
@@ -1163,7 +1163,7 @@ booleanos.
 
 Una variable es un identificador ligado a algún valor.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{itemize}
 \tightlist
@@ -1373,7 +1373,7 @@ sexo & mujer \\
   correspondientes.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1398,7 +1398,7 @@ sexo & mujer \\
 
 \[\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}\]
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1427,7 +1427,7 @@ sexo & mujer \\
 
 \end{exercise}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1733,7 +1733,7 @@ vector excepto los que ocupan las posiciones correspondientes al valor
 absoluto de los índices negativos. Esta es la forma más habitual de
 eliminar elementos de un vector.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, left=2mm, toptitle=1mm, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 En R los índices enteros para acceder a los elementos de un vector
 comienzan en 1, a diferencia de otros lenguajes de programación que
@@ -2746,7 +2746,7 @@ una lista mediante índices lógicos.
 \end{Shaded}
 
 \begin{verbatim}
-Warning: NAs introducidos por coerción
+Warning: NAs introduced by coercion
 \end{verbatim}
 
 \begin{verbatim}
@@ -2761,7 +2761,7 @@ Warning: NAs introducidos por coerción
 \end{Shaded}
 
 \begin{verbatim}
-Warning: NAs introducidos por coerción
+Warning: NAs introduced by coercion
 \end{verbatim}
 
 \begin{verbatim}
@@ -3052,7 +3052,7 @@ dirección.municipio
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, left=2mm, toptitle=1mm, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 Obsérvese que cuando se convierte una lista en un vector, los elementos
 de la lista se convierten al tipo más general mediante coerción.
@@ -3767,7 +3767,7 @@ columnas a una matriz.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, left=2mm, toptitle=1mm, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 Obsérvese que si el número de elementos proporcionados en el vector es
 menor del necesario para completar la fila o columna, se reutilizan los
@@ -3901,7 +3901,7 @@ elemento a elemento con matrices numéricas.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, left=2mm, toptitle=1mm, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 Obsérvese en el ejemplo anterior que la división por 0 produce el valor
 \texttt{Inf} que representa infinito.
@@ -3950,7 +3950,7 @@ numéricas.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, left=2mm, toptitle=1mm, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 Para poder multiplicar dos matrices deben tener dimensiones compatibles.
 Si el número de columnas de la primera matriz no es igual que el número
@@ -4592,7 +4592,7 @@ Sara & M & 6.2 & 4 \\
   Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4613,7 +4613,7 @@ Sara & M & 6.2 & 4 \\
   Convertir el sexo en un factor y mostrar sus niveles.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4636,7 +4636,7 @@ Sara & M & 6.2 & 4 \\
   Crear un nuevo vector con la nota media de Física y Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4661,7 +4661,7 @@ Sara & M & 6.2 & 4 \\
   caso contrario.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4685,7 +4685,7 @@ Sara & M & 6.2 & 4 \\
   de los alumnos que han aprobado.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4708,7 +4708,7 @@ Sara & M & 6.2 & 4 \\
   Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4737,7 +4737,7 @@ Sara & M & 6.2 & 4 \\
   Añadir el vector con la media al data frame.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4767,7 +4767,7 @@ Sara & M & 6.2 & 4 \\
   mujeres que han aprobado.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5307,7 +5307,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
   Química usando un bucle iterativo.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5328,7 +5328,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
 crear una nueva columna con la calificación (suspenso, aprobado,
 notable, sobresaliente) de las notas de Física y Química.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, bottomtitle=1mm, arc=.35mm, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5766,7 +5766,7 @@ función.
 
 \begin{verbatim}
 [1] "Entorno de la función area.triangulo"
-<environment: 0x55790c0e3f98>
+<environment: 0x5569dbf6b948>
 [1] "altura" "base"  
 \end{verbatim}
 
@@ -7000,6 +7000,902 @@ para obtener resúmenes estratificados por grupos.
 
 Crear un data frame con los datos del fichero
 \href{https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.xlsx}{\texttt{genetica}}.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{gruxe1ficos-y-visualizaciuxf3n-de-datos}{%
+\chapter{Gráficos y visualización de
+datos}\label{gruxe1ficos-y-visualizaciuxf3n-de-datos}}
+
+R incorpora funciones para realizar gráficos de distintos tipos, pero
+actualmente existen paquetes especializados para la visualización de
+datos como \texttt{ggplot2} que permiten realizar multitud de gráficos
+de manera más estructurada.
+
+El paquete \texttt{ggplot2} forma parte de la colección de paquetes
+\texttt{tidyverse} que ya se introdujo en la sección anterior.
+
+Este paquete implementa la
+\href{https://www.academia.edu/54823545/The_grammar_of_graphics}{gramática
+de gráficos} descrita por Leland Wilkinson, que proporciona un sistema
+formal para representar distintas variables mediante distintos atributos
+gráficos (aesthetics) como la forma, el tamaño o el color de objetos
+geométricos como puntos, líneas o barras. Esto hace que la creación de
+gráficos con este paquete sea, en general, más intuitiva una vez se
+entiende la lógica de la gramática.
+
+En general, para definir un gráfico con \texttt{ggplot2} se suelen
+definir los siguientes elementos:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Datos}. Los datos deben estar contenidos en un data frame o
+  tibble en formato ordenado (\emph{tidy}).
+\item
+  \textbf{Atributos (\emph{aesthetics})}. Las variables que quieren
+  representarse en el gráfico deben asociarse a atributos gráficos como
+  los ejes x, y, z, el color, el tamaño, la forma de los objetos
+  geométricos.
+\item
+  \textbf{Capas de objetos geométricos (\emph{geoms})}. Están formadas
+  por elementos geométricos (puntos, líneas, barras, etc.) cuya
+  posición, forma, tamaño y color, depende de los atributos.
+\item
+  \textbf{Escalas}. Definen la escala para los ejes del diagrama así
+  como las leyendas para el resto de atributos.
+\item
+  \textbf{Sistema de coordenadas}. Describe el sistema de coordenadas
+  utilizado para representar los objetos geométricos en el plano o en el
+  espacio (normalmente el sistema cartesiano).
+\item
+  \textbf{Facetas}. Permite descomponer un gráfico en múltiples gráficos
+  para distintos subconjuntos del conjunto de datos.
+\item
+  \textbf{Tema}. Permite cambiar elementos secundarios del gráfico como
+  el tipo de letra de las etiquetas y leyendas, el tamaño de la fuente,
+  el color de fondo, aspecto final del los gráficos.
+\end{itemize}
+
+\hypertarget{inicializaciuxf3n-de-un-gruxe1fico}{%
+\section{Inicialización de un
+gráfico}\label{inicializaciuxf3n-de-un-gruxe1fico}}
+
+Para dibujar un gráfico con \texttt{ggplot2} debemos comenzar por la
+siguiente función
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ggplot(df,\ aes(atributo1\ =\ var1,\ atributo2\ =\ var2,\ ...))}:
+  Inicializa un gráfico con las variables \texttt{var1}, \texttt{var2},
+  etc. del data frame \texttt{df} asociadas a los atributos
+  \texttt{atributo1}, \texttt{atributo2}, etc. respectivamente. Los
+  atributos pueden más comunes son:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    x: Posición en el eje x del objeto geométrico.
+  \item
+    y: Posición en el eje y del objeto geométrico.
+  \item
+    z: Posición en el eje z del objeto geométrico.
+  \item
+    shape: Forma del punto.
+  \item
+    size: Tamaño del punto.
+  \item
+    linetype: Forma de la línea.
+  \item
+    linewidth: Anchura de la línea.
+  \item
+    colour: Color del objeto geométrico.
+  \item
+    fill: Color de relleno del objeto geométrico.
+  \end{itemize}
+\end{itemize}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, coltitle=black, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, colframe=quarto-callout-important-color-frame, breakable, arc=.35mm, left=2mm, bottomtitle=1mm, colback=white, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, titlerule=0mm, leftrule=.75mm]
+
+Todos los atributos se indican dentro de la función \texttt{aes()}.
+
+\end{tcolorbox}
+
+\hypertarget{diagramas-de-puntos}{%
+\section{Diagramas de puntos}\label{diagramas-de-puntos}}
+
+Para dibujar un diagrama de puntos se utiliza la capa de objetos
+geométricos
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{geom\_point()}: Dibuja un diagrama de líneas que unen los
+  puntos con coordenadas dadas por los pares de valores de las variables
+  asociadas a los atributos \texttt{x} e \texttt{y}.
+\end{itemize}
+
+Esta capa es ideal para representar diagramas de dispersión.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/temperaturas.csv\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(Día }\OtherTok{=} \FunctionTok{factor}\NormalTok{(Día, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"X"}\NormalTok{, }\StringTok{"J"}\NormalTok{, }\StringTok{"V"}\NormalTok{, }\StringTok{"S"}\NormalTok{, }\StringTok{"D"}\NormalTok{)))}
+\CommentTok{\# Filtrar los datos de Madrid}
+\NormalTok{df.madrid }\OtherTok{=} \FunctionTok{filter}\NormalTok{(df, Ciudad }\SpecialCharTok{==} \StringTok{"Madrid"}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x y la temperatura en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df.madrid, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{y =}\NormalTok{ Temperatura)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de los puntos.}
+    \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-1-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo shape.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{y =}\NormalTok{ Temperatura, }\AttributeTok{shape =}\NormalTok{ Ciudad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de los puntos.}
+    \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-2-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo colour.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{y =}\NormalTok{ Temperatura, }\AttributeTok{colour =}\NormalTok{ Ciudad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de los puntos.}
+    \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-3-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de los puntos.}
+    \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: Removed 1 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-4-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso, }\AttributeTok{colour =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de los puntos.}
+    \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: Removed 1 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-5-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/geom_point.html}{Más
+información sobre \texttt{geom\_point}}.
+
+\hypertarget{diagramas-de-luxedneas}{%
+\section{Diagramas de líneas}\label{diagramas-de-luxedneas}}
+
+Para dibujar un diagrama de líneas se utiliza la capa de objetos
+geométricos
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{geom\_line()}: Dibuja un diagrama de líneas que unen los
+  puntos con coordenadas dadas por los pares de valores de las variables
+  asociadas a los atributos \texttt{x} e \texttt{y}. Cuando la variable
+  asociada al atributo \texttt{x} es un factor, debe asociarse también
+  una variable al atributo \texttt{group} para determina los grupos que
+  se unirán mediante líneas. Si solo hay un grupo debe indicarse
+  \texttt{group\ =\ 1}.
+\end{itemize}
+
+Esta capa es ideal para representar series temporales.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/temperaturas.csv\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(Día }\OtherTok{=} \FunctionTok{factor}\NormalTok{(Día, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"X"}\NormalTok{, }\StringTok{"J"}\NormalTok{, }\StringTok{"V"}\NormalTok{, }\StringTok{"S"}\NormalTok{, }\StringTok{"D"}\NormalTok{)))}
+\CommentTok{\# Filtrar los datos de Madrid}
+\NormalTok{df.madrid }\OtherTok{=} \FunctionTok{filter}\NormalTok{(df, Ciudad }\SpecialCharTok{==} \StringTok{"Madrid"}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x y la temperatura en el atributo y. }
+\FunctionTok{ggplot}\NormalTok{(df.madrid, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{y =}\NormalTok{ Temperatura, }\AttributeTok{group =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las lineas.}
+    \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-6-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y linetype.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{y =}\NormalTok{ Temperatura, }\AttributeTok{group =}\NormalTok{ Ciudad, }\AttributeTok{linetype =}\NormalTok{ Ciudad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las lineas.}
+    \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-7-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y colour.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{y =}\NormalTok{ Temperatura, }\AttributeTok{group =}\NormalTok{ Ciudad, }\AttributeTok{colour =}\NormalTok{ Ciudad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las lineas.}
+    \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-8-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/geom_path.html}{Más
+información sobre \texttt{geom\_line}}.
+
+\hypertarget{diagramas-de-barras}{%
+\section{Diagramas de barras}\label{diagramas-de-barras}}
+
+Para dibujar un diagrama de barras se utiliza la capa de objetos
+geométricos
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{geom\_bar(aes(weight\ =\ var))}: Dibuja un diagrama de barras
+  con la variable asociada al atributo \texttt{x} o \texttt{y} (si se
+  usa el atributo \texttt{x} las barras son verticales y se usa
+  \texttt{y} horizontales), donde la altura de las barras viene dada por
+  la variable \texttt{var}. Si no se indica Por defecto, la altura de
+  las barras representa la frecuencia absoluta de cada valor de la
+  variable. Si no se indica el atributo \texttt{weight} la altura de las
+  barras es la frecuencia absoluta de los valores de la variable
+  asociada a los atributos \texttt{x} o \texttt{y}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/temperaturas.csv\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(Día }\OtherTok{=} \FunctionTok{factor}\NormalTok{(Día, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"X"}\NormalTok{, }\StringTok{"J"}\NormalTok{, }\StringTok{"V"}\NormalTok{, }\StringTok{"S"}\NormalTok{, }\StringTok{"D"}\NormalTok{)))}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      Ciudad Día Temperatura
+1     Madrid   L        28.5
+2     Madrid   M        30.5
+3     Madrid   X        31.0
+4     Madrid   J        30.0
+5     Madrid   V        28.0
+6     Madrid   S        27.5
+7     Madrid   D        30.5
+8  Barcelona   L        24.5
+9  Barcelona   M        25.5
+10 Barcelona   X        26.5
+11 Barcelona   J        25.0
+12 Barcelona   V        26.5
+13 Barcelona   S        24.5
+14 Barcelona   D        25.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filtrar los datos de Madrid}
+\NormalTok{df.madrid }\OtherTok{=} \FunctionTok{filter}\NormalTok{(df, Ciudad }\SpecialCharTok{==} \StringTok{"Madrid"}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x.}
+\FunctionTok{ggplot}\NormalTok{(df.madrid, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras con altura la temperatura.}
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{weight =}\NormalTok{ Temperatura))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-9-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el día en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df.madrid, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Día)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras con altura la temperatura.}
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{weight =}\NormalTok{ Temperatura))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-10-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{fill =}\NormalTok{ Ciudad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras con altura la temperatura (por defecto barras acumuladas).}
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{weight =}\NormalTok{ Temperatura))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-11-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Día, }\AttributeTok{fill =}\NormalTok{ Ciudad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras con altura la temperatura indicando barras separadas.}
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{weight =}\NormalTok{ Temperatura), }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-12-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con el sexo en el atributo x.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras.}
+    \FunctionTok{geom\_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-13-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el sexo en los atributos x y fill.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sexo, }\AttributeTok{fill =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras.}
+    \FunctionTok{geom\_bar}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-14-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/geom_bar.html}{Más
+información sobre \texttt{geom\_bar}}.
+
+\hypertarget{histogramas}{%
+\section{Histogramas}\label{histogramas}}
+
+Para dibujar un histograma se utiliza la capa de objetos geométricos
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{geom\_histogram(stat\_bin(bindwidth\ =\ anchura))}: Dibuja un
+  histograma de la variable asociada al atributo \texttt{x} usando
+  clases de amplitud indicada por \texttt{anchura}. Si no se indica el
+  parámetro \texttt{bindwidth} se toman 30 clases por defecto.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con la edad en el atributo x.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ edad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa del histograma.}
+    \FunctionTok{geom\_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-15-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la edad en el atributo x.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ edad)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa del histograma con anchura de clases 5.}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-16-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ edad, }\AttributeTok{fill =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa del histograma con anchura de clases 10.}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-17-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/geom_histogram.html}{Más
+información sobre \texttt{geom\_histogram}}.
+
+\hypertarget{diagramas-de-cajas}{%
+\section{Diagramas de cajas}\label{diagramas-de-cajas}}
+
+Para dibujar un diagrama de caja y bigotes se utiliza la capa de objetos
+geométricos
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{geom\_boxplot()}: Dibuja un diagrama de caja y bigotes de la
+  variable asociada al atributo \texttt{x} o \texttt{y}. Si se utiliza
+  el atributo \texttt{x} la caja se representa horizontalmente, y si se
+  utiliza el atributo \texttt{y} verticalmente.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con el colesterol en el atributo x.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ colesterol)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de la caja.}
+    \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: Removed 1 rows containing non-finite values (stat_boxplot).
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-18-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo y y el sexo en el atributo fill.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ altura, }\AttributeTok{fill =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de la caja.}
+    \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-19-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/geom_boxplot.html}{Más
+información sobre \texttt{geom\_boxplot}}.
+
+\hypertarget{diagrama-de-sectores}{%
+\section{Diagrama de sectores}\label{diagrama-de-sectores}}
+
+Para dibujar un diagrama de sectores se utiliza la misma capa de objetos
+geométricos que para los diagramas de barras (\texttt{geom\_bar}) pero
+añadiendo el sistema de coordenadas polares.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{coor\_polar(theta\ =\ "x"\textbar{}"y")}: Cambia al sistema de
+  coordenadas cartesianas polares, donde el ángulo viene dado por la
+  variable asociada al atributo ``x'' o el atributo ``y''.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con el sexo en el atributo x.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(}\DecValTok{1}\NormalTok{), }\AttributeTok{fill =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras.}
+    \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Añadir el sistema de coordenadas polares}
+    \FunctionTok{coord\_polar}\NormalTok{(}\AttributeTok{theta =} \StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-20-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{interpolaciuxf3n-y-ajustes-de-regresiuxf3n}{%
+\section{Interpolación y ajustes de
+regresión}\label{interpolaciuxf3n-y-ajustes-de-regresiuxf3n}}
+
+Para dibujar una línea de interpolación o de ajuste de regresión se
+utiliza la capa de objetos geométricos
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{geom\_smooth(method\ =\ ajuste,\ formula\ =\ ecuación)}:
+  Dibuja una línea de ajuste para los puntos con coordenadas dadas por
+  los pares de valores de las variables asociadas a los atributos
+  \texttt{x} e \texttt{y}, usando el método de ajuste dado por por
+  \texttt{ajuste} y la fórmula dada por \texttt{ecuación}. Los métodos
+  de ajuste más habituales son:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://rdrr.io/r/stats/loess.html}{\texttt{"loess"}}: Ajuste
+    de regresión polinomial local. Es la que se utiliza por defecto.
+  \item
+    \href{https://rdrr.io/r/stats/lm.html}{\texttt{"lm"}}: Ajuste de
+    regresión de modelos lineal por mínimos cuadrados.
+  \item
+    \href{https://rdrr.io/r/stats/glm.html}{\texttt{"glm"}}: Ajuste de
+    regresión modelos lineales generalizados por mínimos cuadrados. Por
+    defecto se dibujan también las bandas con el error estándar del
+    ajuste. Para desactivar estas bandas se debe indicar también el
+    parámetro \texttt{se\ =\ FALSE}.
+  \end{itemize}
+\end{itemize}
+
+Esta capa suele usarse en combinación con la capa de puntos para
+diagramas de dispersión.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de ajuste de regresión polinomial local loess}
+    \FunctionTok{geom\_smooth}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-21-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de ajuste de regresión lineal por mínimos cuadrados.}
+    \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-22-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso, }\AttributeTok{colour =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de ajuste de regresión lineal por mínimos cuadrados sin las bandas de error.}
+    \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-23-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/geom_smooth.html}{Más
+información sobre \texttt{geom\_smooth}}.
+
+\hypertarget{facetas}{%
+\section{Facetas}\label{facetas}}
+
+Las facetas permiten desagregar un gráfico según los grupos de uno o
+varios factores del conjunto de datos. Para añadir facetas a un gráfico
+se añade la función
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{facet\_wrap(vars(var1,\ var2,...),\ nrow\ =\ n,\ ncol\ =\ m)}:
+  Crea un un gráfico para cada combinación de valores de las variables
+  \texttt{var1}, \texttt{var2}, etc. y los coloca en una tabla de
+  \texttt{n} filas y \texttt{m} columnas.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de ajuste de regresión lineal por mínimos cuadrados.}
+    \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la faceta del sexo.}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(sexo))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-24-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/facet_wrap.html?q=facet_wrap}{Más
+información sobre facetas}.
+
+\hypertarget{personalizaciuxf3n-de-gruxe1ficos}{%
+\section{Personalización de
+gráficos}\label{personalizaciuxf3n-de-gruxe1ficos}}
+
+\texttt{ggplot} incluye multitud de posibilidades de personalización de
+gráficos. Aquí veremos solo las más habituales.
+
+\hypertarget{tuxedtulos}{%
+\subsection{Títulos}\label{tuxedtulos}}
+
+Para poner un título al gráfico, a los ejes o a la leyenda se añade la
+función
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{labs(title\ =\ título,\ x\ =\ titulo-x,\ y\ =\ titulo-y,}\strut \\
+  \texttt{colour\ =\ leyenda-color,\ shape\ \ =\ leyenda-forma)}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Añadir un título al gráfico y a los ejes.}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Diagrama de dispersión"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Altura (m)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Peso (kg)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-25-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{temas}{%
+\subsection{Temas}\label{temas}}
+
+Finalmente se para cambiar otros aspectos del gráfico como las fuentes o
+los colores de fondos se utilizan temas. Para indicar o modificar un
+tema se añade la función
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{theme(propiedades)}: Modifica las propiedades del tema
+  indicadas. La lista es demasiado grande para cubrirla en este
+  tutorial, por lo que se recomienda ver todas las opciones en la
+  documentación de \texttt{ggplot2}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Añadir un título al gráfico.}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Diagrama de dispersión"}\NormalTok{) }\SpecialCharTok{+}
+\CommentTok{\# Cambiar el tamaño y el color de la fuente del título.}
+    \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{20}\NormalTok{, }\AttributeTok{colour =} \StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-26-1.pdf}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso, }\AttributeTok{colour =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Cambiar el la posición de la leyenda}
+    \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-27-1.pdf}
+
+}
+
+\end{figure}
+
+\href{https://ggplot2.tidyverse.org/reference/theme.html}{Más
+información sobre temas}.
+
+\texttt{ggplot2} incorpora los siguientes temas predefinidos:
+
+\begin{verbatim}
+- `theme_gray()`: Tema en escala de grises. Es el tema por defecto.
+- `theme_bw()`: Tema en blanco y negro.
+- `theme_light()`: Tema con las líneas de los ejes y de la rejilla delgadas y atenuadas para dar más protagonismo a los datos.
+- `theme_dark()`: Similar al tema anterior pero con fondo oscuro.
+- `theme_minimal()`: Tema sin fondo.
+- `theme_classic()`: Tema sin rejilla.
+- `theme_void()`: Tema vacío.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso, }\AttributeTok{colour =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Usar el tema sin rejilla}
+    \FunctionTok{theme\_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-28-1.pdf}
+
+}
+
+\end{figure}
 
 
 
