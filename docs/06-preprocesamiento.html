@@ -256,14 +256,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"><span class="toc-section-number">6.2</span>  Tibbles</a></li>
   <li><a href="#conjuntos-de-datos-ordenados" id="toc-conjuntos-de-datos-ordenados" class="nav-link" data-scroll-target="#conjuntos-de-datos-ordenados"><span class="toc-section-number">6.3</span>  Conjuntos de datos ordenados</a></li>
   <li><a href="#el-paquete-dplyr" id="toc-el-paquete-dplyr" class="nav-link" data-scroll-target="#el-paquete-dplyr"><span class="toc-section-number">6.4</span>  El paquete <code>dplyr</code></a></li>
-  <li><a href="#selección-de-variables" id="toc-selección-de-variables" class="nav-link" data-scroll-target="#selección-de-variables"><span class="toc-section-number">6.5</span>  Selección de variables</a></li>
-  <li><a href="#filtrado-de-datos" id="toc-filtrado-de-datos" class="nav-link" data-scroll-target="#filtrado-de-datos"><span class="toc-section-number">6.6</span>  Filtrado de datos</a></li>
-  <li><a href="#reordenación-de-datos" id="toc-reordenación-de-datos" class="nav-link" data-scroll-target="#reordenación-de-datos"><span class="toc-section-number">6.7</span>  Reordenación de datos</a></li>
-  <li><a href="#renombrado-de-columnas" id="toc-renombrado-de-columnas" class="nav-link" data-scroll-target="#renombrado-de-columnas"><span class="toc-section-number">6.8</span>  Renombrado de columnas</a></li>
-  <li><a href="#creación-de-nuevas-columnas-o-transformación-de-las-existentes" id="toc-creación-de-nuevas-columnas-o-transformación-de-las-existentes" class="nav-link" data-scroll-target="#creación-de-nuevas-columnas-o-transformación-de-las-existentes"><span class="toc-section-number">6.9</span>  Creación de nuevas columnas o transformación de las existentes</a></li>
-  <li><a href="#resumen-de-datos" id="toc-resumen-de-datos" class="nav-link" data-scroll-target="#resumen-de-datos"><span class="toc-section-number">6.10</span>  Resumen de datos</a></li>
-  <li><a href="#resúmenes-por-grupos" id="toc-resúmenes-por-grupos" class="nav-link" data-scroll-target="#resúmenes-por-grupos"><span class="toc-section-number">6.11</span>  Resúmenes por grupos</a></li>
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">6.12</span>  Ejercicios</a></li>
+  <li><a href="#conteo-del-número-de-observaciones" id="toc-conteo-del-número-de-observaciones" class="nav-link" data-scroll-target="#conteo-del-número-de-observaciones"><span class="toc-section-number">6.5</span>  Conteo del número de observaciones</a></li>
+  <li><a href="#selección-de-variables" id="toc-selección-de-variables" class="nav-link" data-scroll-target="#selección-de-variables"><span class="toc-section-number">6.6</span>  Selección de variables</a></li>
+  <li><a href="#filtrado-de-datos" id="toc-filtrado-de-datos" class="nav-link" data-scroll-target="#filtrado-de-datos"><span class="toc-section-number">6.7</span>  Filtrado de datos</a></li>
+  <li><a href="#reordenación-de-datos" id="toc-reordenación-de-datos" class="nav-link" data-scroll-target="#reordenación-de-datos"><span class="toc-section-number">6.8</span>  Reordenación de datos</a></li>
+  <li><a href="#renombrado-de-columnas" id="toc-renombrado-de-columnas" class="nav-link" data-scroll-target="#renombrado-de-columnas"><span class="toc-section-number">6.9</span>  Renombrado de columnas</a></li>
+  <li><a href="#creación-de-nuevas-columnas-o-transformación-de-las-existentes" id="toc-creación-de-nuevas-columnas-o-transformación-de-las-existentes" class="nav-link" data-scroll-target="#creación-de-nuevas-columnas-o-transformación-de-las-existentes"><span class="toc-section-number">6.10</span>  Creación de nuevas columnas o transformación de las existentes</a></li>
+  <li><a href="#resumen-de-datos" id="toc-resumen-de-datos" class="nav-link" data-scroll-target="#resumen-de-datos"><span class="toc-section-number">6.11</span>  Resumen de datos</a></li>
+  <li><a href="#resúmenes-por-grupos" id="toc-resúmenes-por-grupos" class="nav-link" data-scroll-target="#resúmenes-por-grupos"><span class="toc-section-number">6.12</span>  Resúmenes por grupos</a></li>
+  <li><a href="#composición-de-operaciones-mediante-tuberías" id="toc-composición-de-operaciones-mediante-tuberías" class="nav-link" data-scroll-target="#composición-de-operaciones-mediante-tuberías"><span class="toc-section-number">6.13</span>  Composición de operaciones mediante tuberías</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">6.14</span>  Ejercicios</a></li>
   </ul>
 </nav>
     </div>
@@ -368,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Una misma columna contiene varias variables.</li>
 <li>Variables que están almacenadas tanto en filas como en columnas.</li>
 </ul>
-<p>Para facilitar el preprocesado y posterior análisis de los datos es recomendable ordenar el data frame. Para ello el paquete <code>tidyr</code> proporciona dos funciones que permiten pivotar un data frame:</p>
+<p>Para facilitar el preprocesamiento y posterior análisis de los datos es recomendable ordenar el data frame. Para ello el paquete <code>tidyr</code> proporciona dos funciones que permiten pivotar un data frame:</p>
 <ul>
 <li><p><code>pivot_longer(df, columnas, names_to = columna-nombres, values_to = columna-valores)</code>: Devuelve el tibble que resulta de convertir las columnas indicadas en el parámetro <code>columnas</code> del data frame <code>df</code> a formato largo, es decir, las columnas se reestructuran en dos nuevas columnas con nombres <code>columna-nombres</code> y <code>columna-valores</code> que contienen los nombres de las columnas originales y sus valores, respectivamente.</p></li>
 <li><p><code>pivot_wider(df, names_from = columna-nombres, values_from = columna-valores)</code>: Devuelve el tibble que resulta de convertir el data frame <code>df</code> a formato ancho, es decir, se crean tantas columnas como nombres distintos haya en la columna <code>columna-nombres</code>, usando estos nombres como los nombres de las columnas, mientras que los valores se toman de la columna <code>columna-valores</code>.</p></li>
@@ -423,6 +425,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="6.4" class="anchored" data-anchor-id="el-paquete-dplyr"><span class="header-section-number">6.4</span> El paquete <code>dplyr</code></h2>
 <p>El paquete <code>dplyr</code> proporciona una gramática para el preprocesamiento de data frames o tibbles, de manera que cada acción sobre data frame se corresponde con un verbo y las funciones que realizan esa acción tienen como nombre el verbo correspondiente. Las funciones de preprocesamiento más habituales incluidas en el paquete <code>dplyr</code> son:</p>
 <ul>
+<li><code>count</code>: Cuenta el número de observaciones de un data frame.</li>
 <li><code>select</code>: Selecciona un subconjunto de columnas de un data frame.</li>
 <li><code>filter</code>: Selecciona un subconjunto de filas de un data frame.</li>
 <li><code>arrange</code>: Reordena las filas de un data frame.</li>
@@ -432,18 +435,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>group_by</code>: Divide las filas de un data frame en grupos de acuerdo a una columna categórica.</li>
 </ul>
 </section>
-<section id="selección-de-variables" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="selección-de-variables"><span class="header-section-number">6.5</span> Selección de variables</h2>
+<section id="conteo-del-número-de-observaciones" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="conteo-del-número-de-observaciones"><span class="header-section-number">6.5</span> Conteo del número de observaciones</h2>
+<p>Para contar el número de observaciones (filas) de un data frame se utiliza la función</p>
+<ul>
+<li><code>count(df, columnas)</code>: Devuelve el número de filas del data frame <code>df</code> para cada posible combinación de los valores de las columnas indicadas en el parámetro <code>columnas</code>.</li>
+</ul>
+<p>Esta función se utiliza habitualmente para calcular tamaños muestrales.</p>
+<div class="exm-count-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Contar las filas del data frame</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   n
+1 14</code></pre>
+</div>
+</div>
+</div>
+<div class="exm-count-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Contar las filas del data frame</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(df, sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sexo n
+1    H 8
+2    M 6</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="selección-de-variables" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="selección-de-variables"><span class="header-section-number">6.6</span> Selección de variables</h2>
 <p>Para seleccionar un subconjunto de variables de un data frame se utiliza la función</p>
 <ul>
 <li><code>select(df, columnas)</code>: Devuelve un tibble con las columnas indicadas en el parámetro <code>columnas</code> del data frame <code>df</code>.</li>
 </ul>
 <div class="exm-select">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas nombre, sexo y edad</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, nombre, sexo, edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas nombre, sexo y edad</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, nombre, sexo, edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre sexo edad
 1     José Luis Martínez Izquierdo    H   18
@@ -461,8 +497,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 13 Miguel Angel Cuadrado Gutiérrez    H   27
 14           Carolina Rubio Moreno    M   20</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar la primera y tercera columnas</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar la primera y tercera columnas</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre sexo
 1     José Luis Martínez Izquierdo    H
@@ -480,8 +516,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 13 Miguel Angel Cuadrado Gutiérrez    H
 14           Carolina Rubio Moreno    M</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas desde el peso hasta el colesterol</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, peso<span class="sc">:</span>colesterol)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas desde el peso hasta el colesterol</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, peso<span class="sc">:</span>colesterol)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   peso altura colesterol
 1    85   1.79        182
@@ -499,8 +535,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 13  109   1.98        210
 14   61   1.77        194</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar todas las columnas menos la edad</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="sc">-</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar todas las columnas menos la edad</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="sc">-</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre sexo peso altura colesterol
 1     José Luis Martínez Izquierdo    H   85   1.79        182
@@ -521,18 +557,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="filtrado-de-datos" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="filtrado-de-datos"><span class="header-section-number">6.6</span> Filtrado de datos</h2>
+<section id="filtrado-de-datos" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="filtrado-de-datos"><span class="header-section-number">6.7</span> Filtrado de datos</h2>
 <p>Para filtrar un data frame y quedarse con las filas que cumplen una condición se usa la función</p>
 <ul>
 <li><code>filter(df, condicion)</code>: Devuelve el tibble con las filas del data frame <code>df</code> que cumplen la condición indicada en el parámetro <code>condición</code>.</li>
 </ul>
 <div class="exm-filter">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las mujeres</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, sexo <span class="sc">==</span> <span class="st">"M"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las mujeres</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, sexo <span class="sc">==</span> <span class="st">"M"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 nombre edad sexo peso altura colesterol
 1        Rosa Díaz Díaz   32    M   65   1.73        232
@@ -542,8 +578,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5 Macarena Álvarez Luna   53    M   55   1.62        262
 6 Carolina Rubio Moreno   20    M   61   1.77        194</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar los hombres mayores de 30 </span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, sexo <span class="sc">==</span> <span class="st">"H"</span> <span class="sc">&amp;</span> edad <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar los hombres mayores de 30 </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, sexo <span class="sc">==</span> <span class="st">"H"</span> <span class="sc">&amp;</span> edad <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                      nombre edad sexo peso altura colesterol
 1          Antonio Ruiz Cruz   68    H   66   1.74        249
@@ -552,8 +588,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 4    Santiago Reillo Manzano   46    H   75   1.85        280
 5 José María de la Guía Sanz   58    H   78   1.87        198</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las filas con valores de colesterol</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, <span class="sc">!</span><span class="fu">is.na</span>(colesterol))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las filas con valores de colesterol</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, <span class="sc">!</span><span class="fu">is.na</span>(colesterol))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol
 1     José Luis Martínez Izquierdo   18    H   85   1.79        182
@@ -578,7 +614,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="exm-filter-na">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol
 1     José Luis Martínez Izquierdo   18    H   85   1.79        182
@@ -597,18 +633,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="reordenación-de-datos" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="reordenación-de-datos"><span class="header-section-number">6.7</span> Reordenación de datos</h2>
+<section id="reordenación-de-datos" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="reordenación-de-datos"><span class="header-section-number">6.8</span> Reordenación de datos</h2>
 <p>Para reordenar las filas de un data frame se utiliza la función</p>
 <ul>
 <li><code>arrange(df, columnas)</code>: Devuelve un tibble con las mismas filas del data frame <code>df</code> pero ordenadas de acuerdo a los valores de las columnas indicadas en el parámetro <code>columnas</code>. Por defecto, la ordenación es ascendente, para hacerla descendente, hay que aplicar la función <code>desc()</code> a la columna con respecto se quiere ordenar descendentemente.</li>
 </ul>
 <div class="exm-arrange">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, nombre)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, nombre)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol
 1          Antonio Fernández Ocaña   51    H   62   1.72        276
@@ -626,8 +662,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 13                  Rosa Díaz Díaz   32    M   65   1.73        232
 14         Santiago Reillo Manzano   46    H   75   1.85        280</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según sexo y edad</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, sexo, edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según sexo y edad</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, sexo, edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol
 1     José Luis Martínez Izquierdo   18    H   85   1.79        182
@@ -645,8 +681,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 13            Marisa López Collado   46    M   51   1.58        148
 14           Macarena Álvarez Luna   53    M   55   1.62        262</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar ascendentemente por sexo y descendentemente por colesterol</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, sexo, <span class="fu">desc</span>(colesterol))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar ascendentemente por sexo y descendentemente por colesterol</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df, sexo, <span class="fu">desc</span>(colesterol))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol
 1          Santiago Reillo Manzano   46    H   75   1.85        280
@@ -667,18 +703,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="renombrado-de-columnas" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="renombrado-de-columnas"><span class="header-section-number">6.8</span> Renombrado de columnas</h2>
+<section id="renombrado-de-columnas" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="renombrado-de-columnas"><span class="header-section-number">6.9</span> Renombrado de columnas</h2>
 <p>Para cambiar el nombre de las columnas se utiliza la función</p>
 <ul>
 <li><code>rename(df, nuevo-nombre = columna)</code>: Devuelve un tibble con los mismos datos del data frame <code>df</code> pero cambiando el nombre de la columna de nombre <code>columna</code> por <code>nuevo-nombre</code>.</li>
 </ul>
 <div class="exm-rename">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(df, <span class="at">estatura =</span> altura)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(df, <span class="at">estatura =</span> altura)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso estatura colesterol
 1     José Luis Martínez Izquierdo   18    H   85     1.79        182
@@ -699,18 +735,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="creación-de-nuevas-columnas-o-transformación-de-las-existentes" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="creación-de-nuevas-columnas-o-transformación-de-las-existentes"><span class="header-section-number">6.9</span> Creación de nuevas columnas o transformación de las existentes</h2>
+<section id="creación-de-nuevas-columnas-o-transformación-de-las-existentes" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="creación-de-nuevas-columnas-o-transformación-de-las-existentes"><span class="header-section-number">6.10</span> Creación de nuevas columnas o transformación de las existentes</h2>
 <p>Para crear una nueva columna a partir de otras columnas del data frame se utiliza la función</p>
 <ul>
 <li><code>mutate(df, columna = formula)</code>: Devuelve el tibble que resulta de añadir una nueva columna al data frame <code>df</code> con el resultado de aplicar el procedimiento indicado por <code>formula</code> y con el nombre indicado en <code>columna</code>. Si <code>columna</code> es el nombre de una columna ya existente, entonces esa columna se reescribe con los resultados de aplicar la <code>formula</code>.</li>
 </ul>
 <div class="exm-mutate">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Cambiar las unidades de la altura a centímetros</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(df, <span class="at">altura =</span> altura<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Cambiar las unidades de la altura a centímetros</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(df, <span class="at">altura =</span> altura<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol
 1     José Luis Martínez Izquierdo   18    H   85    179        182
@@ -728,8 +764,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 13 Miguel Angel Cuadrado Gutiérrez   27    H  109    198        210
 14           Carolina Rubio Moreno   20    M   61    177        194</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular el índice de masa corporal</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(df, <span class="at">imc =</span> <span class="fu">round</span>(peso<span class="sc">/</span>altura<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular el índice de masa corporal</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(df, <span class="at">imc =</span> <span class="fu">round</span>(peso<span class="sc">/</span>altura<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol imc
 1     José Luis Martínez Izquierdo   18    H   85   1.79        182  27
@@ -750,24 +786,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="resumen-de-datos" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="resumen-de-datos"><span class="header-section-number">6.10</span> Resumen de datos</h2>
+<section id="resumen-de-datos" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="resumen-de-datos"><span class="header-section-number">6.11</span> Resumen de datos</h2>
 <p>Para aplicar una función resumen a una o varias columnas de un data frame se utiliza la función</p>
 <ul>
 <li><code>sumarise(df, nombre-columna = funcion-resumen(columnas))</code>: Devuelve el tibble con la columna de nombre <code>nombre-columna</code> y el valor que resulta de aplicar la función indicada en <code>funcion-resumen</code> a las columnas del data frame <code>df</code> indicadas en <code>columnas</code>.</li>
 </ul>
 <div class="exm-sumarise">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de la edad</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df, <span class="at">edad_media =</span> <span class="fu">mean</span>(edad))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de la edad</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df, <span class="at">edad_media =</span> <span class="fu">mean</span>(edad))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  edad_media
 1   38.21429</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media y la desviación típica del colesterol</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df, <span class="at">media =</span> <span class="fu">mean</span>(colesterol, <span class="at">na.rm=</span>T), <span class="at">sd =</span> <span class="fu">sd</span>(colesterol, <span class="at">na.rm=</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media y la desviación típica del colesterol</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df, <span class="at">media =</span> <span class="fu">mean</span>(colesterol, <span class="at">na.rm=</span>T), <span class="at">sd =</span> <span class="fu">sd</span>(colesterol, <span class="at">na.rm=</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     media       sd
 1 220.2308 39.84795</code></pre>
@@ -775,20 +811,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="resúmenes-por-grupos" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="resúmenes-por-grupos"><span class="header-section-number">6.11</span> Resúmenes por grupos</h2>
+<section id="resúmenes-por-grupos" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="resúmenes-por-grupos"><span class="header-section-number">6.12</span> Resúmenes por grupos</h2>
 <p>La función <code>summarise</code> suele combinarse con la siguiente función para obtener resúmenes estratificados por grupos.</p>
 <ul>
 <li><code>group_by(df, columnas)</code>: Devuelve un tibble estratificado de acuerdo a las categorías de las columnas indicadas en <code>columnas</code>. En combinación con la función <code>summarise</code> permite hacer resúmenes estadísticos por grupos.</li>
 </ul>
 <div class="exm-group_by">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Estratificar por sexo </span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>df.sexo <span class="ot">&lt;-</span> <span class="fu">group_by</span>(df, sexo)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Edades medias por sexo</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df.sexo, <span class="at">edad_media =</span> <span class="fu">mean</span>(edad))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Estratificar por sexo </span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>df.sexo <span class="ot">&lt;-</span> <span class="fu">group_by</span>(df, sexo)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Edades medias por sexo</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df.sexo, <span class="at">edad_media =</span> <span class="fu">mean</span>(edad))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   sexo  edad_media
@@ -796,8 +832,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1 H           40.9
 2 M           34.7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Media y desviación típica del colesterol por sexo</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df.sexo, <span class="at">media =</span> <span class="fu">mean</span>(colesterol, <span class="at">na.rm=</span>T), <span class="at">sd =</span> <span class="fu">sd</span>(colesterol, <span class="at">na.rm=</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Media y desviación típica del colesterol por sexo</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(df.sexo, <span class="at">media =</span> <span class="fu">mean</span>(colesterol, <span class="at">na.rm=</span>T), <span class="at">sd =</span> <span class="fu">sd</span>(colesterol, <span class="at">na.rm=</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   sexo  media    sd
@@ -808,10 +844,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="ejercicios" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">6.12</span> Ejercicios</h2>
+<section id="composición-de-operaciones-mediante-tuberías" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="composición-de-operaciones-mediante-tuberías"><span class="header-section-number">6.13</span> Composición de operaciones mediante tuberías</h2>
+<p><code>dplyr</code> permite componer varias operaciones sobre un data frame mediante el operador <code>%&gt;%</code> (<em>pipe</em>), de manera que el data frame que resulta de aplicar una operación se convierte en el data frame de entrada para otra, siguiendo el esquema</p>
+<p><code>df %&gt;% operación-1 %&gt;% operación-2 %&gt;% ...</code></p>
+<p>Cuando se utilizan tuberías para componer operaciones de esta forma, no es necesario indicar el data frame como parámetro de la función que define la acción ya que automáticamente se toma el data frame que resulta de la operación anterior.</p>
+<div class="exm-tuberías-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicio de la tubería</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Seleccionar sexo, edad y colesterol</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(sexo, edad, colesterol) <span class="sc">%&gt;%</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filtrar mayores de 30 años</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(edad <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Estratificar por sexo</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular la media del colesterol</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">media_colesterol =</span> <span class="fu">mean</span>(colesterol))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  sexo  media_colesterol
+  &lt;chr&gt;            &lt;dbl&gt;
+1 H                 249.
+2 M                 210.</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicios" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">6.14</span> Ejercicios</h2>
 <ol type="1">
-<li>Dado el fichero de datos <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv"><code>genetica</code></a>, realizar la siguientes operaciones de preprocesado.</li>
+<li>El fichero <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv"><code>genetica</code></a>, contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.</li>
 </ol>
 <ol type="a">
 <li>Crear un tibble con los datos del fichero.</li>
@@ -829,30 +894,30 @@ Solución
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv'</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv'</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 21 × 36
-   `código muestra` `nivel del fac…` `mas cor (g)` `ln(mc+1)`    IHS `logit IHS`
-   &lt;chr&gt;                       &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
- 1 Ct-A1                           1          236        5.47 0.0433       -3.09
- 2 Ct-A2                           1          202.       5.32 0.044        -3.08
- 3 Ct-B1                           1          246.       5.51 0.042        -3.13
- 4 Ct-B2                           1          237.       5.47 0.0475       -3   
- 5 Ct-B3                           1          231.       5.45 0.0499       -2.95
- 6 Ct-C1                           1          235.       5.46 0.05         -2.94
- 7 Ct-C2                           1          228.       5.43 0.05         -2.94
- 8 Dx-1                            2          181.       5.2  0.061        -2.73
- 9 Dx-2                            2          198.       5.29 0.063        -2.7 
-10 Dx-3                            2          201.       5.31 0.0577       -2.79
-# … with 11 more rows, and 30 more variables: IES &lt;dbl&gt;, `logit IES` &lt;dbl&gt;,
-#   ITS &lt;dbl&gt;, `logit ITS` &lt;dbl&gt;, IAS &lt;dbl&gt;, `logit IAS` &lt;dbl&gt;,
-#   `glucog(mg/g)` &lt;dbl&gt;, `ln(glucog+1)` &lt;dbl&gt;, `pbmc(cel/mL)` &lt;dbl&gt;,
-#   `ln(pbmc+1)` &lt;dbl&gt;, `CD4(cel/µL)` &lt;dbl&gt;, `ln(CD4+1)` &lt;dbl&gt;,
-#   `monoc(cel/mL)` &lt;dbl&gt;, `ln(mon+1)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
-#   `ln(Q.B+1)` &lt;dbl&gt;, `pulp.blan(Tx1)` &lt;dbl&gt;, `logit P.B` &lt;dbl&gt;,
-#   `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;, `gluc(mmol/L)` &lt;dbl&gt;, …</code></pre>
+<pre><code># A tibble: 21 × 20
+   códig…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
+   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Ct-A1   Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3   401. 
+ 2 Ct-A2   Control    202. 0.044  0.002   0.0017  8  e-4    50.7  2.42e6   553. 
+ 3 Ct-B1   Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6   724. 
+ 4 Ct-B2   Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6  2213. 
+ 5 Ct-B3   Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7  4518. 
+ 6 Ct-C1   Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7   775. 
+ 7 Ct-C2   Control    228. 0.05   0.0018  0.0031  5.9e-4    29.4  7.5 e3    83.4
+ 8 Dx-1    Dexame…    181. 0.061  0.00155 0.0005  1.2e-4    56.0  7.68e2    10  
+ 9 Dx-2    Dexame…    198. 0.063  0.00191 0.0011  2  e-4   119.   1.41e6    15  
+10 Dx-3    Dexame…    201. 0.0577 0.0017  0.0001  1  e-4   119.   7.12e3    11  
+# … with 11 more rows, 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;,
+#   `IHQ: linfB(cel/mm2)` &lt;dbl&gt;, `pulp.blan(Tx1)` &lt;dbl&gt;,
+#   `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;, `gluc(mmol/L)` &lt;dbl&gt;,
+#   `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;, `HDL(mmol/L)` &lt;dbl&gt;,
+#   `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names ¹​`código muestra`,
+#   ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`, ⁵​`pbmc(cel/mL)`,
+#   ⁶​`CD4(cel/µL)`</code></pre>
 </div>
 </div>
 </div>
@@ -861,6 +926,168 @@ Solución
 <ol start="2" type="a">
 <li>Convertir el tratamiento en un factor.</li>
 </ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">Tratamiento =</span> <span class="fu">factor</span>(Tratamiento))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Calcular el tamaño muestral de cada grupo de tratamiento</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(df, Tratamiento)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Tratamiento      n
+  &lt;fct&gt;        &lt;int&gt;
+1 Control          7
+2 Dexametasona     7
+3 Kanamicina       7</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Filtrar las ratas de grup control con una masa corporal (<code>mas cor (g)</code>) mayor de 230 g.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, Tratamiento <span class="sc">==</span> <span class="st">"Control"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">230</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 20
+  código…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
+  &lt;chr&gt;    &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Ct-A1    Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3    401.
+2 Ct-B1    Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6    724.
+3 Ct-B2    Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6   2213.
+4 Ct-B3    Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7   4518.
+5 Ct-C1    Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7    775.
+# … with 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
+#   `pulp.blan(Tx1)` &lt;dbl&gt;, `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;,
+#   `gluc(mmol/L)` &lt;dbl&gt;, `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;,
+#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names
+#   ¹​`código muestra`, ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`,
+#   ⁵​`pbmc(cel/mL)`, ⁶​`CD4(cel/µL)`</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="5" type="a">
+<li>Calcular la media y la desviación típica de la masa corporal (<code>mas cor (g)</code>) para cada tratamiento.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Tratamiento) <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span>), <span class="at">desv.est =</span> <span class="fu">sd</span>(<span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  Tratamiento  media desv.est
+  &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+1 Control       231.     13.6
+2 Dexametasona  191.     14.2
+3 Kanamicina    229.     13.9</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="6" type="a">
+<li>Calcular la media y la desviación típica de todas las variables para cada tratamiento.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">código muestra</span><span class="st">`</span>, Tratamiento), <span class="at">names_to =</span> <span class="st">"Variable"</span>, <span class="at">values_to =</span> <span class="st">"Valor"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Variable) <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(Valor), <span class="at">desv.est =</span> <span class="fu">sd</span>(Valor))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 18 × 3
+   Variable              media desv.est
+   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;
+ 1 AI2(absorb)         2.86e-1  1.63e-1
+ 2 CD4(cel/µL)         1.05e+3  1.50e+3
+ 3 col(mmol/L)         2.44e+0  1.29e+0
+ 4 gluc(mmol/L)        3.57e+1  1.88e+1
+ 5 glucog(mg/g)        7.83e+1  3.81e+1
+ 6 HDL(mmol/L)         1.49e+0  6.20e-1
+ 7 IAS                 5.26e-4  3.92e-4
+ 8 IES                 1.96e-3  1.96e-4
+ 9 IHQ: linfB(cel/mm2) 7.95e+1  7.62e+1
+10 IHS                 5.14e-2  7.12e-3
+11 ins(pmol/L)         1.91e+2  1.05e+2
+12 ITS                 1.80e-3  8.63e-4
+13 mas cor (g)         2.17e+2  2.28e+1
+14 microorg(log nº/g)  2.35e+0  1.61e+0
+15 monoc(cel/mL)       1.32e+4  4.68e+3
+16 pbmc(cel/mL)        1.27e+7  2.10e+7
+17 pulp.blan(Tx1)      2.75e-1  1.12e-1
+18 TAG(mmol/L)         3.98e+0  2.09e+0</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>

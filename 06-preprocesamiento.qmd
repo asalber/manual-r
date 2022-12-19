@@ -72,7 +72,7 @@ A menudo los conjuntos de datos no están ordenados y violan alguna de de estas 
 - Una misma columna contiene varias variables.
 - Variables que están almacenadas tanto en filas como en columnas.
 
-Para facilitar el preprocesado y posterior análisis de los datos es recomendable ordenar el data frame. Para ello el paquete `tidyr` proporciona dos funciones que permiten pivotar un data frame:
+Para facilitar el preprocesamiento y posterior análisis de los datos es recomendable ordenar el data frame. Para ello el paquete `tidyr` proporciona dos funciones que permiten pivotar un data frame:
 
 - `pivot_longer(df, columnas, names_to = columna-nombres, values_to = columna-valores)`: Devuelve el tibble que resulta de convertir las columnas indicadas en el parámetro `columnas` del data frame `df` a formato largo, es decir, las columnas se reestructuran en dos nuevas columnas con nombres `columna-nombres` y `columna-valores` que contienen los nombres de las columnas originales y sus valores, respectivamente.
 
@@ -101,6 +101,7 @@ df_ancho
 
 El paquete `dplyr` proporciona una gramática para el preprocesamiento de data frames o tibbles, de manera que cada acción sobre data frame se corresponde con un verbo y las funciones que realizan esa acción tienen como nombre el verbo correspondiente. Las funciones de preprocesamiento más habituales incluidas en el paquete `dplyr` son:
 
+- `count`: Cuenta el número de observaciones de un data frame.
 - `select`: Selecciona un subconjunto de columnas de un data frame.
 - `filter`: Selecciona un subconjunto de filas de un data frame.
 - `arrange`: Reordena las filas de un data frame.
@@ -108,6 +109,32 @@ El paquete `dplyr` proporciona una gramática para el preprocesamiento de data f
 - `mutate`: Añade nuevas columnas a un data frame o transforma las existentes.
 - `summarise`: Genera resúmenes estadísticos de las columnas de un data frame.
 - `group_by`: Divide las filas de un data frame en grupos de acuerdo a una columna categórica.
+
+## Conteo del número de observaciones
+
+Para contar el número de observaciones (filas) de un data frame se utiliza la función 
+
+- `count(df, columnas)`: Devuelve el número de filas del data frame `df` para cada posible combinación de los valores de las columnas indicadas en el parámetro `columnas`.
+
+Esta función se utiliza habitualmente para calcular tamaños muestrales.
+
+:::{.exm-count-1}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Contar las filas del data frame
+count(df)
+```
+:::
+
+:::{.exm-count-2}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Contar las filas del data frame
+count(df, sexo)
+```
+:::
 
 ## Selección de variables
 
@@ -246,9 +273,34 @@ summarise(df.sexo, media = mean(colesterol, na.rm=T), sd = sd(colesterol, na.rm=
 ```
 :::
 
+## Composición de operaciones mediante tuberías
+
+`dplyr` permite componer varias operaciones sobre un data frame mediante el operador `%>%` (_pipe_), de manera que el data frame que resulta de aplicar una operación se convierte en el data frame de entrada para otra, siguiendo el esquema
+
+`df %>% operación-1 %>% operación-2 %>% ... `
+
+Cuando se utilizan tuberías para componer operaciones de esta forma, no es necesario indicar el data frame como parámetro de la función que define la acción ya que automáticamente se toma el data frame que resulta de la operación anterior.
+
+:::{.exm-tuberías-1}
+```{r, message=F}
+library(dplyr)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicio de la tubería
+df %>% 
+    # Seleccionar sexo, edad y colesterol
+    select(sexo, edad, colesterol) %>%
+    # Filtrar mayores de 30 años
+    filter(edad > 30) %>%
+    # Estratificar por sexo
+    group_by(sexo) %>%
+    # Calcular la media del colesterol
+    summarise(media_colesterol = mean(colesterol))
+```
+:::
+
 ## Ejercicios
 
-1. Dado el fichero de datos [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), realizar la siguientes operaciones de preprocesado.
+1. El fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 
 a. Crear un tibble con los datos del fichero.
 
@@ -263,4 +315,51 @@ df
 
 b. Convertir el tratamiento en un factor.
 
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df <- mutate(df, Tratamiento = factor(Tratamiento))
+```
+:::
+
+c. Calcular el tamaño muestral de cada grupo de tratamiento
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+count(df, Tratamiento)
+```
+:::
+
+d. Filtrar las ratas de grup control con una masa corporal (`mas cor (g)`) mayor de 230 g.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+filter(df, Tratamiento == "Control" & `mas cor (g)` > 230)
+```
+:::
+
+e. Calcular la media y la desviación típica de la masa corporal (`mas cor (g)`) para cada tratamiento.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df %>%
+    group_by(Tratamiento) %>%
+    summarise(media = mean(`mas cor (g)`), desv.est = sd(`mas cor (g)`))
+```
+:::
+
+f. Calcular la media y la desviación típica de todas las variables para cada tratamiento.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df %>%
+    pivot_longer(-c(`código muestra`, Tratamiento), names_to = "Variable", values_to = "Valor") %>%
+    group_by(Variable) %>%
+    summarise(media = mean(Valor), desv.est = sd(Valor))
+```
+:::
 
