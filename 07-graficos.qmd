@@ -7,7 +7,7 @@ R incorpora funciones para realizar gráficos de distintos tipos, pero actualmen
 
 ## Gramática de gráficos y el paquete `ggplot2`
 
-El paquete `ggplot2` forma parte de la colección de paquetes `tidyverse` que ya se introdujo en la sección anterior. 
+El paquete [`ggplot2`](https://ggplot2.tidyverse.org/) forma parte de la colección de paquetes `tidyverse` que ya se introdujo en la sección anterior. 
 
 Este paquete implementa la [gramática de gráficos](https://www.academia.edu/54823545/The_grammar_of_graphics) descrita por Leland Wilkinson, que proporciona un sistema formal para representar distintas variables mediante distintos atributos gráficos (aesthetics) como la forma, el tamaño o el color de objetos geométricos como puntos, líneas o barras. Esto hace que la creación de gráficos con este paquete sea, en general, más intuitiva una vez se entiende la lógica de la gramática. 
 
@@ -20,6 +20,8 @@ En general, para definir un gráfico con `ggplot2` se suelen definir los siguien
 - **Sistema de coordenadas**. Describe el sistema de coordenadas utilizado para representar los objetos geométricos en el plano o en el espacio (normalmente el sistema cartesiano).
 - **Facetas**. Permite descomponer un gráfico en múltiples gráficos para distintos subconjuntos del conjunto de datos.
 - **Tema**. Permite cambiar elementos secundarios del gráfico como el tipo de letra de las etiquetas y leyendas, el tamaño de la fuente, el color de fondo, aspecto final del los gráficos.
+
+Estos elementos se suelen añadir por capas al gráfico mediante el operador `+`.
 
 ## Inicialización de un gráfico
 
@@ -223,7 +225,7 @@ ggplot(df, aes(x = sexo, fill = sexo)) +
 
 Para dibujar un histograma se utiliza la capa de objetos geométricos
 
-- `geom_histogram(stat_bin(bindwidth = anchura))`: Dibuja un histograma de la variable asociada al atributo `x` usando clases de amplitud indicada por `anchura`. Si no se indica el parámetro `bindwidth` se toman 30 clases por defecto.
+- `geom_histogram(bins = clases, bindwidth = anchura)`: Dibuja un histograma de la variable asociada al atributo `x` usando el número de clases indicado por `clases` o bien clases de amplitud indicada por `anchura`. Si no se indica el parámetro `bins` o `bindwidth` se toman 30 clases por defecto.
 
 :::{.exm-histograma-1}
 ```{r, message=F}
@@ -255,6 +257,36 @@ ggplot(df, aes(x = edad, fill = sexo)) +
 :::
 
 [Más información sobre `geom_histogram`](https://ggplot2.tidyverse.org/reference/geom_histogram.html).
+
+## Diagramas de densidad
+
+Para dibujar un diagrama de densidad se utiliza la capa de objetos geométricos
+
+- `geom_density()`: Dibuja un diagrama de densidad de probabilidad estimada de los valores de la variable asociada al atributo `x`.
+
+Este diagrama es una alternativa a los histogramas para representar la distribución de probabilidad de los valores de una variable.
+
+:::{.exm-densidad-1}
+```{r, message=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la edad en el atributo x.
+ggplot(df, aes(x = edad)) +
+# Añadir la capa de la densidad de probabilidad.
+    geom_density()
+```
+:::
+
+:::{.exm-densidad-2}
+```{r}
+# Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo colour.
+ggplot(df, aes(x = edad, colour = sexo)) +
+# Añadir la capa de la densidad de probabilidad.
+    geom_density()
+```
+:::
+
+[Más información sobre `geom_density`](https://ggplot2.tidyverse.org/reference/geom_density.html).
 
 ## Diagramas de cajas
 

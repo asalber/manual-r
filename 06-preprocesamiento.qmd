@@ -248,6 +248,19 @@ summarise(df.sexo, media = mean(colesterol, na.rm=T), sd = sd(colesterol, na.rm=
 
 ## Ejercicios
 
-Crear un data frame con los datos del fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.xlsx). 
+1. Dado el fichero de datos [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), realizar la siguientes operaciones de preprocesado.
+
+a. Crear un tibble con los datos del fichero.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r, message=F}
+library(tidyverse)
+df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv')
+df
+```
+:::
+
+b. Convertir el tratamiento en un factor.
 
 

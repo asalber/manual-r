@@ -810,7 +810,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="ejercicios" class="level2" data-number="6.12">
 <h2 data-number="6.12" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">6.12</span> Ejercicios</h2>
-<p>Crear un data frame con los datos del fichero <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.xlsx"><code>genetica</code></a>.</p>
+<ol type="1">
+<li>Dado el fichero de datos <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv"><code>genetica</code></a>, realizar la siguientes operaciones de preprocesado.</li>
+</ol>
+<ol type="a">
+<li>Crear un tibble con los datos del fichero.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv'</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 36
+   `código muestra` `nivel del fac…` `mas cor (g)` `ln(mc+1)`    IHS `logit IHS`
+   &lt;chr&gt;                       &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Ct-A1                           1          236        5.47 0.0433       -3.09
+ 2 Ct-A2                           1          202.       5.32 0.044        -3.08
+ 3 Ct-B1                           1          246.       5.51 0.042        -3.13
+ 4 Ct-B2                           1          237.       5.47 0.0475       -3   
+ 5 Ct-B3                           1          231.       5.45 0.0499       -2.95
+ 6 Ct-C1                           1          235.       5.46 0.05         -2.94
+ 7 Ct-C2                           1          228.       5.43 0.05         -2.94
+ 8 Dx-1                            2          181.       5.2  0.061        -2.73
+ 9 Dx-2                            2          198.       5.29 0.063        -2.7 
+10 Dx-3                            2          201.       5.31 0.0577       -2.79
+# … with 11 more rows, and 30 more variables: IES &lt;dbl&gt;, `logit IES` &lt;dbl&gt;,
+#   ITS &lt;dbl&gt;, `logit ITS` &lt;dbl&gt;, IAS &lt;dbl&gt;, `logit IAS` &lt;dbl&gt;,
+#   `glucog(mg/g)` &lt;dbl&gt;, `ln(glucog+1)` &lt;dbl&gt;, `pbmc(cel/mL)` &lt;dbl&gt;,
+#   `ln(pbmc+1)` &lt;dbl&gt;, `CD4(cel/µL)` &lt;dbl&gt;, `ln(CD4+1)` &lt;dbl&gt;,
+#   `monoc(cel/mL)` &lt;dbl&gt;, `ln(mon+1)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
+#   `ln(Q.B+1)` &lt;dbl&gt;, `pulp.blan(Tx1)` &lt;dbl&gt;, `logit P.B` &lt;dbl&gt;,
+#   `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;, `gluc(mmol/L)` &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Convertir el tratamiento en un factor.</li>
+</ol>
 
 
 </section>
