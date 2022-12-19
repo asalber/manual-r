@@ -431,6 +431,29 @@ ggplot(df, aes(x = altura, y = peso)) +
 ```
 :::
 
+### Escalas
+
+Para cambiar las escalas de los ejes cartesianos se añaden la funciones
+
+- `scale_x_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)`: Restringe escala del eje x al rango indicado por `rango`, incluye las marcas en eje indicadas por `cortes` con las etiquetas indicadas por `etiquetas` y aplica la transformación de escala indicada por `transformación`. Las transformaciones de escala más habituales son `"log2"` (logarítmo en base 2), `"log10"` (logarítmo en base 10) y `sqrt` (raíz cuadrada).
+
+- `scale_x_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)`: Igual que la función anterior pero para el eje y.
+
+:::{.exm-escalas-1}
+```{r, message=F, warning=F}
+library(ggplot2)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
+# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
+ggplot(df, aes(x = altura, y = peso)) +
+# Añadir la capa de los puntos.
+    geom_point() +
+# Cambiar el rango y las marcas de la escala del eje x
+    scale_x_continuous(limits = c(1.5, 2.1), breaks = seq(1.5, 2.1, 0.1)) +
+# Aplicar una transformación logarítmica a la la escala del eje y
+    scale_y_continuous(trans = "log2", breaks = seq(50, 110, 10))
+```
+:::
+
 ### Temas
 
 Finalmente se para cambiar otros aspectos del gráfico como las fuentes o los colores de fondos se utilizan temas. Para indicar o modificar un tema se añade la función
@@ -483,5 +506,106 @@ ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
     geom_point() +
 # Usar el tema sin rejilla
     theme_classic()
+```
+:::
+
+## Ejercicios
+
+1. El fichero [neonatos]((https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv)) contiene información sobre los recién nacidos en un hospital durante un año.
+
+a. Crear un tibble con los datos del fichero. 
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r, message=F}
+library(tidyverse)
+df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv')
+df
+```
+:::
+
+b. Convertir las variables `sexo`, `edad`, `tabaco` y `tabaco.antes` en factores.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df <- mutate(df, sexo = factor(sexo), edad = factor(edad), tabaco = factor(tabaco), tabaco.antes = factor(tabaco.antes))
+```
+:::
+
+c. Dibujar un diagrama de barras con la frecuencia de niños y niñas.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+ggplot(df, aes(x = sexo)) +
+    geom_bar()
+```
+:::
+
+d. Dibujar un diagrama de barras del `apgar1` de los neonatos de madres fumadoras y no fumadoras durante el embarazo.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+ggplot(df, aes(x = apgar1, fill = tabaco)) +
+    geom_bar(position = "dodge")
+```
+:::
+
+e. Dibujar un histograma acumulado del peso según el sexo con 10 clases.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+ggplot(df, aes(x = peso, fill = sexo)) +
+    geom_histogram(bins = 10)
+```
+:::
+
+f. Dibujar un gráfico de densidad de probabilidad del peso de los neonatos de madres fumadoras y no fumadoras durante el embarazo.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+ggplot(df, aes(x = peso, colour = tabaco)) +
+    geom_density()
+```
+:::
+
+g. Dibujar un diagrama de caja del peso de los recién nacidos según sexo y si la madre fumaba o no durante el embarazo.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+ggplot(df, aes(x = sexo, y = peso, fill = tabaco)) +
+    geom_boxplot()
+```
+:::
+
+h. Dibujar un diagrama de dispersión del peso de los recién nacidos de madres fumadoras durante el embarazo, frente al número de cigarros que fumaban las madres. Incluir la recta de regresión.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df %>% 
+    filter(tabaco == "Si") %>%
+    ggplot(aes(x = cigarros, y = peso)) +
+        geom_point() +
+        geom_smooth(method = "lm")
+```
+:::
+
+h. Dibujar un diagrama de dispersión del peso de los recién nacidos de madres fumadoras durante el embarazo, frente al número de cigarros que fumaban las madres, separando por facetas según el sexo y la edad de la madre.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df %>% 
+    filter(tabaco == "Si") %>%
+    ggplot(aes(x = cigarros, y = peso)) +
+        geom_point() +
+        geom_smooth(method = "lm") +
+        facet_wrap(vars(sexo, edad))
 ```
 :::

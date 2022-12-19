@@ -194,9 +194,9 @@
 \newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
 \usepackage{amsthm}
 \theoremstyle{definition}
-\newtheorem{example}{Ejemplo}[chapter]
-\theoremstyle{definition}
 \newtheorem{exercise}{Ejercicio}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Ejemplo}[chapter]
 \theoremstyle{remark}
 \renewcommand*{\proofname}{Prueba}
 \newtheorem*{remark}{Observación}
@@ -253,7 +253,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, breakable, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, sharp corners, breakable, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Indice de contenidos}
 {
@@ -1163,7 +1163,7 @@ booleanos.
 
 Una variable es un identificador ligado a algún valor.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{itemize}
 \tightlist
@@ -1373,7 +1373,7 @@ sexo & mujer \\
   correspondientes.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1398,7 +1398,7 @@ sexo & mujer \\
 
 \[\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}\]
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1427,7 +1427,7 @@ sexo & mujer \\
 
 \end{exercise}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1733,7 +1733,7 @@ vector excepto los que ocupan las posiciones correspondientes al valor
 absoluto de los índices negativos. Esta es la forma más habitual de
 eliminar elementos de un vector.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 En R los índices enteros para acceder a los elementos de un vector
 comienzan en 1, a diferencia de otros lenguajes de programación que
@@ -3052,7 +3052,7 @@ dirección.municipio
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 Obsérvese que cuando se convierte una lista en un vector, los elementos
 de la lista se convierten al tipo más general mediante coerción.
@@ -3767,7 +3767,7 @@ columnas a una matriz.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 Obsérvese que si el número de elementos proporcionados en el vector es
 menor del necesario para completar la fila o columna, se reutilizan los
@@ -3901,7 +3901,7 @@ elemento a elemento con matrices numéricas.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 Obsérvese en el ejemplo anterior que la división por 0 produce el valor
 \texttt{Inf} que representa infinito.
@@ -3950,7 +3950,7 @@ numéricas.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 Para poder multiplicar dos matrices deben tener dimensiones compatibles.
 Si el número de columnas de la primera matriz no es igual que el número
@@ -4592,7 +4592,7 @@ Sara & M & 6.2 & 4 \\
   Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4613,7 +4613,7 @@ Sara & M & 6.2 & 4 \\
   Convertir el sexo en un factor y mostrar sus niveles.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4636,7 +4636,7 @@ Sara & M & 6.2 & 4 \\
   Crear un nuevo vector con la nota media de Física y Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4661,7 +4661,7 @@ Sara & M & 6.2 & 4 \\
   caso contrario.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4685,7 +4685,7 @@ Sara & M & 6.2 & 4 \\
   de los alumnos que han aprobado.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4708,7 +4708,7 @@ Sara & M & 6.2 & 4 \\
   Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4737,7 +4737,7 @@ Sara & M & 6.2 & 4 \\
   Añadir el vector con la media al data frame.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4767,7 +4767,7 @@ Sara & M & 6.2 & 4 \\
   mujeres que han aprobado.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5307,7 +5307,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
   Química usando un bucle iterativo.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5328,7 +5328,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
 crear una nueva columna con la calificación (suspenso, aprobado,
 notable, sobresaliente) de las notas de Física y Química.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5766,7 +5766,7 @@ función.
 
 \begin{verbatim}
 [1] "Entorno de la función area.triangulo"
-<environment: 0x55714a16bf30>
+<environment: 0x55afb9308f30>
 [1] "altura" "base"  
 \end{verbatim}
 
@@ -7105,7 +7105,7 @@ resulta de la operación anterior.
   Crear un tibble con los datos del fichero.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7148,7 +7148,7 @@ resulta de la operación anterior.
   Convertir el tratamiento en un factor.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7166,7 +7166,7 @@ resulta de la operación anterior.
   Calcular el tamaño muestral de cada grupo de tratamiento
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7194,7 +7194,7 @@ resulta de la operación anterior.
   (\texttt{mas\ cor\ (g)}) mayor de 230 g.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7231,7 +7231,7 @@ resulta de la operación anterior.
   (\texttt{mas\ cor\ (g)}) para cada tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7261,7 +7261,7 @@ resulta de la operación anterior.
   cada tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7397,7 +7397,7 @@ siguiente función
   \end{itemize}
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, rightrule=.15mm, titlerule=0mm, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, bottomrule=.15mm, toptitle=1mm, breakable, colback=white, left=2mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-important-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, toprule=.15mm, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
 
 Todos los atributos se indican dentro de la función \texttt{aes()}.
 
@@ -8164,6 +8164,49 @@ función
 
 \end{figure}
 
+\hypertarget{escalas}{%
+\subsection{Escalas}\label{escalas}}
+
+Para cambiar las escalas de los ejes cartesianos se añaden la funciones
+
+\begin{itemize}
+\item
+  \texttt{scale\_x\_continuos(limits\ =\ rango,\ breaks\ =\ cortes,\ labels\ =\ etiquetas,\ trans\ =\ transformación)}:
+  Restringe escala del eje x al rango indicado por \texttt{rango},
+  incluye las marcas en eje indicadas por \texttt{cortes} con las
+  etiquetas indicadas por \texttt{etiquetas} y aplica la transformación
+  de escala indicada por \texttt{transformación}. Las transformaciones
+  de escala más habituales son \texttt{"log2"} (logarítmo en base 2),
+  \texttt{"log10"} (logarítmo en base 10) y \texttt{sqrt} (raíz
+  cuadrada).
+\item
+  \texttt{scale\_x\_continuos(limits\ =\ rango,\ breaks\ =\ cortes,\ labels\ =\ etiquetas,\ trans\ =\ transformación)}:
+  Igual que la función anterior pero para el eje y.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/colesterol.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ altura, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de los puntos.}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\CommentTok{\# Cambiar el rango y las marcas de la escala del eje x}
+    \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.5}\NormalTok{, }\FloatTok{2.1}\NormalTok{), }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\FloatTok{1.5}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{+}
+\CommentTok{\# Aplicar una transformación logarítmica a la la escala del eje y}
+    \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{trans =} \StringTok{"log2"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{110}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-28-1.pdf}
+
+}
+
+\end{figure}
+
 \hypertarget{temas}{%
 \subsection{Temas}\label{temas}}
 
@@ -8197,7 +8240,7 @@ tema se añade la función
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-28-1.pdf}
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-29-1.pdf}
 
 }
 
@@ -8216,7 +8259,7 @@ tema se añade la función
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-29-1.pdf}
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-30-1.pdf}
 
 }
 
@@ -8250,11 +8293,291 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-30-1.pdf}
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-31-1.pdf}
 
 }
 
 \end{figure}
+
+\hypertarget{ejercicios-4}{%
+\section{Ejercicios}\label{ejercicios-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  El fichero
+  \href{(https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv)}{neonatos}
+  contiene información sobre los recién nacidos en un hospital durante
+  un año.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Crear un tibble con los datos del fichero.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/asalber/manual{-}r/master/datos/neonatos.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 320 x 8
+    peso sexo   edad        tabaco cigarros tabaco.antes apgar1 apgar5
+   <dbl> <chr>  <chr>       <chr>     <dbl> <chr>         <dbl>  <dbl>
+ 1  3.28 hombre mayor de 20 No            0 No                7      7
+ 2  3.49 hombre mayor de 20 No            0 No                7      8
+ 3  2.88 hombre mayor de 20 No            0 Si                5      6
+ 4  3.42 hombre mayor de 20 No            0 No                8      8
+ 5  3.31 hombre mayor de 20 No            0 No                6      7
+ 6  3.53 hombre mayor de 20 No            0 No                8      8
+ 7  3.46 hombre mayor de 20 No            0 No                7      8
+ 8  3.12 hombre mayor de 20 No            0 No                7      7
+ 9  2.77 hombre mayor de 20 No            0 No                5      5
+10  3.31 hombre mayor de 20 No            0 No                7      8
+# ... with 310 more rows
+\end{verbatim}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Convertir las variables \texttt{sexo}, \texttt{edad}, \texttt{tabaco}
+  y \texttt{tabaco.antes} en factores.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(df, }\AttributeTok{sexo =} \FunctionTok{factor}\NormalTok{(sexo), }\AttributeTok{edad =} \FunctionTok{factor}\NormalTok{(edad), }\AttributeTok{tabaco =} \FunctionTok{factor}\NormalTok{(tabaco), }\AttributeTok{tabaco.antes =} \FunctionTok{factor}\NormalTok{(tabaco.antes))}
+\end{Highlighting}
+\end{Shaded}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Dibujar un diagrama de barras con la frecuencia de niños y niñas.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-34-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Dibujar un diagrama de barras del \texttt{apgar1} de los neonatos de
+  madres fumadoras y no fumadoras durante el embarazo.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ apgar1, }\AttributeTok{fill =}\NormalTok{ tabaco)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-35-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Dibujar un histograma acumulado del peso según el sexo con 10 clases.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ peso, }\AttributeTok{fill =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-36-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Dibujar un gráfico de densidad de probabilidad del peso de los
+  neonatos de madres fumadoras y no fumadoras durante el embarazo.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ peso, }\AttributeTok{colour =}\NormalTok{ tabaco)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_density}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-37-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Dibujar un diagrama de caja del peso de los recién nacidos según sexo
+  y si la madre fumaba o no durante el embarazo.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sexo, }\AttributeTok{y =}\NormalTok{ peso, }\AttributeTok{fill =}\NormalTok{ tabaco)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-38-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Dibujar un diagrama de dispersión del peso de los recién nacidos de
+  madres fumadoras durante el embarazo, frente al número de cigarros que
+  fumaban las madres. Incluir la recta de regresión.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{filter}\NormalTok{(tabaco }\SpecialCharTok{==} \StringTok{"Si"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cigarros, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+        \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+        \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+`geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-39-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Dibujar un diagrama de dispersión del peso de los recién nacidos de
+  madres fumadoras durante el embarazo, frente al número de cigarros que
+  fumaban las madres, separando por facetas según el sexo y la edad de
+  la madre.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, breakable, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacityback=0, coltitle=black, titlerule=0mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{filter}\NormalTok{(tabaco }\SpecialCharTok{==} \StringTok{"Si"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cigarros, }\AttributeTok{y =}\NormalTok{ peso)) }\SpecialCharTok{+}
+        \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+        \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+}
+        \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(sexo, edad))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+`geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-40-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
 
 
 
