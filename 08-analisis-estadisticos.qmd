@@ -1,0 +1,1129 @@
+---
+title: Análisis Estadísticos
+lang: es
+---
+
+El tipo de estudio estadístico más apropiado en cada caso depende de varios factores:
+
+- El objetivo del estudio.
+- El número de variables que intervienen.
+- El tipo de las variables dependientes e independientes.
+- La naturaleza de las observaciones (independientes o emparejadas).
+
+A continuación se presentan los estudios estadísticos más habituales en función de estos factores. La siguiente tabla puede ayudar a identificar el más apropiado en cada caso.
+
+<table width="1054" cellspacing="0" cellpadding="5" border="1">
+<tbody>
+<tr>
+<td bgcolor="#6d9eeb" width="95">
+<p><strong>Variables independientes</strong></p>
+</td>
+<td bgcolor="#6d9eeb" width="88">
+<p><strong>Variable dependiente</strong></p>
+</td>
+<td bgcolor="#6d9eeb" width="315">
+<p><strong>Objetivo</strong></p>
+</td>
+<td bgcolor="#6d9eeb" width="330">
+<p><strong>Ejemplo</strong></p>
+</td>
+<td bgcolor="#6d9eeb" width="174">
+<p><strong>Contraste</strong></p>
+</td>
+</tr>
+<tr>
+<td rowspan="6" width="95" height="14">
+<p>Ninguna<br /> (Una poblaci&oacute;n)</p>
+</td>
+<td rowspan="2" width="88">
+<p>Cuantitativa</p>
+</td>
+<td rowspan="2" width="315">
+<p>Contrastar la normalidad de una variable</p>
+</td>
+<td rowspan="2" width="330">
+<p>Comprobar si la nota de un examen tiene distribuci&oacute;n normal (forma de campana de Gauss)</p>
+</td>
+<td width="174">
+<p>Komogorov-Smirnov<br /> (requiere muestras grandes)</p>
+</td>
+</tr>
+<tr>
+<td width="174">
+<p>Shapiro-Willks</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cuantitativa normal</p>
+</td>
+<td width="315">
+<p>Contrastar si la media poblacional de una variable tiene un valor determinado</p>
+</td>
+<td width="330">
+<p>Comprobar si la nota media de un examen es 5</p>
+</td>
+<td width="174">
+<p>Test T para la media de una poblaci&oacute;n</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cuantitativa o cualitativa ordinal</p>
+</td>
+<td width="315">
+<p>Contrastar si la mediana poblacional de una variable tiene un valor determinado</p>
+</td>
+<td width="330">
+<p>Comprobar si la calificaci&oacute;n mediana de un examen es Aprobado</p>
+</td>
+<td width="174">
+<p>Test para la mediana de una poblaci&oacute;n</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cualitativa (2 categor&iacute;as)</p>
+</td>
+<td width="315">
+<p>Contrastar si la proporci&oacute;n poblacional de una de las categor&iacute;as tiene un valor determinado</p>
+</td>
+<td width="330">
+<p>Comprobar si la proporci&oacute;n de aprobados es de la mitad (o que el porcentaje es 50%)</p>
+</td>
+<td width="174">
+<p>Test Binomial</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cualitativa</p>
+</td>
+<td width="315">
+<p>Contrastar si las proporciones de cada una de las categor&iacute;as tienen un valor determinado</p>
+</td>
+<td width="330">
+<p>Comprobar si las proporciones de alumnos matriculados en ciencias, letras o mixtas son 0.5, 0.2 y 0.3 respectivamente</p>
+</td>
+<td width="174">
+<p>Test Chi-cuadrado de bondad de ajuste</p>
+</td>
+</tr>
+<tr>
+<td rowspan="7" width="95" height="13">
+<p>Una cualitativa con dos categor&iacute;as independientes <br /> (Dos poblaciones independientes)</p>
+</td>
+<td rowspan="3" width="88">
+<p>Cuantitativa normal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las medias la variable dependiente en dos poblaciones independientes</p>
+</td>
+<td width="330">
+<p>Comprobar si el grupo de ma&ntilde;ana y el grupo de tarde han tenido notas medias diferentes</p>
+</td>
+<td width="174">
+<p>Test T para la comparaci&oacute;n de medias de poblaciones independientes</p>
+</td>
+</tr>
+<tr>
+<td width="315">
+<p>Contrastar si hay diferencias entre las varianzas de la variable dependiente en dos poblaciones independientes</p>
+</td>
+<td width="330">
+<p>Comprobar si hay diferencias entre la variabilidad de las notas del grupo de ma&ntilde;ana y el de tarde</p>
+</td>
+<td width="174">
+<p>Test F de Fisher</p>
+</td>
+</tr>
+<tr>
+<td width="315">
+<p>Contrastar si hay concordancia o acuerdo entre las dos variables</p>
+</td>
+<td width="330">
+<p>Comprobar si hay concordancia o acuerdo entre las notas que ponen dos profesores distintos para los mismos ex&aacute;menes</p>
+</td>
+<td width="174">
+<p>Correlaci&oacute;n intraclase</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2" width="88">
+<p>Cuantitativa o cualitativa ordinal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las distribuciones de la variable dependiente en dos poblaciones independientes</p>
+</td>
+<td width="330">
+<p>Comprobar si el grupo de ma&ntilde;ana y el grupo de tarde han tenido calificaciones diferentes</p>
+</td>
+<td width="174">
+<p>Test de la U de Mann-Whitney</p>
+</td>
+</tr>
+<tr>
+<td width="315">
+<p>Contrastar si hay concordancia o acuerdo entre las dos variables</p>
+</td>
+<td width="330">
+<p>Comprobar si hay concordancia o acuerdo entre las calificaciones que ponen dos profesores distintos para los mismos ex&aacute;menes</p>
+</td>
+<td width="174">
+<p>Kappa de Cohen</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2" width="88">
+<p>Cualitativa</p>
+</td>
+<td width="315">
+<p>Contrastar si hay relaci&oacute;n entre las dos variables o bien si hay diferencias entre las proporciones de las categor&iacute;as de la variable dependiente en las dos poblaciones definidas por las categor&iacute;as de la variable independiente</p>
+</td>
+<td width="330">
+<p>Comprobar si existe relaci&oacute;n entre los aprobados en una asignatura y el grupo al que pertenecen los alumnos, es decir, si la proporci&oacute;n de aprobados es diferente en dos grupos distintos.</p>
+</td>
+<td width="174">
+<p>Test Chi-cuadrado <br /> (si no ha m&aacute;s del 20% de frecuencias esperadas menores que 5)<br /> Test exacto de Fisher</p>
+</td>
+</tr>
+<tr>
+<td width="315">
+<p>Contrastar si hay concordancia o acuerdo entre las dos variables</p>
+</td>
+<td width="330">
+<p>Comprobar si hay concordancia o acuerdo entre la valoraci&oacute;n (aprobado o suspenso) que hacen dos profesores distintos para los mismos ex&aacute;menes</p>
+</td>
+<td width="174">
+<p>Kappa de Cohen</p>
+</td>
+</tr>
+<tr>
+<td rowspan="3" width="95" height="14">
+<p>Una cualitativa con dos categor&iacute;as relacionadas o pareadas<br /> (Dos poblaciones relacionadas o pareadas)</p>
+</td>
+<td width="88">
+<p>Cuantitativa normal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las medias de la variable dependiente en dos poblaciones relacionadas o pareadas</p>
+</td>
+<td width="330">
+<p>Comprobar si las notas medias de dos asignaturas cursadas por los mismos alumnos han sido diferentes o si las notas medias de un examen realizado al comienzo del curso (antes) y otro al final (despu&eacute;s) de una misma asignatura han sido diferentes</p>
+</td>
+<td width="174">
+<p>Test T para la comparaci&oacute;n de medias de poblaciones relacionadas o pareadas</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cuantitativa o cualitativa ordinal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las distribuciones de la variable dependiente en dos poblaciones relacionadas o pareadas</p>
+</td>
+<td width="330">
+<p>Comprobar si las calificaciones de dos asignaturas cursadas por los mismos alumnos han sido diferentes</p>
+</td>
+<td width="174">
+<p>Test de Wilcoxon</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cualitativa con dos categor&iacute;as</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las proporciones de las categor&iacute;as de la variable dependiente en dos poblaciones relacionadas o pareadas</p>
+</td>
+<td width="330">
+<p>Comprobar si la proporci&oacute;n o el porcentaje de aprobados en un examen es distinta al comienzo y al final del curso</p>
+</td>
+<td width="174">
+<p>Test de McNemar</p>
+</td>
+</tr>
+<tr>
+<td rowspan="4" width="95" height="14">
+<p>Una cualitativa con dos o m&aacute;s categor&iacute;as</p>
+<p>independientes<br /> (Dos o m&aacute;s poblaciones independientes)</p>
+</td>
+<td width="88">
+<p>Cuantitativa normal y homogeneidad de varianzas</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las medias la variable dependiente en cada una de las poblaciones definidas por las categor&iacute;as de la variable independiente</p>
+</td>
+<td width="330">
+<p>Comprobar si existen diferencias entre las notas medias de tres grupos distintos de clase.</p>
+</td>
+<td width="174">
+<p>An&aacute;lisis de la Varianza de un factor (ANOVA)<br /> Si hay diferencias &gt; Test de Tukey o Bonferroni para la diferencia por pares</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cuantitativa normal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las varianzas de la variable dependiente en cada una de las poblaciones definidas por las categor&iacute;as de la variable independiente</p>
+</td>
+<td width="330">
+<p>Comprobar si la variabilidad de las notas de una asignatura es distinta en tres grupos diferentes de clase</p>
+</td>
+<td width="174">
+<p>Prueba de Levene para la homogeneidad de varianzas</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cuantitativa o cualitativa ordinal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las distribuciones de la variable dependiente en cada una de las poblaciones definidas por las categor&iacute;as de la variable independiente</p>
+</td>
+<td width="330">
+<p>Comprobar si existen diferencias entre las calificaciones de tres grupos distintos de clase</p>
+</td>
+<td width="174">
+<p>Test de Kruskal Wallis</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cualitativa</p>
+</td>
+<td width="315">
+<p>Contrastar si hay relaci&oacute;n entre las dos variables o bien si hay diferencias entre las proporciones de las categor&iacute;as de la variable dependiente en cada una de las poblaciones definidas por las categor&iacute;as de la variable independiente</p>
+</td>
+<td width="330">
+<p>Comprobar si existe relaci&oacute;n entre los aprobados en una asignatura y el grupo al que pertenecen los alumnos, es decir, si la proporci&oacute;n de aprobados es diferente en los distintos grupos.</p>
+</td>
+<td width="174">
+<p>Test Chi-cuadrado <br /> (si no ha m&aacute;s del 20% de frecuencias esperadas menores que 5)<br /> Test exacto de Fisher</p>
+</td>
+</tr>
+<tr>
+<td rowspan="3" width="95" height="14">
+<p>Una cualitativa con dos o m&aacute;s categor&iacute;as relacionadas <br /> (medidas repetidas)</p>
+</td>
+<td width="88">
+<p>Cuantitativa normal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las medias repetidas de la variable dependiente</p>
+</td>
+<td width="330">
+<p>Comprobar si hay diferencias entre las notas que otorgan varios profesores a un mismo examen</p>
+</td>
+<td width="174">
+<p>An&aacute;lisis de la Varianza (ANOVA) de medidas repetidas de un factor</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cuantitativa o cualitativa ordinal</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las medidas repetidas de la variable dependiente</p>
+</td>
+<td width="330">
+<p>Comprobar si hay diferencias entre las calificaciones que otorgan varios profesores a un mismo examen</p>
+</td>
+<td width="174">
+<p>Test de Friedman</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cualitativa</p>
+</td>
+<td width="315">
+<p>Contrastar si hay diferencias entre las valoraciones repetidas de la variable dependiente</p>
+</td>
+<td width="330">
+<p>Comprobar si hay diferencias entre la valoraci&oacute;n (aprobado o suspenso) que hacen varios profesores de un mismo examen</p>
+</td>
+<td width="174">
+<p>Regresi&oacute;n log&iacute;stica de medidas repetidas</p>
+</td>
+</tr>
+<tr>
+<td rowspan="4" width="95" height="13">
+<p>Una cuantitativa normal</p>
+</td>
+<td rowspan="2" width="88">
+<p>Cuantitativa normal</p>
+</td>
+<td width="315">
+<p>Contrastar si existe relaci&oacute;n lineal entre las dos variables</p>
+</td>
+<td width="330">
+<p>Comprobar si existe relaci&oacute;n entre las notas de dos asignaturas</p>
+</td>
+<td width="174">
+<p>Correlaci&oacute;n de Pearson</p>
+</td>
+</tr>
+<tr>
+<td width="315">
+<p>Construir un modelo predictivo que explique la variable dependiente en funci&oacute;n de la independiente</p>
+</td>
+<td width="330">
+<p>Construir el modelo (funci&oacute;n de regresi&oacute;n) que mejor explique la relaci&oacute;n entre la nota de un examen y las horas dedicadas a su estudio</p>
+</td>
+<td width="174">
+<p>Regresi&oacute;n simple (lineal o no lineal)</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cuantitativa o cualitativa ordinal</p>
+</td>
+<td width="315">
+<p>Contrastar si existe relaci&oacute;n lineal entre las dos variables</p>
+</td>
+<td width="330">
+<p>Comprobar si existe relaci&oacute;n entre las calificaciones de dos asignaturas</p>
+</td>
+<td width="174">
+<p>Correlaci&oacute;n de Spearman</p>
+</td>
+</tr>
+<tr>
+<td width="88">
+<p>Cualitativa</p>
+</td>
+<td width="315">
+<p>Construir un modelo predictivo que explique la variable dependiente en funci&oacute;n de la independiente</p>
+</td>
+<td width="330">
+<p>Construir el modelo (funci&oacute;n log&iacute;stica) que mejor explique la relaci&oacute;n entre el resultado de un examen (aprobado o suspenso) y las horas dedicadas a su estudio</p>
+</td>
+<td width="174">
+<p>Regresi&oacute;n log&iacute;stica simple</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+Los ejemplos de los distintos test que se presentan a continuación se han realizado a partir del siguiente conjunto de datos que contiene las notas y calificaciones de un curso. El fichero con los datos puede descargarse aquí para reproducir los estudios: [notas-curso.csv](https://raw.githubusercontent.com/asalber/manual-r/master/datos/notas-curso.csv).
+
+```{r, message=F}
+library(tidyverse)
+df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/notas-curso.csv')
+head(df)
+```
+
+## Una variable cuantitativa
+
+### Estudios descriptivos
+
+#### Estadísticos
+
+-   Tamaño muestral
+-   Media
+-   Desviación típica
+-   Mínimo, Máximo
+-   Cuartiles
+-   Coeficiente de asimetría
+-   Coeficiente de apuntamiento
+
+```{r, message=F}
+# Tamaño muestral
+nrow(df)
+```
+
+```{r, message=F}
+# Media
+mean(df$notaA, na.rm = TRUE)
+```
+
+```{r, message=F}
+# Desviación típica
+sd(df$notaA, na.rm = TRUE)
+```
+
+```{r, message=F}
+# Min, max
+min(df$notaA, na.rm = TRUE)
+```
+
+```{r, message=F}
+max(df$notaA, na.rm = TRUE)
+```
+
+```{r, message=F}
+# Cuartiles
+quantile(df$notaA, c(0.25, 0.5, 0.75), na.rm = TRUE)
+```
+
+```{r, message=F}
+# Coef. asimetría
+library(moments)
+skewness(df$notaA, na.rm = TRUE)
+```
+
+```{r, message=F}
+# Coef. apuntamiento
+kurtosis(df$notaA, na.rm = TRUE) - 3
+```
+
+#### Gráficos
+
+-   Diagrama de barras (variables discretas)
+
+```{r, message=F}
+df %>% ggplot(aes(x = asinaturas.aprobadas)) + 
+  geom_bar(fill="#00BFC4") + 
+  # Cambio de escala del eje X
+  scale_x_discrete(limits=0:5) 
+```
+
+-   Histograma
+
+```{r, message=F}
+library(ggplot2)
+# Límites de los intervalos
+breaks = 0:10
+# Histograma de las notasA
+df %>% ggplot(aes(x = notaA)) + 
+  geom_histogram(breaks = breaks, fill="#00BFC4") + 
+  # Cambio de escala del eje X
+  scale_x_continuous(limits=c(0, 10), breaks = 0:10) 
+```
+
+```{r, message=F}
+# Histograma de notasE
+df %>% ggplot(aes(x = notaE)) + 
+  geom_histogram(breaks = breaks, fill="#00BFC4") + 
+  # Cambio de escala del eje X
+  scale_x_continuous(limits=c(0, 10), breaks = 0:10) 
+```
+
+-   Diagrama de líneas
+
+```{r, message=F}
+# Variables discretas
+df %>% count(asinaturas.aprobadas) %>%
+  ggplot(aes(x = asinaturas.aprobadas, y = n)) +
+  geom_line(col="#00BFC4") + 
+  # Cambio de escala del eje X
+  scale_x_discrete(limits=0:5) 
+```
+
+```{r, message=F}
+# Agrupación de datos en intervalos
+df %>% ggplot(aes(x = notaA)) + 
+  geom_freqpoly(breaks = breaks, col="#00BFC4") + 
+  # Cambio de escala del eje X
+  scale_x_continuous(limits=c(0, 10), breaks = 0:10) 
+```
+
+-   Diagrama de caja y bigotes
+
+```{r, message=F}
+df %>% ggplot(aes(x = notaA)) + 
+  geom_boxplot(fill="#00BFC4") +
+  # Cambio de escala del eje X
+  scale_x_continuous(limits=c(0, 10), breaks = 0:10)
+```
+
+### Estudios inferenciales
+
+#### Test de normalidad de Shapiro-Wilk
+
+**Objetivo**: Comprobar la normalidad de la distribución.
+
+**Hipótesis nula**: La distribución es normal.
+
+```{r, message=F}
+shapiro.test(df$notaA)
+```
+
+```{r, message=F}
+shapiro.test(df$notaE)
+```
+
+#### Test t para la media de una población
+
+**Objetivo**: Estimar la media de una variable o compararla con un valor
+dado *μ*<sub>0</sub>.
+
+**Requisitos**:
+
+-   Una variable cuantitativa.
+-   Distribución normal o tamaño muestral ≥ 30.
+
+**Hipótesis nula**: La media de la población es igual a *μ*<sub>0</sub>.
+
+**Ejemplo**: Comprobar si la nota media de un examen es diferente de 5.
+
+```{r, message=F}
+t.test(df$notaA, mu = 5, alternative = "two.sided")
+```
+
+## Una variable cualitativa
+
+### Estudios descriptivos
+
+#### Estadísticos
+
+-   Tamaños muestral
+-   Frecuencias muestrales
+-   Proporciones/porcentajes muestrales
+
+```{r, message=F}
+# Tamaño muestral sin datos perdidos
+length(na.omit(df$calificacionB))
+```
+
+```{r, message=F}
+# Frecuencias
+table(df$calificacionB)
+```
+
+```{r, message=F}
+# Proporciones
+table(df$calificacionB) / length(na.omit(df$calificacionB))
+```
+
+```{r, message=F}
+# Porcentajes
+table(df$calificacionB) / length(na.omit(df$calificacionB)) * 100
+```
+
+#### Gráficos
+
+-   Diagrama de sectores
+
+```{r, message=F}
+df %>% ggplot(aes(x = "", fill = calificacionA)) + 
+  geom_bar() +
+  # Cambiar a coordenadas polares
+  coord_polar(theta = "y") +
+  # Eliminar ejes
+   theme_void()
+```
+
+### Estudios inferenciales
+
+#### Test binomial para una proporción de una población
+
+**Objetivo**: Estimar la propoción de una categoría en una población o
+compararla con un valor *p*<sub>0</sub>.
+
+**Requisitos**:
+
+-   One variable cualitativa
+
+**Hipótesis nula**: La proporción poblacional es igual a
+*p*<sub>0</sub>.
+
+**Ejemplo**: Comprobar si la proporción de aprobados es mayor de 0.5.
+
+```{r, message=F}
+n <- nrow(df)
+freq <- table(df$calificacionA)["Aprobado"]
+binom.test(freq, n, p = 0.5, alternative = "greater")
+```
+
+#### Test Z para la proporción de una población
+
+**Objetivo**: Estimar la propoción de una categoría en una población o
+compararla con un valor *p*<sub>0</sub>.
+
+**Requisitos**:
+
+-   Una variable cualitativa
+-   Tamaño muestral >= 30
+
+**Observación**: Utiliza la aproximación normal de la distribución
+Binomal.
+
+**Ejemplo**: Comprobar si la proporción de aprobados es mayor de 0.5.
+
+```{r, message=F}
+freq <- table(df$calificacionA)["Aprobado"]
+prop.test(freq, n, p = 0.7, alternative = "greater")
+```
+
+## Dos variables: Variable dependiente cuantitativa y variable independiente culitativa con dos categorías o grupos
+
+### Estudios descriptivos
+
+#### Estadísticos
+
+-   Tamaño muestral de cada grupo
+-   Media de cada grupo
+-   Desviación típica de cada grupo
+-   Mínimo, Máximo de cada grupo
+-   Cuartiles de cada grupo
+-   Coeficiente de asimetría de cada grupo
+-   Coeficiente de apuntamiento de cada grupo
+
+```{r, message=F}
+# Tamaño muestral de notaA según el sexo
+df %>% group_by(sexo) %>% group_size()
+```
+
+```{r, message=F}
+# Media, Desviación típica, Mín, Máx, Cuartiles, Coef. Asimetría y Coef. Apuntamiento
+library(moments)
+df %>% group_by(sexo) %>% summarize(Media = mean(notaA, na.rm=TRUE), Des.Tip = sd(notaA, na.rm = TRUE), Mín = min(notaA), Máx = max(notaA), C1 = quantile(notaA, 0.25, na.rm = TRUE), C2 = quantile(notaA, 0.5, na.rm = TRUE), C3 = quantile(notaA, 0.75, na.rm = TRUE), Coef.Asimetría = skewness(notaA, na.rm = TRUE), Coef.Apuntamiento = kurtosis(notaA, na.rm = TRUE) - 3)
+```
+
+#### Gráficos
+
+-   Diagrama de cajas y bigotes
+
+```{r, message=F}
+df %>% ggplot(aes(x = sexo, y = notaA, fill = sexo)) + 
+  geom_boxplot() +
+  # Cambio de escala del eje X
+  scale_y_continuous(limits=c(0, 10), breaks = 0:10)
+```
+
+-   Diagrama de violín
+
+```{r, message=F}
+df %>% ggplot(aes(x = sexo, y = notaA, fill = sexo)) + 
+  geom_violin() +
+  # Cambio de escala del eje X
+  scale_y_continuous(limits=c(0, 10), breaks = 0:10)
+```
+
+### Estudios inferenciales
+
+#### Test de normalidad de Shapiro-Wilks
+
+**Objetivo**: Comprobar la normalidad de la distribución de cada
+población.
+
+**Hipótesis nula**: La distribución es normal.
+
+```{r, message=F}
+df %>% group_by(sexo) %>% 
+  summarise(`Estadístico W` = shapiro.test(notaA)$statistic, `p-valor` = shapiro.test(notaA)$p.value)
+```
+
+#### Test F de Fisher de comparación de varianzas de dos poblaciones independientes
+
+**Objetivo**: Comparar las varianzas de dos poblaciones independientes.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con dos categorías
+    (poblaciones)
+-   Distribución normal de la variable dependiente en ambas poblaciones
+    o tamaños de las muestras de cada población ≥ 30.
+
+**Hipótesis nula**: La varianzas poblacionales son iguales (no existe
+una diferencia significativa entre las medias poblacionales).
+
+**Ejemplo**: Comprobar si diferencias signicativas entre las notas
+medias de hombres y mujeres.
+
+```{r, message=F}
+# Test de comparación de varianzas
+var.test(notaA ~ sexo, data = df)
+```
+
+#### Test t de comparación de medias de dos poblaciones independientes
+
+**Objetivo**: Estimar la diferencia de medias en las dos poblaciones o
+comprobar si hay diferencias significativas entre ellas.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con dos categorías
+    (poblaciones)
+-   Distribución normal de la variable dependiente en ambas poblaciones
+    o tamaños de las muestras de cada población ≥ 30.
+
+**Hipótesis nula**: La medias poblacionales son iguales (no existe una
+diferencia significativa entre las medias poblacionales).
+
+**Observación**: El resultado del test depende de si las varianzas
+poblacionales son iguales o no.
+
+**Ejemplo**: Comprobar si diferencias signicativas entre las notas
+medias de hombres y mujeres.
+
+```{r, message=F}
+# Test de comparación de varianzas
+var.test(notaA ~ sexo, data = df)
+```
+
+```{r, message=F}
+# Test de comparación de medias asumiendo varianzas iguales
+t.test (notaA ~ sexo, data = df, alternative = "two.sided", var.equal = FALSE)
+```
+
+```{r, message=F}
+# Test de comparación de medias asumiendo varianzas iguales
+t.test (notaA ~ sexo, data = df, alternative = "two.sided", var.equal = TRUE)
+```
+
+-   Diagrama de medias
+
+```{r, message=F}
+df %>% ggplot(aes(x = sexo, y = notaA, colour = sexo)) + 
+  # Puntos de medias
+  stat_summary(fun="mean", size=3,  geom="point", position=position_dodge(width=0.25)) + 
+  # Intervalos de confianza para la media
+  stat_summary(fun.data = function(x) mean_cl_normal(x, conf.int=0.95), geom = "pointrange", position=position_dodge(width=0.25)) 
+```
+
+#### Test U de Mann-Whitney de comparación de dos poblaciones independientes (no paramétrico)
+
+**Objetivo**: Comprobar si hay diferencias significativas entre entre
+dos poblaciones independientes.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con dos categorías
+    (poblaciones)
+
+**Hipótesis nula**: La medianas poblacionales son iguales (no existe una
+diferencia significativa entre las medianas poblacionales).
+
+**Ejemplo**: Comprobar si diferencias signicativas entre las notas de
+hombres y mujeres.
+
+```{r, message=F}
+# Test de rangos U the Mann-Whitney
+wilcox.test(notaA ~ sexo, data = df, alternative = "two.sided")
+```
+
+
+## Dos variables: Variable dependiente cuantitativa y variable independiente culitativa con dos categorías o grupos pareados
+
+Dos grupos o poblaciones están pareadas o emparejadas cuando los dos
+poblaciones contienen los mismos individuos, es decir, se trata en
+realidadad de una única población, pero la variable dependiente se mide
+dos veces en cada individuo (normalmente antes y después de la algún
+suceso) y por tanto cada individuo tiene asociado un par de valores.
+
+Este estudio puede realizarse también creando una nueva variable a
+partir de la resta de las dos mediciones y planteando un estudio de una
+sola variable cuantitativa.
+
+**Ejemplo**: Creación de la diferencia de notas de las asignaturas A y
+B.
+
+```{r, message=F}
+# Creamos la variable diferencia = notaA - notaB
+df <- df %>% mutate(diferencia = notaA - notaB)
+```
+
+### Estudios descriptivos
+
+#### Estadísticos
+
+-   Tamaño muestral del grupo
+-   Media de la diferencia
+-   Desviación típica de la diferencia
+-   Mínimo, Máximo de la diferencia
+-   Cuartiles de la diferencia
+-   Coeficiente de asimetría de la diferencia
+-   Coeficiente de apuntamiento de la diferencia
+
+**Ejemplo**: Estadísticos descriptivos de la diferencia entre las notas
+de las asignaturas A y B de un mismo grupo de alumnos.
+
+```{r, message=F}
+# Tamaño muestral de sin contar los datos perdidos
+length(na.omit(df$diferencia))
+```
+
+```{r, message=F}
+# Media, Desviación típica, Mín, Máx, Cuartiles, Coef. Asimetría y Coef. Apuntamiento
+library(moments)
+df %>% summarize(Media = mean(diferencia, na.rm=TRUE), Des.Tip = sd(diferencia, na.rm = TRUE), Mín = min(diferencia, na.rm = TRUE), Máx = max(diferencia, na.rm = TRUE), C1 = quantile(diferencia, 0.25, na.rm = TRUE), C2 = quantile(diferencia, 0.5, na.rm = TRUE), C3 = quantile(diferencia, 0.75, na.rm = TRUE), Coef.Asimetría = skewness(diferencia, na.rm = TRUE), Coef.Apuntamiento = kurtosis(diferencia, na.rm = TRUE) - 3)
+```
+
+#### Gráficos
+
+-   Diagrama de cajas y bigotes
+
+```{r, message=F}
+df %>% ggplot(aes(x = diferencia)) + 
+  geom_boxplot(fill="#00BFC4")
+```
+
+### Estudios inferenciales
+
+#### Test de normalidad de Shapiro-Wilks
+
+**Objetivo**: Comprobar la normalidad de la distribución de la
+diferencia.
+
+**Hipótesis nula**: La distribución es normal.
+
+**Ejemplo**: Comprobar la normalidad de la diferencia entre las notas de
+las asignaturas A y B de un mismo grupo de alumnos.
+
+```{r, message=F}
+df %>% summarise(`Estadístico W` = shapiro.test(diferencia)$statistic, `p-valor` = shapiro.test(diferencia)$p.value)
+```
+
+#### Test t de comparación de medias de dos poblaciones pareadas
+
+**Objetivo**: Estimar la media de la diferencia o compararla con un
+valor dado *μ*<sub>0</sub>.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con dos categorías
+    (poblaciones) pareadas
+-   Distribución normal de la variable diferencia o tamaño muestral
+    ≥ 30.
+
+**Hipótesis nula**: La medias poblacionales son iguales (no existe una
+diferencia significativa entre las medias poblacionales).
+
+**Ejemplo**: Comprobar si hay una diferencia signicativa entre las notas
+medias de las asinaturas A y B, o lo que es lo mismo, comprobar si la
+media de la diferencia de las notas de A y B es distinta de 0.
+
+```{r, message=F}
+t.test (df$notaA, df$notaB, alternative = "two.sided", paired = TRUE)
+```
+
+-   Diagrama de medias
+
+```{r, message=F}
+df %>% ggplot(aes(x="", y = diferencia)) + 
+  # Puntos de medias
+  stat_summary(fun="mean", size=3,  geom="point") + 
+  # Intervalos de confianza para la media
+  stat_summary(fun.data = function(x) mean_cl_normal(x, conf.int=0.95), geom = "pointrange", position=position_dodge(width=0.25)) 
+```
+
+#### Test Wilcoxon de comparación de dos poblaciones pareadas (no paramétrico)
+
+**Objetivo**: Comparar las medianas de las dos poblaciones.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con dos categorías
+    (poblaciones) pareadas.
+
+**Hipótesis nula**: La medianas poblacionales son iguales (no existe una
+diferencia significativa entre las medianas poblacionales).
+
+**Ejemplo**: Comprobar si hay una diferencia signicativa entre las notas
+de las asignaturas A y B.
+
+```{r, message=F}
+wilcox.test(df$notaA, df$notaB, alternative = "two.sided", paired = TRUE)
+```
+
+## Dos variables: Variable dependiente cuantitativa y variable independiente culitativa con más de dos categorías o grupos
+
+### Estudios descriptivos
+
+#### Estadísticos
+
+-   Tamaño muestral de cada grupo
+-   Media de cada grupo
+-   Desviación típica de cada grupo
+-   Mínimo, Máximo de cada grupo
+-   Cuartiles de cada grupo
+-   Coeficiente de asimetría de cada grupo
+-   Coeficiente de apuntamiento de cada grupo
+
+```{r, message=F}
+# Tamaño muestral de notaA según el grupo
+df %>% group_by(grupo) %>% group_size()
+```
+
+```{r, message=F}
+# Media, Desviación típica, Mín, Máx, Cuartiles, Coef. Asimetría y Coef. Apuntamiento
+library(moments)
+df %>% group_by(grupo) %>% summarize(Media = mean(notaA, na.rm=TRUE), Des.Tip = sd(notaA, na.rm = TRUE), Mín = min(notaA, na.rm = TRUE), Máx = max(notaA, na.rm = TRUE), C1 = quantile(notaA, 0.25, na.rm = TRUE), C2 = quantile(notaA, 0.5, na.rm = TRUE), C3 = quantile(notaA, 0.75, na.rm = TRUE), Coef.Asimetría = skewness(notaA, na.rm = TRUE), Coef.Apuntamiento = kurtosis(notaA, na.rm = TRUE) - 3)
+```
+
+#### Gráficos
+
+-   Diagrama de cajas y bigotes
+
+```{r, message=F}
+df %>% ggplot(aes(x = grupo, y = notaA, fill = grupo)) + 
+  geom_boxplot() +
+  # Cambio de escala del eje X
+  scale_y_continuous(limits=c(0, 10), breaks = 0:10)
+```
+
+-   Diagrama de violín
+
+```{r, message=F}
+df %>% ggplot(aes(x = grupo, y = notaA, fill = grupo)) + 
+  geom_violin() +
+  # Cambio de escala del eje X
+  scale_y_continuous(limits=c(0, 10), breaks = 0:10)
+```
+
+### Estudios inferenciales
+
+#### Test de normalidad de Shapiro-Wilks
+
+**Objetivo**: Comprobar la normalidad de la distribución de cada
+población.
+
+**Hipótesis nula**: La distribución es normal.
+
+**Ejemplo**: Comprobar la normalidad de las distribuciones de la nota A
+en los grupos A, B y C.
+
+```{r, message=F}
+df %>% group_by(grupo) %>% 
+  summarise(`Estadístico W` = shapiro.test(notaA)$statistic, `p-valor` = shapiro.test(notaA)$p.value)
+```
+
+**Interpretación**: La distribución de la nota A en los grupos A y B es
+normal (p-valores > 0.05) pero no en el grupo C (p-valor < 0.05)
+
+**Ejemplo**: Comprobar la normalidad de las distribuciones de la nota A
+en los grupos A, B y C.
+
+```{r, message=F}
+df %>% group_by(grupo) %>% 
+  summarise(`Estadístico W` = shapiro.test(notaC)$statistic, `p-valor` = shapiro.test(notaC)$p.value)
+```
+
+**Interpretación**: La distribución de la nota C en los tres grupos es
+normal (p-valores > 0.05).
+
+#### Test de Levene de comparación de varianzas de dos o más poblaciones independientes
+
+**Objetivo**: Comparar las varianzas de dos o más poblaciones
+independientes.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con dos o más categorías
+    (poblaciones)
+-   Distribución normal de la variable dependiente en todas las
+    poblaciones o tamaños de las muestras de cada población ≥ 30.
+
+**Hipótesis nula**: La varianzas poblacionales son iguales (no existe
+una diferencia significativa entre las medias poblacionales).
+
+**Ejemplo**: Comprobar si diferencias signicativas entre las varianzas
+de las notas de la asignatura C de los grupos A, B y C.
+
+```{r, message=F}
+# El test de Levene está disponible en el paquete car
+library(car)
+# Test de comparación de varianzas
+leveneTest(notaC ~ grupo, data = df)
+```
+
+**Interpretación**: No existe diferencia significativa entre las
+varianzas de la nota C en los grupos A, B y C (p-valor > 0.05).
+
+#### ANOVA de un factor para la comparación medias de más de dos poblaciones independientes
+
+**Objetivo**: Comprobar si hay diferencias significativas entre las
+medias de más de dos poblaciones independientes.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con más de dos categorías
+    (poblaciones)-
+-   Distribución normal de la variable dependiente en todas las
+    poblaciones o tamaños de las muestras de cada población ≥ 30.
+-   Homogeneidad de varianzas en las poblaciones.
+
+**Hipótesis nula**: La medias poblacionales son iguales (no existe una
+diferencia significativa entre las medias poblacionales).
+
+**Ejemplo**: Comprobar si diferencias signicativas entre las notas
+medias de la asignatura C de los grupos A, B y C.
+
+```{r, message=F}
+# Análisis de la varianza de un factor
+summary(aov(notaC ~ grupo, data = df))
+```
+
+**Interpretación**: Existen diferencias significativas entre las medias
+de la nota C entre al menos dos grupos (p-valor=3.32e-08 < 0.05).
+
+**Observación**: Cuando se detectan diferencias significativas entre las
+medias de al menos dos grupos conviene realizar un test de comparación
+múltiple por pares para ver entre qué poblaciones hay diferencias y
+entre cuáles no. Los test más habituales de comparación por pares son el
+de Tukey y el de Bonferroni.
+
+```{r, message=F}
+# Test de comparación múltiple de Tukey
+TukeyHSD(aov(notaC ~ grupo, data = df))
+```
+
+**Interpretación**: No existe una diferencia significativa entre las
+notas medias de la asignatura C de los grupos A y B (p-valor=0.4048 >
+0.05), pero si existe una diferencia significativa entre las notas
+medias de los grupos A y C (p-valor=0.00002 < 0.05) y también entre las
+notas medias de los grupos B y C (p-valor=0.0000001 < 0.05).
+
+-   Diagrama de medias
+
+```{r, message=F}
+df %>% ggplot(aes(x = grupo, y = notaC, colour = grupo)) + 
+  # Puntos de medias
+  stat_summary(fun="mean", size=3,  geom="point", position=position_dodge(width=0.25)) + 
+  # Intervalos de confianza para la media
+  stat_summary(fun.data = function(x) mean_cl_normal(x, conf.int=0.95), geom = "pointrange", position=position_dodge(width=0.25)) 
+```
+
+#### Test Kruskal-Wallis de comparación de más de dos poblaciones independientes (no paramétrico)
+
+**Objetivo**: Comprobar si hay diferencias significativas entre entre
+más de dos poblaciones independientes.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cualitativa con más de dos categorías
+    (poblaciones)
+
+**Hipótesis nula**: La medianas poblacionales son iguales (no existe una
+diferencia significativa entre las medianas poblacionales).
+
+**Ejemplo**: Comprobar si diferencias signicativas entre las notas de la
+asignatura A de los grupos A, B y C.
+
+```{r, message=F}
+# Test de Kruskal-Wallis
+kruskal.test(notaA ~ grupo, data = df)
+```
+
+**Interpretación**: Existen diferencias significativas entre las notas
+de la asignatura A de al menos dos de los grupos.
+
+**Observación**: Cuando se detectan diferencias significativas entre al
+menos dos grupos conviene realizar un test de comparación múltiple por
+pares para ver entre qué poblaciones hay diferencias y entre cuáles no.
+El test más habitual es el de Wilcoxon.
+
+```{r, message=F}
+# Test de comparación múltiple de Wilcoxon
+pairwise.wilcox.test(df$notaA, df$grupo, p.adjust.method = "BH")
+```
+
+**Interpretación**: No existe una diferencia significativa entre las
+notas de la asignatura A de los grupos A y B (p-valor=0.19 > 0.05),
+pero si existe una diferencia significativa entre las notas de los
+grupos A y C (p-valor=4.2e-10 < 0.05) y también entre las notas de los
+grupos B y C (p-valor=1.3e-11 < 0.05).
+
+

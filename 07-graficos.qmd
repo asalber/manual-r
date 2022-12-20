@@ -225,7 +225,7 @@ ggplot(df, aes(x = sexo, fill = sexo)) +
 
 Para dibujar un histograma se utiliza la capa de objetos geométricos
 
-- `geom_histogram(bins = clases, bindwidth = anchura)`: Dibuja un histograma de la variable asociada al atributo `x` usando el número de clases indicado por `clases` o bien clases de amplitud indicada por `anchura`. Si no se indica el parámetro `bins` o `bindwidth` se toman 30 clases por defecto.
+- `geom_histogram(bins = clases, binwidth = anchura)`: Dibuja un histograma de la variable asociada al atributo `x` usando el número de clases indicado por `clases` o bien clases de amplitud indicada por `anchura`. Si no se indica el parámetro `bins` o `bindwidth` se toman 30 clases por defecto.
 
 :::{.exm-histograma-1}
 ```{r, message=F}
@@ -327,7 +327,7 @@ Para dibujar un diagrama de sectores se utiliza la misma capa de objetos geomét
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
 # Inicializar el gráfico con el sexo en el atributo x.
-ggplot(df, aes(x = factor(1), fill = sexo)) +
+ggplot(df, aes(x = "", fill = sexo)) +
 # Añadir la capa de las barras.
     geom_bar() +
 # Añadir el sistema de coordenadas polares
@@ -511,7 +511,7 @@ ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
 
 ## Ejercicios
 
-1. El fichero [neonatos]((https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv)) contiene información sobre los recién nacidos en un hospital durante un año.
+1. El fichero [neonatos](https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv) contiene información sobre los recién nacidos en un hospital durante un año.
 
 a. Crear un tibble con los datos del fichero. 
 

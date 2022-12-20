@@ -93,6 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./08-analisis-estadisticos.html" rel="next">
 <link href="./06-preprocesamiento.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -240,6 +241,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-graficos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Gráficos y visualización de datos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-analisis-estadisticos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Análisis Estadísticos</span></a>
   </div>
 </li>
     </ul>
@@ -570,7 +576,7 @@ Importante
 <h2 data-number="7.6" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">7.6</span> Histogramas</h2>
 <p>Para dibujar un histograma se utiliza la capa de objetos geométricos</p>
 <ul>
-<li><code>geom_histogram(bins = clases, bindwidth = anchura)</code>: Dibuja un histograma de la variable asociada al atributo <code>x</code> usando el número de clases indicado por <code>clases</code> o bien clases de amplitud indicada por <code>anchura</code>. Si no se indica el parámetro <code>bins</code> o <code>bindwidth</code> se toman 30 clases por defecto.</li>
+<li><code>geom_histogram(bins = clases, binwidth = anchura)</code>: Dibuja un histograma de la variable asociada al atributo <code>x</code> usando el número de clases indicado por <code>clases</code> o bien clases de amplitud indicada por <code>anchura</code>. Si no se indica el parámetro <code>bins</code> o <code>bindwidth</code> se toman 30 clases por defecto.</li>
 </ul>
 <div class="exm-histograma-1">
 <div class="cell">
@@ -688,7 +694,7 @@ Importante
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el sexo en el atributo x.</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="dv">1</span>), <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las barras.</span></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir el sistema de coordenadas polares</span></span>
@@ -810,7 +816,7 @@ Importante
 <p>Para cambiar las escalas de los ejes cartesianos se añaden la funciones</p>
 <ul>
 <li><p><code>scale_x_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)</code>: Restringe escala del eje x al rango indicado por <code>rango</code>, incluye las marcas en eje indicadas por <code>cortes</code> con las etiquetas indicadas por <code>etiquetas</code> y aplica la transformación de escala indicada por <code>transformación</code>. Las transformaciones de escala más habituales son <code>"log2"</code> (logarítmo en base 2), <code>"log10"</code> (logarítmo en base 10) y <code>sqrt</code> (raíz cuadrada).</p></li>
-<li><p><code>scale_x_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)</code>: Igual que la función anterior pero para el eje y.</p></li>
+<li><p><code>scale_y_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)</code>: Igual que la función anterior pero para el eje y.</p></li>
 </ul>
 <div class="exm-escalas-1">
 <div class="cell">
@@ -893,7 +899,7 @@ Importante
 <section id="ejercicios" class="level2" data-number="7.13">
 <h2 data-number="7.13" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">7.13</span> Ejercicios</h2>
 <ol type="1">
-<li>El fichero <a href="(https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv)">neonatos</a> contiene información sobre los recién nacidos en un hospital durante un año.</li>
+<li>El fichero <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv">neonatos</a> contiene información sobre los recién nacidos en un hospital durante un año.</li>
 </ol>
 <ol type="a">
 <li>Crear un tibble con los datos del fichero.</li>
@@ -1403,6 +1409,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./08-analisis-estadisticos.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Análisis Estadísticos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
