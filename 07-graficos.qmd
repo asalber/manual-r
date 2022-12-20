@@ -437,7 +437,7 @@ Para cambiar las escalas de los ejes cartesianos se añaden la funciones
 
 - `scale_x_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)`: Restringe escala del eje x al rango indicado por `rango`, incluye las marcas en eje indicadas por `cortes` con las etiquetas indicadas por `etiquetas` y aplica la transformación de escala indicada por `transformación`. Las transformaciones de escala más habituales son `"log2"` (logarítmo en base 2), `"log10"` (logarítmo en base 10) y `sqrt` (raíz cuadrada).
 
-- `scale_x_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)`: Igual que la función anterior pero para el eje y.
+- `scale_y_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)`: Igual que la función anterior pero para el eje y.
 
 :::{.exm-escalas-1}
 ```{r, message=F, warning=F}
