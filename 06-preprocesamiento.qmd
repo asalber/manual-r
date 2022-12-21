@@ -331,7 +331,7 @@ count(df, Tratamiento)
 ```
 :::
 
-d. Filtrar las ratas de grup control con una masa corporal (`mas cor (g)`) mayor de 230 g.
+d. Filtrar las ratas de grupo control con una masa corporal (`mas cor (g)`) mayor de 230 g.
 
 :::{.callout-note collapse="true"}
 ## Solución 
