@@ -904,25 +904,24 @@ Solución
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 20
-   códig…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
-   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 Ct-A1   Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3   401. 
- 2 Ct-A2   Control    202. 0.044  0.002   0.0017  8  e-4    50.7  2.42e6   553. 
- 3 Ct-B1   Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6   724. 
- 4 Ct-B2   Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6  2213. 
- 5 Ct-B3   Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7  4518. 
- 6 Ct-C1   Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7   775. 
- 7 Ct-C2   Control    228. 0.05   0.0018  0.0031  5.9e-4    29.4  7.5 e3    83.4
- 8 Dx-1    Dexame…    181. 0.061  0.00155 0.0005  1.2e-4    56.0  7.68e2    10  
- 9 Dx-2    Dexame…    198. 0.063  0.00191 0.0011  2  e-4   119.   1.41e6    15  
-10 Dx-3    Dexame…    201. 0.0577 0.0017  0.0001  1  e-4   119.   7.12e3    11  
-# … with 11 more rows, 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;,
+   `código muestra` Tratamiento  `mas cor (g)`    IHS     IES     ITS     IAS
+   &lt;chr&gt;            &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Ct-A1            Control               236  0.0433 0.00198 0.00178 0.00043
+ 2 Ct-A2            Control               202. 0.044  0.002   0.0017  0.0008 
+ 3 Ct-B1            Control               246. 0.042  0.002   0.0015  0.0005 
+ 4 Ct-B2            Control               237. 0.0475 0.00238 0.00203 0.00041
+ 5 Ct-B3            Control               231. 0.0499 0.002   0.0011  0.0005 
+ 6 Ct-C1            Control               235. 0.05   0.0021  0.0033  0.0014 
+ 7 Ct-C2            Control               228. 0.05   0.0018  0.0031  0.00059
+ 8 Dx-1             Dexametasona          181. 0.061  0.00155 0.0005  0.00012
+ 9 Dx-2             Dexametasona          198. 0.063  0.00191 0.0011  0.0002 
+10 Dx-3             Dexametasona          201. 0.0577 0.0017  0.0001  0.0001 
+# … with 11 more rows, and 13 more variables: `glucog(mg/g)` &lt;dbl&gt;,
+#   `pbmc(cel/mL)` &lt;dbl&gt;, `CD4(cel/µL)` &lt;dbl&gt;, `monoc(cel/mL)` &lt;dbl&gt;,
 #   `IHQ: linfB(cel/mm2)` &lt;dbl&gt;, `pulp.blan(Tx1)` &lt;dbl&gt;,
 #   `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;, `gluc(mmol/L)` &lt;dbl&gt;,
 #   `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;, `HDL(mmol/L)` &lt;dbl&gt;,
-#   `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names ¹​`código muestra`,
-#   ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`, ⁵​`pbmc(cel/mL)`,
-#   ⁶​`CD4(cel/µL)`</code></pre>
+#   `ins(pmol/L)` &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -997,19 +996,18 @@ Solución
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, Tratamiento <span class="sc">==</span> <span class="st">"Control"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">230</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 20
-  código…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
-  &lt;chr&gt;    &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 Ct-A1    Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3    401.
-2 Ct-B1    Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6    724.
-3 Ct-B2    Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6   2213.
-4 Ct-B3    Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7   4518.
-5 Ct-C1    Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7    775.
-# … with 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
+  `código muestra` Tratamiento `mas cor (g)`    IHS     IES     ITS     IAS
+  &lt;chr&gt;            &lt;fct&gt;               &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Ct-A1            Control              236  0.0433 0.00198 0.00178 0.00043
+2 Ct-B1            Control              246. 0.042  0.002   0.0015  0.0005 
+3 Ct-B2            Control              237. 0.0475 0.00238 0.00203 0.00041
+4 Ct-B3            Control              231. 0.0499 0.002   0.0011  0.0005 
+5 Ct-C1            Control              235. 0.05   0.0021  0.0033  0.0014 
+# … with 13 more variables: `glucog(mg/g)` &lt;dbl&gt;, `pbmc(cel/mL)` &lt;dbl&gt;,
+#   `CD4(cel/µL)` &lt;dbl&gt;, `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
 #   `pulp.blan(Tx1)` &lt;dbl&gt;, `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;,
 #   `gluc(mmol/L)` &lt;dbl&gt;, `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;,
-#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names
-#   ¹​`código muestra`, ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`,
-#   ⁵​`pbmc(cel/mL)`, ⁶​`CD4(cel/µL)`</code></pre>
+#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </div>

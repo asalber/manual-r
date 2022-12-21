@@ -232,7 +232,7 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
 # Inicializar el gráfico con la edad en el atributo x.
-ggplot(df, aes(x = edad)) +
+ggplot(df, aes(x = altura)) +
 # Añadir la capa del histograma.
     geom_histogram()
 ```
@@ -241,18 +241,27 @@ ggplot(df, aes(x = edad)) +
 :::{.exm-histograma-2}
 ```{r}
 # Inicializar el gráfico con la edad en el atributo x.
-ggplot(df, aes(x = edad)) +
+ggplot(df, aes(x = altura)) +
 # Añadir la capa del histograma con anchura de clases 5.
-    geom_histogram(binwidth = 5)
+    geom_histogram(binwidth = 0.1)
 ```
 :::
 
 :::{.exm-histograma-3}
 ```{r}
 # Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.
-ggplot(df, aes(x = edad, fill = sexo)) +
+ggplot(df, aes(x = altura, fill = sexo)) +
 # Añadir la capa del histograma con anchura de clases 10.
-    geom_histogram(binwidth = 10)
+    geom_histogram(binwidth = 0.1)
+```
+:::
+
+:::{.exm-histograma-3}
+```{r}
+# Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.
+ggplot(df, aes(x = altura, fill = sexo)) +
+# Añadir la capa del histograma con anchura de clases 10.
+    geom_histogram(binwidth = 0.1,alpha=0.4, position="identity")
 ```
 :::
 

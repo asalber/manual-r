@@ -3,6 +3,10 @@ title: Análisis Estadísticos
 lang: es
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
 El tipo de estudio estadístico más apropiado en cada caso depende de varios factores:
 
 - El objetivo del estudio.
@@ -10,7 +14,7 @@ El tipo de estudio estadístico más apropiado en cada caso depende de varios fa
 - El tipo de las variables dependientes e independientes.
 - La naturaleza de las observaciones (independientes o emparejadas).
 
-A continuación se presentan los estudios estadísticos más habituales en función de estos factores. La siguiente tabla puede ayudar a identificar el más apropiado en cada caso.
+A continuación se presentan los estudios estadísticos más habituales en función de estos factores. La siguiente [tabla de resumen de contrastes de hipótesis más habituales](tablas/Tabla%20Resumen%20Contraste%20de%20Hip%C3%B3tesis.pdf) puede ayudar a identificar el más apropiado en cada caso.
 
 <table width="1054" cellspacing="0" cellpadding="5" border="1">
 <tbody>
@@ -409,7 +413,7 @@ A continuación se presentan los estudios estadísticos más habituales en funci
 
 Los ejemplos de los distintos test que se presentan a continuación se han realizado a partir del siguiente conjunto de datos que contiene las notas y calificaciones de un curso. El fichero con los datos puede descargarse aquí para reproducir los estudios: [notas-curso.csv](https://raw.githubusercontent.com/asalber/manual-r/master/datos/notas-curso.csv).
 
-```{r, message=F}
+```{r}
 library(tidyverse)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/notas-curso.csv')
 head(df)
@@ -429,42 +433,42 @@ head(df)
 -   Coeficiente de asimetría
 -   Coeficiente de apuntamiento
 
-```{r, message=F}
+```{r}
 # Tamaño muestral
 nrow(df)
 ```
 
-```{r, message=F}
+```{r}
 # Media
 mean(df$notaA, na.rm = TRUE)
 ```
 
-```{r, message=F}
+```{r}
 # Desviación típica
 sd(df$notaA, na.rm = TRUE)
 ```
 
-```{r, message=F}
+```{r}
 # Min, max
 min(df$notaA, na.rm = TRUE)
 ```
 
-```{r, message=F}
+```{r}
 max(df$notaA, na.rm = TRUE)
 ```
 
-```{r, message=F}
+```{r}
 # Cuartiles
 quantile(df$notaA, c(0.25, 0.5, 0.75), na.rm = TRUE)
 ```
 
-```{r, message=F}
+```{r}
 # Coef. asimetría
 library(moments)
 skewness(df$notaA, na.rm = TRUE)
 ```
 
-```{r, message=F}
+```{r}
 # Coef. apuntamiento
 kurtosis(df$notaA, na.rm = TRUE) - 3
 ```
@@ -473,7 +477,7 @@ kurtosis(df$notaA, na.rm = TRUE) - 3
 
 -   Diagrama de barras (variables discretas)
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = asinaturas.aprobadas)) + 
   geom_bar(fill="#00BFC4") + 
   # Cambio de escala del eje X
@@ -482,7 +486,7 @@ df %>% ggplot(aes(x = asinaturas.aprobadas)) +
 
 -   Histograma
 
-```{r, message=F}
+```{r}
 library(ggplot2)
 # Límites de los intervalos
 breaks = 0:10
@@ -493,7 +497,7 @@ df %>% ggplot(aes(x = notaA)) +
   scale_x_continuous(limits=c(0, 10), breaks = 0:10) 
 ```
 
-```{r, message=F}
+```{r}
 # Histograma de notasE
 df %>% ggplot(aes(x = notaE)) + 
   geom_histogram(breaks = breaks, fill="#00BFC4") + 
@@ -503,7 +507,7 @@ df %>% ggplot(aes(x = notaE)) +
 
 -   Diagrama de líneas
 
-```{r, message=F}
+```{r}
 # Variables discretas
 df %>% count(asinaturas.aprobadas) %>%
   ggplot(aes(x = asinaturas.aprobadas, y = n)) +
@@ -512,7 +516,7 @@ df %>% count(asinaturas.aprobadas) %>%
   scale_x_discrete(limits=0:5) 
 ```
 
-```{r, message=F}
+```{r}
 # Agrupación de datos en intervalos
 df %>% ggplot(aes(x = notaA)) + 
   geom_freqpoly(breaks = breaks, col="#00BFC4") + 
@@ -522,7 +526,7 @@ df %>% ggplot(aes(x = notaA)) +
 
 -   Diagrama de caja y bigotes
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = notaA)) + 
   geom_boxplot(fill="#00BFC4") +
   # Cambio de escala del eje X
@@ -537,11 +541,11 @@ df %>% ggplot(aes(x = notaA)) +
 
 **Hipótesis nula**: La distribución es normal.
 
-```{r, message=F}
+```{r}
 shapiro.test(df$notaA)
 ```
 
-```{r, message=F}
+```{r}
 shapiro.test(df$notaE)
 ```
 
@@ -559,7 +563,7 @@ dado *μ*<sub>0</sub>.
 
 **Ejemplo**: Comprobar si la nota media de un examen es diferente de 5.
 
-```{r, message=F}
+```{r}
 t.test(df$notaA, mu = 5, alternative = "two.sided")
 ```
 
@@ -573,22 +577,22 @@ t.test(df$notaA, mu = 5, alternative = "two.sided")
 -   Frecuencias muestrales
 -   Proporciones/porcentajes muestrales
 
-```{r, message=F}
+```{r}
 # Tamaño muestral sin datos perdidos
 length(na.omit(df$calificacionB))
 ```
 
-```{r, message=F}
+```{r}
 # Frecuencias
 table(df$calificacionB)
 ```
 
-```{r, message=F}
+```{r}
 # Proporciones
 table(df$calificacionB) / length(na.omit(df$calificacionB))
 ```
 
-```{r, message=F}
+```{r}
 # Porcentajes
 table(df$calificacionB) / length(na.omit(df$calificacionB)) * 100
 ```
@@ -597,7 +601,7 @@ table(df$calificacionB) / length(na.omit(df$calificacionB)) * 100
 
 -   Diagrama de sectores
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = "", fill = calificacionA)) + 
   geom_bar() +
   # Cambiar a coordenadas polares
@@ -622,7 +626,7 @@ compararla con un valor *p*<sub>0</sub>.
 
 **Ejemplo**: Comprobar si la proporción de aprobados es mayor de 0.5.
 
-```{r, message=F}
+```{r}
 n <- nrow(df)
 freq <- table(df$calificacionA)["Aprobado"]
 binom.test(freq, n, p = 0.5, alternative = "greater")
@@ -643,7 +647,7 @@ Binomal.
 
 **Ejemplo**: Comprobar si la proporción de aprobados es mayor de 0.5.
 
-```{r, message=F}
+```{r}
 freq <- table(df$calificacionA)["Aprobado"]
 prop.test(freq, n, p = 0.7, alternative = "greater")
 ```
@@ -662,12 +666,12 @@ prop.test(freq, n, p = 0.7, alternative = "greater")
 -   Coeficiente de asimetría de cada grupo
 -   Coeficiente de apuntamiento de cada grupo
 
-```{r, message=F}
+```{r}
 # Tamaño muestral de notaA según el sexo
 df %>% group_by(sexo) %>% group_size()
 ```
 
-```{r, message=F}
+```{r}
 # Media, Desviación típica, Mín, Máx, Cuartiles, Coef. Asimetría y Coef. Apuntamiento
 library(moments)
 df %>% group_by(sexo) %>% summarize(Media = mean(notaA, na.rm=TRUE), Des.Tip = sd(notaA, na.rm = TRUE), Mín = min(notaA), Máx = max(notaA), C1 = quantile(notaA, 0.25, na.rm = TRUE), C2 = quantile(notaA, 0.5, na.rm = TRUE), C3 = quantile(notaA, 0.75, na.rm = TRUE), Coef.Asimetría = skewness(notaA, na.rm = TRUE), Coef.Apuntamiento = kurtosis(notaA, na.rm = TRUE) - 3)
@@ -677,19 +681,19 @@ df %>% group_by(sexo) %>% summarize(Media = mean(notaA, na.rm=TRUE), Des.Tip = s
 
 -   Diagrama de cajas y bigotes
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = sexo, y = notaA, fill = sexo)) + 
   geom_boxplot() +
-  # Cambio de escala del eje X
+  # Cambio de escala del eje y
   scale_y_continuous(limits=c(0, 10), breaks = 0:10)
 ```
 
 -   Diagrama de violín
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = sexo, y = notaA, fill = sexo)) + 
   geom_violin() +
-  # Cambio de escala del eje X
+  # Cambio de escala del eje y
   scale_y_continuous(limits=c(0, 10), breaks = 0:10)
 ```
 
@@ -702,7 +706,7 @@ población.
 
 **Hipótesis nula**: La distribución es normal.
 
-```{r, message=F}
+```{r}
 df %>% group_by(sexo) %>% 
   summarise(`Estadístico W` = shapiro.test(notaA)$statistic, `p-valor` = shapiro.test(notaA)$p.value)
 ```
@@ -725,7 +729,7 @@ una diferencia significativa entre las medias poblacionales).
 **Ejemplo**: Comprobar si diferencias signicativas entre las notas
 medias de hombres y mujeres.
 
-```{r, message=F}
+```{r}
 # Test de comparación de varianzas
 var.test(notaA ~ sexo, data = df)
 ```
@@ -752,24 +756,24 @@ poblacionales son iguales o no.
 **Ejemplo**: Comprobar si diferencias signicativas entre las notas
 medias de hombres y mujeres.
 
-```{r, message=F}
+```{r}
 # Test de comparación de varianzas
 var.test(notaA ~ sexo, data = df)
 ```
 
-```{r, message=F}
+```{r}
 # Test de comparación de medias asumiendo varianzas iguales
 t.test (notaA ~ sexo, data = df, alternative = "two.sided", var.equal = FALSE)
 ```
 
-```{r, message=F}
+```{r}
 # Test de comparación de medias asumiendo varianzas iguales
 t.test (notaA ~ sexo, data = df, alternative = "two.sided", var.equal = TRUE)
 ```
 
 -   Diagrama de medias
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = sexo, y = notaA, colour = sexo)) + 
   # Puntos de medias
   stat_summary(fun="mean", size=3,  geom="point", position=position_dodge(width=0.25)) + 
@@ -794,7 +798,7 @@ diferencia significativa entre las medianas poblacionales).
 **Ejemplo**: Comprobar si diferencias signicativas entre las notas de
 hombres y mujeres.
 
-```{r, message=F}
+```{r}
 # Test de rangos U the Mann-Whitney
 wilcox.test(notaA ~ sexo, data = df, alternative = "two.sided")
 ```
@@ -815,7 +819,7 @@ sola variable cuantitativa.
 **Ejemplo**: Creación de la diferencia de notas de las asignaturas A y
 B.
 
-```{r, message=F}
+```{r}
 # Creamos la variable diferencia = notaA - notaB
 df <- df %>% mutate(diferencia = notaA - notaB)
 ```
@@ -835,12 +839,12 @@ df <- df %>% mutate(diferencia = notaA - notaB)
 **Ejemplo**: Estadísticos descriptivos de la diferencia entre las notas
 de las asignaturas A y B de un mismo grupo de alumnos.
 
-```{r, message=F}
+```{r}
 # Tamaño muestral de sin contar los datos perdidos
 length(na.omit(df$diferencia))
 ```
 
-```{r, message=F}
+```{r}
 # Media, Desviación típica, Mín, Máx, Cuartiles, Coef. Asimetría y Coef. Apuntamiento
 library(moments)
 df %>% summarize(Media = mean(diferencia, na.rm=TRUE), Des.Tip = sd(diferencia, na.rm = TRUE), Mín = min(diferencia, na.rm = TRUE), Máx = max(diferencia, na.rm = TRUE), C1 = quantile(diferencia, 0.25, na.rm = TRUE), C2 = quantile(diferencia, 0.5, na.rm = TRUE), C3 = quantile(diferencia, 0.75, na.rm = TRUE), Coef.Asimetría = skewness(diferencia, na.rm = TRUE), Coef.Apuntamiento = kurtosis(diferencia, na.rm = TRUE) - 3)
@@ -850,7 +854,7 @@ df %>% summarize(Media = mean(diferencia, na.rm=TRUE), Des.Tip = sd(diferencia, 
 
 -   Diagrama de cajas y bigotes
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = diferencia)) + 
   geom_boxplot(fill="#00BFC4")
 ```
@@ -867,7 +871,7 @@ diferencia.
 **Ejemplo**: Comprobar la normalidad de la diferencia entre las notas de
 las asignaturas A y B de un mismo grupo de alumnos.
 
-```{r, message=F}
+```{r}
 df %>% summarise(`Estadístico W` = shapiro.test(diferencia)$statistic, `p-valor` = shapiro.test(diferencia)$p.value)
 ```
 
@@ -891,13 +895,13 @@ diferencia significativa entre las medias poblacionales).
 medias de las asinaturas A y B, o lo que es lo mismo, comprobar si la
 media de la diferencia de las notas de A y B es distinta de 0.
 
-```{r, message=F}
+```{r}
 t.test (df$notaA, df$notaB, alternative = "two.sided", paired = TRUE)
 ```
 
 -   Diagrama de medias
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x="", y = diferencia)) + 
   # Puntos de medias
   stat_summary(fun="mean", size=3,  geom="point") + 
@@ -921,7 +925,7 @@ diferencia significativa entre las medianas poblacionales).
 **Ejemplo**: Comprobar si hay una diferencia signicativa entre las notas
 de las asignaturas A y B.
 
-```{r, message=F}
+```{r}
 wilcox.test(df$notaA, df$notaB, alternative = "two.sided", paired = TRUE)
 ```
 
@@ -939,12 +943,12 @@ wilcox.test(df$notaA, df$notaB, alternative = "two.sided", paired = TRUE)
 -   Coeficiente de asimetría de cada grupo
 -   Coeficiente de apuntamiento de cada grupo
 
-```{r, message=F}
+```{r}
 # Tamaño muestral de notaA según el grupo
 df %>% group_by(grupo) %>% group_size()
 ```
 
-```{r, message=F}
+```{r}
 # Media, Desviación típica, Mín, Máx, Cuartiles, Coef. Asimetría y Coef. Apuntamiento
 library(moments)
 df %>% group_by(grupo) %>% summarize(Media = mean(notaA, na.rm=TRUE), Des.Tip = sd(notaA, na.rm = TRUE), Mín = min(notaA, na.rm = TRUE), Máx = max(notaA, na.rm = TRUE), C1 = quantile(notaA, 0.25, na.rm = TRUE), C2 = quantile(notaA, 0.5, na.rm = TRUE), C3 = quantile(notaA, 0.75, na.rm = TRUE), Coef.Asimetría = skewness(notaA, na.rm = TRUE), Coef.Apuntamiento = kurtosis(notaA, na.rm = TRUE) - 3)
@@ -954,7 +958,7 @@ df %>% group_by(grupo) %>% summarize(Media = mean(notaA, na.rm=TRUE), Des.Tip = 
 
 -   Diagrama de cajas y bigotes
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = grupo, y = notaA, fill = grupo)) + 
   geom_boxplot() +
   # Cambio de escala del eje X
@@ -963,7 +967,7 @@ df %>% ggplot(aes(x = grupo, y = notaA, fill = grupo)) +
 
 -   Diagrama de violín
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = grupo, y = notaA, fill = grupo)) + 
   geom_violin() +
   # Cambio de escala del eje X
@@ -982,7 +986,7 @@ población.
 **Ejemplo**: Comprobar la normalidad de las distribuciones de la nota A
 en los grupos A, B y C.
 
-```{r, message=F}
+```{r}
 df %>% group_by(grupo) %>% 
   summarise(`Estadístico W` = shapiro.test(notaA)$statistic, `p-valor` = shapiro.test(notaA)$p.value)
 ```
@@ -990,10 +994,10 @@ df %>% group_by(grupo) %>%
 **Interpretación**: La distribución de la nota A en los grupos A y B es
 normal (p-valores > 0.05) pero no en el grupo C (p-valor < 0.05)
 
-**Ejemplo**: Comprobar la normalidad de las distribuciones de la nota A
+**Ejemplo**: Comprobar la normalidad de las distribuciones de la nota C
 en los grupos A, B y C.
 
-```{r, message=F}
+```{r}
 df %>% group_by(grupo) %>% 
   summarise(`Estadístico W` = shapiro.test(notaC)$statistic, `p-valor` = shapiro.test(notaC)$p.value)
 ```
@@ -1020,7 +1024,7 @@ una diferencia significativa entre las medias poblacionales).
 **Ejemplo**: Comprobar si diferencias signicativas entre las varianzas
 de las notas de la asignatura C de los grupos A, B y C.
 
-```{r, message=F}
+```{r}
 # El test de Levene está disponible en el paquete car
 library(car)
 # Test de comparación de varianzas
@@ -1050,7 +1054,7 @@ diferencia significativa entre las medias poblacionales).
 **Ejemplo**: Comprobar si diferencias signicativas entre las notas
 medias de la asignatura C de los grupos A, B y C.
 
-```{r, message=F}
+```{r}
 # Análisis de la varianza de un factor
 summary(aov(notaC ~ grupo, data = df))
 ```
@@ -1064,7 +1068,7 @@ múltiple por pares para ver entre qué poblaciones hay diferencias y
 entre cuáles no. Los test más habituales de comparación por pares son el
 de Tukey y el de Bonferroni.
 
-```{r, message=F}
+```{r}
 # Test de comparación múltiple de Tukey
 TukeyHSD(aov(notaC ~ grupo, data = df))
 ```
@@ -1077,7 +1081,7 @@ notas medias de los grupos B y C (p-valor=0.0000001 < 0.05).
 
 -   Diagrama de medias
 
-```{r, message=F}
+```{r}
 df %>% ggplot(aes(x = grupo, y = notaC, colour = grupo)) + 
   # Puntos de medias
   stat_summary(fun="mean", size=3,  geom="point", position=position_dodge(width=0.25)) + 
@@ -1102,7 +1106,7 @@ diferencia significativa entre las medianas poblacionales).
 **Ejemplo**: Comprobar si diferencias signicativas entre las notas de la
 asignatura A de los grupos A, B y C.
 
-```{r, message=F}
+```{r}
 # Test de Kruskal-Wallis
 kruskal.test(notaA ~ grupo, data = df)
 ```
@@ -1115,7 +1119,7 @@ menos dos grupos conviene realizar un test de comparación múltiple por
 pares para ver entre qué poblaciones hay diferencias y entre cuáles no.
 El test más habitual es el de Wilcoxon.
 
-```{r, message=F}
+```{r}
 # Test de comparación múltiple de Wilcoxon
 pairwise.wilcox.test(df$notaA, df$grupo, p.adjust.method = "BH")
 ```
@@ -1126,4 +1130,180 @@ pero si existe una diferencia significativa entre las notas de los
 grupos A y C (p-valor=4.2e-10 < 0.05) y también entre las notas de los
 grupos B y C (p-valor=1.3e-11 < 0.05).
 
+## Dos variables: Variable dependiente cuantitativa y variable independiente cuantitativa
+
+### Estudios descriptivos
+
+#### Estadísticos
+
+#### Estadísticos
+
+-   Tamaño muestral de cada grupo
+-   Media de cada variable
+-   Desviación típica de cada variable
+-   Mínimo, Máximo de cada variable
+-   Cuartiles de cada variable
+-   Coeficiente de asimetría de cada variable
+-   Coeficiente de apuntamiento de cada variable
+
+```{r}
+# Tamaño muestral de notaA según el grupo
+nrow(df)
+```
+
+```{r}
+# Media, Desviación típica, Mín, Máx, Cuartiles, Coef. Asimetría y Coef. Apuntamiento
+library(moments)
+df %>% summarize(Media = mean(notaA, na.rm=TRUE), Des.Tip = sd(notaA, na.rm = TRUE), Mín = min(notaA, na.rm = TRUE), Máx = max(notaA, na.rm = TRUE), C1 = quantile(notaA, 0.25, na.rm = TRUE), C2 = quantile(notaA, 0.5, na.rm = TRUE), C3 = quantile(notaA, 0.75, na.rm = TRUE), Coef.Asimetría = skewness(notaA, na.rm = TRUE), Coef.Apuntamiento = kurtosis(notaA, na.rm = TRUE) - 3)
+```
+
+#### Gráficos
+
+-   Diagrama de dispersión
+
+```{r}
+df %>% ggplot(aes(x = notaA, y = notaB)) + 
+  geom_point()
+```
+
+### Estudios inferenciales
+
+#### Análisis de regresión
+
+**Objetivo**: Construir un modelo matemático $y=f(x)$ que explique lo mejor posible la variable dependiente en función de la independiente, para utilizarlo con fines predictivos.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cuantitativa.
+
+**Ejemplo**: Construir el modelo lineal (recta de regresión) que mejor explica la relación entre la nota B y la nota A.
+
+```{r}
+# Análisis de la varianza de un factor
+lm(notaB ~ notaA, data = df)
+```
+
+```{r}
+# Análisis de la varianza de un factor
+summary(lm(notaB ~ notaA, data = df))
+```
+
+**Interpretación**: La recta de regresión explica el 65% de la variabilidad de la nota B.
+
+#### Análisis de correlación
+
+**Objetivo**: Estudiar el grado de relación entre las dos variables.
+
+**Requisitos**:
+
+-   Variable dependiente cuantitativa.
+-   Una variable independiente cuantitativa.
+
+**Hipótesis nula**: Las dos variables son independientes.
+
+**Ejemplo**: Ver si las notas A y B están relacionadas y cuál es su grado de relación.
+
+```{r}
+# Análisis de la varianza de un factor
+cor.test(df$notaA, df$notaB)
+```
+
+**Interpretación**: Existe una correlación fuerte entre la nota A y la nota C, que además es estadísticamente muy significativa.
+
+## Ejercicios
+
+1. El fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
+
+a. Crear un tibble con los datos del fichero.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r, message=F}
+library(tidyverse)
+df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv')
+df
+```
+:::
+
+b. Convertir el tratamiento en un factor.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df <- mutate(df, Tratamiento = factor(Tratamiento))
+```
+:::
+
+c. Calcular el tamaño muestral de cada grupo de tratamiento
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+count(df, Tratamiento)
+```
+:::
+
+d. Comprobar la normalidad de la variable IHS en cada grupo de tratamiento.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+df %>% group_by(Tratamiento) %>% 
+  summarise(`Estadístico W` = shapiro.test(IHS)$statistic, `p-valor` = shapiro.test(IHS)$p.value)
+```
+:::
+
+e. Comprobar la homocedasticiad de varianzas de la variable IHS en los tres grupos de tratamiento.
+
+:::{.callout-note collapse="true"}
+## Solución
+```{r}
+# El test de Levene está disponible en el paquete car
+library(car)
+# Test de comparación de varianzas
+leveneTest(IHS ~ Tratamiento, data = df)
+```
+:::
+
+f. Realizar un contraste de ANOVA para comparar las medias de la variable IHS entre los tres grupos de tratamiento.
+
+:::{.callout-note collapse="true"}
+## Solución
+```{r}
+# Análisis de la varianza de un factor
+summary(aov(IHS ~ Tratamiento, data = df))
+```
+:::
+
+g. Realizar los contrastes de comparación de medias de la variable IHS por pares de trataimentos.
+
+:::{.callout-note collapse="true"}
+## Solución
+```{r}
+# Test de comparación múltiple de Tukey
+TukeyHSD(aov(IHS ~ Tratamiento, data = df))
+```
+:::
+
+h. Realizar un contraste de Kruskal-Wallis para ver si hay diferencias significativas en la variable IHS entre los tres grupos de tratamiento.
+
+:::{.callout-note collapse="true"}
+## Solución
+```{r}
+# Test de Kruskal-Wallis
+kruskal.test(IHS ~ Tratamiento, data = df)
+```
+:::
+
+i. Construir la recta de regresión del variable IHS sobre la variable IES.
+
+:::{.callout-note collapse="true"}
+## Solución
+```{r}
+# Test de Kruskal-Wallis
+lm(IHS ~ IES, data = df)
+summary(lm(IHS ~ IES, data = df))
+```
+:::
 
