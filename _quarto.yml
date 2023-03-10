@@ -5,6 +5,10 @@ project:
     port: 1313
     browser: false
 
+execute: 
+  freeze: auto
+  cache: true
+
 website:
   favicon: img/logos/favicon.ico
   reader-mode: true

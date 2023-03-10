@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -378,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="exm-construccion-vectores" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.1 </strong></span>A continuación se muestran varios ejemplos de construcción de vectores.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-1_bd6082fd1dd9202aaf78f7413754be70">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
@@ -409,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Es posible asignar un nombre a cada elemento de un vector. Los nombres son etiquetas de texto que se asocian a cada elemento. Para asociar un nombre a un elemento se utiliza la sintaxis <code>nombre = valor</code>, donde <code>nombre</code> es una cadena de caracteres y <code>valor</code> es el elemento del vector.</p>
 <div id="exm-vectores-con-nombre" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.2 </strong></span>A continuación se muestra un ejemplo de creación de un vector con nombres.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-2_dac7d7c9a572990e44d0fde775223f53">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Matemáticas"</span> <span class="ot">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="ot">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="ot">=</span> <span class="fl">4.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Matemáticas      Física    Economía 
@@ -423,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="exm-acceso-nombres-vector" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.3 </strong></span>A continuación se muestra un ejemplo de acceso a los nombres de un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-3_908fdd418d69dabe8943428717976bf5">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>notas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span> <span class="ot">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="ot">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="ot">=</span> <span class="fl">4.5</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(notas)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -441,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="exm-tamaño-vector" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.4 </strong></span>A continuación se muestran varios ejemplos de la obtención del tamaño de un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-4_a2960ae9897bec8924532372f80e5d95">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
@@ -458,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Puesto que los elementos de un vector tienen que ser del mismo tipo, cuando se crea un vector con datos de distintos tipos, la función <code>c()</code> los convertirá al mismo tipo, lo que se conoce como <em>coerción</em> de tipos. La coerción se produce de los tipos menos flexibles a los más flexibles: <code>logical</code> &lt; <code>integer</code> &lt; <code>double</code> &lt; <code>character</code>.</p>
 <div id="exm-coercion" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.5 </strong></span>A continuación se muestran varios ejemplos de coerciones.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-5_cc9de6cda78b20a9da335a3ba8012d78">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.0 2.5</code></pre>
@@ -495,7 +495,7 @@ Advertencia
 </div>
 <div id="exm-acceso-vector" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.6 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices enteros.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-6_d37adf2957163044e74cf5ee0c446aa7">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al elemento que está en la tercera posición</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -525,7 +525,7 @@ Advertencia
 <p>Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano <code>TRUE</code>.</p>
 <div id="exm-acceso-vector-indice-logico" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.7 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices lógicos.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-7_a8c71f2ae1da838e1527fcabe35113d6">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al elemento que está en la tercera posición</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(F,F,T,F,F)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -542,7 +542,7 @@ Advertencia
 <p>Esta forma de acceder es útil cuando se genera el vector de índices mediante operadores relacionales. Cuando se aplica un operador relacional a un vector se obtiene otro vector lógico que resulta de aplicar el operador relacional a cada uno de los elementos del vector. De esta manera se puede realizar filtros para obtener los elementos de un vector que cumplen una determinada condición.</p>
 <div id="exm-filtros" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.8 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante condiciones.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-8_215eb1a2449bf6a2500b38ffd3fc5a69">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -566,7 +566,7 @@ Advertencia
 <p>Si los elementos de un vector tienen nombre, es posible acceder a ellos usando sus nombres como índices.</p>
 <div id="exm-acceso-vector-nombres" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.9 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices de cadena.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-9_c466e6f527be23c6b0b6caa3db364e64">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>notas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span> <span class="ot">=</span> <span class="fl">8.2</span>, <span class="st">"Física"</span> <span class="ot">=</span> <span class="fl">6.5</span>, <span class="st">"Economía"</span> <span class="ot">=</span> <span class="fl">4.5</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>notas[<span class="st">"Física"</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -589,7 +589,7 @@ Advertencia
 <li><code>x %in% y</code>: Devuelve el booleano <code>TRUE</code> si <code>x</code> es un elemento del vector <code>y</code>, y <code>FALSE</code> en caso contrario.</li>
 </ul>
 <p>:::{#exm-pertenencia-vector} A continuación se muestran varios ejemplos de pertenencia de elementos a un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-10_ac15f2df306c00e7ac52ef29be24a099">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%in%</span> x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -606,7 +606,7 @@ Advertencia
 <p>Para modificar uno o varios elementos de un vector basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
 <div id="exm-modificacion-vectores" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.10 </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-11_691907fc3097d68b2991e55fbafa505c">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -630,7 +630,7 @@ Advertencia
 </ul>
 <div id="exm-añadir-elementos-vector" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.11 </strong></span>A continuación se muestran varios ejemplos de añadir nuevos elementos a un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-12_a1c2bdad5e7b7328fa81d06bfebf3cf0">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(x, <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -648,7 +648,7 @@ Advertencia
 <p>Para eliminar los elementos que ocupan una determinada posición se utiliza el operador de acceso, es decir, los corchetes <code>[ ]</code> pero con los índices correspondientes a las posiciones a eliminar, en negativo.</p>
 <div id="exm-eliminar-elementos-vector" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.12 </strong></span>A continuación se muestran varios ejemplos de eliminar elementos de un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-13_6492599b47afd706b4bc43391aa486e4">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="dv">3</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -672,7 +672,7 @@ Advertencia
 <p>Para vectores numéricos las operaciones aritméticas habituales se aplican elemento a elemento. Si los vectores tienen distinto tamaño, el tamaño del vector más pequeño se equipara al tamaño del mayor, reutilizando sus elementos, empezando por el primero.</p>
 <div id="exm-operaciones-aritmeticas-vectores" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.13 </strong></span>A continuación se muestran varios ejemplos de operaciones aritméticas con vectores numéricos.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-14_a966aa247fa55c18a5f46648db05a9e6">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -699,7 +699,7 @@ Advertencia
 <p>Para calcular el producto escalar de dos vectores numéricos se utiliza el operador <code>%*%</code>. Si los vectores tienen distinto tamaño se produce un error.</p>
 <div id="exm-producto-escalar" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.14 </strong></span>A continuación se muestra un ejemplo del producto escalar de dos vectores.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-15_86b277c335128e260bea81db458a091b">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%*%</span> y</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -724,7 +724,7 @@ Advertencia
 <p>Los factores son en realidad vectores de números enteros a los que se le añade un atributo especial para indicar los niveles del factor.</p>
 <div id="exm-creacion-factores" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.15 </strong></span>A continuación se muestran varios ejemplos de creación de factores.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-16_1cb337934e9d769d820288742c493007">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"mujer"</span>, <span class="st">"hombre"</span>, <span class="st">"mujer"</span>))</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>sexo</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -750,7 +750,7 @@ Levels: A B AB 0</code></pre>
 <p>Es posible establecer un orden entre los niveles de un factor añadiendo el parámetro <code>ordered = TRUE</code> a la función anterior. Esto es útil para representar categorías ordinales entre las que existe un orden natural.</p>
 <div id="exm-creacion-factor-ordenado" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.16 </strong></span>A continuación se muestra un ejemplo de creación de un factor ordenado.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-17_a8c84374da35275ece61b79f81dd7774">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>nivel.estudio <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Secundarios"</span>, <span class="st">"Graduado"</span>, <span class="st">"Bachiller"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Sin estudios"</span>, <span class="st">"Primarios"</span>, <span class="st">"Secundarios"</span>, <span class="st">"Bachiller"</span>, <span class="st">"Graduado"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>nivel.estudio</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -772,7 +772,7 @@ Levels: Sin estudios &lt; Primarios &lt; Secundarios &lt; Bachiller &lt; Graduad
 </ul>
 <div id="exm-niveles-factor" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.17 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos y los niveles de un factor.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-18_36909efae12b16c81e8bb0bd28c36f96">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"mujer"</span>, <span class="st">"hombre"</span>, <span class="st">"mujer"</span>))</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>sexo[<span class="dv">2</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -801,7 +801,7 @@ Levels: hombre mujer</code></pre>
 <p>Se puede modificar los elementos de un factor de manera similar a como se modifican los elementos de un vector, es decir accediendo al elemento que se quiere modificar y asignándole un nuevo valor. La única diferencia con los vectores es que si el nuevo valor que se quiere asignar no está entre los niveles del factor, se obtiene el valor <code>NA</code>.</p>
 <div id="exm-modificacion-factor" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.18 </strong></span>A continuación se muestran varios de modificación de los elementos de un factor.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-19_7fec8a3f31d8b818e592a3e29717e4b9">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>grupo.sanguineo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"AB"</span>, <span class="st">"0"</span>))</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>grupo.sanguineo</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -840,7 +840,7 @@ Levels: A B AB 0</code></pre>
 </ul>
 <div id="exm-creacion-listas" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.19 </strong></span>A continuación se muestran varios ejemplos de creación de listas.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-20_88e575c976b4cc5937de7d8de18bb348">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -890,7 +890,7 @@ Levels: A B AB 0</code></pre>
 <p>Al igual que con los vectores, es posible asignar un nombre a cada uno de los elementos de una lista.</p>
 <div id="exm-creacion-listas-nombres" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.20 </strong></span>A continuación se muestra un ejemplo de creación de una lista con nombres.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-21_a1803dfd2d5f1a03683475d573aa62c3">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$nombre
@@ -917,7 +917,7 @@ $dirección$municipio
 </ul>
 <div id="exm-acceso-listas" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.21 </strong></span>A continuación se muestra un ejemplo de acceso a los nombres de una lista.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-22_8c4b758bd279a0d2544038f280b588b4">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(persona)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -935,7 +935,7 @@ $dirección$municipio
 </ul>
 <div id="exm-tamaño-lista" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.22 </strong></span>A continuación se muestran varios ejemplos la obtención del tamaño de una lista.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-23_7d58c8d1e4ebeb3c00c850c6fc94de1a">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
@@ -959,7 +959,7 @@ $dirección$municipio
 <p>Al igual que los vectores, los elementos de una lista están ordenados y se puede utilizar un índice entero para acceder a los elementos que ocupan una determinada posición.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.23 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices enteros.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-24_355719d9c5402aaeea8de75782def523">
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>, <span class="fl">4.5</span>)</span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al elemento que está en la segunda posición</span></span>
 <span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -993,7 +993,7 @@ $dirección$municipio
 <p>Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano <code>TRUE</code>.</p>
 <div id="exm-acceso-listas-logico" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.24 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices lógicos.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-25_a27eabb9f5e5e4e1ee1275ebabea442f">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"dos"</span>, <span class="cn">TRUE</span>, <span class="fl">4.5</span>)</span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(T,F,F,T)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1005,7 +1005,7 @@ $dirección$municipio
 </div>
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre><code>Warning: NAs introducidos por coerción</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE    NA  TRUE FALSE</code></pre>
@@ -1013,7 +1013,7 @@ $dirección$municipio
 <div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrado de valores menores que 2</span></span>
 <span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&lt;</span> <span class="dv">2</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre><code>Warning: NAs introducidos por coerción</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -1034,7 +1034,7 @@ NULL
 <p>Si los elementos de una lista tienen nombre, se puede acceder a ellos utilizando sus nombres como índices. La única diferencia con el acceso mediante cadenas de vectores es que se obtiene siempre una lista, incluso cuando sólo se quiere acceder a un elemento. Para obtener un elemento, y no una lista con ese único elemento, se utilizan dobles corchetes <code>[[ ]]</code>.</p>
 <div id="exm-acceso-listas-nombres" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.25 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices de cadena.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-26_77c499d55df4fabfb563c51be4d59513">
 <div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
 <span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>persona[<span class="fu">c</span>(<span class="st">"edad"</span>, <span class="st">"nombre"</span>)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1068,7 +1068,7 @@ $nombre
 <p>Una alternativa a los dobles corchetes es el operador de acceso a listas <code>$</code>. Este operador además permite utilizar coincidencias parciales en los nombres de los elementos para acceder a ellos.</p>
 <div class="{#exm-acceso-listas-nombres-$}">
 <p>A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante el operador <code>$</code>.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-27_83dbe769d0c7807805da74805079b312">
 <div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
 <span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso a un único elemento</span></span>
 <span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a>persona<span class="sc">$</span>nombre</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1094,7 +1094,7 @@ $nombre
 <p>Para modificar uno o varios elementos de una lista basta con acceder a esos elementos y reasignarles valores con el operador de asignación.</p>
 <div id="exm-modificacion-listas" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.26 </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de una lista.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-28_032234f2e15c6ff58a626874a83fe8b8">
 <div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>)</span>
 <span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>persona<span class="sc">$</span>edad <span class="ot">&lt;-</span> <span class="dv">22</span></span>
 <span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a>persona</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1121,7 +1121,7 @@ $edad
 </ul>
 <div id="exm-añadir-elementos-listas" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.27 </strong></span>A continuación se muestran varios ejemplos de añadir nuevos elementos a una lista.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-29_2acfe149e31f5a05c36dc1ae8deda02e">
 <div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>)</span>
 <span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a>persona<span class="sc">$</span>email <span class="ot">&lt;-</span> <span class="st">"maria@ceu.es"</span></span>
 <span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a>persona</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1160,7 +1160,7 @@ $email
 </ul>
 <div id="exm-aplanar-lista" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.28 </strong></span>A continuación se muestran varios ejemplos de conversión de una lista en un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-30_2e64d36c779dec337ce118eeac5a8212">
 <div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>persona <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"nombre"</span> <span class="ot">=</span> <span class="st">"María"</span>, <span class="st">"edad"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"dirección"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"calle"</span> <span class="ot">=</span> <span class="st">"Delicias"</span>, <span class="st">"número"</span> <span class="ot">=</span> <span class="dv">24</span>, <span class="st">"municipio"</span> <span class="ot">=</span> <span class="st">"Madrid"</span>))</span>
 <span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(persona)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1201,7 +1201,7 @@ Advertencia
 </ul>
 <div id="exm-creacion-matrices" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.29 </strong></span>A continuación se muestran varios ejemplos de creación de matrices.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-31_dd1065521ad45adedef29dcfff22f7a1">
 <div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
@@ -1231,7 +1231,7 @@ Advertencia
 <p>Como se puede observar en el ejemplo anterior, los elementos se disponen por columnas, pero se pueden disponer los elementos por filas pasando el parámetro <code>byrow = TRUE</code> a la función <code>matrix</code>.</p>
 <div id="exm-creacion-matrices-por-filas" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.30 </strong></span>A continuación se muestran varios ejemplos de creación de matrices.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-32_69939adb2c403bfd29ec9d4aa5201033">
 <div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
@@ -1251,7 +1251,7 @@ Advertencia
 <p>Es posible poner nombres a las filas y a las columnas de una matriz añadiendo el parámetro <code>dimnames</code> y pasándole una lista de dos vectores de cadenas con los nombres de las filas y las columnas respectivamente.</p>
 <div id="exm-creacion-matrices-con-nombres" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.31 </strong></span>A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-33_81b0597574866341bf046b922a83b8ba">
 <div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"fila1"</span>, <span class="st">"fila2"</span>), <span class="fu">c</span>(<span class="st">"columna1"</span>, <span class="st">"columna2"</span>, <span class="st">"columna3"</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      columna1 columna2 columna3
@@ -1267,7 +1267,7 @@ fila2        2        4        6</code></pre>
 </ul>
 <div id="exm-obtencion-nombres-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.32 </strong></span>A continuación se muestran varios ejemplos de obtención de los nombres de las filas y columnas de una matriz con nombres.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-34_2983d5806e94d0566d943ea4ae958163">
 <div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"fila1"</span>, <span class="st">"fila2"</span>), <span class="fu">c</span>(<span class="st">"columna1"</span>, <span class="st">"columna2"</span>, <span class="st">"columna3"</span>)))</span>
 <span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1292,7 +1292,7 @@ fila2        2        4        6</code></pre>
 </ul>
 <div id="exm-dimensiones-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.33 </strong></span>A continuación se muestran varios ejemplos de acceso a las dimensiones de una matriz.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-35_454ed2c1ec6332fbd2c17426292c2f72">
 <div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
 <span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1315,7 +1315,7 @@ fila2        2        4        6</code></pre>
 <p>Usando esta última función se pueden modificar las dimensiones de una matriz asignando un vector de dos enteros con las nuevas dimensiones. Esto también permite crear una matriz a partir de un vector.</p>
 <div id="exm-modificacion-dimensiones-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.34 </strong></span>A continuación se muestran varios ejemplos de modificación de las dimensiones de una matriz.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-36_1312d5f9aa858ad21be5bbc8351f964b">
 <div class="sourceCode cell-code" id="cb183"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
 <span id="cb183-2"><a href="#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb183-3"><a href="#cb183-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1347,7 +1347,7 @@ fila2        2        4        6</code></pre>
 <p>Se puede acceder a más de un elemento indicando un vector de enteros para las filas y otro para las columnas. De esta manera se obtiene una submatriz. Si no se indica la fila o la columna se obtienen todos los elementos de todas las filas o columnas. Al igual que para vectores, se pueden utilizar enteros negativos para descartar filas o columnas</p>
 <div id="exm-acceso-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.35 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-37_03a7ba2074ab51a8ce2eb5dd177ed76e">
 <div class="sourceCode cell-code" id="cb187"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
 <span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1393,7 +1393,7 @@ fila2        2        4        6</code></pre>
 <p>Cuando se utilizan índices lógicos, se obtienen los elementos correspondientes a las filas y columnas donde está el valor booleano <code>TRUE</code>.</p>
 <div id="exm-acceso-matriz-logico" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.36 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-38_4f88892b6a9fc90d0fced59a1caca62d">
 <div class="sourceCode cell-code" id="cb199"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
 <span id="cb199-2"><a href="#cb199-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1432,7 +1432,7 @@ fila2        2        4        6</code></pre>
 <p>Si las filas y las columnas de una matriz tienen nombre, es posible acceder a sus elementos usando los nombres de las filas y columnas como índices.</p>
 <div id="exm-acceso-matriz-nombres" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.37 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de una matriz mediante los nombres de sus filas y columnas.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-39_30524e8becb5b537e2251ee202dc8610">
 <div class="sourceCode cell-code" id="cb209"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"f1"</span>, <span class="st">"f2"</span>, <span class="st">"f3"</span>), <span class="fu">c</span>(<span class="st">"c1"</span>, <span class="st">"c2"</span>, <span class="st">"c3"</span>)))</span>
 <span id="cb209-2"><a href="#cb209-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1466,7 +1466,7 @@ f3  9  6</code></pre>
 </ul>
 <div id="exm-pertenencia-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.38 </strong></span>A continuación se muestran varios ejemplos de pertenencia de elementos a una matriz.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-40_d6e0d5752936950f8b535f07e5c4867c">
 <div class="sourceCode cell-code" id="cb215"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
 <span id="cb215-2"><a href="#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%in%</span> x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1484,7 +1484,7 @@ f3  9  6</code></pre>
 <p>Para modificar uno o varios elementos de una matriz basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
 <div id="exm-modificacion-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.39 </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-41_9c05b8ee655dd37ba703dff74675ee93">
 <div class="sourceCode cell-code" id="cb219"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
 <span id="cb219-2"><a href="#cb219-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1521,7 +1521,7 @@ f3  9  6</code></pre>
 </ul>
 <div id="exm-añadir-filas-columnas-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.40 </strong></span>A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a una matriz.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-42_53a6d5b1a6ec67ec92b257314c6cc70f">
 <div class="sourceCode cell-code" id="cb225"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb225-1"><a href="#cb225-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
 <span id="cb225-2"><a href="#cb225-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1568,7 +1568,7 @@ Advertencia
 </ul>
 <div id="exm-trasposicion-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.41 </strong></span>A continuación se muestran un ejemplo de la trasposición de una matriz.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-43_9b5fb5bcde3bb75c31e1f73b88e9c225">
 <div class="sourceCode cell-code" id="cb231"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb231-1"><a href="#cb231-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb231-2"><a href="#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1587,7 +1587,7 @@ Advertencia
 <p>Para matrices numéricas las operaciones aritméticas habituales se aplican elemento a elemento. Si las dimensiones de las matrices son distintas se produce un error.</p>
 <div id="exm-operaciones-aritmeticas-matrices" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.42 </strong></span>A continuación se muestran varios ejemplos de operaciones aritméticas elemento a elemento con matrices numéricas.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-44_e48a96c1ee1d1987dad97f000dcd35ea">
 <div class="sourceCode cell-code" id="cb233"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
 <span id="cb233-2"><a href="#cb233-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1647,7 +1647,7 @@ Advertencia
 <p>Para multiplicar dos matrices numéricas se utiliza el operador <code>%*%</code>.</p>
 <div id="exm-producto-matrices" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.43 </strong></span>A continuación se muestran varios ejemplos del producto de dos matrices numéricas.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-45_3c17e98d895bd3bc76eac6895126cc86">
 <div class="sourceCode cell-code" id="cb245"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb245-1"><a href="#cb245-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
 <span id="cb245-2"><a href="#cb245-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
 <span id="cb245-3"><a href="#cb245-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%*%</span> y</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1688,7 +1688,7 @@ Advertencia
 </ul>
 <div id="exm-determinante" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.44 </strong></span>A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-46_25437709371c8964d25c38a800ee3f91">
 <div class="sourceCode cell-code" id="cb249"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb249-1"><a href="#cb249-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
 <span id="cb249-2"><a href="#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1705,7 +1705,7 @@ Advertencia
 </ul>
 <div id="exm-inversa-matriz" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.45 </strong></span>A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-47_c58caa3a9b41ef471888f6a5bc35d1e6">
 <div class="sourceCode cell-code" id="cb251"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb251-1"><a href="#cb251-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
 <span id="cb251-2"><a href="#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1731,7 +1731,7 @@ Advertencia
 </ul>
 <div id="exm-autovalores-autovectores" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.46 </strong></span>A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada. Si <code>x</code> no es una matriz numérica cuadrada produce un error.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-48_dd3cd5bd3e70580480b1d35c7fc2999f">
 <div class="sourceCode cell-code" id="cb255"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb255-1"><a href="#cb255-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
 <span id="cb255-2"><a href="#cb255-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1767,7 +1767,7 @@ Advertencia
 </ul>
 <div id="exm-creacion-data-frames" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.47 </strong></span>A continuación se muestran varios ejemplos de la creación de data frames.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-49_de8dbaf780bae2d3ef903a64578aae9a">
 <div class="sourceCode cell-code" id="cb261"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb261-1"><a href="#cb261-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
 <span id="cb261-2"><a href="#cb261-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1796,7 +1796,7 @@ Advertencia
 </ul>
 <div id="exm-creacion-data-frame-csv" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.48 </strong></span>A continuación se muestra un ejemplo de creación de un data frame a partir de un fichero csv.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-50_2c24c1d2a577718b8bc22f81a712fe20">
 <div class="sourceCode cell-code" id="cb267"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb267-1"><a href="#cb267-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb267-2"><a href="#cb267-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1836,7 +1836,7 @@ Advertencia
 <p>Puesto que un data frame es una lista, se puede acceder a sus elementos como se accede a los elementos de una lista utilizando índices. Con corchetes simples <code>[ ]</code> se obtiene siempre un data frame, mientras que con corchetes dobles <code>[[ ]]</code> o <code>$</code> se obtiene un vector. Pero también se puede acceder a los elementos de un data frame como si fuese una matriz, indicando un par de índices para las filas y las columnas respectivamente.</p>
 <div id="exm-acceso-data-frame" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.49 </strong></span>A continuación se muestran varios ejemplos de acceso a los elementos de un data frame.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-51_5e76bbb3f70f23e57e0b7c6b91dcd7c4">
 <div class="sourceCode cell-code" id="cb269"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb269-1"><a href="#cb269-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
 <span id="cb269-2"><a href="#cb269-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1879,7 +1879,7 @@ Advertencia
 <p>Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.</p>
 <div id="exm-acceso-primeras-ultimas-filas-data-frame" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.50 </strong></span>A continuación se muestran varios ejemplos de acceso a las primeras o últimas filas de un data frame.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-52_fae13e6bd0f146df2735992928ca5b3e">
 <div class="sourceCode cell-code" id="cb279"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb279-1"><a href="#cb279-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>, <span class="at">y =</span> letters) <span class="co"># letters es un vector predefinido con las letras del abecedario.</span></span>
 <span id="cb279-2"><a href="#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1902,7 +1902,7 @@ Advertencia
 <p>Para modificar uno o varios elementos de un data frame basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.</p>
 <div id="exm-modificacion-data-frames" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.51 </strong></span>A continuación se muestran varios ejemplos de modificación de los elementos de un vector.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-53_0c7fba0bf9c876c0516f9951395fe89e">
 <div class="sourceCode cell-code" id="cb283"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
 <span id="cb283-2"><a href="#cb283-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1931,7 +1931,7 @@ Advertencia
 </ul>
 <div id="exm-añadir-filas-columnas-data-frame" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.52 </strong></span>A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a un data frame.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-54_b6e3eeae13289250d6c3a188a7b8aabf">
 <div class="sourceCode cell-code" id="cb287"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb287-1"><a href="#cb287-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
 <span id="cb287-2"><a href="#cb287-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1965,7 +1965,7 @@ Advertencia
 <p>Para eliminar una columna de un data frame basta con acceder a la columna y asignarle el valor <code>NULL</code>, mientras que para eliminar una fila basta con acceder a la fila con índice negativo.</p>
 <div id="exm-eliminacion-filas-columnas-data-frame" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 3.53 </strong></span>A continuación se muestran varios ejemplos de eliminación de filas y columnas de un data frame.</p>
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-55_d718836ed139a2cae0f50ed00647b311">
 <div class="sourceCode cell-code" id="cb293"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb293-1"><a href="#cb293-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>), créditos <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span>
 <span id="cb293-2"><a href="#cb293-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2061,7 +2061,7 @@ Solución
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-56_2548c30d551ea301945c12f660d35b9b">
 <div class="sourceCode cell-code" id="cb299"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb299-1"><a href="#cb299-1" aria-hidden="true" tabindex="-1"></a>nombre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Carlos"</span>, <span class="st">"María"</span>, <span class="st">"Carmen"</span>, <span class="st">"Pedro"</span>, <span class="st">"Luis"</span>, <span class="st">"Sara"</span>)</span>
 <span id="cb299-2"><a href="#cb299-2" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"H"</span>, <span class="st">"H"</span>, <span class="st">"M"</span>)</span>
 <span id="cb299-3"><a href="#cb299-3" aria-hidden="true" tabindex="-1"></a>fisica <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.7</span>, <span class="fl">7.2</span>, <span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">3.5</span>, <span class="fl">6.2</span>)</span>
@@ -2085,7 +2085,7 @@ Solución
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-57_145d6d93230f2b9527aa014fe53664f8">
 <div class="sourceCode cell-code" id="cb300"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb300-1"><a href="#cb300-1" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(sexo)</span>
 <span id="cb300-2"><a href="#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2110,7 +2110,7 @@ Solución
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-58_0276171689395f50b45a94f76f810b61">
 <div class="sourceCode cell-code" id="cb302"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb302-1"><a href="#cb302-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> (fisica <span class="sc">+</span> quimica) <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb302-2"><a href="#cb302-2" aria-hidden="true" tabindex="-1"></a>media</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2135,7 +2135,7 @@ Solución
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-59_3fe8c3e56446ba1d3ec9e56c0ee252f2">
 <div class="sourceCode cell-code" id="cb304"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb304-1"><a href="#cb304-1" aria-hidden="true" tabindex="-1"></a>aprobado <span class="ot">&lt;-</span> media <span class="sc">&gt;=</span> <span class="dv">5</span></span>
 <span id="cb304-2"><a href="#cb304-2" aria-hidden="true" tabindex="-1"></a>aprobado</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2160,7 +2160,7 @@ Solución
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-60_fe4960560b82c5dc8a3b401134e51828">
 <div class="sourceCode cell-code" id="cb306"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb306-1"><a href="#cb306-1" aria-hidden="true" tabindex="-1"></a>nombre[aprobado <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(aprobado)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Carlos" "María"  "Carmen" "Sara"  </code></pre>
@@ -2184,7 +2184,7 @@ Solución
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-61_6b9a57f2d4d06fed23d7eba6122ce84a">
 <div class="sourceCode cell-code" id="cb308"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb308-1"><a href="#cb308-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(nombre, sexo, fisica, quimica)</span>
 <span id="cb308-2"><a href="#cb308-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2215,7 +2215,7 @@ Solución
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-62_c286854ef63f136ad14d143a5ab526cf">
 <div class="sourceCode cell-code" id="cb310"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb310-1"><a href="#cb310-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>media <span class="ot">&lt;-</span> media</span>
 <span id="cb310-2"><a href="#cb310-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2246,7 +2246,7 @@ Solución
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="03-tipos-datos-estructurados_cache/html/unnamed-chunk-63_97db59487c818c383bf1e142113780e5">
 <div class="sourceCode cell-code" id="cb312"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb312-1"><a href="#cb312-1" aria-hidden="true" tabindex="-1"></a>df[sexo <span class="sc">==</span> <span class="st">"M"</span> <span class="sc">&amp;</span> media <span class="sc">&gt;=</span> <span class="dv">5</span>, <span class="fu">c</span>(<span class="st">"nombre"</span>, <span class="st">"media"</span>)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  nombre media

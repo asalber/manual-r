@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -331,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="exm-creacion-tibble" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 6.1 </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-1_286d8e8325f400776b409722f6e60091">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">asignatura =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Economía"</span>), <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="dv">7</span>, <span class="fl">4.5</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -381,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>pivot_wider(df, names_from = columna-nombres, values_from = columna-valores)</code>: Devuelve el tibble que resulta de convertir el data frame <code>df</code> a formato ancho, es decir, se crean tantas columnas como nombres distintos haya en la columna <code>columna-nombres</code>, usando estos nombres como los nombres de las columnas, mientras que los valores se toman de la columna <code>columna-valores</code>.</p></li>
 </ul>
 <div class="exm-pivotar-formato-ancho-a-largo">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-2_42a261cd1f7093d71ca7517039251719">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombre =</span> <span class="fu">c</span>(<span class="st">'María'</span>, <span class="st">'Luis'</span>, <span class="st">'Carmen'</span>), </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">20</span>), </span>
@@ -448,7 +448,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Esta función se utiliza habitualmente para calcular tamaños muestrales.</p>
 <div class="exm-count-1">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-3_ac74d4c143de9813a4fc73ebb6d64fe1">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Contar las filas del data frame</span></span>
@@ -460,7 +460,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="exm-count-2">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-4_08eb2ca64c30b8f0ae0255d526f02ec1">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Contar las filas del data frame</span></span>
@@ -480,7 +480,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>select(df, columnas)</code>: Devuelve un tibble con las columnas indicadas en el parámetro <code>columnas</code> del data frame <code>df</code>.</li>
 </ul>
 <div class="exm-select">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-5_4ed027eca455880fe964c3a87004cf66">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas nombre, sexo y edad</span></span>
@@ -569,7 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>filter(df, condicion)</code>: Devuelve el tibble con las filas del data frame <code>df</code> que cumplen la condición indicada en el parámetro <code>condición</code>.</li>
 </ul>
 <div class="exm-filter">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-6_8375e88b3532dcde0f3b107ffb6f2665">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las mujeres</span></span>
@@ -618,7 +618,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>na.omit(df)</code>: Devuelve el tibble que resulta de eliminar las filas del data frame <code>df</code> con algún valor <code>NA</code>.</li>
 </ul>
 <div class="exm-filter-na">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-7_a44d1b7618dd796a7544fbdbe9ff8b86">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            nombre edad sexo peso altura colesterol
@@ -645,7 +645,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>arrange(df, columnas)</code>: Devuelve un tibble con las mismas filas del data frame <code>df</code> pero ordenadas de acuerdo a los valores de las columnas indicadas en el parámetro <code>columnas</code>. Por defecto, la ordenación es ascendente, para hacerla descendente, hay que aplicar la función <code>desc()</code> a la columna con respecto se quiere ordenar descendentemente.</li>
 </ul>
 <div class="exm-arrange">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-8_bb868e54c8f32ddc45266909ce6e2860">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
@@ -715,7 +715,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>rename(df, nuevo-nombre = columna)</code>: Devuelve un tibble con los mismos datos del data frame <code>df</code> pero cambiando el nombre de la columna de nombre <code>columna</code> por <code>nuevo-nombre</code>.</li>
 </ul>
 <div class="exm-rename">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-9_bfbdd33dbed61cc05c26cdff1653587e">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar según alfabéticamente por nombre</span></span>
@@ -747,7 +747,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>mutate(df, columna = formula)</code>: Devuelve el tibble que resulta de añadir una nueva columna al data frame <code>df</code> con el resultado de aplicar el procedimiento indicado por <code>formula</code> y con el nombre indicado en <code>columna</code>. Si <code>columna</code> es el nombre de una columna ya existente, entonces esa columna se reescribe con los resultados de aplicar la <code>formula</code>.</li>
 </ul>
 <div class="exm-mutate">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-10_700e3ee95b5a416181e82a5ead0db39d">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Cambiar las unidades de la altura a centímetros</span></span>
@@ -798,7 +798,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>sumarise(df, nombre-columna = funcion-resumen(columnas))</code>: Devuelve el tibble con la columna de nombre <code>nombre-columna</code> y el valor que resulta de aplicar la función indicada en <code>funcion-resumen</code> a las columnas del data frame <code>df</code> indicadas en <code>columnas</code>.</li>
 </ul>
 <div class="exm-sumarise">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-11_ad27309a69fa812fbe35c69e97392c70">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de la edad</span></span>
@@ -823,7 +823,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>group_by(df, columnas)</code>: Devuelve un tibble estratificado de acuerdo a las categorías de las columnas indicadas en <code>columnas</code>. En combinación con la función <code>summarise</code> permite hacer resúmenes estadísticos por grupos.</li>
 </ul>
 <div class="exm-group_by">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-12_b23912068c02938d1857a8a1facb525e">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Estratificar por sexo </span></span>
@@ -855,7 +855,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>df %&gt;% operación-1 %&gt;% operación-2 %&gt;% ...</code></p>
 <p>Cuando se utilizan tuberías para componer operaciones de esta forma, no es necesario indicar el data frame como parámetro de la función que define la acción ya que automáticamente se toma el data frame que resulta de la operación anterior.</p>
 <div class="exm-tuberías-1">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-13_caf89c4bcc555b098c3494f6191123f2">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicio de la tubería</span></span>
@@ -898,30 +898,31 @@ Solución
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-14_f1dd83834a3a84cfecf91efb43f8c7ac">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv'</span>)</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 20
-   `código muestra` Tratamiento  `mas cor (g)`    IHS     IES     ITS     IAS
-   &lt;chr&gt;            &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 Ct-A1            Control               236  0.0433 0.00198 0.00178 0.00043
- 2 Ct-A2            Control               202. 0.044  0.002   0.0017  0.0008 
- 3 Ct-B1            Control               246. 0.042  0.002   0.0015  0.0005 
- 4 Ct-B2            Control               237. 0.0475 0.00238 0.00203 0.00041
- 5 Ct-B3            Control               231. 0.0499 0.002   0.0011  0.0005 
- 6 Ct-C1            Control               235. 0.05   0.0021  0.0033  0.0014 
- 7 Ct-C2            Control               228. 0.05   0.0018  0.0031  0.00059
- 8 Dx-1             Dexametasona          181. 0.061  0.00155 0.0005  0.00012
- 9 Dx-2             Dexametasona          198. 0.063  0.00191 0.0011  0.0002 
-10 Dx-3             Dexametasona          201. 0.0577 0.0017  0.0001  0.0001 
-# … with 11 more rows, and 13 more variables: `glucog(mg/g)` &lt;dbl&gt;,
-#   `pbmc(cel/mL)` &lt;dbl&gt;, `CD4(cel/µL)` &lt;dbl&gt;, `monoc(cel/mL)` &lt;dbl&gt;,
+   códig…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
+   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Ct-A1   Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3   401. 
+ 2 Ct-A2   Control    202. 0.044  0.002   0.0017  8  e-4    50.7  2.42e6   553. 
+ 3 Ct-B1   Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6   724. 
+ 4 Ct-B2   Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6  2213. 
+ 5 Ct-B3   Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7  4518. 
+ 6 Ct-C1   Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7   775. 
+ 7 Ct-C2   Control    228. 0.05   0.0018  0.0031  5.9e-4    29.4  7.5 e3    83.4
+ 8 Dx-1    Dexame…    181. 0.061  0.00155 0.0005  1.2e-4    56.0  7.68e2    10  
+ 9 Dx-2    Dexame…    198. 0.063  0.00191 0.0011  2  e-4   119.   1.41e6    15  
+10 Dx-3    Dexame…    201. 0.0577 0.0017  0.0001  1  e-4   119.   7.12e3    11  
+# … with 11 more rows, 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;,
 #   `IHQ: linfB(cel/mm2)` &lt;dbl&gt;, `pulp.blan(Tx1)` &lt;dbl&gt;,
 #   `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;, `gluc(mmol/L)` &lt;dbl&gt;,
 #   `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;, `HDL(mmol/L)` &lt;dbl&gt;,
-#   `ins(pmol/L)` &lt;dbl&gt;</code></pre>
+#   `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names ¹​`código muestra`,
+#   ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`, ⁵​`pbmc(cel/mL)`,
+#   ⁶​`CD4(cel/µL)`</code></pre>
 </div>
 </div>
 </div>
@@ -942,7 +943,7 @@ Solución
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-15_925fe097a3df7f62fb110b7867504a9a">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">Tratamiento =</span> <span class="fu">factor</span>(Tratamiento))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -963,7 +964,7 @@ Solución
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-16_c19789377b8d3ad3bcee6608e82773d7">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(df, Tratamiento)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
@@ -992,22 +993,23 @@ Solución
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-17_a6c57921da54597df846ef2011f3b1f3">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, Tratamiento <span class="sc">==</span> <span class="st">"Control"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">230</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 20
-  `código muestra` Tratamiento `mas cor (g)`    IHS     IES     ITS     IAS
-  &lt;chr&gt;            &lt;fct&gt;               &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 Ct-A1            Control              236  0.0433 0.00198 0.00178 0.00043
-2 Ct-B1            Control              246. 0.042  0.002   0.0015  0.0005 
-3 Ct-B2            Control              237. 0.0475 0.00238 0.00203 0.00041
-4 Ct-B3            Control              231. 0.0499 0.002   0.0011  0.0005 
-5 Ct-C1            Control              235. 0.05   0.0021  0.0033  0.0014 
-# … with 13 more variables: `glucog(mg/g)` &lt;dbl&gt;, `pbmc(cel/mL)` &lt;dbl&gt;,
-#   `CD4(cel/µL)` &lt;dbl&gt;, `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
+  código…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
+  &lt;chr&gt;    &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Ct-A1    Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3    401.
+2 Ct-B1    Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6    724.
+3 Ct-B2    Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6   2213.
+4 Ct-B3    Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7   4518.
+5 Ct-C1    Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7    775.
+# … with 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
 #   `pulp.blan(Tx1)` &lt;dbl&gt;, `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;,
 #   `gluc(mmol/L)` &lt;dbl&gt;, `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;,
-#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;</code></pre>
+#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names
+#   ¹​`código muestra`, ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`,
+#   ⁵​`pbmc(cel/mL)`, ⁶​`CD4(cel/µL)`</code></pre>
 </div>
 </div>
 </div>
@@ -1028,7 +1030,7 @@ Solución
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-18_5177c65fea21adf26fb2c8bdeb356ddb">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Tratamiento) <span class="sc">%&gt;%</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span>), <span class="at">desv.est =</span> <span class="fu">sd</span>(<span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1059,7 +1061,7 @@ Solución
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-19_0744575d458b2937ddc616b0acec10ef">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">código muestra</span><span class="st">`</span>, Tratamiento), <span class="at">names_to =</span> <span class="st">"Variable"</span>, <span class="at">values_to =</span> <span class="st">"Valor"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Variable) <span class="sc">%&gt;%</span></span>
@@ -1070,22 +1072,22 @@ Solución
    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;
  1 AI2(absorb)         2.86e-1  1.63e-1
  2 CD4(cel/µL)         1.05e+3  1.50e+3
- 3 col(mmol/L)         2.44e+0  1.29e+0
- 4 gluc(mmol/L)        3.57e+1  1.88e+1
- 5 glucog(mg/g)        7.83e+1  3.81e+1
- 6 HDL(mmol/L)         1.49e+0  6.20e-1
- 7 IAS                 5.26e-4  3.92e-4
- 8 IES                 1.96e-3  1.96e-4
- 9 IHQ: linfB(cel/mm2) 7.95e+1  7.62e+1
-10 IHS                 5.14e-2  7.12e-3
-11 ins(pmol/L)         1.91e+2  1.05e+2
-12 ITS                 1.80e-3  8.63e-4
-13 mas cor (g)         2.17e+2  2.28e+1
-14 microorg(log nº/g)  2.35e+0  1.61e+0
-15 monoc(cel/mL)       1.32e+4  4.68e+3
-16 pbmc(cel/mL)        1.27e+7  2.10e+7
-17 pulp.blan(Tx1)      2.75e-1  1.12e-1
-18 TAG(mmol/L)         3.98e+0  2.09e+0</code></pre>
+ 3 HDL(mmol/L)         1.49e+0  6.20e-1
+ 4 IAS                 5.26e-4  3.92e-4
+ 5 IES                 1.96e-3  1.96e-4
+ 6 IHQ: linfB(cel/mm2) 7.95e+1  7.62e+1
+ 7 IHS                 5.14e-2  7.12e-3
+ 8 ITS                 1.80e-3  8.63e-4
+ 9 TAG(mmol/L)         3.98e+0  2.09e+0
+10 col(mmol/L)         2.44e+0  1.29e+0
+11 gluc(mmol/L)        3.57e+1  1.88e+1
+12 glucog(mg/g)        7.83e+1  3.81e+1
+13 ins(pmol/L)         1.91e+2  1.05e+2
+14 mas cor (g)         2.17e+2  2.28e+1
+15 microorg(log nº/g)  2.35e+0  1.61e+0
+16 monoc(cel/mL)       1.32e+4  4.68e+3
+17 pbmc(cel/mL)        1.27e+7  2.10e+7
+18 pulp.blan(Tx1)      2.75e-1  1.12e-1</code></pre>
 </div>
 </div>
 </div>

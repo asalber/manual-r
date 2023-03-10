@@ -21,6 +21,8 @@ En general, para definir un gráfico con `ggplot2` se suelen definir los siguien
 - **Facetas**. Permite descomponer un gráfico en múltiples gráficos para distintos subconjuntos del conjunto de datos.
 - **Tema**. Permite cambiar elementos secundarios del gráfico como el tipo de letra de las etiquetas y leyendas, el tamaño de la fuente, el color de fondo, aspecto final del los gráficos.
 
+![Gramática de gráficos de ggplot2](img/graficos/ggplot-grammar-of-graphics.png)
+
 Estos elementos se suelen añadir por capas al gráfico mediante el operador `+`.
 
 ## Inicialización de un gráfico

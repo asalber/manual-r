@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -313,6 +313,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Facetas</strong>. Permite descomponer un gráfico en múltiples gráficos para distintos subconjuntos del conjunto de datos.</li>
 <li><strong>Tema</strong>. Permite cambiar elementos secundarios del gráfico como el tipo de letra de las etiquetas y leyendas, el tamaño de la fuente, el color de fondo, aspecto final del los gráficos.</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/graficos/ggplot-grammar-of-graphics.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Gramática de gráficos de ggplot2</figcaption><p></p>
+</figure>
+</div>
 <p>Estos elementos se suelen añadir por capas al gráfico mediante el operador <code>+</code>.</p>
 </section>
 <section id="inicialización-de-un-gráfico" class="level2" data-number="7.2">
@@ -354,7 +360,7 @@ Importante
 </ul>
 <p>Esta capa es ideal para representar diagramas de dispersión.</p>
 <div class="exm-puntos-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-1_29f35e9ba3d3cdae69a020671c2a4f76">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv'</span>) <span class="sc">%&gt;%</span></span>
@@ -371,7 +377,7 @@ Importante
 </div>
 </div>
 <div class="exm-puntos-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-2_ce9c1be8b67823c49f19e45e2d762c7d">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo shape.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Día, <span class="at">y =</span> Temperatura, <span class="at">shape =</span> Ciudad)) <span class="sc">+</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de los puntos.</span></span>
@@ -382,7 +388,7 @@ Importante
 </div>
 </div>
 <div class="exm-puntos-3">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-3_9b21d9a97ff65be5433bf7e6fd75185d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo colour.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Día, <span class="at">y =</span> Temperatura, <span class="at">colour =</span> Ciudad)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de los puntos.</span></span>
@@ -393,7 +399,7 @@ Importante
 </div>
 </div>
 <div class="exm-puntos-4">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-4_1abca9623822f19c35ebb93fceeb5dab">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.</span></span>
@@ -401,7 +407,7 @@ Importante
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de los puntos.</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<pre><code>Warning: Removed 1 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="07-graficos_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
@@ -409,13 +415,13 @@ Importante
 </div>
 </div>
 <div class="exm-puntos-5">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-5_9ed4363a4624b1c1633452f158a1a58b">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura, <span class="at">y =</span> peso, <span class="at">colour =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de los puntos.</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<pre><code>Warning: Removed 1 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="07-graficos_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
@@ -432,7 +438,7 @@ Importante
 </ul>
 <p>Esta capa es ideal para representar series temporales.</p>
 <div class="exm-lineas-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-6_aad2d874772cdd105bc2248b9b0c7602">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv'</span>) <span class="sc">%&gt;%</span></span>
@@ -449,7 +455,7 @@ Importante
 </div>
 </div>
 <div class="exm-lineas-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-7_67ef4b46956831a76e8a586d5dd0cb82">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y linetype.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Día, <span class="at">y =</span> Temperatura, <span class="at">group =</span> Ciudad, <span class="at">linetype =</span> Ciudad)) <span class="sc">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las lineas.</span></span>
@@ -460,7 +466,7 @@ Importante
 </div>
 </div>
 <div class="exm-lineas-3">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-8_b9cefe4f16cd1a07819052bc314d804a">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y colour.</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Día, <span class="at">y =</span> Temperatura, <span class="at">group =</span> Ciudad, <span class="at">colour =</span> Ciudad)) <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las lineas.</span></span>
@@ -479,7 +485,7 @@ Importante
 <li><code>geom_bar(aes(weight = var))</code>: Dibuja un diagrama de barras con la variable asociada al atributo <code>x</code> o <code>y</code> (si se usa el atributo <code>x</code> las barras son verticales y se usa <code>y</code> horizontales), donde la altura de las barras viene dada por la variable <code>var</code>. Si no se indica Por defecto, la altura de las barras representa la frecuencia absoluta de cada valor de la variable. Si no se indica el atributo <code>weight</code> la altura de las barras es la frecuencia absoluta de los valores de la variable asociada a los atributos <code>x</code> o <code>y</code>.</li>
 </ul>
 <div class="exm-barras-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-9_b2e306d995bad9bcb87860be9b3a88db">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/temperaturas.csv'</span>) <span class="sc">%&gt;%</span></span>
@@ -514,7 +520,7 @@ Importante
 </div>
 </div>
 <div class="exm-barras-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-10_dafd9068d945953cd98ed56816518abc">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el día en el atributo y.</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.madrid, <span class="fu">aes</span>(<span class="at">y =</span> Día)) <span class="sc">+</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las barras con altura la temperatura.</span></span>
@@ -525,7 +531,7 @@ Importante
 </div>
 </div>
 <div class="exm-barras-3">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-11_0eb76d51f2f2c0b9908c771635e6938a">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Día, <span class="at">fill =</span> Ciudad)) <span class="sc">+</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las barras con altura la temperatura (por defecto barras acumuladas).</span></span>
@@ -536,7 +542,7 @@ Importante
 </div>
 </div>
 <div class="exm-barras-4">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-12_f49385b2efd8ef57149cb2d5ba8b4885">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Día, <span class="at">fill =</span> Ciudad)) <span class="sc">+</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las barras con altura la temperatura indicando barras separadas.</span></span>
@@ -547,7 +553,7 @@ Importante
 </div>
 </div>
 <div class="exm-barras-5">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-13_090a052f305755f6e18216b6da553626">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el sexo en el atributo x.</span></span>
@@ -560,7 +566,7 @@ Importante
 </div>
 </div>
 <div class="exm-barras-6">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-14_da64eec9a65ebd86134f4a9bf9aeae10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el sexo en los atributos x y fill.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de las barras.</span></span>
@@ -579,7 +585,7 @@ Importante
 <li><code>geom_histogram(bins = clases, binwidth = anchura)</code>: Dibuja un histograma de la variable asociada al atributo <code>x</code> usando el número de clases indicado por <code>clases</code> o bien clases de amplitud indicada por <code>anchura</code>. Si no se indica el parámetro <code>bins</code> o <code>bindwidth</code> se toman 30 clases por defecto.</li>
 </ul>
 <div class="exm-histograma-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-15_2480ed8fd3171b24a452389d0e800303">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la edad en el atributo x.</span></span>
@@ -592,7 +598,7 @@ Importante
 </div>
 </div>
 <div class="exm-histograma-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-16_928e406ac8fd2320e873c9dae19f72c1">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la edad en el atributo x.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura)) <span class="sc">+</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa del histograma con anchura de clases 5.</span></span>
@@ -603,7 +609,7 @@ Importante
 </div>
 </div>
 <div class="exm-histograma-3">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-17_8434cf20b93b5637b8a65b68b5ef8228">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa del histograma con anchura de clases 10.</span></span>
@@ -614,7 +620,7 @@ Importante
 </div>
 </div>
 <div class="exm-histograma-3">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-18_098bf6f1bf12f5f2529357040ba1b2f7">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa del histograma con anchura de clases 10.</span></span>
@@ -634,7 +640,7 @@ Importante
 </ul>
 <p>Este diagrama es una alternativa a los histogramas para representar la distribución de probabilidad de los valores de una variable.</p>
 <div class="exm-densidad-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-19_92c5ee33934cb28eeb3cf6f7a49a19cb">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la edad en el atributo x.</span></span>
@@ -647,7 +653,7 @@ Importante
 </div>
 </div>
 <div class="exm-densidad-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-20_765bfc302631c4d42982fa296213c5ab">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo colour.</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> edad, <span class="at">colour =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de la densidad de probabilidad.</span></span>
@@ -666,7 +672,7 @@ Importante
 <li><code>geom_boxplot()</code>: Dibuja un diagrama de caja y bigotes de la variable asociada al atributo <code>x</code> o <code>y</code>. Si se utiliza el atributo <code>x</code> la caja se representa horizontalmente, y si se utiliza el atributo <code>y</code> verticalmente.</li>
 </ul>
 <div class="exm-cajas-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-21_53945f2a9390cca46cbb83576c5125e6">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el colesterol en el atributo x.</span></span>
@@ -674,7 +680,7 @@ Importante
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de la caja.</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>Warning: Removed 1 rows containing non-finite values (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="07-graficos_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
@@ -682,7 +688,7 @@ Importante
 </div>
 </div>
 <div class="exm-cajas-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-22_f3410eba8989f1aa336aebb9a8d28577">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo y y el sexo en el atributo fill.</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">y =</span> altura, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de la caja.</span></span>
@@ -701,7 +707,7 @@ Importante
 <li><code>coor_polar(theta = "x"|"y")</code>: Cambia al sistema de coordenadas cartesianas polares, donde el ángulo viene dado por la variable asociada al atributo “x” o el atributo “y”.</li>
 </ul>
 <div class="exm-sectores-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-23_3254e52735b279b5fdb2035e799d5a15">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con el sexo en el atributo x.</span></span>
@@ -729,7 +735,7 @@ Importante
 </ul>
 <p>Esta capa suele usarse en combinación con la capa de puntos para diagramas de dispersión.</p>
 <div class="exm-ajuste-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-24_f5085bfa3563086e9ff50838a63e602e">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.</span></span>
@@ -744,7 +750,7 @@ Importante
 </div>
 </div>
 <div class="exm-ajuste-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-25_7909dc000a297c68922e43e252a2bb9c">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura, <span class="at">y =</span> peso)) <span class="sc">+</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de puntos.</span></span>
@@ -757,7 +763,7 @@ Importante
 </div>
 </div>
 <div class="exm-ajuste-3">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-26_cd74f344905fcf77f7b6375f1cdec3ea">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura, <span class="at">y =</span> peso, <span class="at">colour =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de puntos.</span></span>
@@ -778,7 +784,7 @@ Importante
 <li><code>facet_wrap(vars(var1, var2,...), nrow = n, ncol = m)</code>: Crea un un gráfico para cada combinación de valores de las variables <code>var1</code>, <code>var2</code>, etc. y los coloca en una tabla de <code>n</code> filas y <code>m</code> columnas.</li>
 </ul>
 <div class="exm-facetas-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-27_f04dca04a5da45c8802741eb4fc69036">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.</span></span>
@@ -807,7 +813,7 @@ Importante
 <code>colour = leyenda-color, shape  = leyenda-forma)</code></li>
 </ul>
 <div class="exm-titulos-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-28_6efc63cb24e332935084e25bb4ff212a">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.</span></span>
@@ -830,7 +836,7 @@ Importante
 <li><p><code>scale_y_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)</code>: Igual que la función anterior pero para el eje y.</p></li>
 </ul>
 <div class="exm-escalas-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-29_d1e4647741c2fbadd905ac68a38baeb5">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.</span></span>
@@ -854,7 +860,7 @@ Importante
 <li><code>theme(propiedades)</code>: Modifica las propiedades del tema indicadas. La lista es demasiado grande para cubrirla en este tutorial, por lo que se recomienda ver todas las opciones en la documentación de <code>ggplot2</code>.</li>
 </ul>
 <div class="exm-temas-1">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-30_7cbc5aa4ce2c6a130c99950d26952a4c">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv'</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.</span></span>
@@ -871,7 +877,7 @@ Importante
 </div>
 </div>
 <div class="exm-temas-2">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-31_a390a0b6bdf8de58c090b4c8b1e0cf9f">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura, <span class="at">y =</span> peso, <span class="at">colour =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de puntos.</span></span>
@@ -893,7 +899,7 @@ Importante
 - `theme_classic()`: Tema sin rejilla.
 - `theme_void()`: Tema vacío.</code></pre>
 <div class="exm-temas-3">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-32_014098b029aacbca4663fcdc5950cdcb">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> altura, <span class="at">y =</span> peso, <span class="at">colour =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir la capa de puntos.</span></span>
@@ -927,7 +933,7 @@ Solución
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-33_a8bb6f24bd14d194a082d8b91e42adfc">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv'</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -966,7 +972,7 @@ Solución
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-34_a1d5cb0802faa7578ec915b310424256">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">sexo =</span> <span class="fu">factor</span>(sexo), <span class="at">edad =</span> <span class="fu">factor</span>(edad), <span class="at">tabaco =</span> <span class="fu">factor</span>(tabaco), <span class="at">tabaco.antes =</span> <span class="fu">factor</span>(tabaco.antes))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -987,7 +993,7 @@ Solución
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-35_80e4443337865895b2d76f564abf1ce4">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1012,7 +1018,7 @@ Solución
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-36_9a85efa143f103ec0e0d9d6c6fd229ab">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> apgar1, <span class="at">fill =</span> tabaco)) <span class="sc">+</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1037,7 +1043,7 @@ Solución
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-37_5412988bc52a23926df3b7f9191f05c1">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> peso, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1062,7 +1068,7 @@ Solución
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-38_36ce165de2b62004533f04b5c9a9bc8b">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> peso, <span class="at">colour =</span> tabaco)) <span class="sc">+</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1087,7 +1093,7 @@ Solución
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-39_9ca94db3da3853ec503e9ba6b37c254d">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> peso, <span class="at">fill =</span> tabaco)) <span class="sc">+</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1112,14 +1118,14 @@ Solución
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-40_b256737312a51b77f239801c6bf364bc">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(tabaco <span class="sc">==</span> <span class="st">"Si"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cigarros, <span class="at">y =</span> peso)) <span class="sc">+</span></span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="07-graficos_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
@@ -1143,7 +1149,7 @@ Solución
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
+<div class="cell" data-hash="07-graficos_cache/html/unnamed-chunk-41_140f4f7f20ac990129d38e9d3b6f13e2">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(tabaco <span class="sc">==</span> <span class="st">"Si"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cigarros, <span class="at">y =</span> peso)) <span class="sc">+</span></span>
@@ -1151,7 +1157,7 @@ Solución
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
 <span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(sexo, edad))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="07-graficos_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
