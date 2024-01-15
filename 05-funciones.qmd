@@ -21,7 +21,6 @@ El código que va entre llaves se conoce como _cuerpo de la función_.
 Para llamar a la función y que se ejecute el código de su cuerpo hay que utilizar el nombre de la función y a continuación los valores pasados a sus parámetros entre paréntesis.
 
 :::{#exm-creacion-funcion}
-A continuación se muestra un ejemplo de creación y llamada a una función.
 ```{r}
 # Definición de la función
 saludo <- function() {
@@ -40,7 +39,6 @@ Una función puede recibir valores cuando se invoca a través de unas variables 
 Los valores que se pasan a la función en una llamada o invocación concreta de ella se conocen como _argumentos_ y se asocian a los parámetros de la declaración de la función.
 
 :::{#exm-funcion-con-parametros}
-A continuación se muestra un ejemplo de una función con parámetros.
 ```{r}
 # Función con un parámetro
 saludo <- function(nombre) {
@@ -60,7 +58,6 @@ Los argumentos de una función pueden pasarse de dos formas:
 - **Argumentos nominales**: Se indica explícitamente el nombre del parámetro al que se asocia un argumento de la forma `parametro = argumento`. En este caso el orden de los argumentos no importa.
 
 :::{#exm-paso-parametros-funcion}
-A continuación se muestran varios ejemplos de pasos de argumentos posicionales y nominales.
 ```{r}
 # Función con un argumento por defecto
 area.triangulo <- function(base, altura) {
@@ -79,7 +76,6 @@ area.triangulo(altura = 3, base = 4)
 En la definición de una función se puede asignar a cada parámetro un argumento por defecto, de manera que si se invoca la función sin proporcionar ningún argumento para ese parámetro, se utiliza el argumento por defecto.
 
 :::{#exm-argumento-defecto-funcion}
-A continuación se muestra un ejemplo de definición de una función con un argumento por defecto.
 ```{r}
 saludo <- function(nombre, lenguaje = "R") {
   print(paste("¡Hola ", nombre, "! ¡Bienvenido a ", lenguaje, "!", sep = ""))
@@ -94,7 +90,6 @@ saludo("Alf")
 Una función puede devolver un objeto de cualquier tipo tras su invocación. Para ello se utiliza la función `return()`, indicando entre paréntesis el valor que devuelve la función. El retorno suele realizarse al final del cuerpo de la función, porque con él finaliza la ejecución de la función y se devuelve el control de la ejecución al punto desde donde se llamó a la función, de manera que cualquier instrucción de cuerpo que vaya después no se ejecutará. Si no se indica ningún objeto, la función devolverá el valor de la última expresión calculada en el cuerpo de la función. 
 
 :::{#exm-retorno-funciones}
-A continuación se muestran varios ejemplos de retornos de funciones.
 ```{r}
 # Función que devuelve el area de un triángulo
 area.triangulo <- function(base, altura) {
@@ -116,7 +111,6 @@ valor.absoluto(2)
 Para devolver más de un valor se pueden utilizar estructuras de datos como vectores, listas, matrices o data frames.
 
 :::{#exm-retorno-funcion-lista}
-A continuación se muestra un ejemplo de una función de devuelve una lista.
 ```{r}
 circulo <- function(radio) {
   return(list(perimetro = 2 * pi * radio, area = pi * radio ^ 2))
@@ -141,7 +135,6 @@ rm(list = ls())
 ```
 
 :::{#exm-acceso-entorno-global}
-A continuación se muestra un ejemplo acceso al entorno global de un programa.
 ```{r}
 x <- 4
 y <- 3
@@ -156,7 +149,6 @@ ls()
 Como se puede observar en el ejemplo anterior, los parámetros de la función `base` y `altura` no aparecen en el entorno global. En R, cuando se ejecuta una función se crea un nuevo entorno hijo dentro del entorno al que pertenece la función. Durante la ejecución de la función este pasa a ser el entorno activo y cuando termina la ejecución de la función deja de serlo y vuelve a activarse el entorno padre desde donde se llamó a la función.
 
 :::{#exm-activacion-entorno-funcion}
-A continuación se muestra un ejemplo de activación del entorno de una función.
 ```{r}
 x <- 4
 y <- 3
@@ -180,7 +172,6 @@ Tanto los parámetros como las variables del ámbito local de una función sólo
 Cuando una función declara un objeto (función, variable, etc.) que ya existe en alguno de los entornos ancestros con ámbito global, durante la ejecución de la función el objeto global queda eclipsado por el local y no es accesible hasta que finaliza la ejecución de la función.
 
 :::{#exm-eclise-variables-globales-por-locales}
-A continuación se muestra un ejemplo de eclipse de una variable de ámbito global por otra de ámbito local.
 ```{r}
 lenguaje = "Python"
 saludo <- function(lenguaje) {
@@ -194,7 +185,6 @@ Obsérvese cómo al ejecutar la función anterior, la variable `lenguaje` queda 
 Las variables globales están accesibles siempre que no sean eclipsadas por otras con el mismo nombre de ámbito local. Si embargo, cuando se intenta asignar un valor a una variable global en el ámbito local, se crea una nueva variable local. Para asignar valores a variables globales en el ámbito local se tiene que utilizar el operador de superasignación `<<-`. Cuando se utiliza este operador para asignar un valor a una variable, R busca la variable entorno padre, y si no existe continua con la búsqueda en los entornos ancestros hasta llegar a entorno global. Si la búsqueda tiene éxito, asigna el nuevo valor a la variable global, mientras que si no tiene éxito se crea una nueva variable de ámbito local y se le asigna el valor.
 
 :::{#exm-superasignacion}
-A continuación se muestra un ejemplo del uso del operador de superasignación.
 ```{r}
 saludo <- function() {
   lenguaje <<- "R"
@@ -219,7 +209,6 @@ Para acceder a estos componentes se pueden utilizar las siguientes funciones:
 - `environment(f)`: Devuelve el entorno de la función `f`.
 
 :::{#exm-componentes-funcion}
-A continuación se muestra un ejemplo de acceso a los componentes de una función.
 ```{r}
 # Definición de la función
 area.triangulo <- function(base, altura) {
@@ -240,7 +229,6 @@ La recursión es una práctica común en la mayoría de los lenguajes de program
 Para garantizar el final de una función recursiva, las sucesivas llamadas tienen que reducir el grado de complejidad del problema, hasta que este pueda resolverse directamente sin necesidad de volver a llamar a la función. De lo contrario la recursión no tendría fin y nunca terminaría la ejecución de la función.
 
 :::{#exm-funcion-recursiva}
-A continuación se muestra un ejemplo de una función recursiva.
 ```{r}
 factorial <- function(n) {
   if (n <= 1) return(n)
@@ -255,7 +243,6 @@ factorial(4)
 Para facilitar la reutilización código y datos R permite la creación de paquetes que pueden importarse desde otros programas. Un paquete es una colección de código, funciones y datos que se almacenan en un fichero dentro de un directorio llamado `library` en el entorno de R. Para ver la ubicación de este directorio dentro del sistema de archivos local se puede utilizar la función `.libPaths()`.
 
 :::{#exm-ubiacion-biblioteca-paquetes}
-A continuación se muestra un ejemplo de la ubicación del directorio `library`.
 ```{r}
 .libPaths()
 ```
@@ -282,21 +269,32 @@ Para instalar un paquete desde el repositorio oficial CRAN se utiliza la siguien
 - `install.packages(x)`: Obtiene el paquete con el nombre `x` desde un servidor con el repositorio CRAN y lo instala localmente en el directorio `library` del entorno de R. Se puede instalar más de un paquete a la vez pasando un vector con los nombres de los paquetes.
 
 :::{#exm-instalacion-paquetes}
-A continuación se muestra un ejemplo de instalación de paquetes desde el repositorio CRAN.
 ```{r eval=FALSE}
-install.packages("devtools")
+install.packages("remotes")
 ```
 :::
 
 #### Instalación desde otros repositorios (GitHub, GitLab, etc.)
 
-El paquete `remotes` incorpora funciones para instalar paquetes alojados en otros repositorios habituales para el desarrollo de software como [GitHub](https://github.com/), [GitLab](httpsb://gitlab.com/) o [Bioconductor](https://www.bioconductor.org/).
+El paquete `remotes` incorpora funciones para instalar paquetes alojados en otros repositorios habituales para el desarrollo de software como [GitHub](https://github.com/), [GitLab](httpsb://gitlab.com/), etc.
 
 :::{#exm-instalacion-paquetes-github}
-A continuación se muestra un ejemplo de instalación de paquetes desde GitHub.
 ```{r eval=FALSE}
 install.packages("remotes")
 remotes::install_github("rkward-community/rk.Teaching")
+```
+:::
+
+#### Instalación desde Bioconductor
+
+[Bioconductor](https://bioconductor.org/) es un repositorio de paquetes especializados en Bioinformática. 
+
+Bioconductor utiliza sus propio gestor de paquetes `BiocManager`, pero la instalación de paquetes es igualmente sencilla.
+
+:::{#exm-instalacion-paquetes-bioconductor}
+```{r eval=FALSE}
+install.packages("BiocManager")
+BiocManager::install("edgeR")
 ```
 :::
 
@@ -315,7 +313,6 @@ Una vez instalado un paquete, para poder ejecutar su contenido es necesario carg
 - `library(x)`: Ejecuta el código del paquete `x` en la sesión de trabajo activa.
 
 :::{#exm-carga-paquetes}
-A continuación se muestra un ejemplo de carga de un paquete.
 ```{r}
 library("remotes")
 ```

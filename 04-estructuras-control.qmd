@@ -30,7 +30,6 @@ knitr::include_graphics(rep("img/04-estructuras-control/condicional-simple.png")
 ```
 
 :::{#exm-condicional-simple}
-A continuación se muestra un ejemplo de estructura condicional con `if`.
 ```{r}
 x <- 1
 y <- 0
@@ -53,7 +52,6 @@ En este caso, si la evaluación de la condición es `TRUE` se ejecuta el código
 ![Diagrama de flujo de la estructura condicional doble](img/04-estructuras-control/condicional-doble.png)
 
 :::{#exm-condicional-doble}
-A continuación se muestra un ejemplo de estructura condicional con `if` y `else`.
 ```{r}
 nota <- 8.5
 if (nota < 5){
@@ -80,7 +78,6 @@ Cuando se encadenan múltiples condiciones de esta forma, solamente se ejecuta e
 ![Diagrama de flujo de la estructura condicional múltiple](img/04-estructuras-control/condicional-multiple.png)
 
 :::{#exm-condicional-multiple}
-A continuación se muestra un ejemplo de estructura condicional múltiple.
 ```{r}
 nota <- 8.5
 if (nota < 5){
@@ -103,7 +100,6 @@ Otra forma de tomar decisiones sobre el código a ejecutar es la función `switc
 - `switch(x, l)`: Ejecuta el código del valor de la lista `l` cuyo nombre asociado coincide con el resultado de evaluar la expresión `x`. Si el resultado de evaluar `x` no es ningún nombre de los elementos de la lista devuelve `NULL`.
 
 :::{#exm-condicional-switch}
-A continuación se muestra un ejemplo de uso de la función `switch`.
 ```{r}
 tipo.iva <- "reducido"
 precio <- 1000
@@ -120,7 +116,7 @@ Un bucle es una estructura que permite la repetición de un bloque de código. E
 
 Lo bucles iterativos repiten un bloque de código un número determinado de veces. Comienzan por la palabra reservada `for` y llevan asociado un _iterador_, que es una variable que recorre una secuencia de un tipo de datos compuesto, normalmente un vector o una lista. El bloque de código se ejecuta tantas veces como elementos tenga la secuencia, y en cada repetición el iterador toma como valor un elemento distinto de la secuencia.
 
-> `for (`_`i`_` in `_`<secuencia>`_`) {`  
+> `for (`_`i`_ ` in ` _`<secuencia>`_`) {`  
 &ensp;&ensp;_`<código>`_  
 `}`
 
@@ -144,7 +140,6 @@ También es posible recorrer los elementos de la secuencia por posición ayudán
 - `seq_along(x)`: que devuelve un vector con los enteros desde 1 hasta el número de elementos de la secuencia `x`.
 
 :::{#exm-bucle-iterativo-posicion}
-A continuación se muestra un ejemplo de bucle `for` que recorre los elementos de un vector por posición.
 ```{r}
 asignaturas <- c("Matemáticas", "Física", "Programación")
 for (i in seq_along(asignaturas)){
@@ -180,7 +175,6 @@ La expresión lógica `<condición>` se evalúa antes de ejecutar el bloque de c
 ![Diagrama de flujo de un bucle condicional](img/04-estructuras-control/bucle-while.png)
 
 :::{#exm-bucle-condicional}
-A continuación se muestra un ejemplo de bucle `while`.
 ```{r}
 i <- 5
 while (i >= 0) {
@@ -195,7 +189,6 @@ while (i >= 0) {
 La instrucción `break` se utiliza para detener un bucle y salir de él, tanto en bucles iterativos como en bucles condicionales. Normalmente se suele utilizar esta instrucción cuando se cumple una determinada condición en bloque de código del bucle y se decide parar su ejecución y salir del bucle.
 
 :::{#exm-salida-bucle-break}
-A continuación se muestra un ejemplo de uso de la instrucción `break`.
 ```{r}
 # Bucle que recorre los números enteros del -2 al 2 pero termina al llegar al 0.
 for (i in -2:2) {
@@ -212,7 +205,6 @@ for (i in -2:2) {
 La instrucción `next` se utiliza para interrumpir la ejecución del bloque de código de un bucle, pero en lugar de salir del bucle pasa a la siguiente iteración. Si se trata de un bucle iterativo el iterador pasa al siguiente elemento de la secuencia de iteración y si se trata de un bucle condicional se pasa evaluar de nuevo la condición de repetición. 
 
 :::{#exm-continuacion-bucle-next}
-A continuación se muestra un ejemplo de uso de la instrucción `next`.
 ```{r}
 # Bucle que recorre los enteros del 1 al 10 pero solo imprime los números pares.
 for (i in 1:10) {

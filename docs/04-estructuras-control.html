@@ -320,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="exm-condicional-simple" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 4.1 </strong></span>A continuación se muestra un ejemplo de estructura condicional con <code>if</code>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.1 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-1_45784d04a73674b47d2b470982b329f1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <div id="exm-condicional-doble" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 4.2 </strong></span>A continuación se muestra un ejemplo de estructura condicional con <code>if</code> y <code>else</code>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.2 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-2_50eec34bf2ec6d049c04086a049c5671">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nota <span class="ot">&lt;-</span> <span class="fl">8.5</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (nota <span class="sc">&lt;</span> <span class="dv">5</span>){</span>
@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <div id="exm-condicional-multiple" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 4.3 </strong></span>A continuación se muestra un ejemplo de estructura condicional múltiple.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.3 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-3_d470b18e61ee734fd5c39f7e383f86dd">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nota <span class="ot">&lt;-</span> <span class="fl">8.5</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (nota <span class="sc">&lt;</span> <span class="dv">5</span>){</span>
@@ -402,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>switch(x, l)</code>: Ejecuta el código del valor de la lista <code>l</code> cuyo nombre asociado coincide con el resultado de evaluar la expresión <code>x</code>. Si el resultado de evaluar <code>x</code> no es ningún nombre de los elementos de la lista devuelve <code>NULL</code>.</li>
 </ul>
 <div id="exm-condicional-switch" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 4.4 </strong></span>A continuación se muestra un ejemplo de uso de la función <code>switch</code>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.4 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-4_3091a4666f22aa460336f35dc3e687ed">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tipo.iva <span class="ot">&lt;-</span> <span class="st">"reducido"</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>precio <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
@@ -422,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="bucles-iterativos-for"><span class="header-section-number">4.2.1</span> Bucles iterativos (<code>for</code>)</h3>
 <p>Lo bucles iterativos repiten un bloque de código un número determinado de veces. Comienzan por la palabra reservada <code>for</code> y llevan asociado un <em>iterador</em>, que es una variable que recorre una secuencia de un tipo de datos compuesto, normalmente un vector o una lista. El bloque de código se ejecuta tantas veces como elementos tenga la secuencia, y en cada repetición el iterador toma como valor un elemento distinto de la secuencia.</p>
 <blockquote class="blockquote">
-<p><code>for (</code><em><code>i</code></em><code>in</code><em><code>&lt;secuencia&gt;</code></em><code>) {</code><br>
+<p><code>for (</code><em><code>i</code></em> <code>in</code> <em><code>&lt;secuencia&gt;</code></em><code>) {</code><br>
   <em><code>&lt;código&gt;</code></em><br>
 <code>}</code></p>
 </blockquote>
@@ -461,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>seq_along(x)</code>: que devuelve un vector con los enteros desde 1 hasta el número de elementos de la secuencia <code>x</code>.</li>
 </ul>
 <div id="exm-bucle-iterativo-posicion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 4.6 </strong></span>A continuación se muestra un ejemplo de bucle <code>for</code> que recorre los elementos de un vector por posición.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.6 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-6_2a3858950a17588b60728f2432c2cd40">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>asignaturas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span>, <span class="st">"Física"</span>, <span class="st">"Programación"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(asignaturas)){</span>
@@ -511,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <div id="exm-bucle-condicional" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 4.8 </strong></span>A continuación se muestra un ejemplo de bucle <code>while</code>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.8 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-8_b2bcd3c946b5e37a7922d9f61c1e08d0">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&gt;=</span> <span class="dv">0</span>) {</span>
@@ -533,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="la-instrucción-break"><span class="header-section-number">4.2.3</span> La instrucción <code>break</code></h3>
 <p>La instrucción <code>break</code> se utiliza para detener un bucle y salir de él, tanto en bucles iterativos como en bucles condicionales. Normalmente se suele utilizar esta instrucción cuando se cumple una determinada condición en bloque de código del bucle y se decide parar su ejecución y salir del bucle.</p>
 <div id="exm-salida-bucle-break" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 4.9 </strong></span>A continuación se muestra un ejemplo de uso de la instrucción <code>break</code>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.9 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-9_21f3e7d23054d5717b55de73d0d001e9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bucle que recorre los números enteros del -2 al 2 pero termina al llegar al 0.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span>) {</span>
@@ -552,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="la-instrucción-next" class="level3" data-number="4.2.4">
 <h3 data-number="4.2.4" class="anchored" data-anchor-id="la-instrucción-next"><span class="header-section-number">4.2.4</span> La instrucción <code>next</code></h3>
 <p>La instrucción <code>next</code> se utiliza para interrumpir la ejecución del bloque de código de un bucle, pero en lugar de salir del bucle pasa a la siguiente iteración. Si se trata de un bucle iterativo el iterador pasa al siguiente elemento de la secuencia de iteración y si se trata de un bucle condicional se pasa evaluar de nuevo la condición de repetición.</p>
-<p>:::{#exm-continuacion-bucle-next} A continuación se muestra un ejemplo de uso de la instrucción <code>next</code>.</p>
+<p>:::{#exm-continuacion-bucle-next}</p>
 <div class="cell" data-hash="04-estructuras-control_cache/html/unnamed-chunk-10_f3d77b2960846cece2e00f4f155738cc">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bucle que recorre los enteros del 1 al 10 pero solo imprime los números pares.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>

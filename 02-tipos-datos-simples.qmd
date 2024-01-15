@@ -80,7 +80,6 @@ Los siguientes operadores permiten realizar las clásicas operaciones aritmétic
 - `x ^ y`: Devuelve la potencia `x` elevado a `y`.
 
 :::{#exm-operadores-aritmeticos}
-A continuación se muestran varios ejemplos de operaciones aritméticas.
 ```{r}
 2 + 3
 5 * -2
@@ -103,7 +102,6 @@ Comparan dos números y devuelven un valor lógico.
 - `x != y`: Devuelve `TRUE` si el número `x` es distinto del número `y`, y `FALSE` en caso contrario.
 
 :::{#exm-operadores-relacionales}
-A continuación se muestran varios ejemplos de operaciones relacionales.
 ```{r}
 3 == 3
 3.1 <= 3
@@ -159,7 +157,6 @@ Existen muchas funciones para cadenas de texto pero las más comunes son:
 - `toupper(c)`: Devuelve la cadena que resulta de convertir la cadena `c` a mayúsculas.
 
 :::{#exm-operaciones-cadenas}
-A continuación se muestran varios ejemplos de operaciones con cadenas de texto.
 ```{r}
 nchar("Me gusta R")
 paste("Me", "gusta", "R")
@@ -183,7 +180,6 @@ toupper("Me gusta R")
 <i class="fa fa-exclamation-triangle" style="color:red;"></i> _Utilizan el orden alfabético, las minúsculas van antes que las mayúsculas, y los números antes que las letras._
 
 :::{#exm-operaciones-comparacion-cadenas}
-A continuación se muestran varios ejemplos de operaciones de comparación de cadenas.
 ```{r}
 "R" == "R"
 "R" == "r"
@@ -250,7 +246,6 @@ A la hora de comparar valores lógicos R asocia a `TRUE` el valor 1 y a `FALSE` 
 | `TRUE`  | `TRUE`  | `FALSE` |  `TRUE`   |  `TRUE`  |
 
 :::{#exm-operadores-logicos}
-A continuación se muestran varios ejemplos de operaciones lógicas con booleanos.
 ```{r}
 !TRUE
 FALSE | TRUE
@@ -288,7 +283,6 @@ Si una variable ya no va a usarse, es posible eliminarla y liberar el espacio qu
 - `rm(x)`: Elimina la variable `x`.
 
 :::{#exm-variables}
-A continuación se muestran varios ejemplos de asignaciones de valores a variables.
 ```{r}
 x <- 3
 x
@@ -323,7 +317,6 @@ Al evaluar una expresiones R utiliza el siguiente orden de prioridad de evaluaci
 Se puede saltar el orden de evaluación utilizando paréntesis `( )`.
 
 :::{#exm-prioridad-evaluacion}
-A continuación se muestran varios ejemplos de evaluación de expresiones.
 ```{r}
 4 + 8 / 2 ^ 2
 4 + (8 / 2) ^ 2

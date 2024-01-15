@@ -299,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El código que va entre llaves se conoce como <em>cuerpo de la función</em>.</p>
 <p>Para llamar a la función y que se ejecute el código de su cuerpo hay que utilizar el nombre de la función y a continuación los valores pasados a sus parámetros entre paréntesis.</p>
 <div id="exm-creacion-funcion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.1 </strong></span>A continuación se muestra un ejemplo de creación y llamada a una función.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.1 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-1_72a1b32bbcd0aeecb477678b94018221">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la función</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
@@ -322,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Una función puede recibir valores cuando se invoca a través de unas variables conocidas como <em>parámetros</em> que se definen entre paréntesis en la declaración de la función. En el cuerpo de la función se pueden usar estos parámetros como si fuesen variables.</p>
 <p>Los valores que se pasan a la función en una llamada o invocación concreta de ella se conocen como <em>argumentos</em> y se asocian a los parámetros de la declaración de la función.</p>
 <div id="exm-funcion-con-parametros" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.2 </strong></span>A continuación se muestra un ejemplo de una función con parámetros.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.2 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-2_ea61f7e0d21ee04d8bf0bf59be8ec4a6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función con un parámetro</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre) {</span>
@@ -344,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Argumentos nominales</strong>: Se indica explícitamente el nombre del parámetro al que se asocia un argumento de la forma <code>parametro = argumento</code>. En este caso el orden de los argumentos no importa.</li>
 </ul>
 <div id="exm-paso-parametros-funcion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.3 </strong></span>A continuación se muestran varios ejemplos de pasos de argumentos posicionales y nominales.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.3 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-3_ca30c1d4185d4161c5eeff22bb40d251">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función con un argumento por defecto</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
@@ -368,7 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="argumentos-por-defecto"><span class="header-section-number">5.2.2</span> Argumentos por defecto</h3>
 <p>En la definición de una función se puede asignar a cada parámetro un argumento por defecto, de manera que si se invoca la función sin proporcionar ningún argumento para ese parámetro, se utiliza el argumento por defecto.</p>
 <div id="exm-argumento-defecto-funcion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.4 </strong></span>A continuación se muestra un ejemplo de definición de una función con un argumento por defecto.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.4 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-4_263c3e8c2f9c3652e2ac2313aefc9d15">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre, <span class="at">lenguaje =</span> <span class="st">"R"</span>) {</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"¡Hola "</span>, nombre, <span class="st">"! ¡Bienvenido a "</span>, lenguaje, <span class="st">"!"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.3" class="anchored" data-anchor-id="retorno-de-una-función"><span class="header-section-number">5.3</span> Retorno de una función</h2>
 <p>Una función puede devolver un objeto de cualquier tipo tras su invocación. Para ello se utiliza la función <code>return()</code>, indicando entre paréntesis el valor que devuelve la función. El retorno suele realizarse al final del cuerpo de la función, porque con él finaliza la ejecución de la función y se devuelve el control de la ejecución al punto desde donde se llamó a la función, de manera que cualquier instrucción de cuerpo que vaya después no se ejecutará. Si no se indica ningún objeto, la función devolverá el valor de la última expresión calculada en el cuerpo de la función.</p>
 <div id="exm-retorno-funciones" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.5 </strong></span>A continuación se muestran varios ejemplos de retornos de funciones.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.5 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-5_e3168ee820be27484953e712a37d1fa8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función que devuelve el area de un triángulo</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
@@ -415,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Para devolver más de un valor se pueden utilizar estructuras de datos como vectores, listas, matrices o data frames.</p>
 <div id="exm-retorno-funcion-lista" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.6 </strong></span>A continuación se muestra un ejemplo de una función de devuelve una lista.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.6 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-6_a23564322a52e274bfb89c8842669bd2">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>circulo <span class="ot">&lt;-</span> <span class="cf">function</span>(radio) {</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">perimetro =</span> <span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> radio, <span class="at">area =</span> pi <span class="sc">*</span> radio <span class="sc">^</span> <span class="dv">2</span>))</span>
@@ -448,7 +448,7 @@ $area
 <li><code>ls()</code>: Devuelve un vector con los nombres de las objetos (variables, funciones, etc.) que contiene el entorno global.</li>
 </ul>
 <div id="exm-acceso-entorno-global" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.7 </strong></span>A continuación se muestra un ejemplo acceso al entorno global de un programa.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.7 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-8_b30996464a70d47e8666e4c347610d44">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -467,7 +467,7 @@ $area
 </div>
 <p>Como se puede observar en el ejemplo anterior, los parámetros de la función <code>base</code> y <code>altura</code> no aparecen en el entorno global. En R, cuando se ejecuta una función se crea un nuevo entorno hijo dentro del entorno al que pertenece la función. Durante la ejecución de la función este pasa a ser el entorno activo y cuando termina la ejecución de la función deja de serlo y vuelve a activarse el entorno padre desde donde se llamó a la función.</p>
 <div id="exm-activacion-entorno-funcion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.8 </strong></span>A continuación se muestra un ejemplo de activación del entorno de una función.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.8 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-9_ad316522e4a84147427897654d30a868">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -504,7 +504,7 @@ $area
 <p>Tanto los parámetros como las variables del ámbito local de una función sólo están accesibles durante la ejecución de la función, es decir, cuando termina la ejecución de la función estas variables desaparecen y no son accesibles desde fuera de la función.</p>
 <p>Cuando una función declara un objeto (función, variable, etc.) que ya existe en alguno de los entornos ancestros con ámbito global, durante la ejecución de la función el objeto global queda eclipsado por el local y no es accesible hasta que finaliza la ejecución de la función.</p>
 <div id="exm-eclise-variables-globales-por-locales" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.9 </strong></span>A continuación se muestra un ejemplo de eclipse de una variable de ámbito global por otra de ámbito local.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.9 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-10_a2756489cf7a29cc8aa72b78099f7faa">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>lenguaje <span class="ot">=</span> <span class="st">"Python"</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>(lenguaje) {</span>
@@ -519,7 +519,7 @@ $area
 </div>
 <p>Las variables globales están accesibles siempre que no sean eclipsadas por otras con el mismo nombre de ámbito local. Si embargo, cuando se intenta asignar un valor a una variable global en el ámbito local, se crea una nueva variable local. Para asignar valores a variables globales en el ámbito local se tiene que utilizar el operador de superasignación <code>&lt;&lt;-</code>. Cuando se utiliza este operador para asignar un valor a una variable, R busca la variable entorno padre, y si no existe continua con la búsqueda en los entornos ancestros hasta llegar a entorno global. Si la búsqueda tiene éxito, asigna el nuevo valor a la variable global, mientras que si no tiene éxito se crea una nueva variable de ámbito local y se le asigna el valor.</p>
 <div id="exm-superasignacion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.10 </strong></span>A continuación se muestra un ejemplo del uso del operador de superasignación.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.10 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-11_5f7b53a91378379d85bc29446d795259">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>saludo <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  lenguaje <span class="ot">&lt;&lt;-</span> <span class="st">"R"</span></span>
@@ -547,7 +547,7 @@ $area
 <li><code>environment(f)</code>: Devuelve el entorno de la función <code>f</code>.</li>
 </ul>
 <div id="exm-componentes-funcion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.11 </strong></span>A continuación se muestra un ejemplo de acceso a los componentes de una función.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.11 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-12_ffff9830e784aaec19a03179f743e589">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la función</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>area.triangulo <span class="ot">&lt;-</span> <span class="cf">function</span>(base, altura) {</span>
@@ -579,7 +579,7 @@ $altura</code></pre>
 <p>La recursión es una práctica común en la mayoría de los lenguajes de programación ya que permite resolver las tareas recursivas de manera más natural.</p>
 <p>Para garantizar el final de una función recursiva, las sucesivas llamadas tienen que reducir el grado de complejidad del problema, hasta que este pueda resolverse directamente sin necesidad de volver a llamar a la función. De lo contrario la recursión no tendría fin y nunca terminaría la ejecución de la función.</p>
 <div id="exm-funcion-recursiva" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.12 </strong></span>A continuación se muestra un ejemplo de una función recursiva.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.12 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-13_29bd8490db67b70fea0e640ddaadaab0">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>factorial <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="fu">return</span>(n)</span>
@@ -596,7 +596,7 @@ $altura</code></pre>
 <h2 data-number="5.7" class="anchored" data-anchor-id="paquetes"><span class="header-section-number">5.7</span> Paquetes</h2>
 <p>Para facilitar la reutilización código y datos R permite la creación de paquetes que pueden importarse desde otros programas. Un paquete es una colección de código, funciones y datos que se almacenan en un fichero dentro de un directorio llamado <code>library</code> en el entorno de R. Para ver la ubicación de este directorio dentro del sistema de archivos local se puede utilizar la función <code>.libPaths()</code>.</p>
 <div id="exm-ubiacion-biblioteca-paquetes" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.13 </strong></span>A continuación se muestra un ejemplo de la ubicación del directorio <code>library</code>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.13 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-14_23cbef2e1a0b51788db33be65d4d6f6d">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -623,25 +623,37 @@ $altura</code></pre>
 <li><code>install.packages(x)</code>: Obtiene el paquete con el nombre <code>x</code> desde un servidor con el repositorio CRAN y lo instala localmente en el directorio <code>library</code> del entorno de R. Se puede instalar más de un paquete a la vez pasando un vector con los nombres de los paquetes.</li>
 </ul>
 <div id="exm-instalacion-paquetes" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.14 </strong></span>A continuación se muestra un ejemplo de instalación de paquetes desde el repositorio CRAN.</p>
-<div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-15_c074ad3cdb4c2cc27f180d677d61926e">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="theorem-title"><strong>Ejemplo 5.14 </strong></span>&nbsp;</p>
+<div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-15_91e73a44072431ef5751817cd10d06d6">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="instalación-desde-otros-repositorios-github-gitlab-etc." class="level4" data-number="5.7.1.2">
 <h4 data-number="5.7.1.2" class="anchored" data-anchor-id="instalación-desde-otros-repositorios-github-gitlab-etc."><span class="header-section-number">5.7.1.2</span> Instalación desde otros repositorios (GitHub, GitLab, etc.)</h4>
-<p>El paquete <code>remotes</code> incorpora funciones para instalar paquetes alojados en otros repositorios habituales para el desarrollo de software como <a href="https://github.com/">GitHub</a>, <a href="httpsb://gitlab.com/">GitLab</a> o <a href="https://www.bioconductor.org/">Bioconductor</a>.</p>
+<p>El paquete <code>remotes</code> incorpora funciones para instalar paquetes alojados en otros repositorios habituales para el desarrollo de software como <a href="https://github.com/">GitHub</a>, <a href="httpsb://gitlab.com/">GitLab</a>, etc.</p>
 <div id="exm-instalacion-paquetes-github" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.15 </strong></span>A continuación se muestra un ejemplo de instalación de paquetes desde GitHub.</p>
+<p><span class="theorem-title"><strong>Ejemplo 5.15 </strong></span>&nbsp;</p>
 <div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-16_aaf00c0f7689510d689a4fa762b30cb7">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rkward-community/rk.Teaching"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="instalación-manual" class="level4" data-number="5.7.1.3">
-<h4 data-number="5.7.1.3" class="anchored" data-anchor-id="instalación-manual"><span class="header-section-number">5.7.1.3</span> Instalación manual</h4>
+<section id="instalación-desde-bioconductor" class="level4" data-number="5.7.1.3">
+<h4 data-number="5.7.1.3" class="anchored" data-anchor-id="instalación-desde-bioconductor"><span class="header-section-number">5.7.1.3</span> Instalación desde Bioconductor</h4>
+<p><a href="https://bioconductor.org/">Bioconductor</a> es un repositorio de paquetes especializados en Bioinformática.</p>
+<p>Bioconductor utiliza sus propio gestor de paquetes <code>BiocManager</code>, pero la instalación de paquetes es igualmente sencilla.</p>
+<div id="exm-instalacion-paquetes-bioconductor" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.16 </strong></span>&nbsp;</p>
+<div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-17_fed7ad4c95e4b72a85ba58ab3db6b96a">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"edgeR"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="instalación-manual" class="level4" data-number="5.7.1.4">
+<h4 data-number="5.7.1.4" class="anchored" data-anchor-id="instalación-manual"><span class="header-section-number">5.7.1.4</span> Instalación manual</h4>
 <p>Finalmente es posible instalar un paquete manualmente a partir de su código fuente. Para ello hay previamente hay que descargar el código fuente del paquete en un fichero comprimido en formato zip y después utilizar la siguiente función:</p>
 <ul>
 <li><code>install.packages(x, repos = NULL, type = "source")</code>: Instala el paquete ubicado en la ruta <code>x</code> del sistema de archivos local en la librería <code>library</code>.</li>
@@ -656,9 +668,9 @@ $altura</code></pre>
 <li><code>library(x)</code>: Ejecuta el código del paquete <code>x</code> en la sesión de trabajo activa.</li>
 </ul>
 <div id="exm-carga-paquetes" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 5.16 </strong></span>A continuación se muestra un ejemplo de carga de un paquete.</p>
-<div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-17_d380eaa371a5098e7f2f3ec3c56953fb">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"remotes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="theorem-title"><strong>Ejemplo 5.17 </strong></span>&nbsp;</p>
+<div class="cell" data-hash="05-funciones_cache/html/unnamed-chunk-18_292ada9ac6c084d3d227f9471b55f5f0">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"remotes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>

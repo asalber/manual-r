@@ -31,7 +31,6 @@ También es posible utilizar el operador `:` para generar un vector de números 
 - `x:y`: Devuelve el vector de números enteros consecutivos desde `x` hasta `y`.
 
 :::{#exm-construccion-vectores}
-A continuación se muestran varios ejemplos de construcción de vectores.
 ```{r}
 c(1, 2, 3)
 c("uno", "dos", "tres")
@@ -49,7 +48,6 @@ c(1, NA, 3)
 Es posible asignar un nombre a cada elemento de un vector. Los nombres son etiquetas de texto que se asocian a cada elemento. Para asociar un nombre a un elemento se utiliza la sintaxis `nombre = valor`, donde `nombre` es una cadena de caracteres y `valor` es el elemento del vector.
 
 :::{#exm-vectores-con-nombre}
-A continuación se muestra un ejemplo de creación de un vector con nombres.
 ```{r}
 c("Matemáticas" = 8.2, "Física" = 6.5, "Economía" = 4.5)
 ```
@@ -60,7 +58,6 @@ Para acceder a los nombres de un vector se utiliza la siguiente función:
 - `names(x)`: Devuelve un vector de cadenas de caracteres con los nombres de los elementos del vector `x`.
 
 :::{#exm-acceso-nombres-vector}
-A continuación se muestra un ejemplo de acceso a los nombres de un vector.
 ```{r}
 notas <- c("Matemáticas" = 8.2, "Física" = 6.5, "Economía" = 4.5)
 names(notas)
@@ -74,7 +71,6 @@ El número de elementos de un vector es su _tamaño_ y puede averiguarse con la 
 - `lenght(x)`: Devuelve el número de elementos del vector `x`.
 
 :::{#exm-tamaño-vector}
-A continuación se muestran varios ejemplos de la obtención del tamaño de un vector.
 ```{r}
 length(c(1, 2, 3))
 length(c())
@@ -86,7 +82,6 @@ length(c())
 Puesto que los elementos de un vector tienen que ser del mismo tipo, cuando se crea un vector con datos de distintos tipos, la función `c()` los convertirá al mismo tipo, lo que se conoce como _coerción_ de tipos. La coerción se produce de los tipos menos flexibles a los más flexibles: `logical` < `integer` < `double` < `character`.
 
 :::{#exm-coercion}
-A continuación se muestran varios ejemplos de coerciones.
 ```{r}
 c(1, 2.5)
 c(FALSE, TRUE, 2)
@@ -107,7 +102,6 @@ En R los índices enteros para acceder a los elementos de un vector comienzan en
 :::
 
 :::{#exm-acceso-vector}
-A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices enteros.
 ```{r}
 x <- c(2,4,6,8,10)
 # Acceso al elemento que está en la tercera posición
@@ -126,7 +120,6 @@ x[c(-1, -4)]
 Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano `TRUE`.
 
 :::{#exm-acceso-vector-indice-logico}
-A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices lógicos.
 ```{r}
 x <- c(2,4,6,8,10)
 # Acceso al elemento que está en la tercera posición
@@ -139,7 +132,6 @@ x[c(F,T,F,T,F)]
 Esta forma de acceder es útil cuando se genera el vector de índices mediante operadores relacionales. Cuando se aplica un operador relacional a un vector se obtiene otro vector lógico que resulta de aplicar el operador relacional a cada uno de los elementos del vector. De esta manera se puede realizar filtros para obtener los elementos de un vector que cumplen una determinada condición. 
 
 :::{#exm-filtros}
-A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante condiciones.
 ```{r}
 x <- 1:6
 x %% 2 == 0
@@ -155,7 +147,6 @@ x[x %% 2 == 0 & x < 5]
 Si los elementos de un vector tienen nombre, es posible acceder a ellos usando sus nombres como índices.
 
 :::{#exm-acceso-vector-nombres}
-A continuación se muestran varios ejemplos de acceso a los elementos de un vector mediante índices de cadena.
 ```{r}
 notas <- c("Matemáticas" = 8.2, "Física" = 6.5, "Economía" = 4.5)
 notas["Física"]
@@ -170,7 +161,6 @@ Para comprobar si un valor en particular es un elemento de un vector se puede ut
 - `x %in% y`: Devuelve el booleano `TRUE` si `x` es un elemento del vector `y`, y `FALSE` en caso contrario.
 
 :::{#exm-pertenencia-vector}
-A continuación se muestran varios ejemplos de pertenencia de elementos a un vector.
 ```{r}
 x <- 1:3
 2 %in% x
@@ -186,7 +176,6 @@ Para modificar uno o varios elementos de un vector basta con acceder a esos elem
 - `v[c(i,j,...)] <- x`: Asigna el dato `x` a las posiciones `i`, `j`, etc. del vector `v`.
 
 :::{#exm-modificacion-vectores}
-A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
 ```{r}
 x <- c(1, 2, 3)
 x[2] <- 0
@@ -204,7 +193,6 @@ Para añadir nuevos elementos a un vector pueden usarse las siguientes funciones
 - `append(x, y, pos)`: Devuelve el vector que resulta de añadir al vector `x` los elementos del vector `y`, a continuación de la posición `pos`. El parámetro `pos` es opcional y si no se indica, los elementos de `y` se añaden al final de los de `x`.
 
 :::{#exm-añadir-elementos-vector}
-A continuación se muestran varios ejemplos de añadir nuevos elementos a un vector.
 ```{r}
 x <- c(1, 2, 3)
 c(x, c(4, 5))
@@ -217,7 +205,6 @@ append(x, c(4, 5), 2)
 Para eliminar los elementos que ocupan una determinada posición se utiliza el operador de acceso, es decir, los corchetes `[ ]` pero con los índices correspondientes a las posiciones a eliminar, en negativo.
 
 :::{#exm-eliminar-elementos-vector}
-A continuación se muestran varios ejemplos de eliminar elementos de un vector.
 ```{r}
 x <- c("a", "b", "c", "d", "e")
 x[-3]
@@ -236,7 +223,6 @@ Para eliminar los elementos de un vector basta con asignar `NULL` a la variable 
 Para vectores numéricos las operaciones aritméticas habituales se aplican elemento a elemento. Si los vectores tienen distinto tamaño, el tamaño del vector más pequeño se equipara al tamaño del mayor, reutilizando sus elementos, empezando por el primero.
 
 :::{#exm-operaciones-aritmeticas-vectores}
-A continuación se muestran varios ejemplos de operaciones aritméticas con vectores numéricos. 
 ```{r}
 x <- c(1, 2, 3)
 y <- c(0, 1, -1)
@@ -252,7 +238,6 @@ x ^ y
 Para calcular el producto escalar de dos vectores numéricos se utiliza el operador `%*%`. Si los vectores tienen distinto tamaño se produce un error.
 
 :::{#exm-producto-escalar}
-A continuación se muestra un ejemplo del producto escalar de dos vectores.
 ```{r}
 x <- c(1, 2, 3)
 y <- c(0, 1, -1)
@@ -273,7 +258,6 @@ Para definir un factor se utiliza la siguiente función:
 Los factores son en realidad vectores de números enteros a los que se le añade un atributo especial para indicar los niveles del factor.
 
 :::{#exm-creacion-factores}
-A continuación se muestran varios ejemplos de creación de factores.
 ```{r}
 sexo <- factor(c("mujer", "hombre", "mujer"))
 sexo
@@ -287,7 +271,6 @@ grupo.sanguineo
 Es posible establecer un orden entre los niveles de un factor añadiendo el parámetro `ordered = TRUE` a la función anterior. Esto es útil para representar categorías ordinales entre las que existe un orden natural.
 
 :::{#exm-creacion-factor-ordenado}
-A continuación se muestra un ejemplo de creación de un factor ordenado.
 ```{r}
 nivel.estudio <- factor(c("Secundarios", "Graduado", "Bachiller"), levels = c("Sin estudios", "Primarios", "Secundarios", "Bachiller", "Graduado"), ordered = TRUE)
 nivel.estudio
@@ -305,7 +288,6 @@ Se puede acceder a los elementos de un factor de la misma manera que se accede a
 - `levels(x)`: Devuelve un vector con los niveles del factor `x`.
 
 :::{#exm-niveles-factor}
-A continuación se muestran varios ejemplos de acceso a los elementos y los niveles de un factor.
 ```{r}
 sexo <- factor(c("mujer", "hombre", "mujer"))
 sexo[2]
@@ -344,7 +326,6 @@ Para construir una lista se utiliza la función `list()`:
 - `list(x1, x2, ...)`: Devuelve la lista con los elementos `x1`, `x2`, etc.
 
 :::{#exm-creacion-listas}
-A continuación se muestran varios ejemplos de creación de listas.
 ```{r}
 list(1, "dos", TRUE)
 # Lista con vectores y listas
@@ -361,7 +342,6 @@ list()
 Al igual que con los vectores, es posible asignar un nombre a cada uno de los elementos de una lista.
 
 :::{#exm-creacion-listas-nombres}
-A continuación se muestra un ejemplo de creación de una lista con nombres.
 ```{r}
 list("nombre" = "María", "edad" = 21, "dirección" = list("calle" = "Delicias", "número" = 24, "municipio" = "Madrid"))
 ```
@@ -372,7 +352,6 @@ Para obtener los nombres de una lista se utiliza la siguiente función:
 - `names(x)`: Devuelve un vector de cadenas de caracteres con los nombres de los elementos de la lista `x`.
 
 :::{#exm-acceso-listas}
-A continuación se muestra un ejemplo de acceso a los nombres de una lista.
 ```{r}
 persona <- list("nombre" = "María", "edad" = 21, "dirección" = list("calle" = "Delicias", "número" = 24, "municipio" = "Madrid"))
 names(persona)
@@ -386,7 +365,6 @@ El número de elementos de una lista es su _tamaño_ y puede averiguarse con la 
 - `lenght(x)`: Devuelve el número de elementos de la lista `x`.
 
 :::{#exm-tamaño-lista}
-A continuación se muestran varios ejemplos la obtención del tamaño de una lista.
 ```{r}
 length(list(1, "dos", TRUE))
 length(list(1, c("dos", "tres"), list(4, "cinco")))
@@ -403,7 +381,6 @@ Se accede a los elementos de una lista de forma similar a los vectores, mediante
 Al igual que los vectores, los elementos de una lista están ordenados y se puede utilizar un índice entero para acceder a los elementos que ocupan una determinada posición.
 
 :::{#exm-acceso-lista-indice-entero}
-A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices enteros.
 ```{r}
 x <- list(1, "dos", TRUE, 4.5)
 # Acceso al elemento que está en la segunda posición
@@ -420,7 +397,6 @@ x[c(-1, -4)]
 Cuando se utiliza un índice lógico, se obtienen los elementos correspondientes a las posiciones donde está el valor booleano `TRUE`.
 
 :::{#exm-acceso-listas-logico}
-A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices lógicos.
 ```{r}
 x <- list(1, "dos", TRUE, 4.5)
 x[c(T,F,F,T)]
@@ -436,7 +412,6 @@ Obsérvese que para los elementos que no tiene sentido la comparación se obtien
 Si los elementos de una lista tienen nombre, se puede acceder a ellos utilizando sus nombres como índices. La única diferencia con el acceso mediante cadenas de vectores es que se obtiene siempre una lista, incluso cuando sólo se quiere acceder a un elemento. Para obtener un elemento, y no una lista con ese único elemento, se utilizan dobles corchetes `[[ ]]`.
 
 :::{#exm-acceso-listas-nombres}
-A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices de cadena.
 ```{r}
 persona <- list("nombre" = "María", "edad" = 21, "dirección" = list("calle" = "Delicias", "número" = 24, "municipio" = "Madrid"))
 persona[c("edad", "nombre")]
@@ -452,7 +427,6 @@ persona[["dirección"]][["municipio"]]
 Una alternativa a los dobles corchetes es el operador de acceso a listas `$`. Este operador además permite utilizar coincidencias parciales en los nombres de los elementos para acceder a ellos.
 
 :::{#exm-acceso-listas-nombres-$}
-A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante el operador `$`.
 ```{r}
 persona <- list("nombre" = "María", "edad" = 21, "dirección" = list("calle" = "Delicias", "número" = 24, "municipio" = "Madrid"))
 # Acceso a un único elemento
@@ -469,7 +443,6 @@ persona$dirección$municipio
 Para modificar uno o varios elementos de una lista basta con acceder a esos elementos y reasignarles valores con el operador de asignación.
 
 :::{#exm-modificacion-listas}
-A continuación se muestran varios ejemplos de modificación de los elementos de una lista.
 ```{r}
 persona <- list("nombre" = "María", "edad" = 21)
 persona$edad <- 22
@@ -490,7 +463,6 @@ Para añadir elementos sin nombre o en una posición determinada se puede utiliz
 - `append(x, y, pos)`: Devuelve la lista vector que resulta de añadir a `x` los elementos de la lista `y`, a continuación de la posición `pos`. El parámetro `pos` es opcional y si no se indica, los elementos de `y` se añaden al final de los de `x`.
 
 :::{#exm-añadir-elementos-listas}
-A continuación se muestran varios ejemplos de añadir nuevos elementos a una lista.
 ```{r}
 persona <- list("nombre" = "María", "edad" = 21)
 persona$email <- "maria@ceu.es"
@@ -506,7 +478,6 @@ Es posible convertir una lista en un vector con la siguiente función:
 - `unlist(x)`: Devuelve el vector que resulta de aplanar recursivamente la lista `x` y convertir todos los elementos al mismo tipo mediante coerción de tipos.
 
 :::{#exm-aplanar-lista}
-A continuación se muestran varios ejemplos de conversión de una lista en un vector.
 ```{r}
 persona <- list("nombre" = "María", "edad" = 21, "dirección" = list("calle" = "Delicias", "número" = 24, "municipio" = "Madrid"))
 unlist(persona)
@@ -529,7 +500,6 @@ Para crear una matriz se utiliza la siguiente función:
 - `matrix(x, nrow = m, ncol = n)`: Devuelve la matriz con los elementos del vector `x` organizados en `n` filas y `m` columnas. Habitualmente basta con especificar el número de filas o el número de columnas.
 
 :::{#exm-creacion-matrices}
-A continuación se muestran varios ejemplos de creación de matrices.
 ```{r}
 matrix(1:6, nrow = 2, ncol = 3)
 matrix(1:6, nrow = 2)
@@ -542,7 +512,6 @@ matrix()
 Como se puede observar en el ejemplo anterior, los elementos se disponen por columnas, pero se pueden disponer los elementos por filas pasando el parámetro `byrow = TRUE` a la función `matrix`.
 
 :::{#exm-creacion-matrices-por-filas}
-A continuación se muestran varios ejemplos de creación de matrices.
 ```{r}
 matrix(1:6, nrow = 2)
 matrix(1:6, nrow = 2, byrow = TRUE)
@@ -554,7 +523,6 @@ matrix(1:6, nrow = 2, byrow = TRUE)
 Es posible poner nombres a las filas y a las columnas de una matriz añadiendo el parámetro `dimnames` y pasándole una lista de dos vectores de cadenas con los nombres de las filas y las columnas respectivamente.
 
 :::{#exm-creacion-matrices-con-nombres}
-A continuación se muestran varios ejemplos de creación de matrices con nombres de filas y columnas.
 ```{r}
 matrix(1:6, nrow = 2, ncol = 3, dimnames = list(c("fila1", "fila2"), c("columna1", "columna2", "columna3")))
 ```
@@ -566,7 +534,6 @@ Para obtener los nombres de las filas y las columnas de una matriz se utilizan l
 - `colnames(x)`: Devuelve un vector de cadenas de caracteres con los nombres de las columnas de la matriz `x`.
 
 :::{#exm-obtencion-nombres-matriz}
-A continuación se muestran varios ejemplos de obtención de los nombres de las filas y columnas de una matriz con nombres.
 ```{r}
 x <- matrix(1:6, nrow = 2, ncol = 3, dimnames = list(c("fila1", "fila2"), c("columna1", "columna2", "columna3")))
 rownames(x)
@@ -584,7 +551,6 @@ Para obtener el número de elementos y las dimensiones de una matriz se pueden u
 - `dim(x)`: Devuelve un vector de dos enteros con el número de filas y el número de columnas de la matriz `x`.
 
 :::{#exm-dimensiones-matriz}
-A continuación se muestran varios ejemplos de acceso a las dimensiones de una matriz.
 ```{r}
 x <- matrix(1:6, nrow = 2)
 length(x)
@@ -597,7 +563,6 @@ dim(x)
 Usando esta última función se pueden modificar las dimensiones de una matriz asignando un vector de dos enteros con las nuevas dimensiones. Esto también permite crear una matriz a partir de un vector.
 
 :::{#exm-modificacion-dimensiones-matriz}
-A continuación se muestran varios ejemplos de modificación de las dimensiones de una matriz.
 ```{r}
 x <- 1:6
 dim(x) <- c(2, 3)
@@ -620,7 +585,6 @@ Para acceder a los elementos de una matriz mediante índices enteros se indica e
 Se puede acceder a más de un elemento indicando un vector de enteros para las filas y otro para las columnas. De esta manera se obtiene una submatriz. Si no se indica la fila o la columna se obtienen todos los elementos de todas las filas o columnas. Al igual que para vectores, se pueden utilizar enteros negativos para descartar filas o columnas
 
 :::{#exm-acceso-matriz}
-A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.
 ```{r}
 x <- matrix(1:9, nrow = 3)
 x
@@ -642,7 +606,6 @@ x[-3, -2]
 Cuando se utilizan índices lógicos, se obtienen los elementos correspondientes a las filas y columnas donde está el valor booleano `TRUE`.
 
 :::{#exm-acceso-matriz-logico}
-A continuación se muestran varios ejemplos de acceso a los elementos de una matriz.
 ```{r}
 x <- matrix(1:9, nrow = 3)
 x
@@ -662,7 +625,6 @@ x[, c(F, T, F)]
 Si las filas y las columnas de una matriz tienen nombre, es posible acceder a sus elementos usando los nombres de las filas y columnas como índices.
 
 :::{#exm-acceso-matriz-nombres} 
-A continuación se muestran varios ejemplos de acceso a los elementos de una matriz mediante los nombres de sus filas y columnas.
 ```{r}
 x <- matrix(1:9, nrow = 3, dimnames = list(c("f1", "f2", "f3"), c("c1", "c2", "c3")))
 x
@@ -682,7 +644,6 @@ Para comprobar si un valor en particular es un elemento de una matriz se puede u
 - `x %in% y`: Devuelve el booleano `TRUE` si `x` es un elemento de la matriz `y`, y `FALSE` en caso contrario.
 
 :::{#exm-pertenencia-matriz}
-A continuación se muestran varios ejemplos de pertenencia de elementos a una matriz.
 ```{r}
 x <- matrix(1:9, nrow = 3)
 2 %in% x
@@ -695,7 +656,6 @@ x <- matrix(1:9, nrow = 3)
 Para modificar uno o varios elementos de una matriz basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.
 
 :::{#exm-modificacion-matriz}
-A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
 ```{r}
 x <- matrix(1:9, nrow = 3)
 x
@@ -714,7 +674,6 @@ Para añadir nuevas filas o columnas a una matriz se utilizan las siguientes fun
 - `cbind(x, y)`: Devuelve la matriz que resulta de añadir nuevas columnas a la matriz `x` con los elementos del vector `y`.
 
 :::{#exm-añadir-filas-columnas-matriz}
-A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a una matriz.
 ```{r}
 x <- matrix(1:6, nrow = 2)
 x
@@ -751,7 +710,6 @@ t(x)
 Para matrices numéricas las operaciones aritméticas habituales se aplican elemento a elemento. Si las dimensiones de las matrices son distintas se produce un error.
 
 :::{#exm-operaciones-aritmeticas-matrices}
-A continuación se muestran varios ejemplos de operaciones aritméticas elemento a elemento con matrices numéricas.
 ```{r}
 x <- matrix(1:6, nrow = 2)
 x
@@ -773,7 +731,6 @@ Obsérvese en el ejemplo anterior que la división por 0 produce el valor `Inf` 
 Para multiplicar dos matrices numéricas se utiliza el operador `%*%`.
 
 :::{#exm-producto-matrices}
-A continuación se muestran varios ejemplos del producto de dos matrices numéricas.
 ```{r}
 x <- matrix(1:6, ncol = 3)
 y <- matrix(1:6, nrow = 3)
@@ -793,7 +750,6 @@ Para calcular el determinante de una matriz numérica cuadrada se utiliza la sig
 - `det(x)`: Devuelve el determinante de la matriz `x`. Si `x` no es una matriz numérica cuadrada produce un error.
 
 :::{#exm-determinante}
-A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.
 ```{r}
 x <- matrix(1:4, ncol = 2)
 det(x)
@@ -807,7 +763,6 @@ Para calcular la matriz inversa de una matriz numérica cuadrada se utiliza la s
 - `solve(x)`: Devuelve la matriz inversa de la matriz `x`. Si `x` no es una matriz numérica cuadrada produce un error. Si la matriz no es invertible por tener determinante nulo también se obtiene un error.
 
 :::{#exm-inversa-matriz}
-A continuación se muestra un ejemplo del cálculo del determinante de una matriz numérica cuadrada.
 ```{r}
 x <- matrix(1:4, nrow = 2)
 solve(x)
@@ -823,7 +778,6 @@ Para calcular los autovalores y los autovectores de una matriz numérica cuadrad
 - `eigen(x)`: Devuelve una lista con los autovalores y los autovectores de la matriz `x`. Para acceder a los autovalores se utiliza el nombre `values` y para acceder a los autovectores se utiliza el nombre `vectors`. Si `x` no es una matriz numérica cuadrada produce un error.
 
 :::{#exm-autovalores-autovectores}
-A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada.
 
 ```{r}
 x <- matrix(1:4, nrow = 2)
@@ -848,7 +802,6 @@ Para crear un data frame se utiliza la siguiente función:
 - `data.frame(nombrex = x, nombrey = y, ...)`: Devuelve el data frame con columnas los vectores `x`, `y`, etc. y nombres de columna `nombrex`, `nombrey`, etc.
 
 :::{#exm-creacion-data-frames}
-A continuación se muestran varios ejemplos de la creación de data frames.
 ```{r}
 df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
 df
@@ -864,7 +817,6 @@ Para grandes conjuntos de datos es más común crear un data frame a partir de u
 - `read.csv2(f)`: Funciona igual que la función anterior pero utiliza como separador de columnas el punto y coma `;` y como separador de decimales la coma `,`.
 
 :::{#exm-creacion-data-frame-csv}
-A continuación se muestra un ejemplo de creación de un data frame a partir de un fichero csv.
 ```{r}
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
 df
@@ -885,7 +837,6 @@ Para convertir otras estructuras de datos en data frames, se utiliza la siguient
 Puesto que un data frame es una lista, se puede acceder a sus elementos como se accede a los elementos de una lista utilizando índices. Con corchetes simples `[ ]` se obtiene siempre un data frame, mientras que con corchetes dobles `[[ ]]` o `$` se obtiene un vector. Pero también se puede acceder a los elementos de un data frame como si fuese una matriz, indicando un par de índices para las filas y las columnas respectivamente.
 
 :::{#exm-acceso-data-frame}
-A continuación se muestran varios ejemplos de acceso a los elementos de un data frame.
 ```{r}
 df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
 df
@@ -909,7 +860,6 @@ Para acceder a las primeras o últimas filas de un data frame se pueden utilizar
 Estas funciones son útiles para darse una idea del contenido de un data frame con muchas filas.
 
 :::{#exm-acceso-primeras-ultimas-filas-data-frame}
-A continuación se muestran varios ejemplos de acceso a las primeras o últimas filas de un data frame.
 ```{r}
 df <- data.frame(x = 1:26, y = letters) # letters es un vector predefinido con las letras del abecedario.
 head(df, 3)
@@ -922,7 +872,6 @@ tail(df, 2)
 Para modificar uno o varios elementos de un data frame basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.
 
 :::{#exm-modificacion-data-frames}
-A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
 ```{r}
 df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
 df
@@ -940,7 +889,6 @@ Para añadir nuevas filas o columnas a una data frame se utilizan las mismas fun
 - `cbind(df, nombrex = x)`: Devuelve el data frame que resulta de añadir nuevas columnas al data frame `df` con los elementos del vector `x` con nombre `nombrex`.
 
 :::{#exm-añadir-filas-columnas-data-frame}
-A continuación se muestran varios ejemplos de añadir nuevas filas y columnas a un data frame.
 ```{r}
 df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5))
 df
@@ -956,7 +904,6 @@ cbind(df, créditos = c(6, 4, 3))
 Para eliminar una columna de un data frame basta con acceder a la columna y asignarle el valor `NULL`, mientras que para eliminar una fila basta con acceder a la fila con índice negativo. 
 
 :::{#exm-eliminacion-filas-columnas-data-frame}
-A continuación se muestran varios ejemplos de eliminación de filas y columnas de un data frame.
 ```{r}
 df <- data.frame(asignatura = c("Matemáticas", "Física", "Economía"), nota = c(8.5, 7, 4.5), créditos = c(6, 4, 3))
 df
@@ -982,85 +929,85 @@ La siguiente tabla recoge las notas de los alumnos de un curso con dos asignatur
 | Luis | H | 3.5 | 5 |
 | Sara | M | 6.2 | 4 |
 
-a. Definir cuatro vectores con el nombre, el sexo y las notas de Física y Química.
+a.  Definir cuatro vectores con el nombre, el sexo y las notas de Física y Química.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-nombre <- c("Carlos", "María", "Carmen", "Pedro", "Luis", "Sara")
-sexo <- c("H", "M", "M", "H", "H", "M")
-fisica <- c(6.7, 7.2, 5.5, NA, 3.5, 6.2)
-quimica <- c(8.1, 9.5, 5, 4.5, 5, 4)
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    nombre <- c("Carlos", "María", "Carmen", "Pedro", "Luis", "Sara")
+    sexo <- c("H", "M", "M", "H", "H", "M")
+    fisica <- c(6.7, 7.2, 5.5, NA, 3.5, 6.2)
+    quimica <- c(8.1, 9.5, 5, 4.5, 5, 4)
+    ```
+    :::
 
-b. Convertir el sexo en un factor y mostrar sus niveles.
+a.  Convertir el sexo en un factor y mostrar sus niveles.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-sexo <- factor(sexo)
-levels(sexo)
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    sexo <- factor(sexo)
+    levels(sexo)
+    ```
+    :::
 
-c. Crear un nuevo vector con la nota media de Física y Química.
+a.  Crear un nuevo vector con la nota media de Física y Química.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-media <- (fisica + quimica) / 2
-media
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    media <- (fisica + quimica) / 2
+    media
+    ```
+    :::
 
-d. Crear la variable booleana `aprobado` que tenga el valor `TRUE` si la media es mayor o igual que 5 y `FALSE` en caso contrario.
+a.  Crear la variable booleana `aprobado` que tenga el valor `TRUE` si la media es mayor o igual que 5 y `FALSE` en caso contrario.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-aprobado <- media >= 5
-aprobado
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    aprobado <- media >= 5
+    aprobado
+    ```
+    :::
 
-e. Aplicar un filtro al vector de nombres para quedarse con los nombres de los alumnos que han aprobado.
+a.  Aplicar un filtro al vector de nombres para quedarse con los nombres de los alumnos que han aprobado.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-nombre[aprobado & !is.na(aprobado)]
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    nombre[aprobado & !is.na(aprobado)]
+    ```
+    :::
 
-f. Crear un data frame con el nombre, sexo y las notas de Física y Química.
+a.  Crear un data frame con el nombre, sexo y las notas de Física y Química.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df <- data.frame(nombre, sexo, fisica, quimica)
-df
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df <- data.frame(nombre, sexo, fisica, quimica)
+    df
+    ```
+    :::
 
-g. Añadir el vector con la media al data frame.
+a.  Añadir el vector con la media al data frame.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df$media <- media
-df
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df$media <- media
+    df
+    ```
+    :::
 
-h. Filtrar el data frame para quedarse con el nombre y la media de las mujeres que han aprobado.
+a.  Filtrar el data frame para quedarse con el nombre y la media de las mujeres que han aprobado.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df[sexo == "M" & media >= 5, c("nombre", "media")]
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df[sexo == "M" & media >= 5, c("nombre", "media")]
+    ```
+    :::
 :::
 
 
