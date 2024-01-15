@@ -8,7 +8,6 @@
 ]{scrreport}
 
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -18,6 +17,10 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -138,7 +141,7 @@
 \DeclareMathOperator{\Ac}{Ac}
 \DeclareMathOperator{\sen}{sen}
 \makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
 \definecolor{quarto-callout-color}{HTML}{909090}
 \definecolor{quarto-callout-note-color}{HTML}{0758E5}
@@ -194,11 +197,11 @@
 \newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
 \usepackage{amsthm}
 \theoremstyle{definition}
-\newtheorem{example}{Ejemplo}[chapter]
-\theoremstyle{definition}
 \newtheorem{exercise}{Ejercicio}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Ejemplo}[chapter]
 \theoremstyle{remark}
-\renewcommand*{\proofname}{Prueba}
+\AtBeginDocument{\renewcommand*{\proofname}{Prueba}}
 \newtheorem*{remark}{Observación}
 \newtheorem*{solution}{Solución}
 \makeatother
@@ -207,10 +210,12 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 \makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \makeatother
 \makeatletter
 \@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
 \makeatother
 \makeatletter
 \makeatother
@@ -249,11 +254,11 @@
 \makeatother
 \subtitle{Con ejemplos aplicados a las Ciencias de la Salud}
 \author{Alfredo Sánchez Alberca}
-\date{6/1/22}
+\date{2022-01-06}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Indice de contenidos}
 {
@@ -362,13 +367,13 @@ estadístico serio sin la ayuda de un buen programa de análisis de datos.
 
 \emph{R} es un potente lenguaje de programación que incluye multitud de
 funciones para la representación y el análisis de datos. Fue
-desarrollado por Robert Gentleman y Ross Ihaka en la Universidad de
-Auckland en Nueva Zelanda, aunque actualmente es mantenido por una
+desarrollado en 1993 por Robert Gentleman y Ross Ihaka en la Universidad
+de Auckland en Nueva Zelanda, aunque actualmente es mantenido por una
 enorme comunidad científica en todo el mundo.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.25\textwidth,height=\textheight]{./img/logos/Rlogo.png}
+{\centering \includegraphics[width=0.25\textwidth,height=\textheight]{img/logos/Rlogo.png}
 
 }
 
@@ -388,6 +393,8 @@ datos, como pueden ser SPSS, SAS o Matlab, son múltiples:
   Es multiplataforma. Existen versiones para Windows, Macintosh, Linux y
   otras plataformas.
 \item
+  Es un lenguaje maduro.
+\item
   Está avalado y en constante desarrollo por una amplia comunidad
   científica distribuida por todo el mundo que lo utiliza como estándar
   para el análisis de datos.
@@ -399,13 +406,13 @@ datos, como pueden ser SPSS, SAS o Matlab, son múltiples:
   \href{https://cran.r-project.org/}{repositorio CRAN} (Comprehensive R
   Archive Network) desde donde pueden descargarse libremente.
 \item
-  Es programable, lo que permite que el usuario pueda crear fácilmente
-  sus propias funciones o paquetes para análisis de datos específicos.
-  Existen multitud de libros, manuales y tutoriales libres que permiten
-  su aprendizaje e ilustran el análisis estadístico de datos en
-  distintas disciplinas científicas como las Matemáticas, la Física, la
-  Biología, la Psicología, la Medicina, etc.
+  Diseñado para el análisis la representación de datos.
 \end{itemize}
+
+Existen multitud de libros, manuales y tutoriales libres que permiten su
+aprendizaje e ilustran el análisis estadístico de datos en distintas
+disciplinas científicas como las Matemáticas, la Física, la Biología, la
+Psicología, la Medicina, etc.
 
 \hypertarget{instalaciuxf3n-de-r}{%
 \section{Instalación de R}\label{instalaciuxf3n-de-r}}
@@ -452,7 +459,7 @@ facilitan la gestión de cualquier proyecto:
 \hypertarget{tipos-de-datos-simples}{%
 \chapter{Tipos de datos simples}\label{tipos-de-datos-simples}}
 
-En R existen distintos tipos de datos predefinidos simples:
+En R existen distintos tipos de datos simples predefinidos:
 
 \begin{itemize}
 \item
@@ -461,21 +468,24 @@ En R existen distintos tipos de datos predefinidos simples:
   decimales) que representan números. Por ejemplo, \texttt{1},
   \texttt{-2.0}, \texttt{3.1415} o \texttt{4.5e3}.\\
   Por defecto, cualquier número que se teclee tomará este tipo.
+
+  \begin{itemize}
+  \item
+    \texttt{integer}: Es el tipo de los números enteros. Secuencia de
+    dígitos sin separador de decimales que representan un número entero.
+    Por ejemplo \texttt{1} o \texttt{-2}. Son una subclase del tipo de
+    datos numérico.
+  \item
+    \texttt{double}: Es el tipo de los números reales. Secuencia de
+    dígitos que incluyen decimales separados por punto. Por ejemplo
+    \texttt{3.1415} o \texttt{-2.0}. Son una subclase del tipo de datos
+    numérico.
+  \end{itemize}
 \item
-  \texttt{double}: Es el tipo de los números reales. Secuencia de
-  dígitos que incluyen decimales separados por punto. Por ejemplo
-  \texttt{3.1415} o \texttt{-2.0}. Son una subclase del tipo de datos
-  numérico.
-\item
-  \texttt{integer}: Es el tipo de los números enteros. Secuencia de
-  dígitos sin separador de decimales que representan un número entero.
-  Por ejemplo \texttt{1} o \texttt{-2}. Son una subclase del tipo de
-  datos numérico.
-\item
-  \texttt{character}: Es cualquier cadena de caracteres alfanuméricos.
-  Secuencia de caracteres alfanuméricos que representan texto. Se
-  escriben entre comillas simples o dobles. Por ejemplo \texttt{"Hola"}
-  o \texttt{\textquotesingle{}Hola\textquotesingle{}}.
+  \texttt{character}: Es el tipo de las cadenas de caracteres. Secuencia
+  de caracteres alfanuméricos que representan texto. Se escriben entre
+  comillas simples o dobles. Por ejemplo \texttt{"Hola"} o
+  \texttt{\textquotesingle{}Hola\textquotesingle{}}.
 \item
   \texttt{logical}: Es el tipo de los booleanos. Puede tomar cualquiera
   de los dos valores lógicos \texttt{TRUE} (verdadero) o \texttt{FALSE}
@@ -501,8 +511,7 @@ función:
   \texttt{class(x)}: Devuelve el tipo del dato \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-tipos-datos}{}}%
-\begin{example}[]\label{exm-tipos-datos}
+\begin{example}[]\protect\hypertarget{exm-tipos-datos}{}\label{exm-tipos-datos}
 
 A continuación se muestran los tipos de algunos datos.
 
@@ -596,6 +605,32 @@ booleano:
   es del tipo \texttt{NULL}.
 \end{itemize}
 
+\begin{example}[]\protect\hypertarget{exm-tipos-datos-2}{}\label{exm-tipos-datos-2}
+
+~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.double}\NormalTok{(}\FloatTok{3.1415}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.character}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\end{example}
+
 \hypertarget{conversiuxf3n-de-tipos}{%
 \section{Conversión de tipos}\label{conversiuxf3n-de-tipos}}
 
@@ -658,8 +693,7 @@ aritméticas entre datos numéricos:
   \texttt{y}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-operadores-aritmeticos}{}}%
-\begin{example}[]\label{exm-operadores-aritmeticos}
+\begin{example}[]\protect\hypertarget{exm-operadores-aritmeticos}{}\label{exm-operadores-aritmeticos}
 
 A continuación se muestran varios ejemplos de operaciones aritméticas.
 
@@ -733,31 +767,30 @@ Comparan dos números y devuelven un valor lógico.
 \begin{itemize}
 \tightlist
 \item
-  \texttt{x\ ==\ y} : Devuelve \texttt{TRUE} si el número \texttt{x} es
+  \texttt{x\ ==\ y}: Devuelve \texttt{TRUE} si el número \texttt{x} es
   igual que el número \texttt{y}, y \texttt{FALSE} en caso contrario.
 \item
-  \texttt{x\ \textgreater{}\ y} : Devuelve \texttt{TRUE} si el número
+  \texttt{x\ \textgreater{}\ y}: Devuelve \texttt{TRUE} si el número
   \texttt{x} es mayor que el número \texttt{y}, y \texttt{FALSE} en caso
   contrario.
 \item
-  \texttt{x\ \textless{}\ y} : Devuelve \texttt{TRUE} si el número
+  \texttt{x\ \textless{}\ y}: Devuelve \texttt{TRUE} si el número
   \texttt{x} es menor que el número \texttt{y}, y \texttt{FALSE} en caso
   contrario.
 \item
-  \texttt{x\ \textgreater{}=\ y} : Devuelve \texttt{TRUE} si el número
+  \texttt{x\ \textgreater{}=\ y}: Devuelve \texttt{TRUE} si el número
   \texttt{x} es mayor o igual que el número \texttt{y}, y \texttt{FALSE}
   en caso contrario.
 \item
-  \texttt{x\ \textless{}=\ y} : Devuelve \texttt{TRUE} si el número
+  \texttt{x\ \textless{}=\ y}: Devuelve \texttt{TRUE} si el número
   \texttt{x} es menor o igual a que el número \texttt{y,} y
   \texttt{FALSE} en caso contrario.
 \item
-  \texttt{x\ !=\ y} : Devuelve \texttt{TRUE} si el número \texttt{x} es
+  \texttt{x\ !=\ y}: Devuelve \texttt{TRUE} si el número \texttt{x} es
   distinto del número \texttt{y}, y \texttt{FALSE} en caso contrario.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-operadores-relacionales}{}}%
-\begin{example}[]\label{exm-operadores-relacionales}
+\begin{example}[]\protect\hypertarget{exm-operadores-relacionales}{}\label{exm-operadores-relacionales}
 
 A continuación se muestran varios ejemplos de operaciones relacionales.
 
@@ -833,6 +866,121 @@ A continuación se muestran varios ejemplos de operaciones relacionales.
 
 \end{example}
 
+\hypertarget{funciones-y-constantes-numuxe9ricas}{%
+\subsection{Funciones y constantes
+numéricas}\label{funciones-y-constantes-numuxe9ricas}}
+
+Las siguientes constantes y funciones matemáticas también están ya
+predefinidas.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pi}: Devuelve el número \(\pi\).
+\item
+  \texttt{sqrt(x)}: Devuelve la raíz cuadrada de \texttt{x}.
+\item
+  \texttt{abs(x)}: Devuelve el valor absoluto de \texttt{x}.
+\item
+  \texttt{round(x,\ n)}: Devuelve el redondeo de \texttt{x} a \texttt{n}
+  decimales.
+\item
+  \texttt{exp(x)}: Devuelve la exponencial de \texttt{x} (\(e^x\)).
+\item
+  \texttt{log(x)}: Devuelve el logaritmo neperiano de \texttt{x}.
+\item
+  \texttt{sin(x)}: Devuelve el seno del ángulo \texttt{x} en radianes.
+\item
+  \texttt{cos(x)}: Devuelve el coseno del ángulo \texttt{x} en radianes.
+\item
+  \texttt{tan(x)}: Devuelve la tangente del ángulo \texttt{x} en
+  radianes.
+\item
+  \texttt{asin(x)}: Devuelve el arcoseno de \texttt{x}.
+\item
+  \texttt{acos(x)}: Devuelve el arcocoseno de \texttt{x}.
+\item
+  \texttt{atan(x)}: Devuelve el arcotangente de \texttt{x}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{example}[]\protect\hypertarget{exm-funciones-numéricas}{}\label{exm-funciones-numéricas}
+
+~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{abs}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FloatTok{1.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{exp}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2.718282
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{log}\NormalTok{(}\FunctionTok{exp}\NormalTok{(}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cos}\NormalTok{(pi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{asin}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1.570796
+\end{verbatim}
+
+\end{example}
+
 \hypertarget{operaciones-con-cadenas}{%
 \section{Operaciones con cadenas}\label{operaciones-con-cadenas}}
 
@@ -844,8 +992,7 @@ Existen muchas funciones para cadenas de texto pero las más comunes son:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{nchar(c)}: Devuelve un número entero con el número de
-  caracteres de la cadena.
+  \texttt{nchar(c)}: Devuelve el número de caracteres de la cadena.
 \item
   \texttt{paste(x,\ y,\ ...,\ sep=s)}: Concatena las cadenas \texttt{x},
   \texttt{y}, etc. separándolas por la cadena \texttt{s}. Por defecto la
@@ -862,8 +1009,7 @@ Existen muchas funciones para cadenas de texto pero las más comunes son:
   cadena \texttt{c} a mayúsculas.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-operaciones-cadenas}{}}%
-\begin{example}[]\label{exm-operaciones-cadenas}
+\begin{example}[]\protect\hypertarget{exm-operaciones-cadenas}{}\label{exm-operaciones-cadenas}
 
 A continuación se muestran varios ejemplos de operaciones con cadenas de
 texto.
@@ -973,8 +1119,7 @@ cadenas}\label{operaciones-de-comparaciuxf3n-de-cadenas}}
 \emph{Utilizan el orden alfabético, las minúsculas van antes que las
 mayúsculas, y los números antes que las letras.}
 
-\leavevmode\vadjust pre{\hypertarget{exm-operaciones-comparacion-cadenas}{}}%
-\begin{example}[]\label{exm-operaciones-comparacion-cadenas}
+\begin{example}[]\protect\hypertarget{exm-operaciones-comparacion-cadenas}{}\label{exm-operaciones-comparacion-cadenas}
 
 A continuación se muestran varios ejemplos de operaciones de comparación
 de cadenas.
@@ -1084,11 +1229,13 @@ A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
 \addcontentsline{toc}{subsubsection}{Tabla de verdad}
 
 \begin{longtable}[]{@{}ccccc@{}}
-\toprule()
+\toprule\noalign{}
 \texttt{x} & \texttt{y} & \texttt{!x} & \texttt{x\ \&\ y} &
 \texttt{x\ \textbar{}\ y} \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 \texttt{FALSE} & \texttt{FALSE} & \texttt{TRUE} & \texttt{FALSE} &
 \texttt{FALSE} \\
 \texttt{FALSE} & \texttt{TRUE} & \texttt{TRUE} & \texttt{FALSE} &
@@ -1097,11 +1244,9 @@ A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
 \texttt{TRUE} \\
 \texttt{TRUE} & \texttt{TRUE} & \texttt{FALSE} & \texttt{TRUE} &
 \texttt{TRUE} \\
-\bottomrule()
 \end{longtable}
 
-\leavevmode\vadjust pre{\hypertarget{exm-operadores-logicos}{}}%
-\begin{example}[]\label{exm-operadores-logicos}
+\begin{example}[]\protect\hypertarget{exm-operadores-logicos}{}\label{exm-operadores-logicos}
 
 A continuación se muestran varios ejemplos de operaciones lógicas con
 booleanos.
@@ -1161,9 +1306,9 @@ booleanos.
 \hypertarget{variables}{%
 \section{Variables}\label{variables}}
 
-Una variable es un identificador ligado a algún valor.
+Una variable es un identificador ligado a un valor.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{itemize}
 \tightlist
@@ -1178,8 +1323,8 @@ Una variable es un identificador ligado a algún valor.
 \end{tcolorbox}
 
 A diferencia de otros lenguajes de programación, las variables no tienen
-asociado un tipo y no es necesario declararlas antes de usarlas (tipado
-dinámico).
+asociado un tipo de dato y no es necesario declararlas antes de usarlas
+(tipado dinámico).
 
 Para asignar un valor a una variable se utiliza el operador de
 asignación \texttt{\textless{}-}:
@@ -1208,8 +1353,7 @@ espacio que ocupan sus datos asociados con la siguiente función:
   \texttt{rm(x)}: Elimina la variable \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-variables}{}}%
-\begin{example}[]\label{exm-variables}
+\begin{example}[]\protect\hypertarget{exm-variables}{}\label{exm-variables}
 
 A continuación se muestran varios ejemplos de asignaciones de valores a
 variables.
@@ -1266,8 +1410,10 @@ Al evaluar una expresiones R utiliza el siguiente orden de prioridad de
 evaluación:
 
 \begin{longtable}[]{@{}cc@{}}
-\toprule()
+\toprule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 1 & Funciones predefinidas \\
 2 & Potencias (\texttt{\^{}}) \\
 3 & Productos y cocientes (\texttt{*}, \texttt{/}, \texttt{\%\%}) \\
@@ -1279,14 +1425,12 @@ evaluación:
 7 & Conjunción (\texttt{\&}) \\
 8 & Disyunción (\texttt{\textbar{}}) \\
 9 & Asignación (\texttt{\textless{}-}) \\
-\bottomrule()
 \end{longtable}
 
 Se puede saltar el orden de evaluación utilizando paréntesis
 \texttt{(\ )}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-prioridad-evaluacion}{}}%
-\begin{example}[]\label{exm-prioridad-evaluacion}
+\begin{example}[]\protect\hypertarget{exm-prioridad-evaluacion}{}\label{exm-prioridad-evaluacion}
 
 A continuación se muestran varios ejemplos de evaluación de expresiones.
 
@@ -1348,32 +1492,30 @@ A continuación se muestran varios ejemplos de evaluación de expresiones.
 \hypertarget{ejercicios}{%
 \section{Ejercicios}\label{ejercicios}}
 
-\leavevmode\vadjust pre{\hypertarget{exr-tipos-datos-1}{}}%
-\begin{exercise}[]\label{exr-tipos-datos-1}
+\begin{exercise}[]\protect\hypertarget{exr-tipos-datos-1}{}\label{exr-tipos-datos-1}
 
 Se dispone de los siguientes datos de una persona:
 
 \begin{longtable}[]{@{}cc@{}}
-\toprule()
+\toprule\noalign{}
 Variable & Valor \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 edad & 20 \\
 estatura & 165 \\
 peso & 60 \\
 sexo & mujer \\
-\bottomrule()
 \end{longtable}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
-\tightlist
 \item
   Declarar las variables anteriores y asignarles los valores
   correspondientes.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+  \begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1385,20 +1527,16 @@ sexo & mujer \\
 \end{Highlighting}
 \end{Shaded}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
+  \end{tcolorbox}
 \item
   Definir la variable numérica imc con el índice de masa corporal
   aplicando la siguiente fórmula a las variables anteriores:
-\end{enumerate}
 
-\[\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}\]
+  \[
+  \mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}
+  \]
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+  \begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1412,22 +1550,33 @@ sexo & mujer \\
 [1] 22.03857
 \end{verbatim}
 
-\end{tcolorbox}
+  \end{tcolorbox}
+\item
+  Mostrar por pantalla el indice de masa corporal calculado en el
+  apartado anterior redondeado a dos decimales y con sus unidades en
+  mayúsculas.
 
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
+  \begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Salida por pantalla}
+\FunctionTok{paste}\NormalTok{(}\StringTok{"Índice de masa corporal: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(imc,}\DecValTok{2}\NormalTok{), }\FunctionTok{toupper}\NormalTok{(}\StringTok{"KG/M²"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Índice de masa corporal:  22.04 KG/M²"
+\end{verbatim}
+
+  \end{tcolorbox}
 \item
   Definir la variable booleana obesa con el valor correspondiente a la
   siguiente condición: ser mujer y no tener una edad superior a 60 y
   tener un índice de masa corporal mayor o igual que 30. ¿Es esta
   persona obesa?
-\end{enumerate}
 
-\end{exercise}
-
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+  \begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1441,7 +1590,10 @@ sexo & mujer \\
 [1] FALSE
 \end{verbatim}
 
-\end{tcolorbox}
+  \end{tcolorbox}
+\end{enumerate}
+
+\end{exercise}
 
 \bookmarksetup{startatroot}
 
@@ -1456,14 +1608,15 @@ su dimensión y a si son homogéneos (todos sus elementos son del mismo
 tipo) o heterogéneos.
 
 \begin{longtable}[]{@{}ccc@{}}
-\toprule()
+\toprule\noalign{}
 Dimensiones & Homogéneos & Heterogéneos \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 1 & Vector & Lista \\
 2 & Matriz & Data frame \\
 n & Array & \\
-\bottomrule()
 \end{longtable}
 
 Para averiguar la estructura de un dato estructurado se puede utilizar
@@ -1505,8 +1658,7 @@ vector de números enteros consecutivos:
   \texttt{x} hasta \texttt{y}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-construccion-vectores}{}}%
-\begin{example}[]\label{exm-construccion-vectores}
+\begin{example}[]\protect\hypertarget{exm-construccion-vectores}{}\label{exm-construccion-vectores}
 
 A continuación se muestran varios ejemplos de construcción de vectores.
 
@@ -1574,8 +1726,7 @@ nombre a un elemento se utiliza la sintaxis \texttt{nombre\ =\ valor},
 donde \texttt{nombre} es una cadena de caracteres y \texttt{valor} es el
 elemento del vector.
 
-\leavevmode\vadjust pre{\hypertarget{exm-vectores-con-nombre}{}}%
-\begin{example}[]\label{exm-vectores-con-nombre}
+\begin{example}[]\protect\hypertarget{exm-vectores-con-nombre}{}\label{exm-vectores-con-nombre}
 
 A continuación se muestra un ejemplo de creación de un vector con
 nombres.
@@ -1602,8 +1753,7 @@ Para acceder a los nombres de un vector se utiliza la siguiente función:
   nombres de los elementos del vector \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-nombres-vector}{}}%
-\begin{example}[]\label{exm-acceso-nombres-vector}
+\begin{example}[]\protect\hypertarget{exm-acceso-nombres-vector}{}\label{exm-acceso-nombres-vector}
 
 A continuación se muestra un ejemplo de acceso a los nombres de un
 vector.
@@ -1634,8 +1784,7 @@ averiguarse con la siguiente función.
   \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-tamauxf1o-vector}{}}%
-\begin{example}[]\label{exm-tamaño-vector}
+\begin{example}[]\protect\hypertarget{exm-tamaño-vector}{}\label{exm-tamaño-vector}
 
 A continuación se muestran varios ejemplos de la obtención del tamaño de
 un vector.
@@ -1673,8 +1822,7 @@ flexibles a los más flexibles: \texttt{logical} \textless{}
 \texttt{integer} \textless{} \texttt{double} \textless{}
 \texttt{character}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-coercion}{}}%
-\begin{example}[]\label{exm-coercion}
+\begin{example}[]\protect\hypertarget{exm-coercion}{}\label{exm-coercion}
 
 A continuación se muestran varios ejemplos de coerciones.
 
@@ -1727,13 +1875,9 @@ Los elementos de un vector están ordenados y el acceso más simple a
 ellos es mediante su número de orden, es decir, indicando entre
 corchetes \texttt{{[}\ {]}} el entero que corresponde a su número de
 orden. Se puede acceder simultáneamente a varios elementos mediante un
-vector con sus números de orden. Por otro lado, también es posible usar
-enteros negativos y en tal caso se obtendrán todos los elementos del
-vector excepto los que ocupan las posiciones correspondientes al valor
-absoluto de los índices negativos. Esta es la forma más habitual de
-eliminar elementos de un vector.
+vector con sus números de orden.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 En R los índices enteros para acceder a los elementos de un vector
 comienzan en 1, a diferencia de otros lenguajes de programación que
@@ -1741,8 +1885,7 @@ empiezan en 0.
 
 \end{tcolorbox}
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-vector}{}}%
-\begin{example}[]\label{exm-acceso-vector}
+\begin{example}[]\protect\hypertarget{exm-acceso-vector}{}\label{exm-acceso-vector}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 un vector mediante índices enteros.
@@ -1802,8 +1945,7 @@ Cuando se utiliza un índice lógico, se obtienen los elementos
 correspondientes a las posiciones donde está el valor booleano
 \texttt{TRUE}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-vector-indice-logico}{}}%
-\begin{example}[]\label{exm-acceso-vector-indice-logico}
+\begin{example}[]\protect\hypertarget{exm-acceso-vector-indice-logico}{}\label{exm-acceso-vector-indice-logico}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 un vector mediante índices lógicos.
@@ -1840,8 +1982,7 @@ aplicar el operador relacional a cada uno de los elementos del vector.
 De esta manera se puede realizar filtros para obtener los elementos de
 un vector que cumplen una determinada condición.
 
-\leavevmode\vadjust pre{\hypertarget{exm-filtros}{}}%
-\begin{example}[]\label{exm-filtros}
+\begin{example}[]\protect\hypertarget{exm-filtros}{}\label{exm-filtros}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 un vector mediante condiciones.
@@ -1888,8 +2029,7 @@ cadena}\label{acceso-mediante-un-uxedndice-de-cadena}}
 Si los elementos de un vector tienen nombre, es posible acceder a ellos
 usando sus nombres como índices.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-vector-nombres}{}}%
-\begin{example}[]\label{exm-acceso-vector-nombres}
+\begin{example}[]\protect\hypertarget{exm-acceso-vector-nombres}{}\label{exm-acceso-vector-nombres}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 un vector mediante índices de cadena.
@@ -1933,8 +2073,10 @@ puede utilizar el operador \texttt{\%in\%}:
   caso contrario.
 \end{itemize}
 
-:::\{\#exm-pertenencia-vector\} A continuación se muestran varios
-ejemplos de pertenencia de elementos a un vector.
+\begin{example}[]\protect\hypertarget{exm-pertenencia-vector}{}\label{exm-pertenencia-vector}
+
+A continuación se muestran varios ejemplos de pertenencia de elementos a
+un vector.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1957,6 +2099,8 @@ ejemplos de pertenencia de elementos a un vector.
 [1] FALSE
 \end{verbatim}
 
+\end{example}
+
 \hypertarget{modificaciuxf3n-de-los-elementos-de-un-vector}{%
 \subsection{Modificación de los elementos de un
 vector}\label{modificaciuxf3n-de-los-elementos-de-un-vector}}
@@ -1965,8 +2109,17 @@ Para modificar uno o varios elementos de un vector basta con acceder a
 esos elementos y usar el operador de asignación para asignar nuevos
 valores.
 
-\leavevmode\vadjust pre{\hypertarget{exm-modificacion-vectores}{}}%
-\begin{example}[]\label{exm-modificacion-vectores}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{v{[}i{]}\ \textless{}-\ x}: Asigna el dato \texttt{x} a la
+  posición \texttt{i} del vector \texttt{v}.
+\item
+  \texttt{v{[}c(i,j,...){]}\ \textless{}-\ x}: Asigna el dato \texttt{x}
+  a las posiciones \texttt{i}, \texttt{j}, etc. del vector \texttt{v}.
+\end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-modificacion-vectores}{}\label{exm-modificacion-vectores}
 
 A continuación se muestran varios ejemplos de modificación de los
 elementos de un vector.
@@ -2016,8 +2169,7 @@ funciones:
   final de los de \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-auxf1adir-elementos-vector}{}}%
-\begin{example}[]\label{exm-añadir-elementos-vector}
+\begin{example}[]\protect\hypertarget{exm-añadir-elementos-vector}{}\label{exm-añadir-elementos-vector}
 
 A continuación se muestran varios ejemplos de añadir nuevos elementos a
 un vector.
@@ -2054,8 +2206,7 @@ utiliza el operador de acceso, es decir, los corchetes \texttt{{[}\ {]}}
 pero con los índices correspondientes a las posiciones a eliminar, en
 negativo.
 
-\leavevmode\vadjust pre{\hypertarget{exm-eliminar-elementos-vector}{}}%
-\begin{example}[]\label{exm-eliminar-elementos-vector}
+\begin{example}[]\protect\hypertarget{exm-eliminar-elementos-vector}{}\label{exm-eliminar-elementos-vector}
 
 A continuación se muestran varios ejemplos de eliminar elementos de un
 vector.
@@ -2104,8 +2255,7 @@ aplican elemento a elemento. Si los vectores tienen distinto tamaño, el
 tamaño del vector más pequeño se equipara al tamaño del mayor,
 reutilizando sus elementos, empezando por el primero.
 
-\leavevmode\vadjust pre{\hypertarget{exm-operaciones-aritmeticas-vectores}{}}%
-\begin{example}[]\label{exm-operaciones-aritmeticas-vectores}
+\begin{example}[]\protect\hypertarget{exm-operaciones-aritmeticas-vectores}{}\label{exm-operaciones-aritmeticas-vectores}
 
 A continuación se muestran varios ejemplos de operaciones aritméticas
 con vectores numéricos.
@@ -2162,8 +2312,7 @@ Para calcular el producto escalar de dos vectores numéricos se utiliza
 el operador \texttt{\%*\%}. Si los vectores tienen distinto tamaño se
 produce un error.
 
-\leavevmode\vadjust pre{\hypertarget{exm-producto-escalar}{}}%
-\begin{example}[]\label{exm-producto-escalar}
+\begin{example}[]\protect\hypertarget{exm-producto-escalar}{}\label{exm-producto-escalar}
 
 A continuación se muestra un ejemplo del producto escalar de dos
 vectores.
@@ -2211,8 +2360,7 @@ Para definir un factor se utiliza la siguiente función:
 Los factores son en realidad vectores de números enteros a los que se le
 añade un atributo especial para indicar los niveles del factor.
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-factores}{}}%
-\begin{example}[]\label{exm-creacion-factores}
+\begin{example}[]\protect\hypertarget{exm-creacion-factores}{}\label{exm-creacion-factores}
 
 A continuación se muestran varios ejemplos de creación de factores.
 
@@ -2267,8 +2415,7 @@ el parámetro \texttt{ordered\ =\ TRUE} a la función anterior. Esto es
 útil para representar categorías ordinales entre las que existe un orden
 natural.
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-factor-ordenado}{}}%
-\begin{example}[]\label{exm-creacion-factor-ordenado}
+\begin{example}[]\protect\hypertarget{exm-creacion-factor-ordenado}{}\label{exm-creacion-factor-ordenado}
 
 A continuación se muestra un ejemplo de creación de un factor ordenado.
 
@@ -2311,8 +2458,7 @@ utiliza la siguiente función:
   \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-niveles-factor}{}}%
-\begin{example}[]\label{exm-niveles-factor}
+\begin{example}[]\protect\hypertarget{exm-niveles-factor}{}\label{exm-niveles-factor}
 
 A continuación se muestran varios ejemplos de acceso a los elementos y
 los niveles de un factor.
@@ -2374,8 +2520,7 @@ diferencia con los vectores es que si el nuevo valor que se quiere
 asignar no está entre los niveles del factor, se obtiene el valor
 \texttt{NA}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-modificacion-factor}{}}%
-\begin{example}[]\label{exm-modificacion-factor}
+\begin{example}[]\protect\hypertarget{exm-modificacion-factor}{}\label{exm-modificacion-factor}
 
 A continuación se muestran varios de modificación de los elementos de un
 factor.
@@ -2453,8 +2598,7 @@ Para construir una lista se utiliza la función \texttt{list()}:
   \texttt{x1}, \texttt{x2}, etc.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-listas}{}}%
-\begin{example}[]\label{exm-creacion-listas}
+\begin{example}[]\protect\hypertarget{exm-creacion-listas}{}\label{exm-creacion-listas}
 
 A continuación se muestran varios ejemplos de creación de listas.
 
@@ -2532,8 +2676,7 @@ list()
 Al igual que con los vectores, es posible asignar un nombre a cada uno
 de los elementos de una lista.
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-listas-nombres}{}}%
-\begin{example}[]\label{exm-creacion-listas-nombres}
+\begin{example}[]\protect\hypertarget{exm-creacion-listas-nombres}{}\label{exm-creacion-listas-nombres}
 
 A continuación se muestra un ejemplo de creación de una lista con
 nombres.
@@ -2573,8 +2716,7 @@ Para obtener los nombres de una lista se utiliza la siguiente función:
   nombres de los elementos de la lista \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-listas}{}}%
-\begin{example}[]\label{exm-acceso-listas}
+\begin{example}[]\protect\hypertarget{exm-acceso-listas}{}\label{exm-acceso-listas}
 
 A continuación se muestra un ejemplo de acceso a los nombres de una
 lista.
@@ -2605,8 +2747,7 @@ averiguarse con la siguiente función:
   \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-tamauxf1o-lista}{}}%
-\begin{example}[]\label{exm-tamaño-lista}
+\begin{example}[]\protect\hypertarget{exm-tamaño-lista}{}\label{exm-tamaño-lista}
 
 A continuación se muestran varios ejemplos la obtención del tamaño de
 una lista.
@@ -2659,8 +2800,7 @@ Al igual que los vectores, los elementos de una lista están ordenados y
 se puede utilizar un índice entero para acceder a los elementos que
 ocupan una determinada posición.
 
-\leavevmode\vadjust pre{\hypertarget{exm-}{}}%
-\begin{example}[]\label{exm-}
+\begin{example}[]\protect\hypertarget{exm-acceso-lista-indice-entero}{}\label{exm-acceso-lista-indice-entero}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 una lista mediante índices enteros.
@@ -2718,8 +2858,7 @@ Cuando se utiliza un índice lógico, se obtienen los elementos
 correspondientes a las posiciones donde está el valor booleano
 \texttt{TRUE}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-listas-logico}{}}%
-\begin{example}[]\label{exm-acceso-listas-logico}
+\begin{example}[]\protect\hypertarget{exm-acceso-listas-logico}{}\label{exm-acceso-listas-logico}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 una lista mediante índices lógicos.
@@ -2791,8 +2930,7 @@ incluso cuando sólo se quiere acceder a un elemento. Para obtener un
 elemento, y no una lista con ese único elemento, se utilizan dobles
 corchetes \texttt{{[}{[}\ {]}{]}}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-listas-nombres}{}}%
-\begin{example}[]\label{exm-acceso-listas-nombres}
+\begin{example}[]\protect\hypertarget{exm-acceso-listas-nombres}{}\label{exm-acceso-listas-nombres}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 una lista mediante índices de cadena.
@@ -2905,8 +3043,7 @@ lista}\label{modificaciuxf3n-de-los-elementos-de-una-lista}}
 Para modificar uno o varios elementos de una lista basta con acceder a
 esos elementos y reasignarles valores con el operador de asignación.
 
-\leavevmode\vadjust pre{\hypertarget{exm-modificacion-listas}{}}%
-\begin{example}[]\label{exm-modificacion-listas}
+\begin{example}[]\protect\hypertarget{exm-modificacion-listas}{}\label{exm-modificacion-listas}
 
 A continuación se muestran varios ejemplos de modificación de los
 elementos de una lista.
@@ -2959,8 +3096,7 @@ utilizar la función \texttt{append()}:
   final de los de \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-auxf1adir-elementos-listas}{}}%
-\begin{example}[]\label{exm-añadir-elementos-listas}
+\begin{example}[]\protect\hypertarget{exm-añadir-elementos-listas}{}\label{exm-añadir-elementos-listas}
 
 A continuación se muestran varios ejemplos de añadir nuevos elementos a
 una lista.
@@ -3020,8 +3156,7 @@ Es posible convertir una lista en un vector con la siguiente función:
   mismo tipo mediante coerción de tipos.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-aplanar-lista}{}}%
-\begin{example}[]\label{exm-aplanar-lista}
+\begin{example}[]\protect\hypertarget{exm-aplanar-lista}{}\label{exm-aplanar-lista}
 
 A continuación se muestran varios ejemplos de conversión de una lista en
 un vector.
@@ -3052,7 +3187,7 @@ dirección.municipio
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 Obsérvese que cuando se convierte una lista en un vector, los elementos
 de la lista se convierten al tipo más general mediante coerción.
@@ -3081,8 +3216,7 @@ Para crear una matriz se utiliza la siguiente función:
   filas o el número de columnas.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-matrices}{}}%
-\begin{example}[]\label{exm-creacion-matrices}
+\begin{example}[]\protect\hypertarget{exm-creacion-matrices}{}\label{exm-creacion-matrices}
 
 A continuación se muestran varios ejemplos de creación de matrices.
 
@@ -3140,8 +3274,7 @@ Como se puede observar en el ejemplo anterior, los elementos se disponen
 por columnas, pero se pueden disponer los elementos por filas pasando el
 parámetro \texttt{byrow\ =\ TRUE} a la función \texttt{matrix}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-matrices-por-filas}{}}%
-\begin{example}[]\label{exm-creacion-matrices-por-filas}
+\begin{example}[]\protect\hypertarget{exm-creacion-matrices-por-filas}{}\label{exm-creacion-matrices-por-filas}
 
 A continuación se muestran varios ejemplos de creación de matrices.
 
@@ -3180,8 +3313,7 @@ añadiendo el parámetro \texttt{dimnames} y pasándole una lista de dos
 vectores de cadenas con los nombres de las filas y las columnas
 respectivamente.
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-matrices-con-nombres}{}}%
-\begin{example}[]\label{exm-creacion-matrices-con-nombres}
+\begin{example}[]\protect\hypertarget{exm-creacion-matrices-con-nombres}{}\label{exm-creacion-matrices-con-nombres}
 
 A continuación se muestran varios ejemplos de creación de matrices con
 nombres de filas y columnas.
@@ -3213,8 +3345,7 @@ utilizan las siguientes funciones:
   los nombres de las columnas de la matriz \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-obtencion-nombres-matriz}{}}%
-\begin{example}[]\label{exm-obtencion-nombres-matriz}
+\begin{example}[]\protect\hypertarget{exm-obtencion-nombres-matriz}{}\label{exm-obtencion-nombres-matriz}
 
 A continuación se muestran varios ejemplos de obtención de los nombres
 de las filas y columnas de una matriz con nombres.
@@ -3265,8 +3396,7 @@ pueden utilizar las siguientes funciones:
   filas y el número de columnas de la matriz \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-dimensiones-matriz}{}}%
-\begin{example}[]\label{exm-dimensiones-matriz}
+\begin{example}[]\protect\hypertarget{exm-dimensiones-matriz}{}\label{exm-dimensiones-matriz}
 
 A continuación se muestran varios ejemplos de acceso a las dimensiones
 de una matriz.
@@ -3318,8 +3448,7 @@ Usando esta última función se pueden modificar las dimensiones de una
 matriz asignando un vector de dos enteros con las nuevas dimensiones.
 Esto también permite crear una matriz a partir de un vector.
 
-\leavevmode\vadjust pre{\hypertarget{exm-modificacion-dimensiones-matriz}{}}%
-\begin{example}[]\label{exm-modificacion-dimensiones-matriz}
+\begin{example}[]\protect\hypertarget{exm-modificacion-dimensiones-matriz}{}\label{exm-modificacion-dimensiones-matriz}
 
 A continuación se muestran varios ejemplos de modificación de las
 dimensiones de una matriz.
@@ -3385,8 +3514,7 @@ submatriz. Si no se indica la fila o la columna se obtienen todos los
 elementos de todas las filas o columnas. Al igual que para vectores, se
 pueden utilizar enteros negativos para descartar filas o columnas
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-matriz}{}}%
-\begin{example}[]\label{exm-acceso-matriz}
+\begin{example}[]\protect\hypertarget{exm-acceso-matriz}{}\label{exm-acceso-matriz}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 una matriz.
@@ -3474,8 +3602,7 @@ Cuando se utilizan índices lógicos, se obtienen los elementos
 correspondientes a las filas y columnas donde está el valor booleano
 \texttt{TRUE}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-matriz-logico}{}}%
-\begin{example}[]\label{exm-acceso-matriz-logico}
+\begin{example}[]\protect\hypertarget{exm-acceso-matriz-logico}{}\label{exm-acceso-matriz-logico}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 una matriz.
@@ -3550,8 +3677,7 @@ Si las filas y las columnas de una matriz tienen nombre, es posible
 acceder a sus elementos usando los nombres de las filas y columnas como
 índices.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-matriz-nombres}{}}%
-\begin{example}[]\label{exm-acceso-matriz-nombres}
+\begin{example}[]\protect\hypertarget{exm-acceso-matriz-nombres}{}\label{exm-acceso-matriz-nombres}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 una matriz mediante los nombres de sus filas y columnas.
@@ -3614,8 +3740,7 @@ puede utilizar el operador \texttt{\%in\%}:
   caso contrario.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-pertenencia-matriz}{}}%
-\begin{example}[]\label{exm-pertenencia-matriz}
+\begin{example}[]\protect\hypertarget{exm-pertenencia-matriz}{}\label{exm-pertenencia-matriz}
 
 A continuación se muestran varios ejemplos de pertenencia de elementos a
 una matriz.
@@ -3651,8 +3776,7 @@ Para modificar uno o varios elementos de una matriz basta con acceder a
 esos elementos y usar el operador de asignación para asignar nuevos
 valores.
 
-\leavevmode\vadjust pre{\hypertarget{exm-modificacion-matriz}{}}%
-\begin{example}[]\label{exm-modificacion-matriz}
+\begin{example}[]\protect\hypertarget{exm-modificacion-matriz}{}\label{exm-modificacion-matriz}
 
 A continuación se muestran varios ejemplos de modificación de los
 elementos de un vector.
@@ -3719,8 +3843,7 @@ siguientes funciones:
   \texttt{y}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-auxf1adir-filas-columnas-matriz}{}}%
-\begin{example}[]\label{exm-añadir-filas-columnas-matriz}
+\begin{example}[]\protect\hypertarget{exm-añadir-filas-columnas-matriz}{}\label{exm-añadir-filas-columnas-matriz}
 
 A continuación se muestran varios ejemplos de añadir nuevas filas y
 columnas a una matriz.
@@ -3767,7 +3890,7 @@ columnas a una matriz.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 Obsérvese que si el número de elementos proporcionados en el vector es
 menor del necesario para completar la fila o columna, se reutilizan los
@@ -3786,8 +3909,7 @@ Para trasponer una matriz se utiliza la función siguiente:
   \texttt{t(x)}: Devuelve la matriz traspuesta de la matriz \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-trasposicion-matriz}{}}%
-\begin{example}[]\label{exm-trasposicion-matriz}
+\begin{example}[]\protect\hypertarget{exm-trasposicion-matriz}{}\label{exm-trasposicion-matriz}
 
 A continuación se muestran un ejemplo de la trasposición de una matriz.
 
@@ -3819,8 +3941,7 @@ Para matrices numéricas las operaciones aritméticas habituales se
 aplican elemento a elemento. Si las dimensiones de las matrices son
 distintas se produce un error.
 
-\leavevmode\vadjust pre{\hypertarget{exm-operaciones-aritmeticas-matrices}{}}%
-\begin{example}[]\label{exm-operaciones-aritmeticas-matrices}
+\begin{example}[]\protect\hypertarget{exm-operaciones-aritmeticas-matrices}{}\label{exm-operaciones-aritmeticas-matrices}
 
 A continuación se muestran varios ejemplos de operaciones aritméticas
 elemento a elemento con matrices numéricas.
@@ -3901,7 +4022,7 @@ elemento a elemento con matrices numéricas.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 Obsérvese en el ejemplo anterior que la división por 0 produce el valor
 \texttt{Inf} que representa infinito.
@@ -3915,8 +4036,7 @@ matrices}\label{multiplicaciuxf3n-de-matrices}}
 Para multiplicar dos matrices numéricas se utiliza el operador
 \texttt{\%*\%}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-producto-matrices}{}}%
-\begin{example}[]\label{exm-producto-matrices}
+\begin{example}[]\protect\hypertarget{exm-producto-matrices}{}\label{exm-producto-matrices}
 
 A continuación se muestran varios ejemplos del producto de dos matrices
 numéricas.
@@ -3950,7 +4070,7 @@ numéricas.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 Para poder multiplicar dos matrices deben tener dimensiones compatibles.
 Si el número de columnas de la primera matriz no es igual que el número
@@ -3972,8 +4092,7 @@ la siguiente función:
   \texttt{x} no es una matriz numérica cuadrada produce un error.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-determinante}{}}%
-\begin{example}[]\label{exm-determinante}
+\begin{example}[]\protect\hypertarget{exm-determinante}{}\label{exm-determinante}
 
 A continuación se muestra un ejemplo del cálculo del determinante de una
 matriz numérica cuadrada.
@@ -4006,8 +4125,7 @@ utiliza la siguiente función:
   obtiene un error.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-inversa-matriz}{}}%
-\begin{example}[]\label{exm-inversa-matriz}
+\begin{example}[]\protect\hypertarget{exm-inversa-matriz}{}\label{exm-inversa-matriz}
 
 A continuación se muestra un ejemplo del cálculo del determinante de una
 matriz numérica cuadrada.
@@ -4053,15 +4171,14 @@ cuadrada se utiliza la siguiente función:
   \texttt{eigen(x)}: Devuelve una lista con los autovalores y los
   autovectores de la matriz \texttt{x}. Para acceder a los autovalores
   se utiliza el nombre \texttt{values} y para acceder a los autovectores
-  se utiliza el nombre \texttt{vectors}.
+  se utiliza el nombre \texttt{vectors}. Si \texttt{x} no es una matriz
+  numérica cuadrada produce un error.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-autovalores-autovectores}{}}%
-\begin{example}[]\label{exm-autovalores-autovectores}
+\begin{example}[]\protect\hypertarget{exm-autovalores-autovectores}{}\label{exm-autovalores-autovectores}
 
 A continuación se muestra un ejemplo del cálculo los autovalores y los
-autovectores de una matriz numérica cuadrada. Si \texttt{x} no es una
-matriz numérica cuadrada produce un error.
+autovectores de una matriz numérica cuadrada.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4129,8 +4246,7 @@ Para crear un data frame se utiliza la siguiente función:
   nombres de columna \texttt{nombrex}, \texttt{nombrey}, etc.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-data-frames}{}}%
-\begin{example}[]\label{exm-creacion-data-frames}
+\begin{example}[]\protect\hypertarget{exm-creacion-data-frames}{}\label{exm-creacion-data-frames}
 
 A continuación se muestran varios ejemplos de la creación de data
 frames.
@@ -4195,8 +4311,7 @@ en formato csv} mediante la siguiente función:
   separador de decimales la coma \texttt{,}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-data-frame-csv}{}}%
-\begin{example}[]\label{exm-creacion-data-frame-csv}
+\begin{example}[]\protect\hypertarget{exm-creacion-data-frame-csv}{}\label{exm-creacion-data-frame-csv}
 
 A continuación se muestra un ejemplo de creación de un data frame a
 partir de un fichero csv.
@@ -4269,8 +4384,7 @@ se obtiene un vector. Pero también se puede acceder a los elementos de
 un data frame como si fuese una matriz, indicando un par de índices para
 las filas y las columnas respectivamente.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-data-frame}{}}%
-\begin{example}[]\label{exm-acceso-data-frame}
+\begin{example}[]\protect\hypertarget{exm-acceso-data-frame}{}\label{exm-acceso-data-frame}
 
 A continuación se muestran varios ejemplos de acceso a los elementos de
 un data frame.
@@ -4356,8 +4470,7 @@ utilizar las siguientes funciones:
 Estas funciones son útiles para darse una idea del contenido de un data
 frame con muchas filas.
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-primeras-ultimas-filas-data-frame}{}}%
-\begin{example}[]\label{exm-acceso-primeras-ultimas-filas-data-frame}
+\begin{example}[]\protect\hypertarget{exm-acceso-primeras-ultimas-filas-data-frame}{}\label{exm-acceso-primeras-ultimas-filas-data-frame}
 
 A continuación se muestran varios ejemplos de acceso a las primeras o
 últimas filas de un data frame.
@@ -4398,8 +4511,7 @@ Para modificar uno o varios elementos de un data frame basta con acceder
 a esos elementos y usar el operador de asignación para asignar nuevos
 valores.
 
-\leavevmode\vadjust pre{\hypertarget{exm-modificacion-data-frames}{}}%
-\begin{example}[]\label{exm-modificacion-data-frames}
+\begin{example}[]\protect\hypertarget{exm-modificacion-data-frames}{}\label{exm-modificacion-data-frames}
 
 A continuación se muestran varios ejemplos de modificación de los
 elementos de un vector.
@@ -4452,8 +4564,7 @@ mismas funciones que para matrices:
   del vector \texttt{x} con nombre \texttt{nombrex}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-auxf1adir-filas-columnas-data-frame}{}}%
-\begin{example}[]\label{exm-añadir-filas-columnas-data-frame}
+\begin{example}[]\protect\hypertarget{exm-añadir-filas-columnas-data-frame}{}\label{exm-añadir-filas-columnas-data-frame}
 
 A continuación se muestran varios ejemplos de añadir nuevas filas y
 columnas a un data frame.
@@ -4511,8 +4622,7 @@ Para eliminar una columna de un data frame basta con acceder a la
 columna y asignarle el valor \texttt{NULL}, mientras que para eliminar
 una fila basta con acceder a la fila con índice negativo.
 
-\leavevmode\vadjust pre{\hypertarget{exm-eliminacion-filas-columnas-data-frame}{}}%
-\begin{example}[]\label{exm-eliminacion-filas-columnas-data-frame}
+\begin{example}[]\protect\hypertarget{exm-eliminacion-filas-columnas-data-frame}{}\label{exm-eliminacion-filas-columnas-data-frame}
 
 A continuación se muestran varios ejemplos de eliminación de filas y
 columnas de un data frame.
@@ -4564,24 +4674,24 @@ columnas de un data frame.
 \hypertarget{ejercicios-1}{%
 \section{Ejercicios}\label{ejercicios-1}}
 
-\leavevmode\vadjust pre{\hypertarget{exr-datos-estructurados-1}{}}%
-\begin{exercise}[]\label{exr-datos-estructurados-1}
+\begin{exercise}[]\protect\hypertarget{exr-datos-estructurados-1}{}\label{exr-datos-estructurados-1}
 
 La siguiente tabla recoge las notas de los alumnos de un curso con dos
 asignaturas.
 
 \begin{longtable}[]{@{}lccc@{}}
-\toprule()
+\toprule\noalign{}
 Alumno & Sexo & Física & Química \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 Carlos & H & 6.7 & 8.1 \\
 María & M & 7.2 & 9.5 \\
 Carmen & M & 5.5 & 5 \\
 Pedro & H & & 4.5 \\
 Luis & H & 3.5 & 5 \\
 Sara & M & 6.2 & 4 \\
-\bottomrule()
 \end{longtable}
 
 \begin{enumerate}
@@ -4592,7 +4702,7 @@ Sara & M & 6.2 & 4 \\
   Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4613,7 +4723,7 @@ Sara & M & 6.2 & 4 \\
   Convertir el sexo en un factor y mostrar sus niveles.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4636,7 +4746,7 @@ Sara & M & 6.2 & 4 \\
   Crear un nuevo vector con la nota media de Física y Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4661,7 +4771,7 @@ Sara & M & 6.2 & 4 \\
   caso contrario.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4685,7 +4795,7 @@ Sara & M & 6.2 & 4 \\
   de los alumnos que han aprobado.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4708,7 +4818,7 @@ Sara & M & 6.2 & 4 \\
   Química.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4737,7 +4847,7 @@ Sara & M & 6.2 & 4 \\
   Añadir el vector con la media al data frame.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4767,7 +4877,7 @@ Sara & M & 6.2 & 4 \\
   mujeres que han aprobado.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4833,7 +4943,7 @@ si es \texttt{FALSE} no.
 
 \begin{figure}
 
-{\centering \includegraphics{./img/04-estructuras-control/condicional-simple.png}
+{\centering \includegraphics{img/04-estructuras-control/condicional-simple.png}
 
 }
 
@@ -4843,7 +4953,7 @@ si es \texttt{FALSE} no.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{./img/04-estructuras-control/condicional-simple.png}
+{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{img/04-estructuras-control/condicional-simple.png}
 
 }
 
@@ -4851,8 +4961,7 @@ si es \texttt{FALSE} no.
 
 \end{figure}
 
-\leavevmode\vadjust pre{\hypertarget{exm-condicional-simple}{}}%
-\begin{example}[]\label{exm-condicional-simple}
+\begin{example}[]\protect\hypertarget{exm-condicional-simple}{}\label{exm-condicional-simple}
 
 A continuación se muestra un ejemplo de estructura condicional con
 \texttt{if}.
@@ -4888,7 +4997,7 @@ ejecuta el código \texttt{\textless{}código\ 1\textgreater{}} y si es
 
 \begin{figure}
 
-{\centering \includegraphics{./img/04-estructuras-control/condicional-doble.png}
+{\centering \includegraphics{img/04-estructuras-control/condicional-doble.png}
 
 }
 
@@ -4896,8 +5005,7 @@ ejecuta el código \texttt{\textless{}código\ 1\textgreater{}} y si es
 
 \end{figure}
 
-\leavevmode\vadjust pre{\hypertarget{exm-condicional-doble}{}}%
-\begin{example}[]\label{exm-condicional-doble}
+\begin{example}[]\protect\hypertarget{exm-condicional-doble}{}\label{exm-condicional-doble}
 
 A continuación se muestra un ejemplo de estructura condicional con
 \texttt{if} y \texttt{else}.
@@ -4940,7 +5048,7 @@ ejecuta si todas las condiciones son falsas.
 
 \begin{figure}
 
-{\centering \includegraphics{./img/04-estructuras-control/condicional-multiple.png}
+{\centering \includegraphics{img/04-estructuras-control/condicional-multiple.png}
 
 }
 
@@ -4948,8 +5056,7 @@ ejecuta si todas las condiciones son falsas.
 
 \end{figure}
 
-\leavevmode\vadjust pre{\hypertarget{exm-condicional-multiple}{}}%
-\begin{example}[]\label{exm-condicional-multiple}
+\begin{example}[]\protect\hypertarget{exm-condicional-multiple}{}\label{exm-condicional-multiple}
 
 A continuación se muestra un ejemplo de estructura condicional múltiple.
 
@@ -4990,8 +5097,7 @@ Otra forma de tomar decisiones sobre el código a ejecutar es la función
   ningún nombre de los elementos de la lista devuelve \texttt{NULL}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-condicional-switch}{}}%
-\begin{example}[]\label{exm-condicional-switch}
+\begin{example}[]\protect\hypertarget{exm-condicional-switch}{}\label{exm-condicional-switch}
 
 A continuación se muestra un ejemplo de uso de la función
 \texttt{switch}.
@@ -5038,7 +5144,7 @@ elemento distinto de la secuencia.
 
 \begin{figure}
 
-{\centering \includegraphics{./img/04-estructuras-control/bucle-for.png}
+{\centering \includegraphics{img/04-estructuras-control/bucle-for.png}
 
 }
 
@@ -5046,8 +5152,7 @@ elemento distinto de la secuencia.
 
 \end{figure}
 
-\leavevmode\vadjust pre{\hypertarget{exm-bucle-iterarivo}{}}%
-\begin{example}[]\label{exm-bucle-iterarivo}
+\begin{example}[]\protect\hypertarget{exm-bucle-iterarivo}{}\label{exm-bucle-iterarivo}
 
 A continuación se muestra varios ejemplos de uso del bucle \texttt{for}.
 
@@ -5094,8 +5199,7 @@ ayudándonos de la siguiente función:
   hasta el número de elementos de la secuencia \texttt{x}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-bucle-iterativo-posicion}{}}%
-\begin{example}[]\label{exm-bucle-iterativo-posicion}
+\begin{example}[]\protect\hypertarget{exm-bucle-iterativo-posicion}{}\label{exm-bucle-iterativo-posicion}
 
 A continuación se muestra un ejemplo de bucle \texttt{for} que recorre
 los elementos de un vector por posición.
@@ -5124,8 +5228,7 @@ número de iteraciones del bucle. No obstante, también se pueden recorrer
 estructuras de más de una dimensión, como por ejemplo matrices,
 utilizando varios bucles \texttt{for} anidados.
 
-\leavevmode\vadjust pre{\hypertarget{exm-bucles-anidados}{}}%
-\begin{example}[]\label{exm-bucles-anidados}
+\begin{example}[]\protect\hypertarget{exm-bucles-anidados}{}\label{exm-bucles-anidados}
 
 A continuación se muestra varios ejemplos de dos bucles \texttt{for}
 anidados para recorrer los elementos de una matriz.
@@ -5177,7 +5280,7 @@ el código no se ejecuta ni tan siquiera una vez.
 
 \begin{figure}
 
-{\centering \includegraphics{./img/04-estructuras-control/bucle-while.png}
+{\centering \includegraphics{img/04-estructuras-control/bucle-while.png}
 
 }
 
@@ -5185,8 +5288,7 @@ el código no se ejecuta ni tan siquiera una vez.
 
 \end{figure}
 
-\leavevmode\vadjust pre{\hypertarget{exm-bucle-condicional}{}}%
-\begin{example}[]\label{exm-bucle-condicional}
+\begin{example}[]\protect\hypertarget{exm-bucle-condicional}{}\label{exm-bucle-condicional}
 
 A continuación se muestra un ejemplo de bucle \texttt{while}.
 
@@ -5221,8 +5323,7 @@ Normalmente se suele utilizar esta instrucción cuando se cumple una
 determinada condición en bloque de código del bucle y se decide parar su
 ejecución y salir del bucle.
 
-\leavevmode\vadjust pre{\hypertarget{exm-salida-bucle-break}{}}%
-\begin{example}[]\label{exm-salida-bucle-break}
+\begin{example}[]\protect\hypertarget{exm-salida-bucle-break}{}\label{exm-salida-bucle-break}
 
 A continuación se muestra un ejemplo de uso de la instrucción
 \texttt{break}.
@@ -5283,8 +5384,7 @@ ejemplo de uso de la instrucción \texttt{next}.
 \hypertarget{ejercicios-2}{%
 \section{Ejercicios}\label{ejercicios-2}}
 
-\leavevmode\vadjust pre{\hypertarget{exr-estructuras-control-1}{}}%
-\begin{exercise}[]\label{exr-estructuras-control-1}
+\begin{exercise}[]\protect\hypertarget{exr-estructuras-control-1}{}\label{exr-estructuras-control-1}
 
 Considérese el data frame creado en el
 Ejercicio~\ref{exr-datos-estructurados-1}.
@@ -5307,7 +5407,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
   Química usando un bucle iterativo.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5328,7 +5428,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
 crear una nueva columna con la calificación (suspenso, aprobado,
 notable, sobresaliente) de las notas de Física y Química.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5386,8 +5486,7 @@ Para llamar a la función y que se ejecute el código de su cuerpo hay que
 utilizar el nombre de la función y a continuación los valores pasados a
 sus parámetros entre paréntesis.
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-funcion}{}}%
-\begin{example}[]\label{exm-creacion-funcion}
+\begin{example}[]\protect\hypertarget{exm-creacion-funcion}{}\label{exm-creacion-funcion}
 
 A continuación se muestra un ejemplo de creación y llamada a una
 función.
@@ -5432,8 +5531,7 @@ Los valores que se pasan a la función en una llamada o invocación
 concreta de ella se conocen como \emph{argumentos} y se asocian a los
 parámetros de la declaración de la función.
 
-\leavevmode\vadjust pre{\hypertarget{exm-funcion-con-parametros}{}}%
-\begin{example}[]\label{exm-funcion-con-parametros}
+\begin{example}[]\protect\hypertarget{exm-funcion-con-parametros}{}\label{exm-funcion-con-parametros}
 
 A continuación se muestra un ejemplo de una función con parámetros.
 
@@ -5477,8 +5575,7 @@ Los argumentos de una función pueden pasarse de dos formas:
   argumentos no importa.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-paso-parametros-funcion}{}}%
-\begin{example}[]\label{exm-paso-parametros-funcion}
+\begin{example}[]\protect\hypertarget{exm-paso-parametros-funcion}{}\label{exm-paso-parametros-funcion}
 
 A continuación se muestran varios ejemplos de pasos de argumentos
 posicionales y nominales.
@@ -5520,8 +5617,7 @@ argumento por defecto, de manera que si se invoca la función sin
 proporcionar ningún argumento para ese parámetro, se utiliza el
 argumento por defecto.
 
-\leavevmode\vadjust pre{\hypertarget{exm-argumento-defecto-funcion}{}}%
-\begin{example}[]\label{exm-argumento-defecto-funcion}
+\begin{example}[]\protect\hypertarget{exm-argumento-defecto-funcion}{}\label{exm-argumento-defecto-funcion}
 
 A continuación se muestra un ejemplo de definición de una función con un
 argumento por defecto.
@@ -5555,8 +5651,7 @@ instrucción de cuerpo que vaya después no se ejecutará. Si no se indica
 ningún objeto, la función devolverá el valor de la última expresión
 calculada en el cuerpo de la función.
 
-\leavevmode\vadjust pre{\hypertarget{exm-retorno-funciones}{}}%
-\begin{example}[]\label{exm-retorno-funciones}
+\begin{example}[]\protect\hypertarget{exm-retorno-funciones}{}\label{exm-retorno-funciones}
 
 A continuación se muestran varios ejemplos de retornos de funciones.
 
@@ -5606,8 +5701,7 @@ A continuación se muestran varios ejemplos de retornos de funciones.
 Para devolver más de un valor se pueden utilizar estructuras de datos
 como vectores, listas, matrices o data frames.
 
-\leavevmode\vadjust pre{\hypertarget{exm-retorno-funcion-lista}{}}%
-\begin{example}[]\label{exm-retorno-funcion-lista}
+\begin{example}[]\protect\hypertarget{exm-retorno-funcion-lista}{}\label{exm-retorno-funcion-lista}
 
 A continuación se muestra un ejemplo de una función de devuelve una
 lista.
@@ -5673,8 +5767,7 @@ contenido del mismo se utiliza la siguiente función:
   (variables, funciones, etc.) que contiene el entorno global.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-acceso-entorno-global}{}}%
-\begin{example}[]\label{exm-acceso-entorno-global}
+\begin{example}[]\protect\hypertarget{exm-acceso-entorno-global}{}\label{exm-acceso-entorno-global}
 
 A continuación se muestra un ejemplo acceso al entorno global de un
 programa.
@@ -5714,8 +5807,7 @@ ejecución de la función este pasa a ser el entorno activo y cuando
 termina la ejecución de la función deja de serlo y vuelve a activarse el
 entorno padre desde donde se llamó a la función.
 
-\leavevmode\vadjust pre{\hypertarget{exm-activacion-entorno-funcion}{}}%
-\begin{example}[]\label{exm-activacion-entorno-funcion}
+\begin{example}[]\protect\hypertarget{exm-activacion-entorno-funcion}{}\label{exm-activacion-entorno-funcion}
 
 A continuación se muestra un ejemplo de activación del entorno de una
 función.
@@ -5791,8 +5883,7 @@ existe en alguno de los entornos ancestros con ámbito global, durante la
 ejecución de la función el objeto global queda eclipsado por el local y
 no es accesible hasta que finaliza la ejecución de la función.
 
-\leavevmode\vadjust pre{\hypertarget{exm-eclise-variables-globales-por-locales}{}}%
-\begin{example}[]\label{exm-eclise-variables-globales-por-locales}
+\begin{example}[]\protect\hypertarget{exm-eclise-variables-globales-por-locales}{}\label{exm-eclise-variables-globales-por-locales}
 
 A continuación se muestra un ejemplo de eclipse de una variable de
 ámbito global por otra de ámbito local.
@@ -5829,8 +5920,7 @@ llegar a entorno global. Si la búsqueda tiene éxito, asigna el nuevo
 valor a la variable global, mientras que si no tiene éxito se crea una
 nueva variable de ámbito local y se le asigna el valor.
 
-\leavevmode\vadjust pre{\hypertarget{exm-superasignacion}{}}%
-\begin{example}[]\label{exm-superasignacion}
+\begin{example}[]\protect\hypertarget{exm-superasignacion}{}\label{exm-superasignacion}
 
 A continuación se muestra un ejemplo del uso del operador de
 superasignación.
@@ -5882,8 +5972,7 @@ funciones:
   \texttt{environment(f)}: Devuelve el entorno de la función \texttt{f}.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-componentes-funcion}{}}%
-\begin{example}[]\label{exm-componentes-funcion}
+\begin{example}[]\protect\hypertarget{exm-componentes-funcion}{}\label{exm-componentes-funcion}
 
 A continuación se muestra un ejemplo de acceso a los componentes de una
 función.
@@ -5945,8 +6034,7 @@ que este pueda resolverse directamente sin necesidad de volver a llamar
 a la función. De lo contrario la recursión no tendría fin y nunca
 terminaría la ejecución de la función.
 
-\leavevmode\vadjust pre{\hypertarget{exm-funcion-recursiva}{}}%
-\begin{example}[]\label{exm-funcion-recursiva}
+\begin{example}[]\protect\hypertarget{exm-funcion-recursiva}{}\label{exm-funcion-recursiva}
 
 A continuación se muestra un ejemplo de una función recursiva.
 
@@ -5976,8 +6064,7 @@ dentro de un directorio llamado \texttt{library} en el entorno de R.
 Para ver la ubicación de este directorio dentro del sistema de archivos
 local se puede utilizar la función \texttt{.libPaths()}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-ubiacion-biblioteca-paquetes}{}}%
-\begin{example}[]\label{exm-ubiacion-biblioteca-paquetes}
+\begin{example}[]\protect\hypertarget{exm-ubiacion-biblioteca-paquetes}{}\label{exm-ubiacion-biblioteca-paquetes}
 
 A continuación se muestra un ejemplo de la ubicación del directorio
 \texttt{library}.
@@ -6041,8 +6128,7 @@ siguiente función:
   nombres de los paquetes.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-instalacion-paquetes}{}}%
-\begin{example}[]\label{exm-instalacion-paquetes}
+\begin{example}[]\protect\hypertarget{exm-instalacion-paquetes}{}\label{exm-instalacion-paquetes}
 
 A continuación se muestra un ejemplo de instalación de paquetes desde el
 repositorio CRAN.
@@ -6065,8 +6151,7 @@ como \href{https://github.com/}{GitHub},
 \href{httpsb://gitlab.com/}{GitLab} o
 \href{https://www.bioconductor.org/}{Bioconductor}.
 
-\leavevmode\vadjust pre{\hypertarget{exm-instalacion-paquetes-github}{}}%
-\begin{example}[]\label{exm-instalacion-paquetes-github}
+\begin{example}[]\protect\hypertarget{exm-instalacion-paquetes-github}{}\label{exm-instalacion-paquetes-github}
 
 A continuación se muestra un ejemplo de instalación de paquetes desde
 GitHub.
@@ -6113,8 +6198,7 @@ la siguiente función:
   sesión de trabajo activa.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-carga-paquetes}{}}%
-\begin{example}[]\label{exm-carga-paquetes}
+\begin{example}[]\protect\hypertarget{exm-carga-paquetes}{}\label{exm-carga-paquetes}
 
 A continuación se muestra un ejemplo de carga de un paquete.
 
@@ -6272,8 +6356,7 @@ Para convertir un data frame en un tibble se utiliza la función
   tibble.
 \end{itemize}
 
-\leavevmode\vadjust pre{\hypertarget{exm-creacion-tibble}{}}%
-\begin{example}[]\label{exm-creacion-tibble}
+\begin{example}[]\protect\hypertarget{exm-creacion-tibble}{}\label{exm-creacion-tibble}
 
 ~
 
@@ -6323,7 +6406,7 @@ data frame o un tibble: formato ancho y formato largo.
 
 \begin{figure}
 
-{\centering \includegraphics{./img/05-preprocesamiento/formatos-dataframe.png}
+{\centering \includegraphics{img/05-preprocesamiento/formatos-dataframe.png}
 
 }
 
@@ -7105,7 +7188,7 @@ resulta de la operación anterior.
   Crear un tibble con los datos del fichero.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7148,7 +7231,7 @@ resulta de la operación anterior.
   Convertir el tratamiento en un factor.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7166,7 +7249,7 @@ resulta de la operación anterior.
   Calcular el tamaño muestral de cada grupo de tratamiento
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7194,7 +7277,7 @@ resulta de la operación anterior.
   (\texttt{mas\ cor\ (g)}) mayor de 230 g.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7231,7 +7314,7 @@ resulta de la operación anterior.
   (\texttt{mas\ cor\ (g)}) para cada tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7261,7 +7344,7 @@ resulta de la operación anterior.
   cada tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7308,6 +7391,10 @@ R incorpora funciones para realizar gráficos de distintos tipos, pero
 actualmente existen paquetes especializados para la visualización de
 datos como \texttt{ggplot2} que permiten realizar multitud de gráficos
 de manera más estructurada.
+
+\hypertarget{gramuxe1tica-de-gruxe1ficos-y-el-paquete-ggplot2}{%
+\section{\texorpdfstring{Gramática de gráficos y el paquete
+\texttt{ggplot2}}{Gramática de gráficos y el paquete ggplot2}}\label{gramuxe1tica-de-gruxe1ficos-y-el-paquete-ggplot2}}
 
 El paquete \href{https://ggplot2.tidyverse.org/}{\texttt{ggplot2}} forma
 parte de la colección de paquetes \texttt{tidyverse} que ya se introdujo
@@ -7357,7 +7444,7 @@ definir los siguientes elementos:
 
 \begin{figure}
 
-{\centering \includegraphics{./img/graficos/ggplot-grammar-of-graphics.png}
+{\centering \includegraphics{img/graficos/ggplot-grammar-of-graphics.png}
 
 }
 
@@ -7407,7 +7494,7 @@ siguiente función
   \end{itemize}
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-important-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-important-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 Todos los atributos se indican dentro de la función \texttt{aes()}.
 
@@ -7446,7 +7533,7 @@ Esta capa es ideal para representar diagramas de dispersión.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-1-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-1-1.pdf}
 
 }
 
@@ -7463,7 +7550,7 @@ Esta capa es ideal para representar diagramas de dispersión.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-2-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-2-1.pdf}
 
 }
 
@@ -7480,7 +7567,7 @@ Esta capa es ideal para representar diagramas de dispersión.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-3-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-3-1.pdf}
 
 }
 
@@ -7503,7 +7590,7 @@ Warning: Removed 1 rows containing missing values (`geom_point()`).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-4-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-4-1.pdf}
 
 }
 
@@ -7524,7 +7611,7 @@ Warning: Removed 1 rows containing missing values (`geom_point()`).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-5-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-5-1.pdf}
 
 }
 
@@ -7570,7 +7657,7 @@ Esta capa es ideal para representar series temporales.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-6-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-6-1.pdf}
 
 }
 
@@ -7587,7 +7674,7 @@ Esta capa es ideal para representar series temporales.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-7-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-7-1.pdf}
 
 }
 
@@ -7604,7 +7691,7 @@ Esta capa es ideal para representar series temporales.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-8-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-8-1.pdf}
 
 }
 
@@ -7674,7 +7761,7 @@ geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-9-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-9-1.pdf}
 
 }
 
@@ -7691,7 +7778,7 @@ geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-10-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-10-1.pdf}
 
 }
 
@@ -7708,7 +7795,7 @@ geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-11-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-11-1.pdf}
 
 }
 
@@ -7725,7 +7812,7 @@ geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-12-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-12-1.pdf}
 
 }
 
@@ -7744,7 +7831,7 @@ geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-13-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-13-1.pdf}
 
 }
 
@@ -7761,7 +7848,7 @@ geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-14-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-14-1.pdf}
 
 }
 
@@ -7799,7 +7886,7 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-15-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-15-1.pdf}
 
 }
 
@@ -7816,7 +7903,7 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-16-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-16-1.pdf}
 
 }
 
@@ -7833,7 +7920,7 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-17-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-17-1.pdf}
 
 }
 
@@ -7850,7 +7937,7 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-18-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-18-1.pdf}
 
 }
 
@@ -7889,7 +7976,7 @@ distribución de probabilidad de los valores de una variable.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-19-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-19-1.pdf}
 
 }
 
@@ -7906,7 +7993,7 @@ distribución de probabilidad de los valores de una variable.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-20-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-20-1.pdf}
 
 }
 
@@ -7947,7 +8034,7 @@ Warning: Removed 1 rows containing non-finite values (`stat_boxplot()`).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-21-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-21-1.pdf}
 
 }
 
@@ -7964,7 +8051,7 @@ Warning: Removed 1 rows containing non-finite values (`stat_boxplot()`).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-22-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-22-1.pdf}
 
 }
 
@@ -8003,7 +8090,7 @@ añadiendo el sistema de coordenadas polares.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-23-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-23-1.pdf}
 
 }
 
@@ -8061,7 +8148,7 @@ diagramas de dispersión.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-24-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-24-1.pdf}
 
 }
 
@@ -8080,7 +8167,7 @@ diagramas de dispersión.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-25-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-25-1.pdf}
 
 }
 
@@ -8099,7 +8186,7 @@ diagramas de dispersión.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-26-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-26-1.pdf}
 
 }
 
@@ -8141,7 +8228,7 @@ se añade la función
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-27-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-27-1.pdf}
 
 }
 
@@ -8185,7 +8272,7 @@ función
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-28-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-28-1.pdf}
 
 }
 
@@ -8228,7 +8315,7 @@ Para cambiar las escalas de los ejes cartesianos se añaden la funciones
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-29-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-29-1.pdf}
 
 }
 
@@ -8267,7 +8354,7 @@ tema se añade la función
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-30-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-30-1.pdf}
 
 }
 
@@ -8286,7 +8373,7 @@ tema se añade la función
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-31-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-31-1.pdf}
 
 }
 
@@ -8320,7 +8407,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-32-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-32-1.pdf}
 
 }
 
@@ -8346,7 +8433,7 @@ información sobre temas}.
   Crear un tibble con los datos del fichero.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8384,7 +8471,7 @@ información sobre temas}.
   y \texttt{tabaco.antes} en factores.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8402,7 +8489,7 @@ información sobre temas}.
   Dibujar un diagrama de barras con la frecuencia de niños y niñas.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8413,7 +8500,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-35-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-35-1.pdf}
 
 }
 
@@ -8430,7 +8517,7 @@ información sobre temas}.
   madres fumadoras y no fumadoras durante el embarazo.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8441,7 +8528,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-36-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-36-1.pdf}
 
 }
 
@@ -8457,7 +8544,7 @@ información sobre temas}.
   Dibujar un histograma acumulado del peso según el sexo con 10 clases.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8468,7 +8555,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-37-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-37-1.pdf}
 
 }
 
@@ -8485,7 +8572,7 @@ información sobre temas}.
   neonatos de madres fumadoras y no fumadoras durante el embarazo.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8496,7 +8583,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-38-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-38-1.pdf}
 
 }
 
@@ -8513,7 +8600,7 @@ información sobre temas}.
   y si la madre fumaba o no durante el embarazo.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8524,7 +8611,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-39-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-39-1.pdf}
 
 }
 
@@ -8542,7 +8629,7 @@ información sobre temas}.
   fumaban las madres. Incluir la recta de regresión.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8560,7 +8647,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-40-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-40-1.pdf}
 
 }
 
@@ -8579,7 +8666,7 @@ información sobre temas}.
   la madre.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8598,7 +8685,7 @@ información sobre temas}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./07-graficos_files/figure-pdf/unnamed-chunk-41-1.pdf}
+{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-41-1.pdf}
 
 }
 
@@ -8955,6 +9042,9 @@ descargarse aquí para reproducir los estudios:
 6        7.8
 \end{verbatim}
 
+\hypertarget{una-variable-cuantitativa}{%
+\section{Una variable cuantitativa}\label{una-variable-cuantitativa}}
+
 \hypertarget{estudios-descriptivos}{%
 \subsection{Estudios descriptivos}\label{estudios-descriptivos}}
 
@@ -9088,7 +9178,7 @@ descargarse aquí para reproducir los estudios:
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-10-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-10-1.pdf}
 
 }
 
@@ -9115,7 +9205,7 @@ descargarse aquí para reproducir los estudios:
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-11-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-11-1.pdf}
 
 }
 
@@ -9133,7 +9223,7 @@ descargarse aquí para reproducir los estudios:
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-12-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-12-1.pdf}
 
 }
 
@@ -9158,7 +9248,7 @@ descargarse aquí para reproducir los estudios:
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-13-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-13-1.pdf}
 
 }
 
@@ -9176,7 +9266,7 @@ descargarse aquí para reproducir los estudios:
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-14-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-14-1.pdf}
 
 }
 
@@ -9199,7 +9289,7 @@ descargarse aquí para reproducir los estudios:
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-15-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-15-1.pdf}
 
 }
 
@@ -9377,7 +9467,7 @@ Aprobado Suspenso
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-23-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-23-1.pdf}
 
 }
 
@@ -9549,7 +9639,7 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-28-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-28-1.pdf}
 
 }
 
@@ -9572,7 +9662,7 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-29-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-29-1.pdf}
 
 }
 
@@ -9765,7 +9855,7 @@ mean in group Hombre  mean in group Mujer
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-35-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-35-1.pdf}
 
 }
 
@@ -9906,7 +9996,7 @@ notas de las asignaturas A y B de un mismo grupo de alumnos.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-40-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-40-1.pdf}
 
 }
 
@@ -10003,7 +10093,7 @@ mean difference
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-43-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-43-1.pdf}
 
 }
 
@@ -10126,7 +10216,7 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-47-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-47-1.pdf}
 
 }
 
@@ -10149,7 +10239,7 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-48-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-48-1.pdf}
 
 }
 
@@ -10361,7 +10451,7 @@ y también entre las notas medias de los grupos B y C (p-valor=0.0000001
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-54-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-54-1.pdf}
 
 }
 
@@ -10516,7 +10606,7 @@ cuantitativa}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-i
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-59-1.pdf}
+{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-59-1.pdf}
 
 }
 
@@ -10662,7 +10752,7 @@ la nota C, que además es estadísticamente muy significativa.
   Crear un tibble con los datos del fichero.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10705,7 +10795,7 @@ la nota C, que además es estadísticamente muy significativa.
   Convertir el tratamiento en un factor.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10723,7 +10813,7 @@ la nota C, que además es estadísticamente muy significativa.
   Calcular el tamaño muestral de cada grupo de tratamiento
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10751,7 +10841,7 @@ la nota C, que además es estadísticamente muy significativa.
   tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10780,7 +10870,7 @@ la nota C, que además es estadísticamente muy significativa.
   tres grupos de tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10809,7 +10899,7 @@ group  2  0.1636 0.8503
   IHS entre los tres grupos de tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10837,7 +10927,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
   por pares de trataimentos.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10871,7 +10961,7 @@ Kanamicina-Dexametasona -0.0126000000 -0.017409273 -0.007790727 0.0000082
   tratamiento.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10898,7 +10988,7 @@ Kruskal-Wallis chi-squared = 13.433, df = 2, p-value = 0.001211
   IES.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, toprule=.15mm, leftrule=.75mm, breakable, rightrule=.15mm, coltitle=black, arc=.35mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, opacityback=0, titlerule=0mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colback=white, rightrule=.15mm, bottomrule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]

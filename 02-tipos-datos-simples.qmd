@@ -4,16 +4,16 @@ lang: es
 
 # Tipos de datos simples
 
-En R existen distintos tipos de datos predefinidos simples:
+En R existen distintos tipos de datos simples predefinidos:
 
 - `numeric`: Es el tipo de los números. Secuencia de dígitos (pueden incluir el - para negativos y el punto como separador de decimales) que representan números.  Por ejemplo, `1`, `-2.0`, `3.1415` o `4.5e3`.  
 Por defecto, cualquier número que se teclee tomará este tipo.
 
-- `double`: Es el tipo de los números reales. Secuencia de dígitos que incluyen decimales separados por punto. Por ejemplo `3.1415` o `-2.0`. Son una subclase del tipo de datos numérico.
+  - `integer`: Es el tipo de los números enteros. Secuencia de dígitos sin separador de decimales que representan un número entero. Por ejemplo `1` o `-2`. Son una subclase del tipo de datos numérico. 
+  
+  - `double`: Es el tipo de los números reales. Secuencia de dígitos que incluyen decimales separados por punto. Por ejemplo `3.1415` o `-2.0`. Son una subclase del tipo de datos numérico.
 
-- `integer`: Es el tipo de los números enteros. Secuencia de dígitos sin separador de decimales que representan un número entero. Por ejemplo `1` o `-2`. Son una subclase del tipo de datos numérico. 
-
-- `character`: Es cualquier cadena de caracteres alfanuméricos. Secuencia de caracteres alfanuméricos que representan texto. Se escriben entre comillas simples o dobles. Por ejemplo `"Hola"` o `'Hola'`.  
+- `character`: Es el tipo de las cadenas de caracteres. Secuencia de caracteres alfanuméricos que representan texto. Se escriben entre comillas simples o dobles. Por ejemplo `"Hola"` o `'Hola'`.  
 
 - `logical`: Es el tipo de los booleanos. Puede tomar cualquiera de los dos valores lógicos `TRUE` (verdadero) o `FALSE` (falso). También se pueden abreviar como `T` o `F`.  
 
@@ -47,6 +47,13 @@ También pueden utilizarse las siguientes funciones que devuelven un booleano:
 - `is.logical(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `logical`. 
 - `is.na(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `NA`. 
 - `is.null(x)`: Devuelve el booleano `TRUE` si `x` es del tipo `NULL`. 
+
+:::{#exm-tipos-datos-2}
+```{r}
+is.double(3.1415)
+is.character(TRUE)
+``` 
+:::
 
 ## Conversión de tipos
 
@@ -88,12 +95,12 @@ A continuación se muestran varios ejemplos de operaciones aritméticas.
 
 Comparan dos números y devuelven un valor lógico.
 
-- `x == y` : Devuelve `TRUE` si el número `x` es igual que el número `y`, y `FALSE` en caso contrario.
-- `x > y` : Devuelve `TRUE` si el número `x` es mayor que el número `y`, y `FALSE` en caso contrario.
-- `x < y` : Devuelve `TRUE` si el número `x` es menor que el número `y`, y `FALSE` en caso contrario.
-- `x >= y` : Devuelve `TRUE` si el número `x` es mayor o igual que el número `y`, y `FALSE` en caso contrario.
-- `x <= y` : Devuelve `TRUE` si el número `x` es menor o igual a que el número `y,` y `FALSE` en caso contrario.
-- `x != y` : Devuelve `TRUE` si el número `x` es distinto del número `y`, y `FALSE` en caso contrario.
+- `x == y`: Devuelve `TRUE` si el número `x` es igual que el número `y`, y `FALSE` en caso contrario.
+- `x > y`: Devuelve `TRUE` si el número `x` es mayor que el número `y`, y `FALSE` en caso contrario.
+- `x < y`: Devuelve `TRUE` si el número `x` es menor que el número `y`, y `FALSE` en caso contrario.
+- `x >= y`: Devuelve `TRUE` si el número `x` es mayor o igual que el número `y`, y `FALSE` en caso contrario.
+- `x <= y`: Devuelve `TRUE` si el número `x` es menor o igual a que el número `y,` y `FALSE` en caso contrario.
+- `x != y`: Devuelve `TRUE` si el número `x` es distinto del número `y`, y `FALSE` en caso contrario.
 
 :::{#exm-operadores-relacionales}
 A continuación se muestran varios ejemplos de operaciones relacionales.
@@ -108,13 +115,44 @@ A continuación se muestran varios ejemplos de operaciones relacionales.
 ```
 :::
 
+### Funciones y constantes numéricas
+
+Las siguientes constantes y funciones matemáticas también están ya predefinidas.
+
+- `pi`: Devuelve el número $\pi$.
+- `sqrt(x)`: Devuelve la raíz cuadrada de `x`.
+- `abs(x)`: Devuelve el valor absoluto de `x`.
+- `round(x, n)`: Devuelve el redondeo de `x` a `n` decimales.
+- `exp(x)`: Devuelve la exponencial de `x` ($e^x$).
+- `log(x)`: Devuelve el logaritmo neperiano de `x`.
+- `sin(x)`: Devuelve el seno del ángulo `x` en radianes.
+- `cos(x)`: Devuelve el coseno del ángulo `x` en radianes.
+- `tan(x)`: Devuelve la tangente del ángulo `x` en radianes.
+- `asin(x)`: Devuelve el arcoseno de `x`.
+- `acos(x)`: Devuelve el arcocoseno de `x`.
+- `atan(x)`: Devuelve el arcotangente de `x`.
+
+---
+
+:::{#exm-funciones-numéricas}
+```{r}
+sqrt(9)
+abs(-1)
+round(1.7)
+exp(1)
+log(exp(1))
+cos(pi)
+asin(1)
+```
+:::
+
 ## Operaciones con cadenas
 
 ### Funciones de cadenas
 
 Existen muchas funciones para cadenas de texto pero las más comunes son: 
 
-- `nchar(c)`: Devuelve un número entero con el número de caracteres de la cadena.
+- `nchar(c)`: Devuelve el número de caracteres de la cadena.
 - `paste(x, y, ..., sep=s)`: Concatena las cadenas `x`, `y`, etc. separándolas por la cadena `s`. Por defecto la cadena de separación es un espacio en blanco.
 - `substr(c, start=i, stop=j)`: Devuelve la subcadena de la cadena `c` desde la posición `i` hasta la posición `j`. El primer carácter de una cadena ocupa la posición 1.
 - `tolower(c)`: Devuelve la cadena que resulta de convertir la cadena `c` a minúsculas.
@@ -224,7 +262,7 @@ TRUE & TRUE
 
 ## Variables 
 
-Una variable es un identificador ligado a algún valor.
+Una variable es un identificador ligado a un valor.
 
 :::{.callout-note}
 ## Reglas para nombrar variables
@@ -233,7 +271,7 @@ Una variable es un identificador ligado a algún valor.
 - No se pueden utilizarse palabras reservadas del lenguaje.
 :::
 
-A diferencia de otros lenguajes de programación, las variables no tienen asociado un tipo y no es necesario declararlas antes de usarlas (tipado dinámico).
+A diferencia de otros lenguajes de programación, las variables no tienen asociado un tipo de dato y no es necesario declararlas antes de usarlas (tipado dinámico).
 
 Para asignar un valor a una variable se utiliza el operador de asignación `<-`:
 
@@ -311,41 +349,52 @@ Se dispone de los siguientes datos de una persona:
 | peso | 60 |
 | sexo | mujer |
 
-a. Declarar las variables anteriores y asignarles los valores correspondientes.
+a.  Declarar las variables anteriores y asignarles los valores correspondientes.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-# Declaración de variables
-edad <- 20
-estatura <- 165
-peso <- 60
-sexo <- "mujer"
-```
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    # Declaración de variables
+    edad <- 20
+    estatura <- 165
+    peso <- 60
+    sexo <- "mujer"
+    ```
+    :::
+
+a.  Definir la variable numérica imc con el índice de masa corporal aplicando la siguiente fórmula a las variables anteriores: 
+
+    $$
+    \mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}
+    $$
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    # Cálculo del índice de masa corporal
+    imc <- peso / (estatura / 100) ^ 2
+    imc
+    ```
+    :::
+
+a.  Mostrar por pantalla el indice de masa corporal calculado en el apartado anterior redondeado a dos decimales y con sus unidades en mayúsculas.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    # Salida por pantalla
+    paste("Índice de masa corporal: ", round(imc,2), toupper("KG/M²"))
+    ```
+    :::
+
+a.  Definir la variable booleana obesa con el valor correspondiente a la siguiente condición: ser mujer y no tener una edad superior a 60 y tener un índice de masa corporal mayor o igual que 30. ¿Es esta persona obesa?
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    # Cálculo de la obesidad
+    obesa <- sexo == "mujer" & ! edad > 60 & imc >= 30
+    obesa
+    ```
+    :::
 :::
-
-b. Definir la variable numérica imc con el índice de masa corporal aplicando la siguiente fórmula a las variables anteriores: 
-
-$$\mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}$$
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-# Cálculo del índice de masa corporal
-imc <- peso / (estatura / 100) ^ 2
-imc
-```
-:::
-
-c. Definir la variable booleana obesa con el valor correspondiente a la siguiente condición: ser mujer y no tener una edad superior a 60 y tener un índice de masa corporal mayor o igual que 30. ¿Es esta persona obesa?
-:::
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-# Cálculo de la obesidad
-obesa <- sexo == "mujer" & ! edad > 60 & imc >= 30
-obesa
-```
-:::
-

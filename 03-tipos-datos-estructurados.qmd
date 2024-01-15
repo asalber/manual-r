@@ -100,7 +100,7 @@ Para acceder a los elementos de un vector se utiliza un índice. Como veremos a 
 
 #### Acceso mediante un índice entero
 
-Los elementos de un vector están ordenados y el acceso más simple a ellos es mediante su número de orden, es decir, indicando entre corchetes `[ ]` el entero que corresponde a su número de orden. Se puede acceder simultáneamente a varios elementos mediante un vector con sus números de orden. Por otro lado, también es posible usar enteros negativos y en tal caso se obtendrán todos los elementos del vector excepto los que ocupan las posiciones correspondientes al valor absoluto de los índices negativos. Esta es la forma más habitual de eliminar elementos de un vector.
+Los elementos de un vector están ordenados y el acceso más simple a ellos es mediante su número de orden, es decir, indicando entre corchetes `[ ]` el entero que corresponde a su número de orden. Se puede acceder simultáneamente a varios elementos mediante un vector con sus números de orden.
 
 :::{.callout-warning}
 En R los índices enteros para acceder a los elementos de un vector comienzan en 1, a diferencia de otros lenguajes de programación que empiezan en 0.
@@ -176,10 +176,14 @@ x <- 1:3
 2 %in% x
 4 %in% x
 ```
+:::
 
 ### Modificación de los elementos de un vector
 
 Para modificar uno o varios elementos de un vector basta con acceder a esos elementos y usar el operador de asignación para asignar nuevos valores.
+
+- `v[i] <- x`: Asigna el dato `x` a la posición `i` del vector `v`.
+- `v[c(i,j,...)] <- x`: Asigna el dato `x` a las posiciones `i`, `j`, etc. del vector `v`.
 
 :::{#exm-modificacion-vectores}
 A continuación se muestran varios ejemplos de modificación de los elementos de un vector.
@@ -398,7 +402,7 @@ Se accede a los elementos de una lista de forma similar a los vectores, mediante
 
 Al igual que los vectores, los elementos de una lista están ordenados y se puede utilizar un índice entero para acceder a los elementos que ocupan una determinada posición.
 
-:::{#exm-}
+:::{#exm-acceso-lista-indice-entero}
 A continuación se muestran varios ejemplos de acceso a los elementos de una lista mediante índices enteros.
 ```{r}
 x <- list(1, "dos", TRUE, 4.5)
@@ -816,10 +820,10 @@ x %*% solve(x)
 
 Para calcular los autovalores y los autovectores de una matriz numérica cuadrada se utiliza la siguiente función: 
 
-- `eigen(x)`: Devuelve una lista con los autovalores y los autovectores de la matriz `x`. Para acceder a los autovalores se utiliza el nombre `values` y para acceder a los autovectores se utiliza el nombre `vectors`. 
+- `eigen(x)`: Devuelve una lista con los autovalores y los autovectores de la matriz `x`. Para acceder a los autovalores se utiliza el nombre `values` y para acceder a los autovectores se utiliza el nombre `vectors`. Si `x` no es una matriz numérica cuadrada produce un error.
 
 :::{#exm-autovalores-autovectores}
-A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada. Si `x` no es una matriz numérica cuadrada produce un error.
+A continuación se muestra un ejemplo del cálculo los autovalores y los autovectores de una matriz numérica cuadrada.
 
 ```{r}
 x <- matrix(1:4, nrow = 2)
