@@ -300,66 +300,67 @@ df %>%
 
 ## Ejercicios
 
-1. El fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
+:::{#exr-preprocesamiento-1}
+El fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 
-a. Crear un tibble con los datos del fichero.
+a.  Crear un tibble con los datos del fichero.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r, message=F}
-library(tidyverse)
-df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv')
-df
-```
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r, message=F}
+    library(tidyverse)
+    df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv')
+    df
+    ```
+    :::
+
+a.  Convertir el tratamiento en un factor.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df <- mutate(df, Tratamiento = factor(Tratamiento))
+    ```
+    :::
+
+a.  Calcular el tamaño muestral de cada grupo de tratamiento
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    count(df, Tratamiento)
+    ```
+    :::
+
+a.  Filtrar las ratas de grupo control con una masa corporal (`mas cor (g)`) mayor de 230 g.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    filter(df, Tratamiento == "Control" & `mas cor (g)` > 230)
+    ```
+    :::
+
+a.  Calcular la media y la desviación típica de la masa corporal (`mas cor (g)`) para cada tratamiento.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df %>%
+        group_by(Tratamiento) %>%
+        summarise(media = mean(`mas cor (g)`), desv.est = sd(`mas cor (g)`))
+    ```
+    :::
+
+a.  Calcular la media y la desviación típica de todas las variables para cada tratamiento.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df %>%
+        pivot_longer(-c(`código muestra`, Tratamiento), names_to = "Variable", values_to = "Valor") %>%
+        group_by(Variable) %>%
+        summarise(media = mean(Valor), desv.est = sd(Valor))
+    ```
+    :::
 :::
-
-b. Convertir el tratamiento en un factor.
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df <- mutate(df, Tratamiento = factor(Tratamiento))
-```
-:::
-
-c. Calcular el tamaño muestral de cada grupo de tratamiento
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-count(df, Tratamiento)
-```
-:::
-
-d. Filtrar las ratas de grupo control con una masa corporal (`mas cor (g)`) mayor de 230 g.
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-filter(df, Tratamiento == "Control" & `mas cor (g)` > 230)
-```
-:::
-
-e. Calcular la media y la desviación típica de la masa corporal (`mas cor (g)`) para cada tratamiento.
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df %>%
-    group_by(Tratamiento) %>%
-    summarise(media = mean(`mas cor (g)`), desv.est = sd(`mas cor (g)`))
-```
-:::
-
-f. Calcular la media y la desviación típica de todas las variables para cada tratamiento.
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df %>%
-    pivot_longer(-c(`código muestra`, Tratamiento), names_to = "Variable", values_to = "Valor") %>%
-    group_by(Variable) %>%
-    summarise(media = mean(Valor), desv.est = sd(Valor))
-```
-:::
-

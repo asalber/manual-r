@@ -217,50 +217,44 @@ for (i in 1:10) {
 
 ## Ejercicios
 
-:::{#exr-estructuras-control-1}
-Considérese el data frame creado en el @exr-datos-estructurados-1.
-
-```{r}
-#| hide: true
-nombre <- c("Carlos", "María", "Carmen", "Pedro", "Luis", "Sara")
-sexo <- c("H", "M", "M", "H", "H", "M")
-fisica <- c(6.7, 7.2, 5.5, NA, 3.5, 6.2)
-quimica <- c(8.1, 9.5, 5, 4.5, 5, 4)
-df <- data.frame(nombre, sexo, fisica, quimica)
-```
-
-a. Usando la función `mean()`, calcular la media de Física y de Química usando un bucle iterativo.
+:::{#exr-funciones-1}
+Crear una función para calcular la media de un vector numérico y usarla para calcular la media del vector `(1, 2, NA, 3, 4)`.
 
 :::{.callout-note collapse="true"}
 ## Solución 
 ```{r}
-medias <- NULL
-for (i in 3:4){
-  medias <- c(medias, mean(df[[i]], na.rm=TRUE))
+media <- function(x){
+  suma <- 0
+  n <- 0
+  for (i in x){
+    if (!is.na(i)){
+      suma <- suma + i
+      n <- n + 1
+    }
+  }
+  return(suma / n)
 }
-medias
+media(c(1, 2, NA, 3, 4))
 ```
 :::
+:::
 
-
- crear una nueva columna con la calificación (suspenso, aprobado, notable, sobresaliente) de las notas de Física y Química.
+:::{#exr-funciones-2}
+Usar la función anterior para crear una función para calcular las medias de las columnas de un data frame numérico. La función debe devolver un vector con las medias de las columnas. Usarla para calcular el data frame formado por los vectores `(1, 2, NA, 3, 4)`  y `(-1, 0, -2, 0, NA)`.
 
 :::{.callout-note collapse="true"}
 ## Solución 
 ```{r}
-#| hide: true
-nombre <- c("Carlos", "María", "Carmen", "Pedro", "Luis", "Sara")
-sexo <- c("H", "M", "M", "H", "H", "M")
-fisica <- c(6.7, 7.2, 5.5, NA, 3.5, 6.2)
-quimica <- c(8.1, 9.5, 5, 4.5, 5, 4)
-df <- data.frame(nombre, sexo, fisica, quimica)
-```
-
-```{r}
-for (i in 1:nrow(df)){
-  
+medias <- function(df){
+medias <- NULL
+for (i in colnames(df)){
+  medias <- c(medias, media(df[[i]]))
 }
-```
+return(medias)
+}
 
+df <- data.frame(x = c(1, 2, NA, 3, 4), y = c(-1, 0, -2, 0, NA))
+medias(df)
+```
 :::
 :::

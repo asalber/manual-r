@@ -873,12 +873,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ejercicios" class="level2" data-number="6.14">
 <h2 data-number="6.14" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">6.14</span> Ejercicios</h2>
-<ol type="1">
-<li>El fichero <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv"><code>genetica</code></a>, contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.</li>
-</ol>
+<div id="exr-preprocesamiento-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 6.1 </strong></span>El fichero <a href="https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv"><code>genetica</code></a>, contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.</p>
 <ol type="a">
-<li>Crear un tibble con los datos del fichero.</li>
-</ol>
+<li><p>Crear un tibble con los datos del fichero.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -891,39 +889,36 @@ Solución
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-14_f1dd83834a3a84cfecf91efb43f8c7ac">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-14_7e1c48c30cd0ba083f235a52ebc3cfca">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv'</span>)</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 20
-   códig…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
-   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 Ct-A1   Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3   401. 
- 2 Ct-A2   Control    202. 0.044  0.002   0.0017  8  e-4    50.7  2.42e6   553. 
- 3 Ct-B1   Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6   724. 
- 4 Ct-B2   Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6  2213. 
- 5 Ct-B3   Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7  4518. 
- 6 Ct-C1   Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7   775. 
- 7 Ct-C2   Control    228. 0.05   0.0018  0.0031  5.9e-4    29.4  7.5 e3    83.4
- 8 Dx-1    Dexame…    181. 0.061  0.00155 0.0005  1.2e-4    56.0  7.68e2    10  
- 9 Dx-2    Dexame…    198. 0.063  0.00191 0.0011  2  e-4   119.   1.41e6    15  
-10 Dx-3    Dexame…    201. 0.0577 0.0017  0.0001  1  e-4   119.   7.12e3    11  
-# … with 11 more rows, 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;,
-#   `IHQ: linfB(cel/mm2)` &lt;dbl&gt;, `pulp.blan(Tx1)` &lt;dbl&gt;,
-#   `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;, `gluc(mmol/L)` &lt;dbl&gt;,
-#   `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;, `HDL(mmol/L)` &lt;dbl&gt;,
-#   `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names ¹​`código muestra`,
-#   ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`, ⁵​`pbmc(cel/mL)`,
-#   ⁶​`CD4(cel/µL)`</code></pre>
+   `código muestra` Tratamiento  `mas cor (g)`    IHS     IES     ITS     IAS
+   &lt;chr&gt;            &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Ct-A1            Control               236  0.0433 0.00198 0.00178 0.00043
+ 2 Ct-A2            Control               202. 0.044  0.002   0.0017  0.0008 
+ 3 Ct-B1            Control               246. 0.042  0.002   0.0015  0.0005 
+ 4 Ct-B2            Control               237. 0.0475 0.00238 0.00203 0.00041
+ 5 Ct-B3            Control               231. 0.0499 0.002   0.0011  0.0005 
+ 6 Ct-C1            Control               235. 0.05   0.0021  0.0033  0.0014 
+ 7 Ct-C2            Control               228. 0.05   0.0018  0.0031  0.00059
+ 8 Dx-1             Dexametasona          181. 0.061  0.00155 0.0005  0.00012
+ 9 Dx-2             Dexametasona          198. 0.063  0.00191 0.0011  0.0002 
+10 Dx-3             Dexametasona          201. 0.0577 0.0017  0.0001  0.0001 
+# ℹ 11 more rows
+# ℹ 13 more variables: `glucog(mg/g)` &lt;dbl&gt;, `pbmc(cel/mL)` &lt;dbl&gt;,
+#   `CD4(cel/µL)` &lt;dbl&gt;, `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
+#   `pulp.blan(Tx1)` &lt;dbl&gt;, `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;,
+#   `gluc(mmol/L)` &lt;dbl&gt;, `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;,
+#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<ol start="2" type="a">
-<li>Convertir el tratamiento en un factor.</li>
-</ol>
+</div></li>
+<li><p>Convertir el tratamiento en un factor.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -936,15 +931,13 @@ Solución
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-15_925fe097a3df7f62fb110b7867504a9a">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-15_586c00d7d5c45509db9670a931eebf5e">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">Tratamiento =</span> <span class="fu">factor</span>(Tratamiento))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-</div>
-<ol start="3" type="a">
-<li>Calcular el tamaño muestral de cada grupo de tratamiento</li>
-</ol>
+</div></li>
+<li><p>Calcular el tamaño muestral de cada grupo de tratamiento</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -957,7 +950,7 @@ Solución
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-16_c19789377b8d3ad3bcee6608e82773d7">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-16_025fd1b32ad6405c49a8cfd6129a9918">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(df, Tratamiento)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
@@ -970,10 +963,8 @@ Solución
 </div>
 </div>
 </div>
-</div>
-<ol start="4" type="a">
-<li>Filtrar las ratas de grupo control con una masa corporal (<code>mas cor (g)</code>) mayor de 230 g.</li>
-</ol>
+</div></li>
+<li><p>Filtrar las ratas de grupo control con una masa corporal (<code>mas cor (g)</code>) mayor de 230 g.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -986,31 +977,28 @@ Solución
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-17_a6c57921da54597df846ef2011f3b1f3">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-17_bf5418e8f23d5d9ccede9a017e1b4483">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, Tratamiento <span class="sc">==</span> <span class="st">"Control"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">230</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 20
-  código…¹ Trata…² mas c…³    IHS     IES     ITS    IAS gluco…⁴ pbmc(…⁵ CD4(c…⁶
-  &lt;chr&gt;    &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 Ct-A1    Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3    401.
-2 Ct-B1    Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6    724.
-3 Ct-B2    Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6   2213.
-4 Ct-B3    Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7   4518.
-5 Ct-C1    Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7    775.
-# … with 10 more variables: `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
+  `código muestra` Tratamiento `mas cor (g)`    IHS     IES     ITS     IAS
+  &lt;chr&gt;            &lt;fct&gt;               &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Ct-A1            Control              236  0.0433 0.00198 0.00178 0.00043
+2 Ct-B1            Control              246. 0.042  0.002   0.0015  0.0005 
+3 Ct-B2            Control              237. 0.0475 0.00238 0.00203 0.00041
+4 Ct-B3            Control              231. 0.0499 0.002   0.0011  0.0005 
+5 Ct-C1            Control              235. 0.05   0.0021  0.0033  0.0014 
+# ℹ 13 more variables: `glucog(mg/g)` &lt;dbl&gt;, `pbmc(cel/mL)` &lt;dbl&gt;,
+#   `CD4(cel/µL)` &lt;dbl&gt;, `monoc(cel/mL)` &lt;dbl&gt;, `IHQ: linfB(cel/mm2)` &lt;dbl&gt;,
 #   `pulp.blan(Tx1)` &lt;dbl&gt;, `microorg(log nº/g)` &lt;dbl&gt;, `AI2(absorb)` &lt;dbl&gt;,
 #   `gluc(mmol/L)` &lt;dbl&gt;, `TAG(mmol/L)` &lt;dbl&gt;, `col(mmol/L)` &lt;dbl&gt;,
-#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;, and abbreviated variable names
-#   ¹​`código muestra`, ²​Tratamiento, ³​`mas cor (g)`, ⁴​`glucog(mg/g)`,
-#   ⁵​`pbmc(cel/mL)`, ⁶​`CD4(cel/µL)`</code></pre>
+#   `HDL(mmol/L)` &lt;dbl&gt;, `ins(pmol/L)` &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<ol start="5" type="a">
-<li>Calcular la media y la desviación típica de la masa corporal (<code>mas cor (g)</code>) para cada tratamiento.</li>
-</ol>
+</div></li>
+<li><p>Calcular la media y la desviación típica de la masa corporal (<code>mas cor (g)</code>) para cada tratamiento.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1023,7 +1011,7 @@ Solución
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-18_5177c65fea21adf26fb2c8bdeb356ddb">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-18_13374bc4ee09f64f3866c1f012ff35ff">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Tratamiento) <span class="sc">%&gt;%</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span>), <span class="at">desv.est =</span> <span class="fu">sd</span>(<span class="st">`</span><span class="at">mas cor (g)</span><span class="st">`</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1038,10 +1026,8 @@ Solución
 </div>
 </div>
 </div>
-</div>
-<ol start="6" type="a">
-<li>Calcular la media y la desviación típica de todas las variables para cada tratamiento.</li>
-</ol>
+</div></li>
+<li><p>Calcular la media y la desviación típica de todas las variables para cada tratamiento.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1054,7 +1040,7 @@ Solución
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-19_0744575d458b2937ddc616b0acec10ef">
+<div class="cell" data-hash="06-preprocesamiento_cache/html/unnamed-chunk-19_eeeaa1bebab51a9d65cef6a85d631ada">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">código muestra</span><span class="st">`</span>, Tratamiento), <span class="at">names_to =</span> <span class="st">"Variable"</span>, <span class="at">values_to =</span> <span class="st">"Valor"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Variable) <span class="sc">%&gt;%</span></span>
@@ -1085,6 +1071,8 @@ Solución
 </div>
 </div>
 </div>
+</div></li>
+</ol>
 </div>
 
 
