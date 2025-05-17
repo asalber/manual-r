@@ -79,7 +79,7 @@ Para facilitar el preprocesamiento y posterior análisis de los datos es recomen
 - `pivot_wider(df, names_from = columna-nombres, values_from = columna-valores)`: Devuelve el tibble que resulta de convertir el data frame `df` a formato ancho, es decir, se crean tantas columnas como nombres distintos haya en la columna `columna-nombres`, usando estos nombres como los nombres de las columnas, mientras que los valores se toman de la columna `columna-valores`.
 
 
-:::{.exm-pivotar-formato-ancho-a-largo}
+:::{#exm-pivotar-formato-ancho-a-largo}
 ```{r, message=F}
 library(tidyr)
 df <- data.frame(nombre = c('María', 'Luis', 'Carmen'), 
@@ -118,7 +118,7 @@ Para contar el número de observaciones (filas) de un data frame se utiliza la f
 
 Esta función se utiliza habitualmente para calcular tamaños muestrales.
 
-:::{.exm-count-1}
+:::{#exm-count-1}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -127,7 +127,7 @@ count(df)
 ```
 :::
 
-:::{.exm-count-2}
+:::{#exm-count-2}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -142,7 +142,7 @@ Para seleccionar un subconjunto de variables de un data frame se utiliza la func
 
 - `select(df, columnas)`: Devuelve un tibble con las columnas indicadas en el parámetro `columnas` del data frame `df`.
 
-:::{.exm-select}
+:::{#exm-select}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -163,7 +163,7 @@ Para filtrar un data frame y quedarse con las filas que cumplen una condición s
 
 - `filter(df, condicion)`: Devuelve el tibble con las filas del data frame `df` que cumplen la condición indicada en el parámetro `condición`.
 
-:::{.exm-filter}
+:::{#exm-filter}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -180,7 +180,7 @@ Existe un filtro bastante habitual que consiste en eliminar las filas de un data
 
 - `na.omit(df)`: Devuelve el tibble que resulta de eliminar las filas del data frame `df` con algún valor `NA`.
 
-:::{.exm-filter-na}
+:::{#exm-filter-na}
 ```{r, message=F}
 na.omit(df)
 ```
@@ -192,7 +192,7 @@ Para reordenar las filas de un data frame se utiliza la función
 
 - `arrange(df, columnas)`: Devuelve un tibble con las mismas filas del data frame `df` pero ordenadas de acuerdo a los valores de las columnas indicadas en el parámetro `columnas`. Por defecto, la ordenación es ascendente, para hacerla descendente, hay que aplicar la función `desc()` a la columna con respecto se quiere ordenar descendentemente.
 
-:::{.exm-arrange}
+:::{#exm-arrange}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -211,7 +211,7 @@ Para cambiar el nombre de las columnas se utiliza la función
 
 - `rename(df, nuevo-nombre = columna)`: Devuelve un tibble con los mismos datos del data frame `df` pero cambiando el nombre de la columna de nombre `columna` por `nuevo-nombre`.
 
-:::{.exm-rename}
+:::{#exm-rename}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -226,7 +226,7 @@ Para crear una nueva columna a partir de otras columnas del data frame se utiliz
 
 - `mutate(df, columna = formula)`: Devuelve el tibble que resulta de añadir una nueva columna al data frame `df` con el resultado de aplicar el procedimiento indicado por `formula` y con el nombre indicado en `columna`. Si `columna` es el nombre de una columna ya existente, entonces esa columna se reescribe con los resultados de aplicar la `formula`.
 
-:::{.exm-mutate}
+:::{#exm-mutate}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -243,7 +243,7 @@ Para aplicar una función resumen a una o varias columnas de un data frame se ut
 
 - `sumarise(df, nombre-columna = funcion-resumen(columnas))`: Devuelve el tibble con la columna de nombre `nombre-columna` y el valor que resulta de aplicar la función indicada en `funcion-resumen` a las columnas del data frame `df` indicadas en `columnas`.
 
-:::{.exm-sumarise}
+:::{#exm-sumarise}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -260,7 +260,7 @@ La función `summarise` suele combinarse con la siguiente función para obtener 
 
 - `group_by(df, columnas)`: Devuelve un tibble estratificado de acuerdo a las categorías de las columnas indicadas en `columnas`. En combinación con la función `summarise` permite hacer resúmenes estadísticos por grupos.
 
-:::{.exm-group_by}
+:::{#exm-group_by}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -281,7 +281,7 @@ summarise(df.sexo, media = mean(colesterol, na.rm=T), sd = sd(colesterol, na.rm=
 
 Cuando se utilizan tuberías para componer operaciones de esta forma, no es necesario indicar el data frame como parámetro de la función que define la acción ya que automáticamente se toma el data frame que resulta de la operación anterior.
 
-:::{.exm-tuberías-1}
+:::{#exm-tuberías-1}
 ```{r, message=F}
 library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')

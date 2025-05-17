@@ -42,14 +42,28 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
+\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\makeatother
 
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -69,7 +83,7 @@
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
@@ -79,7 +93,7 @@
 \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
 \newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
 \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
@@ -105,15 +119,17 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 
@@ -155,8 +171,6 @@
 \definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
 \definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
 \definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
-\makeatother
-\makeatletter
 \makeatother
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
@@ -204,21 +218,16 @@
 \AtBeginDocument{\renewcommand*{\proofname}{Prueba}}
 \newtheorem*{remark}{Observación}
 \newtheorem*{solution}{Solución}
+\newtheorem{refremark}{Observación}[chapter]
+\newtheorem{refsolution}{Solución}[chapter]
+\makeatother
+\makeatletter
 \makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-\makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
-\makeatother
-\makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
-\makeatother
+
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
 \else
@@ -228,10 +237,8 @@
 % get rid of language-specific shorthands (see #6817):
 \let\LanguageShortHands\languageshorthands
 \def\languageshorthands#1{}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
+
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -245,6 +252,7 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
+
 \title{Curso básico de análisis de datos con R}
 \usepackage{etoolbox}
 \makeatletter
@@ -257,25 +265,49 @@
 \date{2022-01-06}
 
 \begin{document}
-\maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, enhanced, frame hidden, boxrule=0pt, interior hidden, breakable, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\begin{titlepage}
 
+%\AddToShipoutPicture*{\put(0,0){\includegraphics[scale=0.8]{img/background2}}} % Imagen de fondo, requiere el paquete eso-pic.
+\begin{center}
+\vspace*{5cm}
+
+\Huge
+{\textbf{\textsf{Curso básico de análisis de datos con R}}}
+
+\vspace{0.5cm}
+\LARGE
+{\textbf{\textsf{Con ejemplos aplicados a las Ciencias de la Salud}}}
+
+\vspace{1.5cm}
+
+\includegraphics[width=0.4\textwidth]{img/logos/sticker.png}
+\end{center}
+
+\vfill
+
+\begin{flushleft}
+\begin{tabular}{ll}
+\includegraphics[width=0.1\textwidth]{img/logos/aprendeconalf.png} & \parbox[b]{5cm}{\Large\textsf{Alfredo
+Sánchez
+Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
+\end{tabular}
+\end{flushleft}
+\end{titlepage}
 \renewcommand*\contentsname{Indice de contenidos}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+
 \bookmarksetup{startatroot}
 
-\hypertarget{prefacio}{%
-\chapter*{Prefacio}\label{prefacio}}
+\chapter*{Prefacio}\label{prefacio}
 \addcontentsline{toc}{chapter}{Prefacio}
 
 \markboth{Prefacio}{Prefacio}
 
-\hypertarget{propuxf3sito-de-este-manual}{%
-\section*{Propósito de este manual}\label{propuxf3sito-de-este-manual}}
+\section*{Propósito de este manual}\label{propuxf3sito-de-este-manual}
 \addcontentsline{toc}{section}{Propósito de este manual}
 
 \markright{Propósito de este manual}
@@ -307,8 +339,7 @@ predefinidas y de los paquetes más habituales para el análisis de datos.
 Para cualquier comentario o sugerencia sobre este manual escriba al
 autor (asalber@ceu.es).
 
-\hypertarget{licencia}{%
-\section*{Licencia}\label{licencia}}
+\section*{Licencia}\label{licencia}
 \addcontentsline{toc}{section}{Licencia}
 
 \markright{Licencia}
@@ -356,8 +387,7 @@ autor.
 
 \bookmarksetup{startatroot}
 
-\hypertarget{introducciuxf3n-a-r}{%
-\chapter{Introducción a R}\label{introducciuxf3n-a-r}}
+\chapter{Introducción a R}\label{introducciuxf3n-a-r}
 
 La gran potencia de cómputo alcanzada por los ordenadores ha convertido
 a los mismos en poderosas herramientas al servicio de todas aquellas
@@ -371,15 +401,15 @@ desarrollado en 1993 por Robert Gentleman y Ross Ihaka en la Universidad
 de Auckland en Nueva Zelanda, aunque actualmente es mantenido por una
 enorme comunidad científica en todo el mundo.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.25\textwidth,height=\textheight]{img/logos/Rlogo.png}
+{\centering \includegraphics[width=0.25\linewidth,height=\textheight,keepaspectratio]{img/logos/Rlogo.png}
 
 }
 
 \caption{Logotipo de R}
 
-\end{figure}
+\end{figure}%
 
 Las ventajas de R frente a otros programas habituales de análisis de
 datos, como pueden ser SPSS, SAS o Matlab, son múltiples:
@@ -414,8 +444,7 @@ aprendizaje e ilustran el análisis estadístico de datos en distintas
 disciplinas científicas como las Matemáticas, la Física, la Biología, la
 Psicología, la Medicina, etc.
 
-\hypertarget{instalaciuxf3n-de-r}{%
-\section{Instalación de R}\label{instalaciuxf3n-de-r}}
+\section{Instalación de R}\label{instalaciuxf3n-de-r}
 
 R puede descargarse desde el \href{https://www.r-project.org/}{sitio web
 oficial de R} o desde el repositorio principal de paquetes de R
@@ -427,8 +456,7 @@ El intérprete de R se arranca desde la terminal, aunque en Windows
 incorpora su propia aplicación, pero es muy básica. En general, para
 trabajos serios, conviene utilizar un entorno de desarrollo para R.
 
-\hypertarget{entornos-de-desarrollo}{%
-\section{Entornos de desarrollo}\label{entornos-de-desarrollo}}
+\section{Entornos de desarrollo}\label{entornos-de-desarrollo}
 
 Por defecto el entorno de trabajo de R es en línea de comandos, lo que
 significa que los cálculos y los análisis se realizan mediante comandos
@@ -456,8 +484,7 @@ facilitan la gestión de cualquier proyecto:
 
 \bookmarksetup{startatroot}
 
-\hypertarget{tipos-de-datos-simples}{%
-\chapter{Tipos de datos simples}\label{tipos-de-datos-simples}}
+\chapter{Tipos de datos simples}\label{tipos-de-datos-simples}
 
 En R existen distintos tipos de datos simples predefinidos:
 
@@ -631,8 +658,7 @@ booleano:
 
 \end{example}
 
-\hypertarget{conversiuxf3n-de-tipos}{%
-\section{Conversión de tipos}\label{conversiuxf3n-de-tipos}}
+\section{Conversión de tipos}\label{conversiuxf3n-de-tipos}
 
 En muchas ocasiones es posible convertir un dato de un tipo a otro
 distinto. Para ello se usan las siguientes funciones:
@@ -666,11 +692,9 @@ distinto. Para ello se usan las siguientes funciones:
 El tipo \texttt{NA} no se puede convertir a ningún otro tipo pues
 representa la ausencia del dato. Lo mismo ocurre con \texttt{NULL}.
 
-\hypertarget{operaciones-con-nuxfameros}{%
-\section{Operaciones con números}\label{operaciones-con-nuxfameros}}
+\section{Operaciones con números}\label{operaciones-con-nuxfameros}
 
-\hypertarget{operadores-aritmuxe9ticos}{%
-\subsection{Operadores aritméticos}\label{operadores-aritmuxe9ticos}}
+\subsection{Operadores aritméticos}\label{operadores-aritmuxe9ticos}
 
 Los siguientes operadores permiten realizar las clásicas operaciones
 aritméticas entre datos numéricos:
@@ -759,8 +783,7 @@ aritméticas entre datos numéricos:
 
 \end{example}
 
-\hypertarget{operadores-relacionales}{%
-\subsection{Operadores relacionales}\label{operadores-relacionales}}
+\subsection{Operadores relacionales}\label{operadores-relacionales}
 
 Comparan dos números y devuelven un valor lógico.
 
@@ -866,9 +889,8 @@ Comparan dos números y devuelven un valor lógico.
 
 \end{example}
 
-\hypertarget{funciones-y-constantes-numuxe9ricas}{%
 \subsection{Funciones y constantes
-numéricas}\label{funciones-y-constantes-numuxe9ricas}}
+numéricas}\label{funciones-y-constantes-numuxe9ricas}
 
 Las siguientes constantes y funciones matemáticas también están ya
 predefinidas.
@@ -981,11 +1003,9 @@ predefinidas.
 
 \end{example}
 
-\hypertarget{operaciones-con-cadenas}{%
-\section{Operaciones con cadenas}\label{operaciones-con-cadenas}}
+\section{Operaciones con cadenas}\label{operaciones-con-cadenas}
 
-\hypertarget{funciones-de-cadenas}{%
-\subsection{Funciones de cadenas}\label{funciones-de-cadenas}}
+\subsection{Funciones de cadenas}\label{funciones-de-cadenas}
 
 Existen muchas funciones para cadenas de texto pero las más comunes son:
 
@@ -1085,9 +1105,8 @@ Existen muchas funciones para cadenas de texto pero las más comunes son:
 
 \end{example}
 
-\hypertarget{operaciones-de-comparaciuxf3n-de-cadenas}{%
 \subsection{Operaciones de comparación de
-cadenas}\label{operaciones-de-comparaciuxf3n-de-cadenas}}
+cadenas}\label{operaciones-de-comparaciuxf3n-de-cadenas}
 
 \begin{itemize}
 \tightlist
@@ -1174,12 +1193,10 @@ mayúsculas, y los números antes que las letras.}
 
 \end{example}
 
-\hypertarget{operaciones-con-datos-luxf3gicos-o-booleanos}{%
 \section{Operaciones con datos lógicos o
-booleanos}\label{operaciones-con-datos-luxf3gicos-o-booleanos}}
+booleanos}\label{operaciones-con-datos-luxf3gicos-o-booleanos}
 
-\hypertarget{operadores-luxf3gicos}{%
-\subsection{Operadores lógicos}\label{operadores-luxf3gicos}}
+\subsection{Operadores lógicos}\label{operadores-luxf3gicos}
 
 A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
 1 y a \texttt{FALSE} el valor 0.
@@ -1222,8 +1239,7 @@ A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
   \texttt{FALSE} en caso contrario.
 \end{itemize}
 
-\hypertarget{tabla-de-verdad}{%
-\subsubsection*{Tabla de verdad}\label{tabla-de-verdad}}
+\subsubsection*{Tabla de verdad}\label{tabla-de-verdad}
 \addcontentsline{toc}{subsubsection}{Tabla de verdad}
 
 \begin{longtable}[]{@{}ccccc@{}}
@@ -1300,12 +1316,11 @@ A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
 
 \end{example}
 
-\hypertarget{variables}{%
-\section{Variables}\label{variables}}
+\section{Variables}\label{variables}
 
 Una variable es un identificador ligado a un valor.
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, opacitybacktitle=0.6, breakable, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{itemize}
 \tightlist
@@ -1398,9 +1413,8 @@ NULL
 
 \end{example}
 
-\hypertarget{prioridad-de-los-operadores}{%
 \subsection{Prioridad de los
-operadores}\label{prioridad-de-los-operadores}}
+operadores}\label{prioridad-de-los-operadores}
 
 Al evaluar una expresiones R utiliza el siguiente orden de prioridad de
 evaluación:
@@ -1485,8 +1499,7 @@ Se puede saltar el orden de evaluación utilizando paréntesis
 
 \end{example}
 
-\hypertarget{ejercicios}{%
-\section{Ejercicios}\label{ejercicios}}
+\section{Ejercicios}\label{ejercicios}
 
 \begin{exercise}[]\protect\hypertarget{exr-tipos-datos-1}{}\label{exr-tipos-datos-1}
 
@@ -1511,7 +1524,7 @@ sexo & mujer \\
   Declarar las variables anteriores y asignarles los valores
   correspondientes.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1532,7 +1545,7 @@ sexo & mujer \\
   \mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}
   \]
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1552,7 +1565,7 @@ sexo & mujer \\
   apartado anterior redondeado a dos decimales y con sus unidades en
   mayúsculas.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1572,7 +1585,7 @@ sexo & mujer \\
   tener un índice de masa corporal mayor o igual que 30. ¿Es esta
   persona obesa?
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1593,9 +1606,8 @@ sexo & mujer \\
 
 \bookmarksetup{startatroot}
 
-\hypertarget{tipos-de-datos-estructurados}{%
 \chapter{Tipos de datos
-estructurados}\label{tipos-de-datos-estructurados}}
+estructurados}\label{tipos-de-datos-estructurados}
 
 Los tipos estructurados de datos, a diferencia de los simples, son
 colecciones de datos con una determinada estructura. En R existen varios
@@ -1625,14 +1637,12 @@ la función siguiente:
   \texttt{x} en un formato amigable para las personas.
 \end{itemize}
 
-\hypertarget{vectores}{%
-\section{Vectores}\label{vectores}}
+\section{Vectores}\label{vectores}
 
 El vector es el tipo de dato estructurado más básicos en R. Un vector es
 una colección ordenada de elementos del mismo tipo.
 
-\hypertarget{creaciuxf3n-de-vectores}{%
-\subsection{Creación de vectores}\label{creaciuxf3n-de-vectores}}
+\subsection{Creación de vectores}\label{creaciuxf3n-de-vectores}
 
 Para construir un vector se utiliza la función de combinación
 \texttt{c()}:
@@ -1713,8 +1723,7 @@ NULL
 
 \end{example}
 
-\hypertarget{vectores-con-nombres}{%
-\subsubsection{Vectores con nombres}\label{vectores-con-nombres}}
+\subsubsection{Vectores con nombres}\label{vectores-con-nombres}
 
 Es posible asignar un nombre a cada elemento de un vector. Los nombres
 son etiquetas de texto que se asocian a cada elemento. Para asociar un
@@ -1765,8 +1774,7 @@ Para acceder a los nombres de un vector se utiliza la siguiente función:
 
 \end{example}
 
-\hypertarget{tamauxf1o-de-un-vector}{%
-\subsection{Tamaño de un vector}\label{tamauxf1o-de-un-vector}}
+\subsection{Tamaño de un vector}\label{tamauxf1o-de-un-vector}
 
 El número de elementos de un vector es su \emph{tamaño} y puede
 averiguarse con la siguiente función.
@@ -1804,8 +1812,7 @@ averiguarse con la siguiente función.
 
 \end{example}
 
-\hypertarget{coerciuxf3n-de-elementos}{%
-\subsection{Coerción de elementos}\label{coerciuxf3n-de-elementos}}
+\subsection{Coerción de elementos}\label{coerciuxf3n-de-elementos}
 
 Puesto que los elementos de un vector tienen que ser del mismo tipo,
 cuando se crea un vector con datos de distintos tipos, la función
@@ -1851,18 +1858,16 @@ flexibles a los más flexibles: \texttt{logical} \textless{}
 
 \end{example}
 
-\hypertarget{acceso-a-los-elementos-de-un-vector}{%
 \subsection{Acceso a los elementos de un
-vector}\label{acceso-a-los-elementos-de-un-vector}}
+vector}\label{acceso-a-los-elementos-de-un-vector}
 
 Para acceder a los elementos de un vector se utiliza un índice. Como
 veremos a continuación, este índice puede ser entero, lógico o de cadena
 de caracteres y se indica siempre entre corchetes \texttt{{[}\ {]}} a
 continuación del vector.
 
-\hypertarget{acceso-mediante-un-uxedndice-entero}{%
 \subsubsection{Acceso mediante un índice
-entero}\label{acceso-mediante-un-uxedndice-entero}}
+entero}\label{acceso-mediante-un-uxedndice-entero}
 
 Los elementos de un vector están ordenados y el acceso más simple a
 ellos es mediante su número de orden, es decir, indicando entre
@@ -1870,7 +1875,7 @@ corchetes \texttt{{[}\ {]}} el entero que corresponde a su número de
 orden. Se puede acceder simultáneamente a varios elementos mediante un
 vector con sus números de orden.
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 En R los índices enteros para acceder a los elementos de un vector
 comienzan en 1, a diferencia de otros lenguajes de programación que
@@ -1929,9 +1934,8 @@ empiezan en 0.
 
 \end{example}
 
-\hypertarget{acceso-mediante-un-uxedndice-luxf3gico}{%
 \subsubsection{Acceso mediante un índice
-lógico}\label{acceso-mediante-un-uxedndice-luxf3gico}}
+lógico}\label{acceso-mediante-un-uxedndice-luxf3gico}
 
 Cuando se utiliza un índice lógico, se obtienen los elementos
 correspondientes a las posiciones donde está el valor booleano
@@ -2012,9 +2016,8 @@ un vector que cumplen una determinada condición.
 
 \end{example}
 
-\hypertarget{acceso-mediante-un-uxedndice-de-cadena}{%
 \subsubsection{Acceso mediante un índice de
-cadena}\label{acceso-mediante-un-uxedndice-de-cadena}}
+cadena}\label{acceso-mediante-un-uxedndice-de-cadena}
 
 Si los elementos de un vector tienen nombre, es posible acceder a ellos
 usando sus nombres como índices.
@@ -2048,8 +2051,7 @@ Matemáticas    Economía
 
 \end{example}
 
-\hypertarget{pertenencia-a-un-vector}{%
-\subsection{Pertenencia a un vector}\label{pertenencia-a-un-vector}}
+\subsection{Pertenencia a un vector}\label{pertenencia-a-un-vector}
 
 Para comprobar si un valor en particular es un elemento de un vector se
 puede utilizar el operador \texttt{\%in\%}:
@@ -2089,9 +2091,8 @@ puede utilizar el operador \texttt{\%in\%}:
 
 \end{example}
 
-\hypertarget{modificaciuxf3n-de-los-elementos-de-un-vector}{%
 \subsection{Modificación de los elementos de un
-vector}\label{modificaciuxf3n-de-los-elementos-de-un-vector}}
+vector}\label{modificaciuxf3n-de-los-elementos-de-un-vector}
 
 Para modificar uno o varios elementos de un vector basta con acceder a
 esos elementos y usar el operador de asignación para asignar nuevos
@@ -2136,9 +2137,8 @@ valores.
 
 \end{example}
 
-\hypertarget{auxf1adir-elementos-a-un-vector}{%
 \subsection{Añadir elementos a un
-vector}\label{auxf1adir-elementos-a-un-vector}}
+vector}\label{auxf1adir-elementos-a-un-vector}
 
 Para añadir nuevos elementos a un vector pueden usarse las siguientes
 funciones:
@@ -2183,9 +2183,8 @@ funciones:
 
 \end{example}
 
-\hypertarget{eliminar-elementos-de-un-vector}{%
 \subsection{Eliminar elementos de un
-vector}\label{eliminar-elementos-de-un-vector}}
+vector}\label{eliminar-elementos-de-un-vector}
 
 Para eliminar los elementos que ocupan una determinada posición se
 utiliza el operador de acceso, es decir, los corchetes \texttt{{[}\ {]}}
@@ -2219,21 +2218,17 @@ negativo.
 
 \end{example}
 
-\hypertarget{eliminaciuxf3n-de-un-vector}{%
-\subsection{Eliminación de un
-vector}\label{eliminaciuxf3n-de-un-vector}}
+\subsection{Eliminación de un vector}\label{eliminaciuxf3n-de-un-vector}
 
 Para eliminar los elementos de un vector basta con asignar \texttt{NULL}
 a la variable que lo contiene, pero si se quiere liberar la memoria que
 ocupa la variable se utiliza la función \texttt{rm()}.
 
-\hypertarget{operaciones-aritmuxe9ticas-con-vectores}{%
 \subsection{Operaciones aritméticas con
-vectores}\label{operaciones-aritmuxe9ticas-con-vectores}}
+vectores}\label{operaciones-aritmuxe9ticas-con-vectores}
 
-\hypertarget{operaciones-aritmuxe9ticas-elemento-a-elemento}{%
 \subsubsection{Operaciones aritméticas elemento a
-elemento}\label{operaciones-aritmuxe9ticas-elemento-a-elemento}}
+elemento}\label{operaciones-aritmuxe9ticas-elemento-a-elemento}
 
 Para vectores numéricos las operaciones aritméticas habituales se
 aplican elemento a elemento. Si los vectores tienen distinto tamaño, el
@@ -2288,9 +2283,8 @@ reutilizando sus elementos, empezando por el primero.
 
 \end{example}
 
-\hypertarget{producto-escalar-de-vectores}{%
 \subsubsection{Producto escalar de
-vectores}\label{producto-escalar-de-vectores}}
+vectores}\label{producto-escalar-de-vectores}
 
 Para calcular el producto escalar de dos vectores numéricos se utiliza
 el operador \texttt{\%*\%}. Si los vectores tienen distinto tamaño se
@@ -2315,11 +2309,9 @@ produce un error.
 
 \end{example}
 
-\hypertarget{factores}{%
-\section{Factores}\label{factores}}
+\section{Factores}\label{factores}
 
-\hypertarget{operaciones-con-factores}{%
-\subsection{Operaciones con factores}\label{operaciones-con-factores}}
+\subsection{Operaciones con factores}\label{operaciones-con-factores}
 
 Un factor es una estructura de datos especial que se utiliza para
 representar categorías de variables cualitativas y por tanto puede tomar
@@ -2426,9 +2418,8 @@ siguiente función:
   \texttt{x} es del tipo factor, y \texttt{FALSE} en caso contrario.
 \end{itemize}
 
-\hypertarget{acceso-a-los-elementos-de-un-factor}{%
 \subsection{Acceso a los elementos de un
-factor}\label{acceso-a-los-elementos-de-un-factor}}
+factor}\label{acceso-a-los-elementos-de-un-factor}
 
 Se puede acceder a los elementos de un factor de la misma manera que se
 accede a los elementos de un vector. Y para obtener sus niveles se
@@ -2491,9 +2482,8 @@ Levels: hombre mujer
 
 \end{example}
 
-\hypertarget{modificaciuxf3n-de-los-elementos-de-un-factor}{%
 \subsection{Modificación de los elementos de un
-factor}\label{modificaciuxf3n-de-los-elementos-de-un-factor}}
+factor}\label{modificaciuxf3n-de-los-elementos-de-un-factor}
 
 Se puede modificar los elementos de un factor de manera similar a como
 se modifican los elementos de un vector, es decir accediendo al elemento
@@ -2558,8 +2548,7 @@ Levels: A B AB 0
 Obsérvese en el ejemplo anterior que cuando se intenta asignar un valor
 a un factor que no está entre sus niveles, se produce un error.
 
-\hypertarget{listas}{%
-\section{Listas}\label{listas}}
+\section{Listas}\label{listas}
 
 Las listas son colecciones ordenadas de elementos que pueden ser de
 distintos tipos. Los elementos de una lista también pueden ser de tipos
@@ -2568,8 +2557,7 @@ dato más versátil de R. Como veremos más adelante, otras estructuras de
 datos como los \emph{data frames} o los propios modelos estadísticos se
 construyen usando listas.
 
-\hypertarget{creaciuxf3n-de-listas}{%
-\subsection{Creación de listas}\label{creaciuxf3n-de-listas}}
+\subsection{Creación de listas}\label{creaciuxf3n-de-listas}
 
 Para construir una lista se utiliza la función \texttt{list()}:
 
@@ -2652,8 +2640,7 @@ list()
 
 \end{example}
 
-\hypertarget{listas-con-nombres}{%
-\subsubsection{Listas con nombres}\label{listas-con-nombres}}
+\subsubsection{Listas con nombres}\label{listas-con-nombres}
 
 Al igual que con los vectores, es posible asignar un nombre a cada uno
 de los elementos de una lista.
@@ -2714,8 +2701,7 @@ Para obtener los nombres de una lista se utiliza la siguiente función:
 
 \end{example}
 
-\hypertarget{tamauxf1o-de-una-lista}{%
-\subsection{Tamaño de una lista}\label{tamauxf1o-de-una-lista}}
+\subsection{Tamaño de una lista}\label{tamauxf1o-de-una-lista}
 
 El número de elementos de una lista es su \emph{tamaño} y puede
 averiguarse con la siguiente función:
@@ -2763,17 +2749,15 @@ averiguarse con la siguiente función:
 
 \end{example}
 
-\hypertarget{acceso-a-los-elementos-de-una-lista}{%
 \subsection{Acceso a los elementos de una
-lista}\label{acceso-a-los-elementos-de-una-lista}}
+lista}\label{acceso-a-los-elementos-de-una-lista}
 
 Se accede a los elementos de una lista de forma similar a los vectores,
 mediante índices enteros, lógicos o de cadena, entre corchetes
 \texttt{{[}\ {]}}.
 
-\hypertarget{acceso-mediante-un-uxedndice-entero-1}{%
 \subsubsection{Acceso mediante un índice
-entero}\label{acceso-mediante-un-uxedndice-entero-1}}
+entero}\label{acceso-mediante-un-uxedndice-entero-1}
 
 Al igual que los vectores, los elementos de una lista están ordenados y
 se puede utilizar un índice entero para acceder a los elementos que
@@ -2828,9 +2812,8 @@ ocupan una determinada posición.
 
 \end{example}
 
-\hypertarget{acceso-mediante-un-uxedndice-luxf3gico-1}{%
 \subsubsection{Acceso mediante un índice
-lógico}\label{acceso-mediante-un-uxedndice-luxf3gico-1}}
+lógico}\label{acceso-mediante-un-uxedndice-luxf3gico-1}
 
 Cuando se utiliza un índice lógico, se obtienen los elementos
 correspondientes a las posiciones donde está el valor booleano
@@ -2897,8 +2880,7 @@ obtiene \texttt{NA}, y que el acceso mediante este índice devuelve
 
 \end{example}
 
-\hypertarget{acceso-mediante-nombres}{%
-\subsubsection{Acceso mediante nombres}\label{acceso-mediante-nombres}}
+\subsubsection{Acceso mediante nombres}\label{acceso-mediante-nombres}
 
 Si los elementos de una lista tienen nombre, se puede acceder a ellos
 utilizando sus nombres como índices. La única diferencia con el acceso
@@ -3009,9 +2991,8 @@ parciales en los nombres de los elementos para acceder a ellos.
 [1] "Madrid"
 \end{verbatim}
 
-\hypertarget{modificaciuxf3n-de-los-elementos-de-una-lista}{%
 \subsection{Modificación de los elementos de una
-lista}\label{modificaciuxf3n-de-los-elementos-de-una-lista}}
+lista}\label{modificaciuxf3n-de-los-elementos-de-una-lista}
 
 Para modificar uno o varios elementos de una lista basta con acceder a
 esos elementos y reasignarles valores con el operador de asignación.
@@ -3038,9 +3019,8 @@ $edad
 
 \end{example}
 
-\hypertarget{auxf1adir-elementos-a-una-lista}{%
 \subsection{Añadir elementos a una
-lista}\label{auxf1adir-elementos-a-una-lista}}
+lista}\label{auxf1adir-elementos-a-una-lista}
 
 La forma más sencilla de añadir un elemento con nombre a una lista es
 indicando el nombre con el operador \texttt{\$} y asignándole un valor
@@ -3113,9 +3093,8 @@ $email
 
 \end{example}
 
-\hypertarget{conversiuxf3n-de-una-lista-en-un-vector}{%
 \subsection{Conversión de una lista en un
-vector}\label{conversiuxf3n-de-una-lista-en-un-vector}}
+vector}\label{conversiuxf3n-de-una-lista-en-un-vector}
 
 Es posible convertir una lista en un vector con la siguiente función:
 
@@ -3157,23 +3136,21 @@ dirección.municipio
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 Obsérvese que cuando se convierte una lista en un vector, los elementos
 de la lista se convierten al tipo más general mediante coerción.
 
 \end{tcolorbox}
 
-\hypertarget{matrices}{%
-\section{Matrices}\label{matrices}}
+\section{Matrices}\label{matrices}
 
 Una matriz es una estructura de datos bidimensional de elementos del
 mismo tipo organizados en filas y columnas. Una matriz es similar a un
 vector pero contiene una atributo adicional con sus dimensiones (número
 de filas y número de columnas).
 
-\hypertarget{creaciuxf3n-de-matrices}{%
-\subsection{Creación de matrices}\label{creaciuxf3n-de-matrices}}
+\subsection{Creación de matrices}\label{creaciuxf3n-de-matrices}
 
 Para crear una matriz se utiliza la siguiente función:
 
@@ -3274,9 +3251,8 @@ parámetro \texttt{byrow\ =\ TRUE} a la función \texttt{matrix}.
 
 \end{example}
 
-\hypertarget{matrices-con-nombres-de-filas-y-columnas}{%
 \subsubsection{Matrices con nombres de filas y
-columnas}\label{matrices-con-nombres-de-filas-y-columnas}}
+columnas}\label{matrices-con-nombres-de-filas-y-columnas}
 
 Es posible poner nombres a las filas y a las columnas de una matriz
 añadiendo el parámetro \texttt{dimnames} y pasándole una lista de dos
@@ -3341,9 +3317,8 @@ utilizan las siguientes funciones:
 
 \end{example}
 
-\hypertarget{tamauxf1o-y-dimensiones-de-una-matriz}{%
 \subsection{Tamaño y dimensiones de una
-matriz}\label{tamauxf1o-y-dimensiones-de-una-matriz}}
+matriz}\label{tamauxf1o-y-dimensiones-de-una-matriz}
 
 Para obtener el número de elementos y las dimensiones de una matriz se
 pueden utilizar las siguientes funciones:
@@ -3449,9 +3424,8 @@ Esto también permite crear una matriz a partir de un vector.
 
 \end{example}
 
-\hypertarget{acceso-a-los-elementos-de-una-matriz}{%
 \subsection{Acceso a los elementos de una
-matriz}\label{acceso-a-los-elementos-de-una-matriz}}
+matriz}\label{acceso-a-los-elementos-de-una-matriz}
 
 Para acceder a los elementos de una matriz se utilizan dos índices (uno
 para las filas y otro para las columnas), separados por comas y entre
@@ -3459,9 +3433,8 @@ corchetes \texttt{{[}{]}} a continuación de la matriz. Al igual que para
 los vectores, los índices pueden ser enteros, lógicos o de cadenas de
 caracteres.
 
-\hypertarget{acceso-mediante-uxedndices-enteros}{%
 \subsubsection{Acceso mediante índices
-enteros}\label{acceso-mediante-uxedndices-enteros}}
+enteros}\label{acceso-mediante-uxedndices-enteros}
 
 Para acceder a los elementos de una matriz mediante índices enteros se
 indica el número de fila y el número de columna del elemento entre
@@ -3559,9 +3532,8 @@ pueden utilizar enteros negativos para descartar filas o columnas
 
 \end{example}
 
-\hypertarget{acceso-mediante-uxedndices-luxf3gicos}{%
 \subsubsection{Acceso mediante índices
-lógicos}\label{acceso-mediante-uxedndices-luxf3gicos}}
+lógicos}\label{acceso-mediante-uxedndices-luxf3gicos}
 
 Cuando se utilizan índices lógicos, se obtienen los elementos
 correspondientes a las filas y columnas donde está el valor booleano
@@ -3633,9 +3605,8 @@ correspondientes a las filas y columnas donde está el valor booleano
 
 \end{example}
 
-\hypertarget{acceso-mediante-uxedndices-de-cadena}{%
 \subsubsection{Acceso mediante índices de
-cadena}\label{acceso-mediante-uxedndices-de-cadena}}
+cadena}\label{acceso-mediante-uxedndices-de-cadena}
 
 Si las filas y las columnas de una matriz tienen nombre, es posible
 acceder a sus elementos usando los nombres de las filas y columnas como
@@ -3689,8 +3660,7 @@ Finalmente, es posible combinar distintos tipos de índices (enteros,
 lógicos o de cadena) para indicar las filas y las columnas a las que
 acceder.
 
-\hypertarget{pertenencia-a-una-matriz}{%
-\subsection{Pertenencia a una matriz}\label{pertenencia-a-una-matriz}}
+\subsection{Pertenencia a una matriz}\label{pertenencia-a-una-matriz}
 
 Para comprobar si un valor en particular es un elemento de una matriz se
 puede utilizar el operador \texttt{\%in\%}:
@@ -3730,9 +3700,8 @@ puede utilizar el operador \texttt{\%in\%}:
 
 \end{example}
 
-\hypertarget{modificaciuxf3n-de-los-elementos-de-una-matriz}{%
 \subsection{Modificación de los elementos de una
-matriz}\label{modificaciuxf3n-de-los-elementos-de-una-matriz}}
+matriz}\label{modificaciuxf3n-de-los-elementos-de-una-matriz}
 
 Para modificar uno o varios elementos de una matriz basta con acceder a
 esos elementos y usar el operador de asignación para asignar nuevos
@@ -3786,9 +3755,8 @@ valores.
 
 \end{example}
 
-\hypertarget{auxf1adir-elementos-a-una-matriz}{%
 \subsection{Añadir elementos a una
-matriz}\label{auxf1adir-elementos-a-una-matriz}}
+matriz}\label{auxf1adir-elementos-a-una-matriz}
 
 Para añadir nuevas filas o columnas a una matriz se utilizan las
 siguientes funciones:
@@ -3850,7 +3818,7 @@ siguientes funciones:
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 Obsérvese que si el número de elementos proporcionados en el vector es
 menor del necesario para completar la fila o columna, se reutilizan los
@@ -3858,8 +3826,7 @@ elementos del vector empezando desde el principio.
 
 \end{tcolorbox}
 
-\hypertarget{trasponer-una-matriz}{%
-\subsection{Trasponer una matriz}\label{trasponer-una-matriz}}
+\subsection{Trasponer una matriz}\label{trasponer-una-matriz}
 
 Para trasponer una matriz se utiliza la función siguiente:
 
@@ -3889,13 +3856,11 @@ A continuación se muestran un ejemplo de la trasposición de una matriz.
 
 \end{example}
 
-\hypertarget{operaciones-aritmuxe9ticas-con-matrices}{%
 \subsection{Operaciones aritméticas con
-matrices}\label{operaciones-aritmuxe9ticas-con-matrices}}
+matrices}\label{operaciones-aritmuxe9ticas-con-matrices}
 
-\hypertarget{operaciones-aritmuxe9ticas-elemento-a-elemento-1}{%
 \subsubsection{Operaciones aritméticas elemento a
-elemento}\label{operaciones-aritmuxe9ticas-elemento-a-elemento-1}}
+elemento}\label{operaciones-aritmuxe9ticas-elemento-a-elemento-1}
 
 Para matrices numéricas las operaciones aritméticas habituales se
 aplican elemento a elemento. Si las dimensiones de las matrices son
@@ -3981,16 +3946,15 @@ distintas se produce un error.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 Obsérvese en el ejemplo anterior que la división por 0 produce el valor
 \texttt{Inf} que representa infinito.
 
 \end{tcolorbox}
 
-\hypertarget{multiplicaciuxf3n-de-matrices}{%
 \subsubsection{Multiplicación de
-matrices}\label{multiplicaciuxf3n-de-matrices}}
+matrices}\label{multiplicaciuxf3n-de-matrices}
 
 Para multiplicar dos matrices numéricas se utiliza el operador
 \texttt{\%*\%}.
@@ -4028,7 +3992,7 @@ Para multiplicar dos matrices numéricas se utiliza el operador
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 Para poder multiplicar dos matrices deben tener dimensiones compatibles.
 Si el número de columnas de la primera matriz no es igual que el número
@@ -4036,9 +4000,8 @@ de filas de la segunda se produce un error.
 
 \end{tcolorbox}
 
-\hypertarget{determinante-de-una-matriz}{%
 \subsection{Determinante de una
-matriz}\label{determinante-de-una-matriz}}
+matriz}\label{determinante-de-una-matriz}
 
 Para calcular el determinante de una matriz numérica cuadrada se utiliza
 la siguiente función:
@@ -4067,8 +4030,7 @@ la siguiente función:
 
 \end{example}
 
-\hypertarget{inversa-de-una-matriz}{%
-\subsection{Inversa de una matriz}\label{inversa-de-una-matriz}}
+\subsection{Inversa de una matriz}\label{inversa-de-una-matriz}
 
 Para calcular la matriz inversa de una matriz numérica cuadrada se
 utiliza la siguiente función:
@@ -4114,9 +4076,8 @@ utiliza la siguiente función:
 
 \end{example}
 
-\hypertarget{autovalores-y-autovectores-de-una-matriz}{%
 \subsection{Autovalores y autovectores de una
-matriz}\label{autovalores-y-autovectores-de-una-matriz}}
+matriz}\label{autovalores-y-autovectores-de-una-matriz}
 
 Para calcular los autovalores y los autovectores de una matriz numérica
 cuadrada se utiliza la siguiente función:
@@ -4174,8 +4135,7 @@ cuadrada se utiliza la siguiente función:
 
 \end{example}
 
-\hypertarget{data-frames}{%
-\section{Data frames}\label{data-frames}}
+\section{Data frames}\label{data-frames}
 
 Un \emph{data frame} es una estructura bidimensional cuyos elementos se
 organizan por filas y columnas de manera similar a una matriz. La
@@ -4187,9 +4147,8 @@ nombre.
 Los data frames son las estructuras de datos más utilizadas en R para
 almacenar los datos en los análisis estadísticos.
 
-\hypertarget{creaciuxf3n-de-un-data-frame}{%
 \subsection{Creación de un data
-frame}\label{creaciuxf3n-de-un-data-frame}}
+frame}\label{creaciuxf3n-de-un-data-frame}
 
 Para crear un data frame se utiliza la siguiente función:
 
@@ -4296,9 +4255,8 @@ en formato csv} mediante la siguiente función:
 
 \end{example}
 
-\hypertarget{coerciuxf3n-de-otras-estructuras-de-datos-a-data-frames}{%
 \subsection{Coerción de otras estructuras de datos a data
-frames}\label{coerciuxf3n-de-otras-estructuras-de-datos-a-data-frames}}
+frames}\label{coerciuxf3n-de-otras-estructuras-de-datos-a-data-frames}
 
 Para convertir otras estructuras de datos en data frames, se utiliza la
 siguiente función:
@@ -4325,9 +4283,8 @@ siguiente función:
   \end{itemize}
 \end{itemize}
 
-\hypertarget{acceso-a-los-elementos-de-un-data-frame}{%
 \subsection{Acceso a los elementos de un data
-frame}\label{acceso-a-los-elementos-de-un-data-frame}}
+frame}\label{acceso-a-los-elementos-de-un-data-frame}
 
 Puesto que un data frame es una lista, se puede acceder a sus elementos
 como se accede a los elementos de una lista utilizando índices. Con
@@ -4454,9 +4411,8 @@ frame con muchas filas.
 
 \end{example}
 
-\hypertarget{modificaciuxf3n-de-los-elementos-de-un-data-frame}{%
 \subsection{Modificación de los elementos de un data
-frame}\label{modificaciuxf3n-de-los-elementos-de-un-data-frame}}
+frame}\label{modificaciuxf3n-de-los-elementos-de-un-data-frame}
 
 Para modificar uno o varios elementos de un data frame basta con acceder
 a esos elementos y usar el operador de asignación para asignar nuevos
@@ -4496,9 +4452,8 @@ valores.
 
 \end{example}
 
-\hypertarget{auxf1adir-elementos-a-un-data-frame}{%
 \subsection{Añadir elementos a un data
-frame}\label{auxf1adir-elementos-a-un-data-frame}}
+frame}\label{auxf1adir-elementos-a-un-data-frame}
 
 Para añadir nuevas filas o columnas a una data frame se utilizan las
 mismas funciones que para matrices:
@@ -4563,9 +4518,8 @@ mismas funciones que para matrices:
 
 \end{example}
 
-\hypertarget{eliminar-filas-y-columnas-de-un-data-frame}{%
 \subsection{Eliminar filas y columnas de un data
-frame}\label{eliminar-filas-y-columnas-de-un-data-frame}}
+frame}\label{eliminar-filas-y-columnas-de-un-data-frame}
 
 Para eliminar una columna de un data frame basta con acceder a la
 columna y asignarle el valor \texttt{NULL}, mientras que para eliminar
@@ -4619,8 +4573,7 @@ una fila basta con acceder a la fila con índice negativo.
 
 \end{example}
 
-\hypertarget{ejercicios-1}{%
-\section{Ejercicios}\label{ejercicios-1}}
+\section{Ejercicios}\label{ejercicios-1}
 
 \begin{exercise}[]\protect\hypertarget{exr-datos-estructurados-1}{}\label{exr-datos-estructurados-1}
 
@@ -4648,7 +4601,7 @@ Sara & M & 6.2 & 4 \\
   Definir cuatro vectores con el nombre, el sexo y las notas de Física y
   Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4663,7 +4616,7 @@ Sara & M & 6.2 & 4 \\
 \item
   Convertir el sexo en un factor y mostrar sus niveles.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4680,7 +4633,7 @@ Sara & M & 6.2 & 4 \\
 \item
   Crear un nuevo vector con la nota media de Física y Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4699,7 +4652,7 @@ Sara & M & 6.2 & 4 \\
   \texttt{TRUE} si la media es mayor o igual que 5 y \texttt{FALSE} en
   caso contrario.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4717,7 +4670,7 @@ Sara & M & 6.2 & 4 \\
   Aplicar un filtro al vector de nombres para quedarse con los nombres
   de los alumnos que han aprobado.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4734,7 +4687,7 @@ Sara & M & 6.2 & 4 \\
   Crear un data frame con el nombre, sexo y las notas de Física y
   Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4757,7 +4710,7 @@ Sara & M & 6.2 & 4 \\
 \item
   Añadir el vector con la media al data frame.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4781,7 +4734,7 @@ Sara & M & 6.2 & 4 \\
   Filtrar el data frame para quedarse con el nombre y la media de las
   mujeres que han aprobado.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4803,8 +4756,7 @@ Sara & M & 6.2 & 4 \\
 
 \bookmarksetup{startatroot}
 
-\hypertarget{estructuras-de-control}{%
-\chapter{Estructuras de control}\label{estructuras-de-control}}
+\chapter{Estructuras de control}\label{estructuras-de-control}
 
 Como en otros lenguajes de programación, en R existen instrucciones para
 controlar el flujo de ejecución de un programa. Básicamente existen dos
@@ -4820,15 +4772,13 @@ tipos:
   determinado de veces o hasta que se cumple una condición.
 \end{itemize}
 
-\hypertarget{estructuras-condicionales}{%
-\section{Estructuras condicionales}\label{estructuras-condicionales}}
+\section{Estructuras condicionales}\label{estructuras-condicionales}
 
 Las estructuras condicionales permiten evaluar el estado del programa y
 tomar decisiones sobre qué código ejecutar en función del mismo.
 
-\hypertarget{condicionales-if}{%
 \subsection{\texorpdfstring{Condicionales
-(\texttt{if})}{Condicionales (if)}}\label{condicionales-if}}
+(\texttt{if})}{Condicionales (if)}}\label{condicionales-if}
 
 La principal estructura condicional comienza con la palabra reservada
 \texttt{if}, lleva asociada expresión de tipo lógico o booleano y
@@ -4846,25 +4796,25 @@ Si el resultado de evaluar la expresión
 ejecuta el código \texttt{\textless{}código\textgreater{}}, mientras que
 si es \texttt{FALSE} no.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics{img/04-estructuras-control/condicional-simple.png}
-
-}
-
-\caption{Diagrama de flujo de la estructura condicional simple}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{img/04-estructuras-control/condicional-simple.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{img/04-estructuras-control/condicional-simple.png}}
 
 }
 
 \caption{Diagrama de flujo de la estructura condicional simple}
 
-\end{figure}
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{img/04-estructuras-control/condicional-simple.png}
+
+}
+
+\caption{Diagrama de flujo de la estructura condicional simple}
+
+\end{figure}%
 
 \begin{example}[]\protect\hypertarget{exm-condicional-simple}{}\label{exm-condicional-simple}
 
@@ -4899,15 +4849,15 @@ ejecuta el código \texttt{\textless{}código\ 1\textgreater{}} y si es
 \texttt{FALSE} se ejecuta el código
 \texttt{\textless{}código\ 2\textgreater{}}.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics{img/04-estructuras-control/condicional-doble.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{img/04-estructuras-control/condicional-doble.png}}
 
 }
 
 \caption{Diagrama de flujo de la estructura condicional doble}
 
-\end{figure}
+\end{figure}%
 
 \begin{example}[]\protect\hypertarget{exm-condicional-doble}{}\label{exm-condicional-doble}
 
@@ -4937,7 +4887,7 @@ Se puede comprobar más de una condición encadenando otra instrucción
 \texttt{if\ (}\emph{\texttt{\textless{}exp\ 1\textgreater{}}}\texttt{)\ \{}\strut \\
   \emph{\texttt{\textless{}código\ 1\textgreater{}}}\\
 \texttt{\}\ else\ if\ (}\emph{\texttt{\textless{}exp\ 2\textgreater{}}}\texttt{)\ \{}\strut \\
-  \emph{\texttt{\textless{}código\ 2\textgreater{}}}\texttt{)\ \{}\\
+  \emph{\texttt{\textless{}código\ 2\textgreater{}}}\\
 \ldots{}\\
 \texttt{\}\ else\ \{}\strut \\
   \emph{\texttt{\textless{}código\ n\textgreater{}}}\\
@@ -4949,15 +4899,15 @@ ejecuta el bloque de código asociado a la primera condición cuya
 evaluación sea \texttt{TRUE}. El último bloque de código solamente se
 ejecuta si todas las condiciones son falsas.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics{img/04-estructuras-control/condicional-multiple.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{img/04-estructuras-control/condicional-multiple.png}}
 
 }
 
 \caption{Diagrama de flujo de la estructura condicional múltiple}
 
-\end{figure}
+\end{figure}%
 
 \begin{example}[]\protect\hypertarget{exm-condicional-multiple}{}\label{exm-condicional-multiple}
 
@@ -4984,9 +4934,8 @@ ejecuta si todas las condiciones son falsas.
 
 \end{example}
 
-\hypertarget{la-funciuxf3n-switch}{%
 \subsection{\texorpdfstring{La función
-\texttt{switch()}}{La función switch()}}\label{la-funciuxf3n-switch}}
+\texttt{switch()}}{La función switch()}}\label{la-funciuxf3n-switch}
 
 Otra forma de tomar decisiones sobre el código a ejecutar es la función
 \texttt{switch}.
@@ -5019,16 +4968,14 @@ Otra forma de tomar decisiones sobre el código a ejecutar es la función
 
 \end{example}
 
-\hypertarget{bucles}{%
-\section{Bucles}\label{bucles}}
+\section{Bucles}\label{bucles}
 
 Un bucle es una estructura que permite la repetición de un bloque de
 código. En R existen dos tipos de bucles, los \emph{bucles iterativos} y
 los \emph{bucles condicionales}.
 
-\hypertarget{bucles-iterativos-for}{%
 \subsection{\texorpdfstring{Bucles iterativos
-(\texttt{for})}{Bucles iterativos (for)}}\label{bucles-iterativos-for}}
+(\texttt{for})}{Bucles iterativos (for)}}\label{bucles-iterativos-for}
 
 Lo bucles iterativos repiten un bloque de código un número determinado
 de veces. Comienzan por la palabra reservada \texttt{for} y llevan
@@ -5045,15 +4992,15 @@ elemento distinto de la secuencia.
 \texttt{\}}
 \end{quote}
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics{img/04-estructuras-control/bucle-for.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{img/04-estructuras-control/bucle-for.png}}
 
 }
 
 \caption{Diagrama de flujo de un bucle iterativo}
 
-\end{figure}
+\end{figure}%
 
 \begin{example}[]\protect\hypertarget{exm-bucle-iterarivo}{}\label{exm-bucle-iterarivo}
 
@@ -5132,8 +5079,8 @@ utilizando varios bucles \texttt{for} anidados.
 
 \begin{example}[]\protect\hypertarget{exm-bucles-anidados}{}\label{exm-bucles-anidados}
 
-A continuación se muestra varios ejemplos de dos bucles \texttt{for}
-anidados para recorrer los elementos de una matriz.
+A continuación se muestra un ejemplo de dos bucles \texttt{for} anidados
+para recorrer los elementos de una matriz.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5157,9 +5104,8 @@ anidados para recorrer los elementos de una matriz.
 
 \end{example}
 
-\hypertarget{bucles-condicionales-while}{%
 \subsection{\texorpdfstring{Bucles condicionales
-(\texttt{while})}{Bucles condicionales (while)}}\label{bucles-condicionales-while}}
+(\texttt{while})}{Bucles condicionales (while)}}\label{bucles-condicionales-while}
 
 Los bucles condicionales repiten un bloque de código mientras se cumpla
 una condición. Comienzan con la palabra reservada \texttt{while} y
@@ -5180,15 +5126,15 @@ evaluación es \texttt{TRUE}. Obsérvese que cuando el flujo de ejecución
 del programa llega al bucle \texttt{while} si la condición no es cierta,
 el código no se ejecuta ni tan siquiera una vez.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics{img/04-estructuras-control/bucle-while.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{img/04-estructuras-control/bucle-while.png}}
 
 }
 
 \caption{Diagrama de flujo de un bucle condicional}
 
-\end{figure}
+\end{figure}%
 
 \begin{example}[]\protect\hypertarget{exm-bucle-condicional}{}\label{exm-bucle-condicional}
 
@@ -5215,9 +5161,8 @@ el código no se ejecuta ni tan siquiera una vez.
 
 \end{example}
 
-\hypertarget{la-instrucciuxf3n-break}{%
 \subsection{\texorpdfstring{La instrucción
-\texttt{break}}{La instrucción break}}\label{la-instrucciuxf3n-break}}
+\texttt{break}}{La instrucción break}}\label{la-instrucciuxf3n-break}
 
 La instrucción \texttt{break} se utiliza para detener un bucle y salir
 de él, tanto en bucles iterativos como en bucles condicionales.
@@ -5248,9 +5193,8 @@ ejecución y salir del bucle.
 
 \end{example}
 
-\hypertarget{la-instrucciuxf3n-next}{%
 \subsection{\texorpdfstring{La instrucción
-\texttt{next}}{La instrucción next}}\label{la-instrucciuxf3n-next}}
+\texttt{next}}{La instrucción next}}\label{la-instrucciuxf3n-next}
 
 La instrucción \texttt{next} se utiliza para interrumpir la ejecución
 del bloque de código de un bucle, pero en lugar de salir del bucle pasa
@@ -5259,7 +5203,9 @@ pasa al siguiente elemento de la secuencia de iteración y si se trata de
 un bucle condicional se pasa evaluar de nuevo la condición de
 repetición.
 
-:::\{\#exm-continuacion-bucle-next\}
+\begin{example}[]\protect\hypertarget{exm-continuacion-bucle-next}{}\label{exm-continuacion-bucle-next}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5281,78 +5227,150 @@ repetición.
 [1] 10
 \end{verbatim}
 
-\hypertarget{ejercicios-2}{%
-\section{Ejercicios}\label{ejercicios-2}}
+\end{example}
 
-\begin{exercise}[]\protect\hypertarget{exr-funciones-1}{}\label{exr-funciones-1}
+\section{Ejercicios}\label{ejercicios-2}
 
-Crear una función para calcular la media de un vector numérico y usarla
-para calcular la media del vector \texttt{(1,\ 2,\ NA,\ 3,\ 4)}.
+\begin{exercise}[]\protect\hypertarget{exr-estructuras-control-1}{}\label{exr-estructuras-control-1}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+Considérese el data frame creado en el
+Ejercicio~\ref{exr-datos-estructurados-1}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{media }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{nombre }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Carlos"}\NormalTok{, }\StringTok{"María"}\NormalTok{, }\StringTok{"Carmen"}\NormalTok{, }\StringTok{"Pedro"}\NormalTok{, }\StringTok{"Luis"}\NormalTok{, }\StringTok{"Sara"}\NormalTok{)}
+\NormalTok{sexo }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"H"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"H"}\NormalTok{, }\StringTok{"H"}\NormalTok{, }\StringTok{"M"}\NormalTok{)}
+\NormalTok{fisica }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{6.7}\NormalTok{, }\FloatTok{7.2}\NormalTok{, }\FloatTok{5.5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\FloatTok{3.5}\NormalTok{, }\FloatTok{6.2}\NormalTok{)}
+\NormalTok{quimica }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{8.1}\NormalTok{, }\FloatTok{9.5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(nombre, sexo, fisica, quimica)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  Calcular la media de las notas de Química.
+
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{suma }\OtherTok{\textless{}{-}} \DecValTok{0}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ quimica)\{}
+\NormalTok{  suma }\OtherTok{\textless{}{-}}\NormalTok{ suma }\SpecialCharTok{+}\NormalTok{ i}
+\NormalTok{\}}
+\NormalTok{media }\OtherTok{\textless{}{-}}\NormalTok{ suma }\SpecialCharTok{/} \FunctionTok{length}\NormalTok{(quimica)}
+\NormalTok{media}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 6.016667
+\end{verbatim}
+
+  \end{tcolorbox}
+\item
+  Calcular la media de las notas de Física.
+
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{suma }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{0}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ fisica)\{}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(i))\{}
+\NormalTok{    suma }\OtherTok{\textless{}{-}}\NormalTok{ suma }\SpecialCharTok{+}\NormalTok{ i}
+\NormalTok{    n }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{+} \DecValTok{1} 
+\NormalTok{  \}}
+\NormalTok{\}}
+\NormalTok{media }\OtherTok{\textless{}{-}}\NormalTok{ suma }\SpecialCharTok{/}\NormalTok{ n}
+\NormalTok{media}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5.82
+\end{verbatim}
+
+  \end{tcolorbox}
+\item
+  Construir un vector con las medias de las columnas numéricas del data
+  frame.
+
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{medias }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{3}\SpecialCharTok{:}\DecValTok{4}\NormalTok{)\{}
 \NormalTok{  suma }\OtherTok{\textless{}{-}} \DecValTok{0}
 \NormalTok{  n }\OtherTok{\textless{}{-}} \DecValTok{0}
-  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ x)\{}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ df[[j]])\{}
     \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(i))\{}
 \NormalTok{      suma }\OtherTok{\textless{}{-}}\NormalTok{ suma }\SpecialCharTok{+}\NormalTok{ i}
-\NormalTok{      n }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{      n }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{+} \DecValTok{1} 
 \NormalTok{    \}}
 \NormalTok{  \}}
-  \FunctionTok{return}\NormalTok{(suma }\SpecialCharTok{/}\NormalTok{ n)}
+\NormalTok{  medias }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(medias, suma }\SpecialCharTok{/}\NormalTok{ n)}
 \NormalTok{\}}
-\FunctionTok{media}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\NormalTok{medias}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-[1] 2.5
+[1] 5.820000 6.016667
 \end{verbatim}
 
-\end{tcolorbox}
+  \end{tcolorbox}
+\item
+  Añadir al data frame nueva columnas con la calificaciones (suspenso,
+  aprobado, notable, sobresaliente) de las notas de Física y Química.
 
-\end{exercise}
-
-\begin{exercise}[]\protect\hypertarget{exr-funciones-2}{}\label{exr-funciones-2}
-
-Usar la función anterior para crear una función para calcular las medias
-de las columnas de un data frame numérico. La función debe devolver un
-vector con las medias de las columnas. Usarla para calcular el data
-frame formado por los vectores \texttt{(1,\ 2,\ NA,\ 3,\ 4)} y
-\texttt{(-1,\ 0,\ -2,\ 0,\ NA)}.
-
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{medias }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(df)\{}
-\NormalTok{medias }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{colnames}\NormalTok{(df))\{}
-\NormalTok{  medias }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(medias, }\FunctionTok{media}\NormalTok{(df[[i]]))}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{3}\SpecialCharTok{:}\DecValTok{4}\NormalTok{)\{}
+\NormalTok{  calificaciones }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ df[[j]]) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.na}\NormalTok{(i))\{}
+\NormalTok{      calificacion }\OtherTok{\textless{}{-}} \ConstantTok{NA} 
+\NormalTok{    \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{) \{}
+\NormalTok{      calificacion }\OtherTok{\textless{}{-}} \StringTok{"SS"}
+\NormalTok{    \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\textless{}} \DecValTok{7}\NormalTok{) \{}
+\NormalTok{      calificacion }\OtherTok{\textless{}{-}} \StringTok{"AP"}
+\NormalTok{    \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\textless{}} \DecValTok{9}\NormalTok{) \{}
+\NormalTok{      calificacion }\OtherTok{\textless{}{-}} \StringTok{"NT"}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{      calificacion }\OtherTok{\textless{}{-}} \StringTok{"SB"}
+\NormalTok{    \}}
+\NormalTok{    calificaciones }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(calificaciones, calificacion)}
+\NormalTok{  \}}
+\NormalTok{  df[[}\FunctionTok{paste}\NormalTok{(}\StringTok{"calificacion"}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(df)[j])]] }\OtherTok{\textless{}{-}}\NormalTok{ calificaciones}
 \NormalTok{\}}
-\FunctionTok{return}\NormalTok{(medias)}
-\NormalTok{\}}
-
-\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\ConstantTok{NA}\NormalTok{))}
-\FunctionTok{medias}\NormalTok{(df)}
+\NormalTok{df}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-[1]  2.50 -0.75
+  nombre sexo fisica quimica calificacion fisica calificacion quimica
+1 Carlos    H    6.7     8.1                  AP                   NT
+2  María    M    7.2     9.5                  NT                   SB
+3 Carmen    M    5.5     5.0                  AP                   AP
+4  Pedro    H     NA     4.5                <NA>                   SS
+5   Luis    H    3.5     5.0                  SS                   AP
+6   Sara    M    6.2     4.0                  AP                   SS
 \end{verbatim}
 
-\end{tcolorbox}
+  \end{tcolorbox}
+\end{enumerate}
 
 \end{exercise}
 
 \bookmarksetup{startatroot}
 
-\hypertarget{funciones}{%
-\chapter{Funciones}\label{funciones}}
+\chapter{Funciones}\label{funciones}
 
 Una función es un bloque de código que tiene asociado un nombre, de
 manera que cada vez que se quiera ejecutar el bloque de código basta con
@@ -5363,15 +5381,14 @@ En R las funciones son objetos en sí mimas y pueden usarse como
 cualquier otro dato. El tipo de dato de las funciones es
 \texttt{function}.
 
-\hypertarget{definiciuxf3n-y-llamada-a-funciones}{%
 \section{Definición y llamada a
-funciones}\label{definiciuxf3n-y-llamada-a-funciones}}
+funciones}\label{definiciuxf3n-y-llamada-a-funciones}
 
 Para definir una función se utiliza la siguiente estructura de código:
 
 \begin{quote}
 \emph{\texttt{nombre.funcion}}
-\texttt{\textless{}-\ function\ (}\emph{\texttt{parámetros}}\texttt{)\ \{}
+\texttt{\textless{}-\ function\ (}\emph{\texttt{parámetros}}\texttt{)\ \{}\strut \\
   \emph{\texttt{\textless{}código\textgreater{}}}\\
 \texttt{\}}
 \end{quote}
@@ -5414,9 +5431,8 @@ sus parámetros entre paréntesis.
 
 \end{example}
 
-\hypertarget{paruxe1metros-y-argumentos-de-una-funciuxf3n}{%
 \section{Parámetros y argumentos de una
-función}\label{paruxe1metros-y-argumentos-de-una-funciuxf3n}}
+función}\label{paruxe1metros-y-argumentos-de-una-funciuxf3n}
 
 Una función puede recibir valores cuando se invoca a través de unas
 variables conocidas como \emph{parámetros} que se definen entre
@@ -5453,9 +5469,8 @@ en el cuerpo de la función.
 
 \end{example}
 
-\hypertarget{paso-de-argumentos-a-una-funciuxf3n}{%
 \subsection{Paso de argumentos a una
-función}\label{paso-de-argumentos-a-una-funciuxf3n}}
+función}\label{paso-de-argumentos-a-una-funciuxf3n}
 
 Los argumentos de una función pueden pasarse de dos formas:
 
@@ -5504,8 +5519,7 @@ Los argumentos de una función pueden pasarse de dos formas:
 
 \end{example}
 
-\hypertarget{argumentos-por-defecto}{%
-\subsection{Argumentos por defecto}\label{argumentos-por-defecto}}
+\subsection{Argumentos por defecto}\label{argumentos-por-defecto}
 
 En la definición de una función se puede asignar a cada parámetro un
 argumento por defecto, de manera que si se invoca la función sin
@@ -5532,8 +5546,7 @@ argumento por defecto.
 
 \end{example}
 
-\hypertarget{retorno-de-una-funciuxf3n}{%
-\section{Retorno de una función}\label{retorno-de-una-funciuxf3n}}
+\section{Retorno de una función}\label{retorno-de-una-funciuxf3n}
 
 Una función puede devolver un objeto de cualquier tipo tras su
 invocación. Para ello se utiliza la función \texttt{return()}, indicando
@@ -5638,9 +5651,8 @@ $area
 
 \end{example}
 
-\hypertarget{entorno-y-uxe1mbito-de-las-variables}{%
 \section{Entorno y ámbito de las
-variables}\label{entorno-y-uxe1mbito-de-las-variables}}
+variables}\label{entorno-y-uxe1mbito-de-las-variables}
 
 El entorno de un programa en R es el conjunto de todos los objetos
 (funciones, variables, etc.) creados durante la ejecución del programa.
@@ -5830,9 +5842,8 @@ nueva variable de ámbito local y se le asigna el valor.
 
 \end{example}
 
-\hypertarget{componentes-de-una-funciuxf3n}{%
 \section{Componentes de una
-función}\label{componentes-de-una-funciuxf3n}}
+función}\label{componentes-de-una-funciuxf3n}
 
 Los tres componentes de una función son:
 
@@ -5906,8 +5917,7 @@ $altura
 
 \end{example}
 
-\hypertarget{funciones-recursivas}{%
-\section{Funciones recursivas}\label{funciones-recursivas}}
+\section{Funciones recursivas}\label{funciones-recursivas}
 
 Una función recursiva es una función que en su cuerpo contiene una llama
 a sí misma.
@@ -5942,8 +5952,7 @@ terminaría la ejecución de la función.
 
 \end{example}
 
-\hypertarget{paquetes}{%
-\section{Paquetes}\label{paquetes}}
+\section{Paquetes}\label{paquetes}
 
 Para facilitar la reutilización código y datos R permite la creación de
 paquetes que pueden importarse desde otros programas. Un paquete es una
@@ -5977,8 +5986,7 @@ los contiene y después cargarlo en la sesión de trabajo.
 Para ver los paquetes instalados en un ordenador se utiliza la función
 \texttt{library()}.
 
-\hypertarget{instalaciuxf3n-de-paquetes}{%
-\subsection{Instalación de paquetes}\label{instalaciuxf3n-de-paquetes}}
+\subsection{Instalación de paquetes}\label{instalaciuxf3n-de-paquetes}
 
 La mayor parte de los paquetes para R están disponibles en el
 repositorio oficial
@@ -5998,9 +6006,8 @@ Existen distintas formas de instalar un paquete en R:
   Descargando el paquete e instalándolo manualmente.
 \end{itemize}
 
-\hypertarget{instalaciuxf3n-de-paquetes-desde-el-repositorio-cran}{%
 \subsubsection{Instalación de paquetes desde el repositorio
-CRAN}\label{instalaciuxf3n-de-paquetes-desde-el-repositorio-cran}}
+CRAN}\label{instalaciuxf3n-de-paquetes-desde-el-repositorio-cran}
 
 Para instalar un paquete desde el repositorio oficial CRAN se utiliza la
 siguiente función:
@@ -6027,9 +6034,8 @@ siguiente función:
 
 \end{example}
 
-\hypertarget{instalaciuxf3n-desde-otros-repositorios-github-gitlab-etc.}{%
 \subsubsection{Instalación desde otros repositorios (GitHub, GitLab,
-etc.)}\label{instalaciuxf3n-desde-otros-repositorios-github-gitlab-etc.}}
+etc.)}\label{instalaciuxf3n-desde-otros-repositorios-github-gitlab-etc.}
 
 El paquete \texttt{remotes} incorpora funciones para instalar paquetes
 alojados en otros repositorios habituales para el desarrollo de software
@@ -6049,9 +6055,8 @@ como \href{https://github.com/}{GitHub},
 
 \end{example}
 
-\hypertarget{instalaciuxf3n-desde-bioconductor}{%
 \subsubsection{Instalación desde
-Bioconductor}\label{instalaciuxf3n-desde-bioconductor}}
+Bioconductor}\label{instalaciuxf3n-desde-bioconductor}
 
 \href{https://bioconductor.org/}{Bioconductor} es un repositorio de
 paquetes especializados en Bioinformática.
@@ -6072,8 +6077,7 @@ pero la instalación de paquetes es igualmente sencilla.
 
 \end{example}
 
-\hypertarget{instalaciuxf3n-manual}{%
-\subsubsection{Instalación manual}\label{instalaciuxf3n-manual}}
+\subsubsection{Instalación manual}\label{instalaciuxf3n-manual}
 
 Finalmente es posible instalar un paquete manualmente a partir de su
 código fuente. Para ello hay previamente hay que descargar el código
@@ -6091,8 +6095,7 @@ utilizar la siguiente función:
 Una vez instalado un paquete ya está disponible para cargarlo en
 cualquier sesión de trabajo de R y no es necesario volver a instalarlo.
 
-\hypertarget{carga-de-un-paquete}{%
-\subsection{Carga de un paquete}\label{carga-de-un-paquete}}
+\subsection{Carga de un paquete}\label{carga-de-un-paquete}
 
 Una vez instalado un paquete, para poder ejecutar su contenido es
 necesario cargarlo en el entorno de trabajo de R. Para ello se utiliza
@@ -6117,8 +6120,7 @@ la siguiente función:
 
 \end{example}
 
-\hypertarget{paquetes-habituales}{%
-\subsection{Paquetes habituales}\label{paquetes-habituales}}
+\subsection{Paquetes habituales}\label{paquetes-habituales}
 
 A continuación se presenta una lista ordenada alfabéticamente (no por
 importancia) de los paquetes más populares para el análisis de datos:
@@ -6167,10 +6169,76 @@ importancia) de los paquetes más populares para el análisis de datos:
   carga, limpieza, manipulación y representación gráfica de datos.
 \end{itemize}
 
+\section{Ejercicios}\label{ejercicios-3}
+
+\begin{exercise}[]\protect\hypertarget{exr-funciones-1}{}\label{exr-funciones-1}
+
+Crear una función para calcular la media de un vector numérico y usarla
+para calcular la media del vector \texttt{(1,\ 2,\ NA,\ 3,\ 4)}.
+
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{media }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  suma }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{  n }\OtherTok{\textless{}{-}} \DecValTok{0}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ x)\{}
+    \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(i))\{}
+\NormalTok{      suma }\OtherTok{\textless{}{-}}\NormalTok{ suma }\SpecialCharTok{+}\NormalTok{ i}
+\NormalTok{      n }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(suma }\SpecialCharTok{/}\NormalTok{ n)}
+\NormalTok{\}}
+\FunctionTok{media}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2.5
+\end{verbatim}
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-funciones-2}{}\label{exr-funciones-2}
+
+Usar la función anterior para crear otra función para calcular las
+medias de las columnas de un data frame numérico. La función debe
+devolver un vector con las medias de las columnas. Usarla para calcular
+el data frame formado por los vectores \texttt{(1,\ 2,\ NA,\ 3,\ 4)} y
+\texttt{(-1,\ 0,\ -2,\ 0,\ NA)}.
+
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{medias }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(df)\{}
+\NormalTok{medias }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{colnames}\NormalTok{(df))\{}
+\NormalTok{  medias }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(medias, }\FunctionTok{media}\NormalTok{(df[[i]]))}
+\NormalTok{\}}
+\FunctionTok{return}\NormalTok{(medias)}
+\NormalTok{\}}
+
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\ConstantTok{NA}\NormalTok{))}
+\FunctionTok{medias}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  2.50 -0.75
+\end{verbatim}
+
+\end{tcolorbox}
+
+\end{exercise}
+
 \bookmarksetup{startatroot}
 
-\hypertarget{preprocesamiento-de-datos}{%
-\chapter{Preprocesamiento de datos}\label{preprocesamiento-de-datos}}
+\chapter{Preprocesamiento de datos}\label{preprocesamiento-de-datos}
 
 Cualquier análisis de datos comienza con la carga de datos en un
 \emph{data frame}. Normalmente los datos brutos deben limpiarse y
@@ -6199,9 +6267,8 @@ Estas tareas pueden realizarse con las funciones básicas de R pero
 actualmente existen paquetes que facilitan mucho su realización como por
 ejemplo la colección de paquetes \texttt{tidyverse}.
 
-\hypertarget{la-colecciuxf3n-de-paquetes-tidyverse}{%
 \section{\texorpdfstring{La colección de paquetes
-\texttt{tidyverse}}{La colección de paquetes tidyverse}}\label{la-colecciuxf3n-de-paquetes-tidyverse}}
+\texttt{tidyverse}}{La colección de paquetes tidyverse}}\label{la-colecciuxf3n-de-paquetes-tidyverse}
 
 \href{https://www.tidyverse.org/}{\texttt{tidyverse}} es una colección
 de paquetes para la Ciencia de Datos. Incluye los siguientes paquetes:
@@ -6237,8 +6304,7 @@ de paquetes para la Ciencia de Datos. Incluye los siguientes paquetes:
 Estos paquetes están diseñados bajo una misma filosofía por lo
 interactúan y se complementan a la perfección.
 
-\hypertarget{tibbles}{%
-\section{Tibbles}\label{tibbles}}
+\section{Tibbles}\label{tibbles}
 
 El paquete \texttt{tibble} define la estructura de datos \emph{tibble}
 que es similiar a los data frames, pero optimizada, ya que realiza una
@@ -6304,22 +6370,21 @@ cuyos elementos son del mismo tipo, de manera que suelen representar
 variables en los estudios estadísticos, mientras que las filas
 representan individuos, aunque no siempre es así.
 
-\hypertarget{conjuntos-de-datos-ordenados}{%
 \section{Conjuntos de datos
-ordenados}\label{conjuntos-de-datos-ordenados}}
+ordenados}\label{conjuntos-de-datos-ordenados}
 
 Existen dos formas habituales de disponer los datos de un estudio en un
 data frame o un tibble: formato ancho y formato largo.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics{img/05-preprocesamiento/formatos-dataframe.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{img/05-preprocesamiento/formatos-dataframe.png}}
 
 }
 
 \caption{Formatos de un data frame}
 
-\end{figure}
+\end{figure}%
 
 La mayoría de los paquetes de \texttt{tidyverse} asumen que los datos
 del data frame o tibble están en formado largo, lo que significa que las
@@ -6376,6 +6441,10 @@ proporciona dos funciones que permiten pivotar un data frame:
   nombres como los nombres de las columnas, mientras que los valores se
   toman de la columna \texttt{columna-valores}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-pivotar-formato-ancho-a-largo}{}\label{exm-pivotar-formato-ancho-a-largo}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6436,9 +6505,10 @@ proporciona dos funciones que permiten pivotar un data frame:
 3 Carmen    20         3.5      5            9  
 \end{verbatim}
 
-\hypertarget{el-paquete-dplyr}{%
+\end{example}
+
 \section{\texorpdfstring{El paquete
-\texttt{dplyr}}{El paquete dplyr}}\label{el-paquete-dplyr}}
+\texttt{dplyr}}{El paquete dplyr}}\label{el-paquete-dplyr}
 
 El paquete \texttt{dplyr} proporciona una gramática para el
 preprocesamiento de data frames o tibbles, de manera que cada acción
@@ -6471,9 +6541,8 @@ funciones de preprocesamiento más habituales incluidas en el paquete
   acuerdo a una columna categórica.
 \end{itemize}
 
-\hypertarget{conteo-del-nuxfamero-de-observaciones}{%
 \section{Conteo del número de
-observaciones}\label{conteo-del-nuxfamero-de-observaciones}}
+observaciones}\label{conteo-del-nuxfamero-de-observaciones}
 
 Para contar el número de observaciones (filas) de un data frame se
 utiliza la función
@@ -6488,6 +6557,10 @@ utiliza la función
 
 Esta función se utiliza habitualmente para calcular tamaños muestrales.
 
+\begin{example}[]\protect\hypertarget{exm-count-1}{}\label{exm-count-1}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
@@ -6501,6 +6574,12 @@ Esta función se utiliza habitualmente para calcular tamaños muestrales.
    n
 1 14
 \end{verbatim}
+
+\end{example}
+
+\begin{example}[]\protect\hypertarget{exm-count-2}{}\label{exm-count-2}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6517,8 +6596,9 @@ Esta función se utiliza habitualmente para calcular tamaños muestrales.
 2    M 6
 \end{verbatim}
 
-\hypertarget{selecciuxf3n-de-variables}{%
-\section{Selección de variables}\label{selecciuxf3n-de-variables}}
+\end{example}
+
+\section{Selección de variables}\label{selecciuxf3n-de-variables}
 
 Para seleccionar un subconjunto de variables de un data frame se utiliza
 la función
@@ -6530,6 +6610,10 @@ la función
   indicadas en el parámetro \texttt{columnas} del data frame
   \texttt{df}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-select}{}\label{exm-select}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6633,8 +6717,9 @@ la función
 14           Carolina Rubio Moreno    M   61   1.77        194
 \end{verbatim}
 
-\hypertarget{filtrado-de-datos}{%
-\section{Filtrado de datos}\label{filtrado-de-datos}}
+\end{example}
+
+\section{Filtrado de datos}\label{filtrado-de-datos}
 
 Para filtrar un data frame y quedarse con las filas que cumplen una
 condición se usa la función
@@ -6646,6 +6731,10 @@ condición se usa la función
   data frame \texttt{df} que cumplen la condición indicada en el
   parámetro \texttt{condición}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-filter}{}\label{exm-filter}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6706,6 +6795,8 @@ condición se usa la función
 13           Carolina Rubio Moreno   20    M   61   1.77        194
 \end{verbatim}
 
+\end{example}
+
 Existe un filtro bastante habitual que consiste en eliminar las filas de
 un data frame que contienen algún dado no disponible (\texttt{NA}). Para
 ello \texttt{dplyr} dispone de la función
@@ -6716,6 +6807,10 @@ ello \texttt{dplyr} dispone de la función
   \texttt{na.omit(df)}: Devuelve el tibble que resulta de eliminar las
   filas del data frame \texttt{df} con algún valor \texttt{NA}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-filter-na}{}\label{exm-filter-na}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6739,8 +6834,9 @@ ello \texttt{dplyr} dispone de la función
 14           Carolina Rubio Moreno   20    M   61   1.77        194
 \end{verbatim}
 
-\hypertarget{reordenaciuxf3n-de-datos}{%
-\section{Reordenación de datos}\label{reordenaciuxf3n-de-datos}}
+\end{example}
+
+\section{Reordenación de datos}\label{reordenaciuxf3n-de-datos}
 
 Para reordenar las filas de un data frame se utiliza la función
 
@@ -6754,6 +6850,10 @@ Para reordenar las filas de un data frame se utiliza la función
   hay que aplicar la función \texttt{desc()} a la columna con respecto
   se quiere ordenar descendentemente.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-arrange}{}\label{exm-arrange}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6832,8 +6932,9 @@ Para reordenar las filas de un data frame se utiliza la función
 14           Pilar Martín González   22    M   60   1.66         NA
 \end{verbatim}
 
-\hypertarget{renombrado-de-columnas}{%
-\section{Renombrado de columnas}\label{renombrado-de-columnas}}
+\end{example}
+
+\section{Renombrado de columnas}\label{renombrado-de-columnas}
 
 Para cambiar el nombre de las columnas se utiliza la función
 
@@ -6844,6 +6945,10 @@ Para cambiar el nombre de las columnas se utiliza la función
   los mismos datos del data frame \texttt{df} pero cambiando el nombre
   de la columna de nombre \texttt{columna} por \texttt{nuevo-nombre}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-rename}{}\label{exm-rename}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6872,9 +6977,10 @@ Para cambiar el nombre de las columnas se utiliza la función
 14           Carolina Rubio Moreno   20    M   61     1.77        194
 \end{verbatim}
 
-\hypertarget{creaciuxf3n-de-nuevas-columnas-o-transformaciuxf3n-de-las-existentes}{%
+\end{example}
+
 \section{Creación de nuevas columnas o transformación de las
-existentes}\label{creaciuxf3n-de-nuevas-columnas-o-transformaciuxf3n-de-las-existentes}}
+existentes}\label{creaciuxf3n-de-nuevas-columnas-o-transformaciuxf3n-de-las-existentes}
 
 Para crear una nueva columna a partir de otras columnas del data frame
 se utiliza la función
@@ -6889,6 +6995,10 @@ se utiliza la función
   nombre de una columna ya existente, entonces esa columna se reescribe
   con los resultados de aplicar la \texttt{formula}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-mutate}{}\label{exm-mutate}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6942,8 +7052,9 @@ se utiliza la función
 14           Carolina Rubio Moreno   20    M   61   1.77        194  19
 \end{verbatim}
 
-\hypertarget{resumen-de-datos}{%
-\section{Resumen de datos}\label{resumen-de-datos}}
+\end{example}
+
+\section{Resumen de datos}\label{resumen-de-datos}
 
 Para aplicar una función resumen a una o varias columnas de un data
 frame se utiliza la función
@@ -6957,6 +7068,10 @@ frame se utiliza la función
   \texttt{funcion-resumen} a las columnas del data frame \texttt{df}
   indicadas en \texttt{columnas}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-sumarise}{}\label{exm-sumarise}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6984,8 +7099,9 @@ frame se utiliza la función
 1 220.2308 39.84795
 \end{verbatim}
 
-\hypertarget{resuxfamenes-por-grupos}{%
-\section{Resúmenes por grupos}\label{resuxfamenes-por-grupos}}
+\end{example}
+
+\section{Resúmenes por grupos}\label{resuxfamenes-por-grupos}
 
 La función \texttt{summarise} suele combinarse con la siguiente función
 para obtener resúmenes estratificados por grupos.
@@ -6998,6 +7114,10 @@ para obtener resúmenes estratificados por grupos.
   \texttt{columnas}. En combinación con la función \texttt{summarise}
   permite hacer resúmenes estadísticos por grupos.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-group_by}{}\label{exm-group_by}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7033,9 +7153,10 @@ para obtener resúmenes estratificados por grupos.
 2 M      207.  42.9
 \end{verbatim}
 
-\hypertarget{composiciuxf3n-de-operaciones-mediante-tuberuxedas}{%
+\end{example}
+
 \section{Composición de operaciones mediante
-tuberías}\label{composiciuxf3n-de-operaciones-mediante-tuberuxedas}}
+tuberías}\label{composiciuxf3n-de-operaciones-mediante-tuberuxedas}
 
 \texttt{dplyr} permite componer varias operaciones sobre un data frame
 mediante el operador \texttt{\%\textgreater{}\%} (\emph{pipe}), de
@@ -7048,6 +7169,10 @@ Cuando se utilizan tuberías para componer operaciones de esta forma, no
 es necesario indicar el data frame como parámetro de la función que
 define la acción ya que automáticamente se toma el data frame que
 resulta de la operación anterior.
+
+\begin{example}[]\protect\hypertarget{exm-tuberías-1}{}\label{exm-tuberías-1}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7074,8 +7199,9 @@ resulta de la operación anterior.
 2 M                 210.
 \end{verbatim}
 
-\hypertarget{ejercicios-3}{%
-\section{Ejercicios}\label{ejercicios-3}}
+\end{example}
+
+\section{Ejercicios}\label{ejercicios-4}
 
 \begin{exercise}[]\protect\hypertarget{exr-preprocesamiento-1}{}\label{exr-preprocesamiento-1}
 
@@ -7089,7 +7215,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Crear un tibble con los datos del fichero.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7125,7 +7251,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Convertir el tratamiento en un factor.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7137,7 +7263,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Calcular el tamaño muestral de cada grupo de tratamiento
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7159,7 +7285,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Filtrar las ratas de grupo control con una masa corporal
   (\texttt{mas\ cor\ (g)}) mayor de 230 g.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7188,7 +7314,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Calcular la media y la desviación típica de la masa corporal
   (\texttt{mas\ cor\ (g)}) para cada tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7212,7 +7338,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Calcular la media y la desviación típica de todas las variables para
   cada tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7254,18 +7380,16 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 
 \bookmarksetup{startatroot}
 
-\hypertarget{gruxe1ficos-y-visualizaciuxf3n-de-datos}{%
 \chapter{Gráficos y visualización de
-datos}\label{gruxe1ficos-y-visualizaciuxf3n-de-datos}}
+datos}\label{gruxe1ficos-y-visualizaciuxf3n-de-datos}
 
 R incorpora funciones para realizar gráficos de distintos tipos, pero
 actualmente existen paquetes especializados para la visualización de
 datos como \texttt{ggplot2} que permiten realizar multitud de gráficos
 de manera más estructurada.
 
-\hypertarget{gramuxe1tica-de-gruxe1ficos-y-el-paquete-ggplot2}{%
 \section{\texorpdfstring{Gramática de gráficos y el paquete
-\texttt{ggplot2}}{Gramática de gráficos y el paquete ggplot2}}\label{gramuxe1tica-de-gruxe1ficos-y-el-paquete-ggplot2}}
+\texttt{ggplot2}}{Gramática de gráficos y el paquete ggplot2}}\label{gramuxe1tica-de-gruxe1ficos-y-el-paquete-ggplot2}
 
 El paquete \href{https://ggplot2.tidyverse.org/}{\texttt{ggplot2}} forma
 parte de la colección de paquetes \texttt{tidyverse} que ya se introdujo
@@ -7313,22 +7437,21 @@ definir los siguientes elementos:
   el color de fondo, aspecto final del los gráficos.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics{img/graficos/ggplot-grammar-of-graphics.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{img/graficos/ggplot-grammar-of-graphics.png}}
 
 }
 
 \caption{Gramática de gráficos de ggplot2}
 
-\end{figure}
+\end{figure}%
 
 Estos elementos se suelen añadir por capas al gráfico mediante el
 operador \texttt{+}.
 
-\hypertarget{inicializaciuxf3n-de-un-gruxe1fico}{%
 \section{Inicialización de un
-gráfico}\label{inicializaciuxf3n-de-un-gruxe1fico}}
+gráfico}\label{inicializaciuxf3n-de-un-gruxe1fico}
 
 Para dibujar un gráfico con \texttt{ggplot2} debemos comenzar por la
 siguiente función
@@ -7365,14 +7488,13 @@ siguiente función
   \end{itemize}
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-important-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, opacitybacktitle=0.6, breakable, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, colframe=quarto-callout-important-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 Todos los atributos se indican dentro de la función \texttt{aes()}.
 
 \end{tcolorbox}
 
-\hypertarget{diagramas-de-puntos}{%
-\section{Diagramas de puntos}\label{diagramas-de-puntos}}
+\section{Diagramas de puntos}\label{diagramas-de-puntos}
 
 Para dibujar un diagrama de puntos se utiliza la capa de objetos
 geométricos
@@ -7386,6 +7508,10 @@ geométricos
 \end{itemize}
 
 Esta capa es ideal para representar diagramas de dispersión.
+
+\begin{example}[]\protect\hypertarget{exm-puntos-1}{}\label{exm-puntos-1}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7402,13 +7528,13 @@ Esta capa es ideal para representar diagramas de dispersión.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-1-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-1-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-puntos-2}{}\label{exm-puntos-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7419,13 +7545,13 @@ Esta capa es ideal para representar diagramas de dispersión.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-2-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-2-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-puntos-3}{}\label{exm-puntos-3}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7436,13 +7562,13 @@ Esta capa es ideal para representar diagramas de dispersión.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-3-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-3-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-puntos-4}{}\label{exm-puntos-4}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7456,16 +7582,17 @@ Esta capa es ideal para representar diagramas de dispersión.
 \end{Shaded}
 
 \begin{verbatim}
-Warning: Removed 1 rows containing missing values (`geom_point()`).
+Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).
 \end{verbatim}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-4-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-4-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-puntos-5}{}\label{exm-puntos-5}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7477,22 +7604,18 @@ Warning: Removed 1 rows containing missing values (`geom_point()`).
 \end{Shaded}
 
 \begin{verbatim}
-Warning: Removed 1 rows containing missing values (`geom_point()`).
+Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).
 \end{verbatim}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-5-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-5-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/geom_point.html}{Más
 información sobre \texttt{geom\_point}}.
 
-\hypertarget{diagramas-de-luxedneas}{%
-\section{Diagramas de líneas}\label{diagramas-de-luxedneas}}
+\section{Diagramas de líneas}\label{diagramas-de-luxedneas}
 
 Para dibujar un diagrama de líneas se utiliza la capa de objetos
 geométricos
@@ -7511,6 +7634,10 @@ geométricos
 
 Esta capa es ideal para representar series temporales.
 
+\begin{example}[]\protect\hypertarget{exm-lineas-1}{}\label{exm-lineas-1}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
@@ -7526,13 +7653,13 @@ Esta capa es ideal para representar series temporales.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-6-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-6-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-lineas-2}{}\label{exm-lineas-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7543,13 +7670,13 @@ Esta capa es ideal para representar series temporales.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-7-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-7-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-lineas-3}{}\label{exm-lineas-3}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7560,19 +7687,14 @@ Esta capa es ideal para representar series temporales.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-8-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-8-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/geom_path.html}{Más
 información sobre \texttt{geom\_line}}.
 
-\hypertarget{diagramas-de-barras}{%
-\section{Diagramas de barras}\label{diagramas-de-barras}}
+\section{Diagramas de barras}\label{diagramas-de-barras}
 
 Para dibujar un diagrama de barras se utiliza la capa de objetos
 geométricos
@@ -7590,6 +7712,10 @@ geométricos
   barras es la frecuencia absoluta de los valores de la variable
   asociada a los atributos \texttt{x} o \texttt{y}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-barras-1}{}\label{exm-barras-1}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7630,13 +7756,13 @@ geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-9-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-9-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-barras-2}{}\label{exm-barras-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7647,13 +7773,13 @@ geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-10-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-10-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-barras-3}{}\label{exm-barras-3}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7664,13 +7790,13 @@ geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-11-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-11-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-barras-4}{}\label{exm-barras-4}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7681,13 +7807,13 @@ geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-12-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-12-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-barras-5}{}\label{exm-barras-5}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7700,13 +7826,13 @@ geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-13-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-13-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-barras-6}{}\label{exm-barras-6}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7717,19 +7843,33 @@ geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-14-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-14-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-barras-7}{}\label{exm-barras-7}
 
-\end{figure}
+~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inicializar el gráfico con el sexo en los atributos x y fill.}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sexo, }\AttributeTok{fill =}\NormalTok{ sexo)) }\SpecialCharTok{+}
+\CommentTok{\# Añadir la capa de las barras con frecuencias relativas.}
+     \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =} \FunctionTok{after\_stat}\NormalTok{(count }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(count) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{))) }\SpecialCharTok{+}
+\CommentTok{\# Cambiamos la etiqueta del eje y}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Porcentaje (\%)"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-15-1.pdf}}
+
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/geom_bar.html}{Más
 información sobre \texttt{geom\_bar}}.
 
-\hypertarget{histogramas}{%
-\section{Histogramas}\label{histogramas}}
+\section{Histogramas}\label{histogramas}
 
 Para dibujar un histograma se utiliza la capa de objetos geométricos
 
@@ -7744,6 +7884,10 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
   defecto.
 \end{itemize}
 
+\begin{example}[]\protect\hypertarget{exm-histograma-1}{}\label{exm-histograma-1}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
@@ -7755,13 +7899,13 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-16-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-15-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-histograma-2}{}\label{exm-histograma-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7772,13 +7916,13 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-17-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-16-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-histograma-3}{}\label{exm-histograma-3}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7789,13 +7933,13 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-18-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-17-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-histograma-3}{}\label{exm-histograma-3}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7806,19 +7950,14 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-19-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-18-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/geom_histogram.html}{Más
 información sobre \texttt{geom\_histogram}}.
 
-\hypertarget{diagramas-de-densidad}{%
-\section{Diagramas de densidad}\label{diagramas-de-densidad}}
+\section{Diagramas de densidad}\label{diagramas-de-densidad}
 
 Para dibujar un diagrama de densidad se utiliza la capa de objetos
 geométricos
@@ -7834,6 +7973,10 @@ geométricos
 Este diagrama es una alternativa a los histogramas para representar la
 distribución de probabilidad de los valores de una variable.
 
+\begin{example}[]\protect\hypertarget{exm-densidad-1}{}\label{exm-densidad-1}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
@@ -7845,13 +7988,13 @@ distribución de probabilidad de los valores de una variable.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-20-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-19-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-densidad-2}{}\label{exm-densidad-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7862,19 +8005,14 @@ distribución de probabilidad de los valores de una variable.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-21-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-20-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/geom_density.html}{Más
 información sobre \texttt{geom\_density}}.
 
-\hypertarget{diagramas-de-cajas}{%
-\section{Diagramas de cajas}\label{diagramas-de-cajas}}
+\section{Diagramas de cajas}\label{diagramas-de-cajas}
 
 Para dibujar un diagrama de caja y bigotes se utiliza la capa de objetos
 geométricos
@@ -7888,6 +8026,10 @@ geométricos
   utiliza el atributo \texttt{y} verticalmente.
 \end{itemize}
 
+\begin{example}[]\protect\hypertarget{exm-cajas-1}{}\label{exm-cajas-1}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
@@ -7900,16 +8042,17 @@ geométricos
 \end{Shaded}
 
 \begin{verbatim}
-Warning: Removed 1 rows containing non-finite values (`stat_boxplot()`).
+Warning: Removed 1 row containing non-finite outside the scale range
+(`stat_boxplot()`).
 \end{verbatim}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-22-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-21-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-cajas-2}{}\label{exm-cajas-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7920,19 +8063,14 @@ Warning: Removed 1 rows containing non-finite values (`stat_boxplot()`).
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-23-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-22-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/geom_boxplot.html}{Más
 información sobre \texttt{geom\_boxplot}}.
 
-\hypertarget{diagrama-de-sectores}{%
-\section{Diagrama de sectores}\label{diagrama-de-sectores}}
+\section{Diagrama de sectores}\label{diagrama-de-sectores}
 
 Para dibujar un diagrama de sectores se utiliza la misma capa de objetos
 geométricos que para los diagramas de barras (\texttt{geom\_bar}) pero
@@ -7945,6 +8083,10 @@ añadiendo el sistema de coordenadas polares.
   coordenadas cartesianas polares, donde el ángulo viene dado por la
   variable asociada al atributo ``x'' o el atributo ``y''.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-sectores-1}{}\label{exm-sectores-1}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7959,17 +8101,12 @@ añadiendo el sistema de coordenadas polares.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-24-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-23-1.pdf}
+\end{example}
 
-}
-
-\end{figure}
-
-\hypertarget{interpolaciuxf3n-y-ajustes-de-regresiuxf3n}{%
 \section{Interpolación y ajustes de
-regresión}\label{interpolaciuxf3n-y-ajustes-de-regresiuxf3n}}
+regresión}\label{interpolaciuxf3n-y-ajustes-de-regresiuxf3n}
 
 Para dibujar una línea de interpolación o de ajuste de regresión se
 utiliza la capa de objetos geométricos
@@ -8004,6 +8141,10 @@ utiliza la capa de objetos geométricos
 Esta capa suele usarse en combinación con la capa de puntos para
 diagramas de dispersión.
 
+\begin{example}[]\protect\hypertarget{exm-ajuste-1}{}\label{exm-ajuste-1}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
@@ -8017,13 +8158,13 @@ diagramas de dispersión.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-25-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-24-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-ajuste-2}{}\label{exm-ajuste-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8036,13 +8177,13 @@ diagramas de dispersión.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-26-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-25-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-ajuste-3}{}\label{exm-ajuste-3}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8055,19 +8196,14 @@ diagramas de dispersión.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-27-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-26-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/geom_smooth.html}{Más
 información sobre \texttt{geom\_smooth}}.
 
-\hypertarget{facetas}{%
-\section{Facetas}\label{facetas}}
+\section{Facetas}\label{facetas}
 
 Las facetas permiten desagregar un gráfico según los grupos de uno o
 varios factores del conjunto de datos. Para añadir facetas a un gráfico
@@ -8081,6 +8217,10 @@ se añade la función
   \texttt{var1}, \texttt{var2}, etc. y los coloca en una tabla de
   \texttt{n} filas y \texttt{m} columnas.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-facetas-1}{}\label{exm-facetas-1}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8097,26 +8237,20 @@ se añade la función
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-28-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-27-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/facet_wrap.html?q=facet_wrap}{Más
 información sobre facetas}.
 
-\hypertarget{personalizaciuxf3n-de-gruxe1ficos}{%
 \section{Personalización de
-gráficos}\label{personalizaciuxf3n-de-gruxe1ficos}}
+gráficos}\label{personalizaciuxf3n-de-gruxe1ficos}
 
 \texttt{ggplot} incluye multitud de posibilidades de personalización de
 gráficos. Aquí veremos solo las más habituales.
 
-\hypertarget{tuxedtulos}{%
-\subsection{Títulos}\label{tuxedtulos}}
+\subsection{Títulos}\label{tuxedtulos}
 
 Para poner un título al gráfico, a los ejes o a la leyenda se añade la
 función
@@ -8127,6 +8261,10 @@ función
   \texttt{labs(title\ =\ título,\ x\ =\ titulo-x,\ y\ =\ titulo-y,}\strut \\
   \texttt{colour\ =\ leyenda-color,\ shape\ \ =\ leyenda-forma)}
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-titulos-1}{}\label{exm-titulos-1}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8141,16 +8279,11 @@ función
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-29-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-28-1.pdf}
+\end{example}
 
-}
-
-\end{figure}
-
-\hypertarget{escalas}{%
-\subsection{Escalas}\label{escalas}}
+\subsection{Escalas}\label{escalas}
 
 Para cambiar las escalas de los ejes cartesianos se añaden la funciones
 
@@ -8169,6 +8302,10 @@ Para cambiar las escalas de los ejes cartesianos se añaden la funciones
   Igual que la función anterior pero para el eje y.
 \end{itemize}
 
+\begin{example}[]\protect\hypertarget{exm-escalas-1}{}\label{exm-escalas-1}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
@@ -8184,16 +8321,11 @@ Para cambiar las escalas de los ejes cartesianos se añaden la funciones
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-30-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-29-1.pdf}
+\end{example}
 
-}
-
-\end{figure}
-
-\hypertarget{temas}{%
-\subsection{Temas}\label{temas}}
+\subsection{Temas}\label{temas}
 
 Finalmente se para cambiar otros aspectos del gráfico como las fuentes o
 los colores de fondos se utilizan temas. Para indicar o modificar un
@@ -8207,6 +8339,10 @@ tema se añade la función
   tutorial, por lo que se recomienda ver todas las opciones en la
   documentación de \texttt{ggplot2}.
 \end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-temas-1}{}\label{exm-temas-1}
+
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8223,13 +8359,13 @@ tema se añade la función
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-31-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-30-1.pdf}
+\end{example}
 
-}
+\begin{example}[]\protect\hypertarget{exm-temas-2}{}\label{exm-temas-2}
 
-\end{figure}
+~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8242,13 +8378,9 @@ tema se añade la función
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-32-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-31-1.pdf}
-
-}
-
-\end{figure}
+\end{example}
 
 \href{https://ggplot2.tidyverse.org/reference/theme.html}{Más
 información sobre temas}.
@@ -8265,6 +8397,10 @@ información sobre temas}.
 - `theme_void()`: Tema vacío.
 \end{verbatim}
 
+\begin{example}[]\protect\hypertarget{exm-temas-3}{}\label{exm-temas-3}
+
+~
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.}
@@ -8276,35 +8412,25 @@ información sobre temas}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-33-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-32-1.pdf}
+\end{example}
 
-}
+\section{Ejercicios}\label{ejercicios-5}
 
-\end{figure}
+\begin{exercise}[]\protect\hypertarget{exr-graficos-1}{}\label{exr-graficos-1}
 
-\hypertarget{ejercicios-4}{%
-\section{Ejercicios}\label{ejercicios-4}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  El fichero
-  \href{https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv}{neonatos}
-  contiene información sobre los recién nacidos en un hospital durante
-  un año.
-\end{enumerate}
+El fichero
+\href{https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv}{neonatos}
+contiene información sobre los recién nacidos en un hospital durante un
+año.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
-\tightlist
 \item
   Crear un tibble con los datos del fichero.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8328,21 +8454,15 @@ información sobre temas}.
  8  3.12 hombre mayor de 20 No            0 No                7      7
  9  2.77 hombre mayor de 20 No            0 No                5      5
 10  3.31 hombre mayor de 20 No            0 No                7      8
-# ... with 310 more rows
+# i 310 more rows
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
+  \end{tcolorbox}
 \item
   Convertir las variables \texttt{sexo}, \texttt{edad}, \texttt{tabaco}
   y \texttt{tabaco.antes} en factores.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8350,17 +8470,11 @@ información sobre temas}.
 \end{Highlighting}
 \end{Shaded}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
+  \end{tcolorbox}
 \item
   Dibujar un diagrama de barras con la frecuencia de niños y niñas.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8369,26 +8483,14 @@ información sobre temas}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+  \pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-36-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-35-1.pdf}
-
-}
-
-\end{figure}
-
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
+  \end{tcolorbox}
 \item
   Dibujar un diagrama de barras del \texttt{apgar1} de los neonatos de
   madres fumadoras y no fumadoras durante el embarazo.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8397,25 +8499,13 @@ información sobre temas}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+  \pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-37-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-36-1.pdf}
-
-}
-
-\end{figure}
-
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
+  \end{tcolorbox}
 \item
   Dibujar un histograma acumulado del peso según el sexo con 10 clases.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8424,26 +8514,14 @@ información sobre temas}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+  \pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-38-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-37-1.pdf}
-
-}
-
-\end{figure}
-
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{5}
-\tightlist
+  \end{tcolorbox}
 \item
   Dibujar un gráfico de densidad de probabilidad del peso de los
   neonatos de madres fumadoras y no fumadoras durante el embarazo.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8452,26 +8530,14 @@ información sobre temas}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+  \pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-39-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-38-1.pdf}
-
-}
-
-\end{figure}
-
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{6}
-\tightlist
+  \end{tcolorbox}
 \item
   Dibujar un diagrama de caja del peso de los recién nacidos según sexo
   y si la madre fumaba o no durante el embarazo.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8480,27 +8546,15 @@ información sobre temas}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+  \pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-40-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-39-1.pdf}
-
-}
-
-\end{figure}
-
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{7}
-\tightlist
+  \end{tcolorbox}
 \item
   Dibujar un diagrama de dispersión del peso de los recién nacidos de
   madres fumadoras durante el embarazo, frente al número de cigarros que
   fumaban las madres. Incluir la recta de regresión.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8516,28 +8570,16 @@ información sobre temas}.
 `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\begin{figure}[H]
+  \pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-41-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-40-1.pdf}
-
-}
-
-\end{figure}
-
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{7}
-\tightlist
+  \end{tcolorbox}
 \item
   Dibujar un diagrama de dispersión del peso de los recién nacidos de
   madres fumadoras durante el embarazo, frente al número de cigarros que
   fumaban las madres, separando por facetas según el sexo y la edad de
   la madre.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8554,20 +8596,16 @@ información sobre temas}.
 `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\begin{figure}[H]
+  \pandocbounded{\includegraphics[keepaspectratio]{07-graficos_files/figure-pdf/unnamed-chunk-42-1.pdf}}
 
-{\centering \includegraphics{07-graficos_files/figure-pdf/unnamed-chunk-41-1.pdf}
+  \end{tcolorbox}
+\end{enumerate}
 
-}
-
-\end{figure}
-
-\end{tcolorbox}
+\end{exercise}
 
 \bookmarksetup{startatroot}
 
-\hypertarget{anuxe1lisis-estaduxedsticos}{%
-\chapter{Análisis Estadísticos}\label{anuxe1lisis-estaduxedsticos}}
+\chapter{Análisis Estadísticos}\label{anuxe1lisis-estaduxedsticos}
 
 El tipo de estudio estadístico más apropiado en cada caso depende de
 varios factores:
@@ -8913,14 +8951,11 @@ descargarse aquí para reproducir los estudios:
 6        7.8
 \end{verbatim}
 
-\hypertarget{una-variable-cuantitativa}{%
-\section{Una variable cuantitativa}\label{una-variable-cuantitativa}}
+\section{Una variable cuantitativa}\label{una-variable-cuantitativa}
 
-\hypertarget{estudios-descriptivos}{%
-\subsection{Estudios descriptivos}\label{estudios-descriptivos}}
+\subsection{Estudios descriptivos}\label{estudios-descriptivos}
 
-\hypertarget{estaduxedsticos}{%
-\subsubsection{Estadísticos}\label{estaduxedsticos}}
+\subsubsection{Estadísticos}\label{estaduxedsticos}
 
 \begin{itemize}
 \tightlist
@@ -9029,8 +9064,7 @@ descargarse aquí para reproducir los estudios:
 [1] -0.102287
 \end{verbatim}
 
-\hypertarget{gruxe1ficos}{%
-\subsubsection{Gráficos}\label{gruxe1ficos}}
+\subsubsection{Gráficos}\label{gruxe1ficos}
 
 \begin{itemize}
 \tightlist
@@ -9047,13 +9081,12 @@ descargarse aquí para reproducir los estudios:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Continuous limits supplied to discrete scale.
+i Did you mean `limits = factor(...)` or `scale_*_continuous()`?
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-10-1.pdf}
-
-}
-
-\end{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-10-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -9074,13 +9107,7 @@ descargarse aquí para reproducir los estudios:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
-
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-11-1.pdf}
-
-}
-
-\end{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-11-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9092,13 +9119,11 @@ descargarse aquí para reproducir los estudios:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-12-1.pdf}
-
-}
-
-\end{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-12-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -9117,13 +9142,12 @@ descargarse aquí para reproducir los estudios:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Continuous limits supplied to discrete scale.
+i Did you mean `limits = factor(...)` or `scale_*_continuous()`?
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-13-1.pdf}
-
-}
-
-\end{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-13-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9135,13 +9159,11 @@ descargarse aquí para reproducir los estudios:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Removed 2 rows containing missing values (`geom_path()`).
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-14-1.pdf}
-
-}
-
-\end{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-14-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -9158,20 +9180,12 @@ descargarse aquí para reproducir los estudios:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-15-1.pdf}}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-15-1.pdf}
+\subsection{Estudios inferenciales}\label{estudios-inferenciales}
 
-}
-
-\end{figure}
-
-\hypertarget{estudios-inferenciales}{%
-\subsection{Estudios inferenciales}\label{estudios-inferenciales}}
-
-\hypertarget{test-de-normalidad-de-shapiro-wilk}{%
 \subsubsection{Test de normalidad de
-Shapiro-Wilk}\label{test-de-normalidad-de-shapiro-wilk}}
+Shapiro-Wilk}\label{test-de-normalidad-de-shapiro-wilk}
 
 \textbf{Objetivo}: Comprobar la normalidad de la distribución.
 
@@ -9205,9 +9219,8 @@ data:  df$notaE
 W = 0.92264, p-value = 4.065e-06
 \end{verbatim}
 
-\hypertarget{test-t-para-la-media-de-una-poblaciuxf3n}{%
 \subsubsection{Test t para la media de una
-población}\label{test-t-para-la-media-de-una-poblaciuxf3n}}
+población}\label{test-t-para-la-media-de-una-poblaciuxf3n}
 
 \textbf{Objetivo}: Estimar la media de una variable o compararla con un
 valor dado \emph{μ}0.
@@ -9247,14 +9260,11 @@ mean of x
  6.028333 
 \end{verbatim}
 
-\hypertarget{una-variable-cualitativa}{%
-\section{Una variable cualitativa}\label{una-variable-cualitativa}}
+\section{Una variable cualitativa}\label{una-variable-cualitativa}
 
-\hypertarget{estudios-descriptivos-1}{%
-\subsection{Estudios descriptivos}\label{estudios-descriptivos-1}}
+\subsection{Estudios descriptivos}\label{estudios-descriptivos-1}
 
-\hypertarget{estaduxedsticos-1}{%
-\subsubsection{Estadísticos}\label{estaduxedsticos-1}}
+\subsubsection{Estadísticos}\label{estaduxedsticos-1}
 
 \begin{itemize}
 \tightlist
@@ -9316,8 +9326,7 @@ Aprobado Suspenso
 85.21739 14.78261 
 \end{verbatim}
 
-\hypertarget{gruxe1ficos-1}{%
-\subsubsection{Gráficos}\label{gruxe1ficos-1}}
+\subsubsection{Gráficos}\label{gruxe1ficos-1}
 
 \begin{itemize}
 \tightlist
@@ -9336,20 +9345,12 @@ Aprobado Suspenso
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-23-1.pdf}}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-23-1.pdf}
+\subsection{Estudios inferenciales}\label{estudios-inferenciales-1}
 
-}
-
-\end{figure}
-
-\hypertarget{estudios-inferenciales-1}{%
-\subsection{Estudios inferenciales}\label{estudios-inferenciales-1}}
-
-\hypertarget{test-binomial-para-una-proporciuxf3n-de-una-poblaciuxf3n}{%
 \subsubsection{Test binomial para una proporción de una
-población}\label{test-binomial-para-una-proporciuxf3n-de-una-poblaciuxf3n}}
+población}\label{test-binomial-para-una-proporciuxf3n-de-una-poblaciuxf3n}
 
 \textbf{Objetivo}: Estimar la propoción de una categoría en una
 población o compararla con un valor \emph{p}0.
@@ -9389,9 +9390,8 @@ probability of success
              0.7833333 
 \end{verbatim}
 
-\hypertarget{test-z-para-la-proporciuxf3n-de-una-poblaciuxf3n}{%
 \subsubsection{Test Z para la proporción de una
-población}\label{test-z-para-la-proporciuxf3n-de-una-poblaciuxf3n}}
+población}\label{test-z-para-la-proporciuxf3n-de-una-poblaciuxf3n}
 
 \textbf{Objetivo}: Estimar la propoción de una categoría en una
 población o compararla con un valor \emph{p}0.
@@ -9433,16 +9433,13 @@ sample estimates:
 0.7833333 
 \end{verbatim}
 
-\hypertarget{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-dos-categoruxedas-o-grupos}{%
 \section{Dos variables: Variable dependiente cuantitativa y variable
 independiente culitativa con dos categorías o
-grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-dos-categoruxedas-o-grupos}}
+grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-dos-categoruxedas-o-grupos}
 
-\hypertarget{estudios-descriptivos-2}{%
-\subsection{Estudios descriptivos}\label{estudios-descriptivos-2}}
+\subsection{Estudios descriptivos}\label{estudios-descriptivos-2}
 
-\hypertarget{estaduxedsticos-2}{%
-\subsubsection{Estadísticos}\label{estaduxedsticos-2}}
+\subsubsection{Estadísticos}\label{estaduxedsticos-2}
 
 \begin{itemize}
 \tightlist
@@ -9483,15 +9480,14 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 
 \begin{verbatim}
 # A tibble: 2 x 10
-  sexo   Media Des.Tip   Mín   Máx    C1    C2    C3 Coef.Asimetría Coef.Apunt~1
-  <chr>  <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>          <dbl>        <dbl>
-1 Hombre  6.12    1.23   3.5   9.3   5.3   6.1  6.85          0.249       -0.170
-2 Mujer   5.89    1.49   2.5   9.3   5     5.7  6.8           0.135       -0.240
-# ... with abbreviated variable name 1: Coef.Apuntamiento
+  sexo   Media Des.Tip   Mín   Máx    C1    C2    C3 Coef.Asimetría
+  <chr>  <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>          <dbl>
+1 Hombre  6.12    1.23   3.5   9.3   5.3   6.1  6.85          0.249
+2 Mujer   5.89    1.49   2.5   9.3   5     5.7  6.8           0.135
+# i 1 more variable: Coef.Apuntamiento <dbl>
 \end{verbatim}
 
-\hypertarget{gruxe1ficos-2}{%
-\subsubsection{Gráficos}\label{gruxe1ficos-2}}
+\subsubsection{Gráficos}\label{gruxe1ficos-2}
 
 \begin{itemize}
 \tightlist
@@ -9508,13 +9504,7 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
-
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-28-1.pdf}
-
-}
-
-\end{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-28-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -9531,20 +9521,12 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-29-1.pdf}}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-29-1.pdf}
+\subsection{Estudios inferenciales}\label{estudios-inferenciales-2}
 
-}
-
-\end{figure}
-
-\hypertarget{estudios-inferenciales-2}{%
-\subsection{Estudios inferenciales}\label{estudios-inferenciales-2}}
-
-\hypertarget{test-de-normalidad-de-shapiro-wilks}{%
 \subsubsection{Test de normalidad de
-Shapiro-Wilks}\label{test-de-normalidad-de-shapiro-wilks}}
+Shapiro-Wilks}\label{test-de-normalidad-de-shapiro-wilks}
 
 \textbf{Objetivo}: Comprobar la normalidad de la distribución de cada
 población.
@@ -9566,10 +9548,9 @@ población.
 2 Mujer            0.990     0.942
 \end{verbatim}
 
-\hypertarget{test-f-de-fisher-de-comparaciuxf3n-de-varianzas-de-dos-poblaciones-independientes}{%
 \subsubsection{Test F de Fisher de comparación de varianzas de dos
 poblaciones
-independientes}\label{test-f-de-fisher-de-comparaciuxf3n-de-varianzas-de-dos-poblaciones-independientes}}
+independientes}\label{test-f-de-fisher-de-comparaciuxf3n-de-varianzas-de-dos-poblaciones-independientes}
 
 \textbf{Objetivo}: Comparar las varianzas de dos poblaciones
 independientes.
@@ -9615,9 +9596,8 @@ ratio of variances
          0.6769032 
 \end{verbatim}
 
-\hypertarget{test-t-de-comparaciuxf3n-de-medias-de-dos-poblaciones-independientes}{%
 \subsubsection{Test t de comparación de medias de dos poblaciones
-independientes}\label{test-t-de-comparaciuxf3n-de-medias-de-dos-poblaciones-independientes}}
+independientes}\label{test-t-de-comparaciuxf3n-de-medias-de-dos-poblaciones-independientes}
 
 \textbf{Objetivo}: Estimar la diferencia de medias en las dos
 poblaciones o comprobar si hay diferencias significativas entre ellas.
@@ -9724,18 +9704,11 @@ mean in group Hombre  mean in group Mujer
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-35-1.pdf}}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-35-1.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{test-u-de-mann-whitney-de-comparaciuxf3n-de-dos-poblaciones-independientes-no-paramuxe9trico}{%
 \subsubsection{Test U de Mann-Whitney de comparación de dos poblaciones
 independientes (no
-paramétrico)}\label{test-u-de-mann-whitney-de-comparaciuxf3n-de-dos-poblaciones-independientes-no-paramuxe9trico}}
+paramétrico)}\label{test-u-de-mann-whitney-de-comparaciuxf3n-de-dos-poblaciones-independientes-no-paramuxe9trico}
 
 \textbf{Objetivo}: Comprobar si hay diferencias significativas entre
 entre dos poblaciones independientes.
@@ -9773,10 +9746,9 @@ W = 1917, p-value = 0.3445
 alternative hypothesis: true location shift is not equal to 0
 \end{verbatim}
 
-\hypertarget{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-dos-categoruxedas-o-grupos-pareados}{%
 \section{Dos variables: Variable dependiente cuantitativa y variable
 independiente culitativa con dos categorías o grupos
-pareados}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-dos-categoruxedas-o-grupos-pareados}}
+pareados}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-dos-categoruxedas-o-grupos-pareados}
 
 Dos grupos o poblaciones están pareadas o emparejadas cuando los dos
 poblaciones contienen los mismos individuos, es decir, se trata en
@@ -9798,11 +9770,9 @@ A y B.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{estudios-descriptivos-3}{%
-\subsection{Estudios descriptivos}\label{estudios-descriptivos-3}}
+\subsection{Estudios descriptivos}\label{estudios-descriptivos-3}
 
-\hypertarget{estaduxedsticos-3}{%
-\subsubsection{Estadísticos}\label{estaduxedsticos-3}}
+\subsubsection{Estadísticos}\label{estaduxedsticos-3}
 
 \begin{itemize}
 \tightlist
@@ -9849,8 +9819,7 @@ notas de las asignaturas A y B de un mismo grupo de alumnos.
 1 -0.8817391 0.9000568 -3.2 1.1 -1.5 -0.8 -0.3     -0.4304152        -0.1366944
 \end{verbatim}
 
-\hypertarget{gruxe1ficos-3}{%
-\subsubsection{Gráficos}\label{gruxe1ficos-3}}
+\subsubsection{Gráficos}\label{gruxe1ficos-3}
 
 \begin{itemize}
 \tightlist
@@ -9865,20 +9834,16 @@ notas de las asignaturas A y B de un mismo grupo de alumnos.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Removed 5 rows containing non-finite values (`stat_boxplot()`).
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-40-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-40-1.pdf}}
 
-}
+\subsection{Estudios inferenciales}\label{estudios-inferenciales-3}
 
-\end{figure}
-
-\hypertarget{estudios-inferenciales-3}{%
-\subsection{Estudios inferenciales}\label{estudios-inferenciales-3}}
-
-\hypertarget{test-de-normalidad-de-shapiro-wilks-1}{%
 \subsubsection{Test de normalidad de
-Shapiro-Wilks}\label{test-de-normalidad-de-shapiro-wilks-1}}
+Shapiro-Wilks}\label{test-de-normalidad-de-shapiro-wilks-1}
 
 \textbf{Objetivo}: Comprobar la normalidad de la distribución de la
 diferencia.
@@ -9899,9 +9864,8 @@ notas de las asignaturas A y B de un mismo grupo de alumnos.
 1     0.9794023 0.07367451
 \end{verbatim}
 
-\hypertarget{test-t-de-comparaciuxf3n-de-medias-de-dos-poblaciones-pareadas}{%
 \subsubsection{Test t de comparación de medias de dos poblaciones
-pareadas}\label{test-t-de-comparaciuxf3n-de-medias-de-dos-poblaciones-pareadas}}
+pareadas}\label{test-t-de-comparaciuxf3n-de-medias-de-dos-poblaciones-pareadas}
 
 \textbf{Objetivo}: Estimar la media de la diferencia o compararla con un
 valor dado \emph{μ}0.
@@ -9962,18 +9926,16 @@ mean difference
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Removed 5 rows containing non-finite values (`stat_summary()`).
+Removed 5 rows containing non-finite values (`stat_summary()`).
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-43-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-43-1.pdf}}
 
-}
-
-\end{figure}
-
-\hypertarget{test-wilcoxon-de-comparaciuxf3n-de-dos-poblaciones-pareadas-no-paramuxe9trico}{%
 \subsubsection{Test Wilcoxon de comparación de dos poblaciones pareadas
 (no
-paramétrico)}\label{test-wilcoxon-de-comparaciuxf3n-de-dos-poblaciones-pareadas-no-paramuxe9trico}}
+paramétrico)}\label{test-wilcoxon-de-comparaciuxf3n-de-dos-poblaciones-pareadas-no-paramuxe9trico}
 
 \textbf{Objetivo}: Comparar las medianas de las dos poblaciones.
 
@@ -10009,16 +9971,13 @@ V = 398, p-value = 2.442e-15
 alternative hypothesis: true location shift is not equal to 0
 \end{verbatim}
 
-\hypertarget{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-muxe1s-de-dos-categoruxedas-o-grupos}{%
 \section{Dos variables: Variable dependiente cuantitativa y variable
 independiente culitativa con más de dos categorías o
-grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-muxe1s-de-dos-categoruxedas-o-grupos}}
+grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-culitativa-con-muxe1s-de-dos-categoruxedas-o-grupos}
 
-\hypertarget{estudios-descriptivos-4}{%
-\subsection{Estudios descriptivos}\label{estudios-descriptivos-4}}
+\subsection{Estudios descriptivos}\label{estudios-descriptivos-4}
 
-\hypertarget{estaduxedsticos-4}{%
-\subsubsection{Estadísticos}\label{estaduxedsticos-4}}
+\subsubsection{Estadísticos}\label{estaduxedsticos-4}
 
 \begin{itemize}
 \tightlist
@@ -10059,16 +10018,15 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 
 \begin{verbatim}
 # A tibble: 3 x 10
-  grupo Media Des.Tip   Mín   Máx    C1    C2    C3 Coef.Asimetría Coef.Apunta~1
-  <chr> <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>          <dbl>         <dbl>
-1 A      6.54   0.998   4.3   8.6  5.93   6.6  7.15         -0.250        -0.166
-2 B      6.96   1.23    3.5   9.3  6.2    6.8  7.7          -0.141         0.522
-3 C      4.92   0.771   2.5   5.9  4.5    5.1  5.5          -1.06          0.902
-# ... with abbreviated variable name 1: Coef.Apuntamiento
+  grupo Media Des.Tip   Mín   Máx    C1    C2    C3 Coef.Asimetría
+  <chr> <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>          <dbl>
+1 A      6.54   0.998   4.3   8.6  5.93   6.6  7.15         -0.250
+2 B      6.96   1.23    3.5   9.3  6.2    6.8  7.7          -0.141
+3 C      4.92   0.771   2.5   5.9  4.5    5.1  5.5          -1.06 
+# i 1 more variable: Coef.Apuntamiento <dbl>
 \end{verbatim}
 
-\hypertarget{gruxe1ficos-4}{%
-\subsubsection{Gráficos}\label{gruxe1ficos-4}}
+\subsubsection{Gráficos}\label{gruxe1ficos-4}
 
 \begin{itemize}
 \tightlist
@@ -10085,13 +10043,7 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
-
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-47-1.pdf}
-
-}
-
-\end{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-47-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -10108,20 +10060,12 @@ grupos}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-indepen
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-48-1.pdf}}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-48-1.pdf}
+\subsection{Estudios inferenciales}\label{estudios-inferenciales-4}
 
-}
-
-\end{figure}
-
-\hypertarget{estudios-inferenciales-4}{%
-\subsection{Estudios inferenciales}\label{estudios-inferenciales-4}}
-
-\hypertarget{test-de-normalidad-de-shapiro-wilks-2}{%
 \subsubsection{Test de normalidad de
-Shapiro-Wilks}\label{test-de-normalidad-de-shapiro-wilks-2}}
+Shapiro-Wilks}\label{test-de-normalidad-de-shapiro-wilks-2}
 
 \textbf{Objetivo}: Comprobar la normalidad de la distribución de cada
 población.
@@ -10173,10 +10117,9 @@ nota C en los grupos A, B y C.
 \textbf{Interpretación}: La distribución de la nota C en los tres grupos
 es normal (p-valores \textgreater{} 0.05).
 
-\hypertarget{test-de-levene-de-comparaciuxf3n-de-varianzas-de-dos-o-muxe1s-poblaciones-independientes}{%
 \subsubsection{Test de Levene de comparación de varianzas de dos o más
 poblaciones
-independientes}\label{test-de-levene-de-comparaciuxf3n-de-varianzas-de-dos-o-muxe1s-poblaciones-independientes}}
+independientes}\label{test-de-levene-de-comparaciuxf3n-de-varianzas-de-dos-o-muxe1s-poblaciones-independientes}
 
 \textbf{Objetivo}: Comparar las varianzas de dos o más poblaciones
 independientes.
@@ -10211,6 +10154,11 @@ varianzas de las notas de la asignatura C de los grupos A, B y C.
 \end{Shaded}
 
 \begin{verbatim}
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+\end{verbatim}
+
+\begin{verbatim}
 Levene's Test for Homogeneity of Variance (center = median)
        Df F value Pr(>F)
 group   2  0.3186 0.7278
@@ -10221,10 +10169,9 @@ group   2  0.3186 0.7278
 varianzas de la nota C en los grupos A, B y C (p-valor \textgreater{}
 0.05).
 
-\hypertarget{anova-de-un-factor-para-la-comparaciuxf3n-medias-de-muxe1s-de-dos-poblaciones-independientes}{%
 \subsubsection{ANOVA de un factor para la comparación medias de más de
 dos poblaciones
-independientes}\label{anova-de-un-factor-para-la-comparaciuxf3n-medias-de-muxe1s-de-dos-poblaciones-independientes}}
+independientes}\label{anova-de-un-factor-para-la-comparaciuxf3n-medias-de-muxe1s-de-dos-poblaciones-independientes}
 
 \textbf{Objetivo}: Comprobar si hay diferencias significativas entre las
 medias de más de dos poblaciones independientes.
@@ -10320,18 +10267,16 @@ y también entre las notas medias de los grupos B y C (p-valor=0.0000001
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Removed 1 rows containing non-finite values (`stat_summary()`).
+Removed 1 rows containing non-finite values (`stat_summary()`).
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-54-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-54-1.pdf}}
 
-}
-
-\end{figure}
-
-\hypertarget{test-kruskal-wallis-de-comparaciuxf3n-de-muxe1s-de-dos-poblaciones-independientes-no-paramuxe9trico}{%
 \subsubsection{Test Kruskal-Wallis de comparación de más de dos
 poblaciones independientes (no
-paramétrico)}\label{test-kruskal-wallis-de-comparaciuxf3n-de-muxe1s-de-dos-poblaciones-independientes-no-paramuxe9trico}}
+paramétrico)}\label{test-kruskal-wallis-de-comparaciuxf3n-de-muxe1s-de-dos-poblaciones-independientes-no-paramuxe9trico}
 
 \textbf{Objetivo}: Comprobar si hay diferencias significativas entre
 entre más de dos poblaciones independientes.
@@ -10384,6 +10329,17 @@ entre cuáles no. El test más habitual es el de Wilcoxon.
 \end{Shaded}
 
 \begin{verbatim}
+Warning in wilcox.test.default(xi, xj, paired = paired, ...): cannot compute
+exact p-value with ties
+
+Warning in wilcox.test.default(xi, xj, paired = paired, ...): cannot compute
+exact p-value with ties
+
+Warning in wilcox.test.default(xi, xj, paired = paired, ...): cannot compute
+exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
 
     Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 
@@ -10403,19 +10359,15 @@ las notas de los grupos A y C (p-valor=4.2e-10 \textless{} 0.05) y
 también entre las notas de los grupos B y C (p-valor=1.3e-11 \textless{}
 0.05).
 
-\hypertarget{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-cuantitativa}{%
 \section{Dos variables: Variable dependiente cuantitativa y variable
 independiente
-cuantitativa}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-cuantitativa}}
+cuantitativa}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-independiente-cuantitativa}
 
-\hypertarget{estudios-descriptivos-5}{%
-\subsection{Estudios descriptivos}\label{estudios-descriptivos-5}}
+\subsection{Estudios descriptivos}\label{estudios-descriptivos-5}
 
-\hypertarget{estaduxedsticos-5}{%
-\subsubsection{Estadísticos}\label{estaduxedsticos-5}}
+\subsubsection{Estadísticos}\label{estaduxedsticos-5}
 
-\hypertarget{estaduxedsticos-6}{%
-\subsubsection{Estadísticos}\label{estaduxedsticos-6}}
+\subsubsection{Estadísticos}\label{estaduxedsticos-6}
 
 \begin{itemize}
 \tightlist
@@ -10459,8 +10411,7 @@ cuantitativa}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-i
 1 6.028333 1.340524 2.5 9.3 5.1 5.9 6.825      0.1373915         -0.102287
 \end{verbatim}
 
-\hypertarget{gruxe1ficos-5}{%
-\subsubsection{Gráficos}\label{gruxe1ficos-5}}
+\subsubsection{Gráficos}\label{gruxe1ficos-5}
 
 \begin{itemize}
 \tightlist
@@ -10475,20 +10426,15 @@ cuantitativa}\label{dos-variables-variable-dependiente-cuantitativa-y-variable-i
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+Warning: Removed 5 rows containing missing values (`geom_point()`).
+\end{verbatim}
 
-{\centering \includegraphics{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-59-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{08-analisis-estadisticos_files/figure-pdf/unnamed-chunk-59-1.pdf}}
 
-}
+\subsection{Estudios inferenciales}\label{estudios-inferenciales-5}
 
-\end{figure}
-
-\hypertarget{estudios-inferenciales-5}{%
-\subsection{Estudios inferenciales}\label{estudios-inferenciales-5}}
-
-\hypertarget{anuxe1lisis-de-regresiuxf3n}{%
-\subsubsection{Análisis de
-regresión}\label{anuxe1lisis-de-regresiuxf3n}}
+\subsubsection{Análisis de regresión}\label{anuxe1lisis-de-regresiuxf3n}
 
 \textbf{Objetivo}: Construir un modelo matemático \(y=f(x)\) que
 explique lo mejor posible la variable dependiente en función de la
@@ -10556,9 +10502,8 @@ F-statistic: 216.3 on 1 and 113 DF,  p-value: < 2.2e-16
 \textbf{Interpretación}: La recta de regresión explica el 65\% de la
 variabilidad de la nota B.
 
-\hypertarget{anuxe1lisis-de-correlaciuxf3n}{%
 \subsubsection{Análisis de
-correlación}\label{anuxe1lisis-de-correlaciuxf3n}}
+correlación}\label{anuxe1lisis-de-correlaciuxf3n}
 
 \textbf{Objetivo}: Estudiar el grado de relación entre las dos
 variables.
@@ -10602,28 +10547,21 @@ sample estimates:
 \textbf{Interpretación}: Existe una correlación fuerte entre la nota A y
 la nota C, que además es estadísticamente muy significativa.
 
-\hypertarget{ejercicios-5}{%
-\section{Ejercicios}\label{ejercicios-5}}
+\section{Ejercicios}\label{ejercicios-6}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  El fichero
-  \href{https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv}{\texttt{genetica}},
-  contiene información de la análitica fisiológica, microbiológica y
-  bioquímica, de una muestra de ratas tratadas con distintos
-  tratamientos.
-\end{enumerate}
+\begin{exercise}[]\protect\hypertarget{exr-analisis-estadisticos-1}{}\label{exr-analisis-estadisticos-1}
+
+El fichero
+\href{https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv}{\texttt{genetica}},
+contiene información de la análitica fisiológica, microbiológica y
+bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
-\tightlist
 \item
   Crear un tibble con los datos del fichero.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10635,38 +10573,31 @@ la nota C, que además es estadísticamente muy significativa.
 
 \begin{verbatim}
 # A tibble: 21 x 20
-   códig~1 Trata~2 mas c~3    IHS     IES     ITS    IAS gluco~4 pbmc(~5 CD4(c~6
-   <chr>   <chr>     <dbl>  <dbl>   <dbl>   <dbl>  <dbl>   <dbl>   <dbl>   <dbl>
- 1 Ct-A1   Control    236  0.0433 0.00198 0.00178 4.3e-4    54.1  7.01e3   401. 
- 2 Ct-A2   Control    202. 0.044  0.002   0.0017  8  e-4    50.7  2.42e6   553. 
- 3 Ct-B1   Control    246. 0.042  0.002   0.0015  5  e-4    72.2  6.19e6   724. 
- 4 Ct-B2   Control    237. 0.0475 0.00238 0.00203 4.1e-4    95.3  1.79e6  2213. 
- 5 Ct-B3   Control    231. 0.0499 0.002   0.0011  5  e-4    93.1  5.82e7  4518. 
- 6 Ct-C1   Control    235. 0.05   0.0021  0.0033  1.4e-3    22.6  3.39e7   775. 
- 7 Ct-C2   Control    228. 0.05   0.0018  0.0031  5.9e-4    29.4  7.5 e3    83.4
- 8 Dx-1    Dexame~    181. 0.061  0.00155 0.0005  1.2e-4    56.0  7.68e2    10  
- 9 Dx-2    Dexame~    198. 0.063  0.00191 0.0011  2  e-4   119.   1.41e6    15  
-10 Dx-3    Dexame~    201. 0.0577 0.0017  0.0001  1  e-4   119.   7.12e3    11  
-# ... with 11 more rows, 10 more variables: `monoc(cel/mL)` <dbl>,
-#   `IHQ: linfB(cel/mm2)` <dbl>, `pulp.blan(Tx1)` <dbl>,
-#   `microorg(log nº/g)` <dbl>, `AI2(absorb)` <dbl>, `gluc(mmol/L)` <dbl>,
-#   `TAG(mmol/L)` <dbl>, `col(mmol/L)` <dbl>, `HDL(mmol/L)` <dbl>,
-#   `ins(pmol/L)` <dbl>, and abbreviated variable names 1: `código muestra`,
-#   2: Tratamiento, 3: `mas cor (g)`, 4: `glucog(mg/g)`, 5: `pbmc(cel/mL)`,
-#   6: `CD4(cel/µL)`
+   `código muestra` Tratamiento  `mas cor (g)`    IHS     IES     ITS     IAS
+   <chr>            <chr>                <dbl>  <dbl>   <dbl>   <dbl>   <dbl>
+ 1 Ct-A1            Control               236  0.0433 0.00198 0.00178 0.00043
+ 2 Ct-A2            Control               202. 0.044  0.002   0.0017  0.0008 
+ 3 Ct-B1            Control               246. 0.042  0.002   0.0015  0.0005 
+ 4 Ct-B2            Control               237. 0.0475 0.00238 0.00203 0.00041
+ 5 Ct-B3            Control               231. 0.0499 0.002   0.0011  0.0005 
+ 6 Ct-C1            Control               235. 0.05   0.0021  0.0033  0.0014 
+ 7 Ct-C2            Control               228. 0.05   0.0018  0.0031  0.00059
+ 8 Dx-1             Dexametasona          181. 0.061  0.00155 0.0005  0.00012
+ 9 Dx-2             Dexametasona          198. 0.063  0.00191 0.0011  0.0002 
+10 Dx-3             Dexametasona          201. 0.0577 0.0017  0.0001  0.0001 
+# i 11 more rows
+# i 13 more variables: `glucog(mg/g)` <dbl>, `pbmc(cel/mL)` <dbl>,
+#   `CD4(cel/µL)` <dbl>, `monoc(cel/mL)` <dbl>, `IHQ: linfB(cel/mm2)` <dbl>,
+#   `pulp.blan(Tx1)` <dbl>, `microorg(log nº/g)` <dbl>, `AI2(absorb)` <dbl>,
+#   `gluc(mmol/L)` <dbl>, `TAG(mmol/L)` <dbl>, `col(mmol/L)` <dbl>,
+#   `HDL(mmol/L)` <dbl>, `ins(pmol/L)` <dbl>
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
+  \end{tcolorbox}
 \item
   Convertir el tratamiento en un factor.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10674,17 +10605,11 @@ la nota C, que además es estadísticamente muy significativa.
 \end{Highlighting}
 \end{Shaded}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
+  \end{tcolorbox}
 \item
   Calcular el tamaño muestral de cada grupo de tratamiento
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10701,18 +10626,12 @@ la nota C, que además es estadísticamente muy significativa.
 3 Kanamicina       7
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
+  \end{tcolorbox}
 \item
   Comprobar la normalidad de la variable IHS en cada grupo de
   tratamiento.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10730,18 +10649,12 @@ la nota C, que además es estadísticamente muy significativa.
 3 Kanamicina             0.908    0.383 
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
+  \end{tcolorbox}
 \item
   Comprobar la homocedasticiad de varianzas de la variable IHS en los
   tres grupos de tratamiento.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10759,18 +10672,12 @@ group  2  0.1636 0.8503
       18               
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{5}
-\tightlist
+  \end{tcolorbox}
 \item
   Realizar un contraste de ANOVA para comparar las medias de la variable
   IHS entre los tres grupos de tratamiento.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10787,18 +10694,12 @@ Residuals   18 0.0002237 1.24e-05
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{6}
-\tightlist
+  \end{tcolorbox}
 \item
   Realizar los contrastes de comparación de medias de la variable IHS
   por pares de trataimentos.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10820,19 +10721,13 @@ Kanamicina-Control       0.0007857143 -0.004023559  0.005594988 0.9090945
 Kanamicina-Dexametasona -0.0126000000 -0.017409273 -0.007790727 0.0000082
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{7}
-\tightlist
+  \end{tcolorbox}
 \item
   Realizar un contraste de Kruskal-Wallis para ver si hay diferencias
   significativas en la variable IHS entre los tres grupos de
   tratamiento.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10849,17 +10744,12 @@ data:  IHS by Tratamiento
 Kruskal-Wallis chi-squared = 13.433, df = 2, p-value = 0.001211
 \end{verbatim}
 
-\end{tcolorbox}
-
-\begin{enumerate}
-\def\labelenumi{\roman{enumi}.}
-\tightlist
+  \end{tcolorbox}
 \item
   Construir la recta de regresión del variable IHS sobre la variable
   IES.
-\end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, left=2mm, bottomtitle=1mm, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, opacitybacktitle=0.6, breakable, coltitle=black]
+  \begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, arc=.35mm, rightrule=.15mm, coltitle=black, left=2mm, breakable, bottomtitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10905,7 +10795,11 @@ Multiple R-squared:  0.1939,    Adjusted R-squared:  0.1514
 F-statistic: 4.569 on 1 and 19 DF,  p-value: 0.04577
 \end{verbatim}
 
-\end{tcolorbox}
+  \end{tcolorbox}
+\end{enumerate}
+
+\end{exercise}
+
 
 
 

@@ -53,7 +53,7 @@ Para dibujar un diagrama de puntos se utiliza la capa de objetos geométricos
 
 Esta capa es ideal para representar diagramas de dispersión.
 
-:::{.exm-puntos-1}
+:::{#exm-puntos-1}
 ```{r, message=F}
 library(dplyr)
 library(ggplot2)
@@ -68,7 +68,7 @@ ggplot(df.madrid, aes(x = Día, y = Temperatura)) +
 ```
 :::
 
-:::{.exm-puntos-2}
+:::{#exm-puntos-2}
 ```{r}
 # Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo shape.
 ggplot(df, aes(x = Día, y = Temperatura, shape = Ciudad)) +
@@ -77,7 +77,7 @@ ggplot(df, aes(x = Día, y = Temperatura, shape = Ciudad)) +
 ```
 :::
 
-:::{.exm-puntos-3}
+:::{#exm-puntos-3}
 ```{r}
 # Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en el atributo colour.
 ggplot(df, aes(x = Día, y = Temperatura, colour = Ciudad)) +
@@ -86,7 +86,7 @@ ggplot(df, aes(x = Día, y = Temperatura, colour = Ciudad)) +
 ```
 :::
 
-:::{.exm-puntos-4}
+:::{#exm-puntos-4}
 ```{r, message=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -97,7 +97,7 @@ ggplot(df, aes(x = altura, y = peso)) +
 ```
 :::
 
-:::{.exm-puntos-5}
+:::{#exm-puntos-5}
 ```{r}
 # Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.
 ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
@@ -117,7 +117,7 @@ e `y`. Cuando la variable asociada al atributo `x` es un factor, debe asociarse 
 
 Esta capa es ideal para representar series temporales.
 
-:::{.exm-lineas-1}
+:::{#exm-lineas-1}
 ```{r, message=F}
 library(dplyr)
 library(ggplot2)
@@ -132,7 +132,7 @@ ggplot(df.madrid, aes(x = Día, y = Temperatura, group = 1)) +
 ```
 :::
 
-:::{.exm-lineas-2}
+:::{#exm-lineas-2}
 ```{r, message=F}
 # Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y linetype.
 ggplot(df, aes(x = Día, y = Temperatura, group = Ciudad, linetype = Ciudad)) +
@@ -141,7 +141,7 @@ ggplot(df, aes(x = Día, y = Temperatura, group = Ciudad, linetype = Ciudad)) +
 ```
 :::
 
-:::{.exm-lineas-3}
+:::{#exm-lineas-3}
 ```{r, message=F}
 # Inicializar el gráfico con el día en el atributo x, la temperatura en el atributo y, y la ciudad en los atributos group y colour.
 ggplot(df, aes(x = Día, y = Temperatura, group = Ciudad, colour = Ciudad)) +
@@ -158,7 +158,7 @@ Para dibujar un diagrama de barras se utiliza la capa de objetos geométricos
 
 - `geom_bar(aes(weight = var))`: Dibuja un diagrama de barras con la variable asociada al atributo `x` o `y` (si se usa el atributo `x` las barras son verticales y se usa `y` horizontales), donde la altura de las barras viene dada por la variable `var`. Si no se indica   Por defecto, la altura de las barras representa la frecuencia absoluta de cada valor de la variable. Si no se indica el atributo `weight` la altura de las barras es la frecuencia absoluta de los valores de la variable asociada a los atributos `x` o `y`.
 
-:::{.exm-barras-1}
+:::{#exm-barras-1}
 ```{r, message=F}
 library(dplyr)
 library(ggplot2)
@@ -174,7 +174,7 @@ ggplot(df.madrid, aes(x = Día)) +
 ```
 :::
 
-:::{.exm-barras-2}
+:::{#exm-barras-2}
 ```{r}
 # Inicializar el gráfico con el día en el atributo y.
 ggplot(df.madrid, aes(y = Día)) +
@@ -183,7 +183,7 @@ ggplot(df.madrid, aes(y = Día)) +
 ```
 :::
 
-:::{.exm-barras-3}
+:::{#exm-barras-3}
 ```{r}
 # Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.
 ggplot(df, aes(x = Día, fill = Ciudad)) +
@@ -192,7 +192,7 @@ ggplot(df, aes(x = Día, fill = Ciudad)) +
 ```
 :::
 
-:::{.exm-barras-4}
+:::{#exm-barras-4}
 ```{r}
 # Inicializar el gráfico con el día en el atributo x y la ciudad en el color de relleno.
 ggplot(df, aes(x = Día, fill = Ciudad)) +
@@ -201,7 +201,7 @@ ggplot(df, aes(x = Día, fill = Ciudad)) +
 ```
 :::
 
-:::{.exm-barras-5}
+:::{#exm-barras-5}
 ```{r}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -212,12 +212,24 @@ ggplot(df, aes(x = sexo)) +
 ```
 :::
 
-:::{.exm-barras-6}
+:::{#exm-barras-6}
 ```{r}
 # Inicializar el gráfico con el sexo en los atributos x y fill.
 ggplot(df, aes(x = sexo, fill = sexo)) +
 # Añadir la capa de las barras.
     geom_bar() 
+```
+:::
+
+
+:::{#exm-barras-7}
+```{r}
+# Inicializar el gráfico con el sexo en los atributos x y fill.
+ggplot(df, aes(x = sexo, fill = sexo)) +
+# Añadir la capa de las barras con frecuencias relativas.
+     geom_bar(aes(y = after_stat(count / sum(count) * 100))) +
+# Cambiamos la etiqueta del eje y
+labs(y = "Porcentaje (%)") 
 ```
 :::
 
@@ -229,7 +241,7 @@ Para dibujar un histograma se utiliza la capa de objetos geométricos
 
 - `geom_histogram(bins = clases, binwidth = anchura)`: Dibuja un histograma de la variable asociada al atributo `x` usando el número de clases indicado por `clases` o bien clases de amplitud indicada por `anchura`. Si no se indica el parámetro `bins` o `bindwidth` se toman 30 clases por defecto.
 
-:::{.exm-histograma-1}
+:::{#exm-histograma-1}
 ```{r, message=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -240,7 +252,7 @@ ggplot(df, aes(x = altura)) +
 ```
 :::
 
-:::{.exm-histograma-2}
+:::{#exm-histograma-2}
 ```{r}
 # Inicializar el gráfico con la edad en el atributo x.
 ggplot(df, aes(x = altura)) +
@@ -249,7 +261,7 @@ ggplot(df, aes(x = altura)) +
 ```
 :::
 
-:::{.exm-histograma-3}
+:::{#exm-histograma-3}
 ```{r}
 # Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.
 ggplot(df, aes(x = altura, fill = sexo)) +
@@ -258,7 +270,7 @@ ggplot(df, aes(x = altura, fill = sexo)) +
 ```
 :::
 
-:::{.exm-histograma-3}
+:::{#exm-histograma-3}
 ```{r}
 # Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo fill.
 ggplot(df, aes(x = altura, fill = sexo)) +
@@ -277,7 +289,7 @@ Para dibujar un diagrama de densidad se utiliza la capa de objetos geométricos
 
 Este diagrama es una alternativa a los histogramas para representar la distribución de probabilidad de los valores de una variable.
 
-:::{.exm-densidad-1}
+:::{#exm-densidad-1}
 ```{r, message=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -288,7 +300,7 @@ ggplot(df, aes(x = edad)) +
 ```
 :::
 
-:::{.exm-densidad-2}
+:::{#exm-densidad-2}
 ```{r}
 # Inicializar el gráfico con la edad en el atributo x y el sexo en el atributo colour.
 ggplot(df, aes(x = edad, colour = sexo)) +
@@ -305,7 +317,7 @@ Para dibujar un diagrama de caja y bigotes se utiliza la capa de objetos geomét
 
 - `geom_boxplot()`: Dibuja un diagrama de caja y bigotes de la variable asociada al atributo `x` o `y`. Si se utiliza el atributo `x` la caja se representa horizontalmente, y si se utiliza el atributo `y` verticalmente.
 
-:::{.exm-cajas-1}
+:::{#exm-cajas-1}
 ```{r, message=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -316,7 +328,7 @@ ggplot(df, aes(x = colesterol)) +
 ```
 :::
 
-:::{.exm-cajas-2}
+:::{#exm-cajas-2}
 ```{r}
 # Inicializar el gráfico con la altura en el atributo y y el sexo en el atributo fill.
 ggplot(df, aes(y = altura, fill = sexo)) +
@@ -333,7 +345,7 @@ Para dibujar un diagrama de sectores se utiliza la misma capa de objetos geomét
 
 - `coor_polar(theta = "x"|"y")`: Cambia al sistema de coordenadas cartesianas polares, donde el ángulo viene dado por la variable asociada al atributo "x" o el atributo "y".
 
-:::{.exm-sectores-1}
+:::{#exm-sectores-1}
 ```{r}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -358,7 +370,7 @@ Por defecto se dibujan también las bandas con el error estándar del ajuste. Pa
 
 Esta capa suele usarse en combinación con la capa de puntos para diagramas de dispersión.
 
-:::{.exm-ajuste-1}
+:::{#exm-ajuste-1}
 ```{r, message=F, warning=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -371,7 +383,7 @@ ggplot(df, aes(x = altura, y = peso)) +
 ```
 :::
 
-:::{.exm-ajuste-2}
+:::{#exm-ajuste-2}
 ```{r, message=F, warning=F}
 # Inicializar el gráfico con la altura en el atributo x y el peso en el atributo y.
 ggplot(df, aes(x = altura, y = peso)) +
@@ -382,7 +394,7 @@ ggplot(df, aes(x = altura, y = peso)) +
 ```
 :::
 
-:::{.exm-ajuste-3}
+:::{#exm-ajuste-3}
 ```{r, message=F, warning=F}
 # Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo en el atributo colour.
 ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
@@ -401,7 +413,7 @@ Las facetas permiten desagregar un gráfico según los grupos de uno o varios fa
 
 - `facet_wrap(vars(var1, var2,...), nrow = n, ncol = m)`: Crea un un gráfico para cada combinación de valores de las variables `var1`, `var2`, etc. y los coloca en una tabla de `n` filas y `m` columnas.
 
-:::{.exm-facetas-1}
+:::{#exm-facetas-1}
 ```{r, message=F, warning=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -429,7 +441,7 @@ Para poner un título al gráfico, a los ejes o a la leyenda se añade la funci�
 - `labs(title = título, x = titulo-x, y = titulo-y,`  
     `colour = leyenda-color, shape  = leyenda-forma)`
 
-:::{.exm-titulos-1}
+:::{#exm-titulos-1}
 ```{r, message=F, warning=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -450,7 +462,7 @@ Para cambiar las escalas de los ejes cartesianos se añaden la funciones
 
 - `scale_y_continuos(limits = rango, breaks = cortes, labels = etiquetas, trans = transformación)`: Igual que la función anterior pero para el eje y.
 
-:::{.exm-escalas-1}
+:::{#exm-escalas-1}
 ```{r, message=F, warning=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -471,7 +483,7 @@ Finalmente se para cambiar otros aspectos del gráfico como las fuentes o los co
 
 - `theme(propiedades)`: Modifica las propiedades del tema indicadas. La lista es demasiado grande para cubrirla en este tutorial, por lo que se recomienda ver todas las opciones en la documentación de `ggplot2`.
 
-:::{.exm-temas-1}
+:::{#exm-temas-1}
 ```{r, message=F, warning=F}
 library(ggplot2)
 df <- read.csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/colesterol.csv')
@@ -486,7 +498,7 @@ ggplot(df, aes(x = altura, y = peso)) +
 ```
 :::
 
-:::{.exm-temas-2}
+:::{#exm-temas-2}
 ```{r, message=F, warning=F}
 # Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.
 ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
@@ -509,7 +521,7 @@ ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
     - `theme_classic()`: Tema sin rejilla.
     - `theme_void()`: Tema vacío.
 
-:::{.exm-temas-3}
+:::{#exm-temas-3}
 ```{r, message=F, warning=F}
 # Inicializar el gráfico con la altura en el atributo x, el peso en el atributo y, y el sexo al atributo colour.
 ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
@@ -522,101 +534,103 @@ ggplot(df, aes(x = altura, y = peso, colour = sexo)) +
 
 ## Ejercicios
 
-1. El fichero [neonatos](https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv) contiene información sobre los recién nacidos en un hospital durante un año.
+:::{#exr-graficos-1}
+El fichero [neonatos](https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv) contiene información sobre los recién nacidos en un hospital durante un año.
 
-a. Crear un tibble con los datos del fichero. 
+a.  Crear un tibble con los datos del fichero. 
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r, message=F}
-library(tidyverse)
-df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv')
-df
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r, message=F}
+    library(tidyverse)
+    df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/neonatos.csv')
+    df
+    ```
+    :::
 
-b. Convertir las variables `sexo`, `edad`, `tabaco` y `tabaco.antes` en factores.
+a.  Convertir las variables `sexo`, `edad`, `tabaco` y `tabaco.antes` en factores.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df <- mutate(df, sexo = factor(sexo), edad = factor(edad), tabaco = factor(tabaco), tabaco.antes = factor(tabaco.antes))
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df <- mutate(df, sexo = factor(sexo), edad = factor(edad), tabaco = factor(tabaco), tabaco.antes = factor(tabaco.antes))
+    ```
+    :::
 
-c. Dibujar un diagrama de barras con la frecuencia de niños y niñas.
+a.  Dibujar un diagrama de barras con la frecuencia de niños y niñas.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-ggplot(df, aes(x = sexo)) +
-    geom_bar()
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    ggplot(df, aes(x = sexo)) +
+        geom_bar()
+    ```
+    :::
 
-d. Dibujar un diagrama de barras del `apgar1` de los neonatos de madres fumadoras y no fumadoras durante el embarazo.
+a.  Dibujar un diagrama de barras del `apgar1` de los neonatos de madres fumadoras y no fumadoras durante el embarazo.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-ggplot(df, aes(x = apgar1, fill = tabaco)) +
-    geom_bar(position = "dodge")
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    ggplot(df, aes(x = apgar1, fill = tabaco)) +
+        geom_bar(position = "dodge")
+    ```
+    :::
 
-e. Dibujar un histograma acumulado del peso según el sexo con 10 clases.
+a.  Dibujar un histograma acumulado del peso según el sexo con 10 clases.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-ggplot(df, aes(x = peso, fill = sexo)) +
-    geom_histogram(bins = 10)
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    ggplot(df, aes(x = peso, fill = sexo)) +
+        geom_histogram(bins = 10)
+    ```
+    :::
 
-f. Dibujar un gráfico de densidad de probabilidad del peso de los neonatos de madres fumadoras y no fumadoras durante el embarazo.
+a.  Dibujar un gráfico de densidad de probabilidad del peso de los neonatos de madres fumadoras y no fumadoras durante el embarazo.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-ggplot(df, aes(x = peso, colour = tabaco)) +
-    geom_density()
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    ggplot(df, aes(x = peso, colour = tabaco)) +
+        geom_density()
+    ```
+    :::
 
-g. Dibujar un diagrama de caja del peso de los recién nacidos según sexo y si la madre fumaba o no durante el embarazo.
+a.  Dibujar un diagrama de caja del peso de los recién nacidos según sexo y si la madre fumaba o no durante el embarazo.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-ggplot(df, aes(x = sexo, y = peso, fill = tabaco)) +
-    geom_boxplot()
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    ggplot(df, aes(x = sexo, y = peso, fill = tabaco)) +
+        geom_boxplot()
+    ```
+    :::
 
-h. Dibujar un diagrama de dispersión del peso de los recién nacidos de madres fumadoras durante el embarazo, frente al número de cigarros que fumaban las madres. Incluir la recta de regresión.
+a.  Dibujar un diagrama de dispersión del peso de los recién nacidos de madres fumadoras durante el embarazo, frente al número de cigarros que fumaban las madres. Incluir la recta de regresión.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df %>% 
-    filter(tabaco == "Si") %>%
-    ggplot(aes(x = cigarros, y = peso)) +
-        geom_point() +
-        geom_smooth(method = "lm")
-```
-:::
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df %>% 
+        filter(tabaco == "Si") %>%
+        ggplot(aes(x = cigarros, y = peso)) +
+            geom_point() +
+            geom_smooth(method = "lm")
+    ```
+    :::
 
-h. Dibujar un diagrama de dispersión del peso de los recién nacidos de madres fumadoras durante el embarazo, frente al número de cigarros que fumaban las madres, separando por facetas según el sexo y la edad de la madre.
+a.  Dibujar un diagrama de dispersión del peso de los recién nacidos de madres fumadoras durante el embarazo, frente al número de cigarros que fumaban las madres, separando por facetas según el sexo y la edad de la madre.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df %>% 
-    filter(tabaco == "Si") %>%
-    ggplot(aes(x = cigarros, y = peso)) +
-        geom_point() +
-        geom_smooth(method = "lm") +
-        facet_wrap(vars(sexo, edad))
-```
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df %>% 
+        filter(tabaco == "Si") %>%
+        ggplot(aes(x = cigarros, y = peso)) +
+            geom_point() +
+            geom_smooth(method = "lm") +
+            facet_wrap(vars(sexo, edad))
+    ```
+    :::
 :::

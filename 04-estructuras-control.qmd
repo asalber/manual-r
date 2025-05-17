@@ -67,7 +67,7 @@ Se puede comprobar más de una condición encadenando otra instrucción `if` tra
 > `if (`_`<exp 1>`_`) {`  
 &ensp;&ensp;_`<código 1>`_  
 `} else if (`_`<exp 2>`_`) {`  
-&ensp;&ensp;_`<código 2>`_`) {`  
+&ensp;&ensp;_`<código 2>`_   
 ...  
 `} else {`  
 &ensp;&ensp;_`<código n>`_  
@@ -124,6 +124,7 @@ Lo bucles iterativos repiten un bloque de código un número determinado de vece
 
 :::{#exm-bucle-iterarivo}
 A continuación se muestra varios ejemplos de uso del bucle `for`.
+
 ```{r}
 asignaturas <- c("Matemáticas", "Física", "Programación")
 for (i in asignaturas) {
@@ -151,7 +152,8 @@ for (i in seq_along(asignaturas)){
 Los bucles iterativos se utilizan habitualmente para recorrer estructuras de una dimensión como los vectores y las listas, donde se sabe de antemano el número de elementos que contiene y, por tanto, el número de iteraciones del bucle. No obstante, también se pueden recorrer estructuras de más de una dimensión, como por ejemplo matrices, utilizando varios bucles `for` anidados.
 
 :::{#exm-bucles-anidados}
-A continuación se muestra varios ejemplos de dos bucles `for` anidados para recorrer los elementos de una matriz.
+A continuación se muestra un ejemplo de dos bucles `for` anidados para recorrer los elementos de una matriz.
+
 ```{r}
 x <- matrix(1:6, 2, 3)
 for (i in 1:nrow(x)) {
@@ -214,47 +216,99 @@ for (i in 1:10) {
   print(i)
 }
 ```
+:::
 
 ## Ejercicios
 
-:::{#exr-funciones-1}
-Crear una función para calcular la media de un vector numérico y usarla para calcular la media del vector `(1, 2, NA, 3, 4)`.
+:::{#exr-estructuras-control-1}
+Considérese el data frame creado en el @exr-datos-estructurados-1.
 
-:::{.callout-note collapse="true"}
-## Solución 
 ```{r}
-media <- function(x){
-  suma <- 0
-  n <- 0
-  for (i in x){
-    if (!is.na(i)){
+#| hide: true
+nombre <- c("Carlos", "María", "Carmen", "Pedro", "Luis", "Sara")
+sexo <- c("H", "M", "M", "H", "H", "M")
+fisica <- c(6.7, 7.2, 5.5, NA, 3.5, 6.2)
+quimica <- c(8.1, 9.5, 5, 4.5, 5, 4)
+df <- data.frame(nombre, sexo, fisica, quimica)
+```
+
+a.  Calcular la media de las notas de Química.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    suma <- 0
+    for (i in quimica){
       suma <- suma + i
-      n <- n + 1
     }
-  }
-  return(suma / n)
-}
-media(c(1, 2, NA, 3, 4))
-```
-:::
-:::
+    media <- suma / length(quimica)
+    media
+    ```
+    :::
 
-:::{#exr-funciones-2}
-Usar la función anterior para crear una función para calcular las medias de las columnas de un data frame numérico. La función debe devolver un vector con las medias de las columnas. Usarla para calcular el data frame formado por los vectores `(1, 2, NA, 3, 4)`  y `(-1, 0, -2, 0, NA)`.
+a.  Calcular la media de las notas de Física.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-medias <- function(df){
-medias <- NULL
-for (i in colnames(df)){
-  medias <- c(medias, media(df[[i]]))
-}
-return(medias)
-}
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    suma <- 0
+    n <- 0
+    for (i in fisica){
+      if (!is.na(i)){
+        suma <- suma + i
+        n <- n + 1 
+      }
+    }
+    media <- suma / n
+    media
+    ```
+    :::
 
-df <- data.frame(x = c(1, 2, NA, 3, 4), y = c(-1, 0, -2, 0, NA))
-medias(df)
-```
-:::
+a.  Construir un vector con las medias de las columnas numéricas del data frame.
+
+    :::{.callout-note collapse="true"}
+    ## Solución
+    ```{r}
+    medias <- NULL
+    for (j in 3:4){
+      suma <- 0
+      n <- 0
+      for (i in df[[j]]){
+        if (!is.na(i)){
+          suma <- suma + i
+          n <- n + 1 
+        }
+      }
+      medias <- c(medias, suma / n)
+    }
+    medias
+    ```
+    :::
+
+a.  Añadir al data frame nueva columnas con la calificaciones (suspenso, aprobado, notable, sobresaliente) de las notas de Física y Química.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    for (j in 3:4){
+      calificaciones <- NULL
+      for (i in df[[j]]) {
+        if (is.na(i)){
+          calificacion <- NA 
+        } else if (i < 5) {
+          calificacion <- "SS"
+        } else if (i < 7) {
+          calificacion <- "AP"
+        } else if (i < 9) {
+          calificacion <- "NT"
+        } else {
+          calificacion <- "SB"
+        }
+        calificaciones <- c(calificaciones, calificacion)
+      }
+      df[[paste("calificacion", colnames(df)[j])]] <- calificaciones
+    }
+    df
+    ```
+    :::
 :::

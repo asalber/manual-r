@@ -12,7 +12,7 @@ En R las funciones son objetos en sí mimas y pueden usarse como cualquier otro 
 
 Para definir una función se utiliza la siguiente estructura de código:
 
-> _`nombre.funcion`_ `<- function (`_`parámetros`_`) {`
+> _`nombre.funcion`_ `<- function (`_`parámetros`_`) {`  
 &ensp;&ensp;_`<código>`_  
 `}`
 
@@ -332,3 +332,48 @@ A continuación se presenta una lista ordenada alfabéticamente (no por importan
 - [`shiny`](https://shiny.rstudio.com/) es un paquete para la construcción de aplicaciones web interactivas.
 - [`tidymodels`](https://www.tidymodels.org/) es una colección de paquetes para la construcción y evalucación de modelos con técnicas de aprendizaje automático.
 - [`tidyverse`](https://www.tidyverse.org/) es una colección de paquetes para la Ciencia de Datos que incluye paquetes para la carga, limpieza, manipulación y representación gráfica de datos.
+
+
+## Ejercicios 
+
+:::{#exr-funciones-1}
+Crear una función para calcular la media de un vector numérico y usarla para calcular la media del vector `(1, 2, NA, 3, 4)`.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+media <- function(x){
+  suma <- 0
+  n <- 0
+  for (i in x){
+    if (!is.na(i)){
+      suma <- suma + i
+      n <- n + 1
+    }
+  }
+  return(suma / n)
+}
+media(c(1, 2, NA, 3, 4))
+```
+:::
+:::
+
+:::{#exr-funciones-2}
+Usar la función anterior para crear otra función para calcular las medias de las columnas de un data frame numérico. La función debe devolver un vector con las medias de las columnas. Usarla para calcular el data frame formado por los vectores `(1, 2, NA, 3, 4)`  y `(-1, 0, -2, 0, NA)`.
+
+:::{.callout-note collapse="true"}
+## Solución 
+```{r}
+medias <- function(df){
+medias <- NULL
+for (i in colnames(df)){
+  medias <- c(medias, media(df[[i]]))
+}
+return(medias)
+}
+
+df <- data.frame(x = c(1, 2, NA, 3, 4), y = c(-1, 0, -2, 0, NA))
+medias(df)
+```
+:::
+:::

@@ -1213,97 +1213,98 @@ cor.test(df$notaA, df$notaB)
 
 ## Ejercicios
 
-1. El fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
+:::{#exr-analisis-estadisticos-1}
+El fichero [`genetica`](https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv), contiene información de la análitica fisiológica, microbiológica y bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 
-a. Crear un tibble con los datos del fichero.
+a.  Crear un tibble con los datos del fichero.
 
-:::{.callout-note collapse="true"}
-## Solución 
-```{r, message=F}
-library(tidyverse)
-df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv')
-df
-```
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r, message=F}
+    library(tidyverse)
+    df <- read_csv('https://raw.githubusercontent.com/asalber/manual-r/master/datos/genetica.csv')
+    df
+    ```
+    :::
+
+a.  Convertir el tratamiento en un factor.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df <- mutate(df, Tratamiento = factor(Tratamiento))
+    ```
+    :::
+
+a.  Calcular el tamaño muestral de cada grupo de tratamiento
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    count(df, Tratamiento)
+    ```
+    :::
+
+a.  Comprobar la normalidad de la variable IHS en cada grupo de tratamiento.
+
+    :::{.callout-note collapse="true"}
+    ## Solución 
+    ```{r}
+    df %>% group_by(Tratamiento) %>% 
+      summarise(`Estadístico W` = shapiro.test(IHS)$statistic, `p-valor` = shapiro.test(IHS)$p.value)
+    ```
+    :::
+
+a.  Comprobar la homocedasticiad de varianzas de la variable IHS en los tres grupos de tratamiento.
+
+    :::{.callout-note collapse="true"}
+    ## Solución
+    ```{r}
+    # El test de Levene está disponible en el paquete car
+    library(car)
+    # Test de comparación de varianzas
+    leveneTest(IHS ~ Tratamiento, data = df)
+    ```
+    :::
+
+a.  Realizar un contraste de ANOVA para comparar las medias de la variable IHS entre los tres grupos de tratamiento.
+
+    :::{.callout-note collapse="true"}
+    ## Solución
+    ```{r}
+    # Análisis de la varianza de un factor
+    summary(aov(IHS ~ Tratamiento, data = df))
+    ```
+    :::
+
+a.  Realizar los contrastes de comparación de medias de la variable IHS por pares de trataimentos.
+
+    :::{.callout-note collapse="true"}
+    ## Solución
+    ```{r}
+    # Test de comparación múltiple de Tukey
+    TukeyHSD(aov(IHS ~ Tratamiento, data = df))
+    ```
+    :::
+
+a.  Realizar un contraste de Kruskal-Wallis para ver si hay diferencias significativas en la variable IHS entre los tres grupos de tratamiento.
+
+    :::{.callout-note collapse="true"}
+    ## Solución
+    ```{r}
+    # Test de Kruskal-Wallis
+    kruskal.test(IHS ~ Tratamiento, data = df)
+    ```
+    :::
+
+a.  Construir la recta de regresión del variable IHS sobre la variable IES.
+
+    :::{.callout-note collapse="true"}
+    ## Solución
+    ```{r}
+    # Test de Kruskal-Wallis
+    lm(IHS ~ IES, data = df)
+    summary(lm(IHS ~ IES, data = df))
+    ```
+    :::
 :::
-
-b. Convertir el tratamiento en un factor.
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df <- mutate(df, Tratamiento = factor(Tratamiento))
-```
-:::
-
-c. Calcular el tamaño muestral de cada grupo de tratamiento
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-count(df, Tratamiento)
-```
-:::
-
-d. Comprobar la normalidad de la variable IHS en cada grupo de tratamiento.
-
-:::{.callout-note collapse="true"}
-## Solución 
-```{r}
-df %>% group_by(Tratamiento) %>% 
-  summarise(`Estadístico W` = shapiro.test(IHS)$statistic, `p-valor` = shapiro.test(IHS)$p.value)
-```
-:::
-
-e. Comprobar la homocedasticiad de varianzas de la variable IHS en los tres grupos de tratamiento.
-
-:::{.callout-note collapse="true"}
-## Solución
-```{r}
-# El test de Levene está disponible en el paquete car
-library(car)
-# Test de comparación de varianzas
-leveneTest(IHS ~ Tratamiento, data = df)
-```
-:::
-
-f. Realizar un contraste de ANOVA para comparar las medias de la variable IHS entre los tres grupos de tratamiento.
-
-:::{.callout-note collapse="true"}
-## Solución
-```{r}
-# Análisis de la varianza de un factor
-summary(aov(IHS ~ Tratamiento, data = df))
-```
-:::
-
-g. Realizar los contrastes de comparación de medias de la variable IHS por pares de trataimentos.
-
-:::{.callout-note collapse="true"}
-## Solución
-```{r}
-# Test de comparación múltiple de Tukey
-TukeyHSD(aov(IHS ~ Tratamiento, data = df))
-```
-:::
-
-h. Realizar un contraste de Kruskal-Wallis para ver si hay diferencias significativas en la variable IHS entre los tres grupos de tratamiento.
-
-:::{.callout-note collapse="true"}
-## Solución
-```{r}
-# Test de Kruskal-Wallis
-kruskal.test(IHS ~ Tratamiento, data = df)
-```
-:::
-
-i. Construir la recta de regresión del variable IHS sobre la variable IES.
-
-:::{.callout-note collapse="true"}
-## Solución
-```{r}
-# Test de Kruskal-Wallis
-lm(IHS ~ IES, data = df)
-summary(lm(IHS ~ IES, data = df))
-```
-:::
-
