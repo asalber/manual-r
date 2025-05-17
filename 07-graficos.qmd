@@ -229,7 +229,7 @@ ggplot(df, aes(x = sexo, fill = sexo)) +
 # Añadir la capa de las barras con frecuencias relativas.
      geom_bar(aes(y = after_stat(count / sum(count) * 100))) +
 # Cambiamos la etiqueta del eje y
-labs(y = "Porcentaje (%)") 
+labs(y = "Porcentaje (%)")
 ```
 :::
 
