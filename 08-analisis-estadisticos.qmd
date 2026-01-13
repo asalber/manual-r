@@ -14,7 +14,7 @@ El tipo de estudio estadístico más apropiado en cada caso depende de varios fa
 - El tipo de las variables dependientes e independientes.
 - La naturaleza de las observaciones (independientes o emparejadas).
 
-A continuación se presentan los estudios estadísticos más habituales en función de estos factores. La siguiente [tabla de resumen de contrastes de hipótesis más habituales](tablas/Tabla%20Resumen%20Contraste%20de%20Hip%C3%B3tesis.pdf) puede ayudar a identificar el más apropiado en cada caso.
+A continuación se presentan los estudios estadísticos más habituales en función de estos factores. La siguiente [tabla de resumen de contrastes de hipótesis más habituales](tablas/Tabla%20Resumen%20Contraste%20de%20Hip%C3%B3tesis.pdf) puede ayudar a identificar el más apropiado en cada caso. 
 
 <table width="1054" cellspacing="0" cellpadding="5" border="1">
 <tbody>
@@ -410,6 +410,8 @@ A continuación se presentan los estudios estadísticos más habituales en funci
 </tr>
 </tbody>
 </table>
+
+Esta otra tabla recoge los [comandos en R de los contrastes de hipótesis más comunes](tablas/tabla_contrastes_r.pdf).
 
 Los ejemplos de los distintos test que se presentan a continuación se han realizado a partir del siguiente conjunto de datos que contiene las notas y calificaciones de un curso. El fichero con los datos puede descargarse aquí para reproducir los estudios: [notas-curso.csv](https://raw.githubusercontent.com/asalber/manual-r/master/datos/notas-curso.csv).
 
