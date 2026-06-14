@@ -107,6 +107,7 @@
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -135,13 +136,13 @@
 
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
 
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
@@ -232,9 +233,9 @@
 \newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
 \usepackage{amsthm}
 \theoremstyle{definition}
-\newtheorem{example}{Ejemplo}[chapter]
-\theoremstyle{definition}
 \newtheorem{exercise}{Ejercicio}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Ejemplo}[chapter]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Prueba}}
 \newtheorem*{remark}{Observación}
@@ -304,7 +305,6 @@ Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \end{titlepage}
 \renewcommand*\contentsname{Indice de contenidos}
 {
-\hypersetup{linkcolor=}
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
@@ -404,10 +404,10 @@ disciplinas que, como la Estadística, requieren manejar un gran volumen
 de datos. Actualmente, prácticamente nadie se plantea hacer un estudio
 estadístico serio sin la ayuda de un buen programa de análisis de datos.
 
-\emph{R} es un potente lenguaje de programación que incluye multitud de
-funciones para la representación y el análisis de datos. Fue
-desarrollado en 1993 por Robert Gentleman y Ross Ihaka en la Universidad
-de Auckland en Nueva Zelanda, aunque actualmente es mantenido por una
+\textbf{R} es un potente lenguaje de programación que incluye multitud
+de funciones para la representación y el análisis de datos. Fue
+desarrollado por Robert Gentleman y Ross Ihaka en la Universidad de
+Auckland en Nueva Zelanda, aunque actualmente es mantenido por una
 enorme comunidad científica en todo el mundo.
 
 \begin{figure}[H]
@@ -429,10 +429,8 @@ datos, como pueden ser SPSS, SAS o Matlab, son múltiples:
   Es software libre y por tanto gratuito. Puede descargarse desde la web
   \url{http://www.r-project.org/}.
 \item
-  Es multiplataforma. Existen versiones para Windows, Macintosh, Linux y
-  otras plataformas.
-\item
-  Es un lenguaje maduro.
+  Es multiplataforma. Existen versiones para Windows, Mac, Linux y otras
+  plataformas.
 \item
   Está avalado y en constante desarrollo por una amplia comunidad
   científica distribuida por todo el mundo que lo utiliza como estándar
@@ -445,13 +443,14 @@ datos, como pueden ser SPSS, SAS o Matlab, son múltiples:
   \href{https://cran.r-project.org/}{repositorio CRAN} (Comprehensive R
   Archive Network) desde donde pueden descargarse libremente.
 \item
-  Diseñado para el análisis la representación de datos.
+  Es programable, lo que permite que el usuario pueda crear fácilmente
+  sus propias funciones o paquetes para análisis de datos específicos.
+\item
+  Existen multitud de libros, manuales y tutoriales libres que permiten
+  su aprendizaje e ilustran el análisis estadístico de datos en
+  distintas disciplinas científicas como las Matemáticas, la Física, la
+  Biología, la Psicología, la Medicina, etc.
 \end{itemize}
-
-Existen multitud de libros, manuales y tutoriales libres que permiten su
-aprendizaje e ilustran el análisis estadístico de datos en distintas
-disciplinas científicas como las Matemáticas, la Física, la Biología, la
-Psicología, la Medicina, etc.
 
 \section{Instalación de R}\label{instalaciuxf3n-de-r}
 
@@ -480,16 +479,140 @@ facilitan la gestión de cualquier proyecto:
   \href{https://www.rstudio.com/}{RStudio}. Probablemente el entorno de
   desarrollo más extendido para programar con R ya que incorpora
   multitud de utilidades para facilitar la programación con R.
+
+  \begin{figure}[H]
+
+  {\centering \pandocbounded{\includegraphics[keepaspectratio]{img/rstudio.png}}
+
+  }
+
+  \caption{Entorno de desarrollo RStudio}
+
+  \end{figure}%
+\item
+  \href{https://positron.posit.co/}{Positron}. Es un entorno de
+  desarrollo moderno y potente para R y Python que incluye muchas de las
+  funcionalidades de RStudio, pero con una interfaz más moderna y
+  atractiva.
+
+  \begin{figure}[H]
+
+  {\centering \pandocbounded{\includegraphics[keepaspectratio]{img/positron.png}}
+
+  }
+
+  \caption{Entorno de desarrollo Positron}
+
+  \end{figure}%
 \item
   \href{https://rkward.kde.org}{RKWard}. Es otra otro de los entornos de
   desarrollo más completos que además incluye a posibilidad de añadir
   nuevos menús y cuadros de diálogo personalizados.
+
+  \begin{figure}[H]
+
+  {\centering \pandocbounded{\includegraphics[keepaspectratio]{img/rkward.png}}
+
+  }
+
+  \caption{Entorno de desarrollo RKWard}
+
+  \end{figure}%
+\item
+  \href{https://jupyter.org/}{Jupyter Lab}. Es un entorno de desarrollo
+  interactivo que permite la creación de documentos que contienen
+  código, texto, gráficos. Aunque no es un entorno de desarrollo
+  específico para R, incluye un kernel para R que permite ejecutar
+  código R en los documentos.
+
+  \begin{figure}[H]
+
+  {\centering \pandocbounded{\includegraphics[keepaspectratio]{img/jupyter-lab.png}}
+
+  }
+
+  \caption{Entorno de desarrollo Jupyter Lab}
+
+  \end{figure}%
 \item
   \href{https://code.visualstudio.com/}{Visual Studio Code}. Es un
   entorno de desarrollo de propósito general ampliamente extendido.
   Aunque no es un entorno de desarrollo específico para R, incluye una
   extensión con utilidades que facilitan mucho el desarrollo con R.
+
+  \begin{figure}[H]
+
+  {\centering \pandocbounded{\includegraphics[keepaspectratio]{img/vscode-r.png}}
+
+  }
+
+  \caption{Entorno de desarrollo Visual Studio Code}
+
+  \end{figure}%
 \end{itemize}
+
+\section{Instalación de paquetes}\label{instalaciuxf3n-de-paquetes}
+
+R es un lenguaje de programación modular, lo que significa que su
+funcionalidad se extiende mediante paquetes. Los paquetes son
+colecciones de funciones, datos y documentación sobre el uso de esas
+funciones o conjuntos de datos.
+
+El repositorio de paquetes más importante es
+\href{https://cran.r-project.org/}{CRAN} (Comprehensive R Archive
+Network), pero existen otros repositorios como
+\href{https://www.bioconductor.org/}{Bioconductor} que contiene paquetes
+específicos para el análisis de datos biológicos.
+
+\subsection{Instalación de paquetes desde
+CRAN}\label{instalaciuxf3n-de-paquetes-desde-cran}
+
+Para instalar un paquete en R basta con ejecutar la función
+\texttt{install.packages()} con el nombre del paquete que se desea
+instalar. Por ejemplo, para instalar el paquete \texttt{ggplot2} que es
+uno de los paquetes más utilizados para realizar gráficos en R, basta
+con ejecutar el siguiente comando:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Los ubicación de los paquete instalados en R depende del sistema
+operativo, pero puede consultarse en la variable \texttt{.libPaths()}.
+
+\subsection{Instalación de paquetes desde
+Bioconductor}\label{instalaciuxf3n-de-paquetes-desde-bioconductor}
+
+Para instalar un paquete desde Bioconductor es necesario instalar
+primero el paquete \texttt{BiocManager} y después utilizar la función
+\texttt{BiocManager::install()} con el nombre del paquete que se desea
+instalar. Por ejemplo, para instalar el paquete \texttt{DESeq2} que es
+uno de los paquetes más utilizados para el análisis de datos de
+expresión génica, basta con ejecutar el siguiente comando:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"BiocManager"}\NormalTok{)}
+\NormalTok{BiocManager}\SpecialCharTok{::}\FunctionTok{install}\NormalTok{(}\StringTok{"DESeq2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Actualización de paquetes}\label{actualizaciuxf3n-de-paquetes}
+
+Cada cierto tiempo conviene actualizar los paquetes instalados en R para
+asegurarse de que se dispone de las últimas versiones de los mismos.
+Para ello se puede utilizar la función \texttt{update.packages()}. Por
+ejemplo, para actualizar todos los paquetes instalados en R sin
+necesidad de confirmación por parte del usuario, basta con ejecutar el
+siguiente comando:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{update.packages}\NormalTok{(}\AttributeTok{ask =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \bookmarksetup{startatroot}
 
@@ -1251,6 +1374,7 @@ A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
 \subsubsection*{Tabla de verdad}\label{tabla-de-verdad}
 \addcontentsline{toc}{subsubsection}{Tabla de verdad}
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ccccc@{}}
 \toprule\noalign{}
 \texttt{x} & \texttt{y} & \texttt{!x} & \texttt{x\ \&\ y} &
@@ -1268,6 +1392,7 @@ A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
 \texttt{TRUE} & \texttt{TRUE} & \texttt{FALSE} & \texttt{TRUE} &
 \texttt{TRUE} \\
 \end{longtable}
+}
 
 \begin{example}[]\protect\hypertarget{exm-operadores-logicos}{}\label{exm-operadores-logicos}
 
@@ -1329,7 +1454,7 @@ A la hora de comparar valores lógicos R asocia a \texttt{TRUE} el valor
 
 Una variable es un identificador ligado a un valor.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Reglas para nombrar variables}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{itemize}
 \tightlist
@@ -1428,6 +1553,7 @@ operadores}\label{prioridad-de-los-operadores}
 Al evaluar una expresiones R utiliza el siguiente orden de prioridad de
 evaluación:
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}cc@{}}
 \toprule\noalign{}
 \endhead
@@ -1445,6 +1571,7 @@ evaluación:
 8 & Disyunción (\texttt{\textbar{}}) \\
 9 & Asignación (\texttt{\textless{}-}) \\
 \end{longtable}
+}
 
 Se puede saltar el orden de evaluación utilizando paréntesis
 \texttt{(\ )}.
@@ -1514,6 +1641,7 @@ Se puede saltar el orden de evaluación utilizando paréntesis
 
 Se dispone de los siguientes datos de una persona:
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}cc@{}}
 \toprule\noalign{}
 Variable & Valor \\
@@ -1526,6 +1654,7 @@ estatura & 165 \\
 peso & 60 \\
 sexo & mujer \\
 \end{longtable}
+}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -1533,7 +1662,7 @@ sexo & mujer \\
   Declarar las variables anteriores y asignarles los valores
   correspondientes.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1554,7 +1683,7 @@ sexo & mujer \\
   \mbox{imc} = \frac{\mbox{peso (kg)}}{\mbox{estatura (m)}^2}
   \]
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1574,7 +1703,7 @@ sexo & mujer \\
   apartado anterior redondeado a dos decimales y con sus unidades en
   mayúsculas.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1594,7 +1723,7 @@ sexo & mujer \\
   tener un índice de masa corporal mayor o igual que 30. ¿Es esta
   persona obesa?
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1624,6 +1753,7 @@ tipos tipos estructurados de datos que pueden clasificarse de acuerdo a
 su dimensión y a si son homogéneos (todos sus elementos son del mismo
 tipo) o heterogéneos.
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ccc@{}}
 \toprule\noalign{}
 Dimensiones & Homogéneos & Heterogéneos \\
@@ -1635,6 +1765,7 @@ Dimensiones & Homogéneos & Heterogéneos \\
 2 & Matriz & Data frame \\
 n & Array & \\
 \end{longtable}
+}
 
 Para averiguar la estructura de un dato estructurado se puede utilizar
 la función siguiente:
@@ -1884,7 +2015,7 @@ corchetes \texttt{{[}\ {]}} el entero que corresponde a su número de
 orden. Se puede acceder simultáneamente a varios elementos mediante un
 vector con sus números de orden.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 En R los índices enteros para acceder a los elementos de un vector
 comienzan en 1, a diferencia de otros lenguajes de programación que
@@ -3145,7 +3276,7 @@ dirección.municipio
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 Obsérvese que cuando se convierte una lista en un vector, los elementos
 de la lista se convierten al tipo más general mediante coerción.
@@ -3827,7 +3958,7 @@ siguientes funciones:
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 Obsérvese que si el número de elementos proporcionados en el vector es
 menor del necesario para completar la fila o columna, se reutilizan los
@@ -3955,7 +4086,7 @@ distintas se produce un error.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 Obsérvese en el ejemplo anterior que la división por 0 produce el valor
 \texttt{Inf} que representa infinito.
@@ -4001,7 +4132,7 @@ Para multiplicar dos matrices numéricas se utiliza el operador
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 Para poder multiplicar dos matrices deben tener dimensiones compatibles.
 Si el número de columnas de la primera matriz no es igual que el número
@@ -4589,6 +4720,7 @@ una fila basta con acceder a la fila con índice negativo.
 La siguiente tabla recoge las notas de los alumnos de un curso con dos
 asignaturas.
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lccc@{}}
 \toprule\noalign{}
 Alumno & Sexo & Física & Química \\
@@ -4603,6 +4735,7 @@ Pedro & H & & 4.5 \\
 Luis & H & 3.5 & 5 \\
 Sara & M & 6.2 & 4 \\
 \end{longtable}
+}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -4610,7 +4743,7 @@ Sara & M & 6.2 & 4 \\
   Definir cuatro vectores con el nombre, el sexo y las notas de Física y
   Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4625,7 +4758,7 @@ Sara & M & 6.2 & 4 \\
 \item
   Convertir el sexo en un factor y mostrar sus niveles.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4642,7 +4775,7 @@ Sara & M & 6.2 & 4 \\
 \item
   Crear un nuevo vector con la nota media de Física y Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4661,7 +4794,7 @@ Sara & M & 6.2 & 4 \\
   \texttt{TRUE} si la media es mayor o igual que 5 y \texttt{FALSE} en
   caso contrario.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4679,7 +4812,7 @@ Sara & M & 6.2 & 4 \\
   Aplicar un filtro al vector de nombres para quedarse con los nombres
   de los alumnos que han aprobado.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4696,7 +4829,7 @@ Sara & M & 6.2 & 4 \\
   Crear un data frame con el nombre, sexo y las notas de Física y
   Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4719,7 +4852,7 @@ Sara & M & 6.2 & 4 \\
 \item
   Añadir el vector con la media al data frame.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4743,7 +4876,7 @@ Sara & M & 6.2 & 4 \\
   Filtrar el data frame para quedarse con el nombre y la media de las
   mujeres que han aprobado.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5260,7 +5393,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
 \item
   Calcular la media de las notas de Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5281,7 +5414,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
 \item
   Calcular la media de las notas de Física.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5307,7 +5440,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
   Construir un vector con las medias de las columnas numéricas del data
   frame.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5336,7 +5469,7 @@ Ejercicio~\ref{exr-datos-estructurados-1}.
   Añadir al data frame nueva columnas con la calificaciones (suspenso,
   aprobado, notable, sobresaliente) de las notas de Física y Química.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5995,7 +6128,7 @@ los contiene y después cargarlo en la sesión de trabajo.
 Para ver los paquetes instalados en un ordenador se utiliza la función
 \texttt{library()}.
 
-\subsection{Instalación de paquetes}\label{instalaciuxf3n-de-paquetes}
+\subsection{Instalación de paquetes}\label{instalaciuxf3n-de-paquetes-1}
 
 La mayor parte de los paquetes para R están disponibles en el
 repositorio oficial
@@ -6185,7 +6318,7 @@ importancia) de los paquetes más populares para el análisis de datos:
 Crear una función para calcular la media de un vector numérico y usarla
 para calcular la media del vector \texttt{(1,\ 2,\ NA,\ 3,\ 4)}.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6220,7 +6353,7 @@ devolver un vector con las medias de las columnas. Usarla para calcular
 el data frame formado por los vectores \texttt{(1,\ 2,\ NA,\ 3,\ 4)} y
 \texttt{(-1,\ 0,\ -2,\ 0,\ NA)}.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7224,7 +7357,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Crear un tibble con los datos del fichero.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7260,7 +7393,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Convertir el tratamiento en un factor.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7272,7 +7405,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Calcular el tamaño muestral de cada grupo de tratamiento
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7294,7 +7427,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Filtrar las ratas de grupo control con una masa corporal
   (\texttt{mas\ cor\ (g)}) mayor de 230 g.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7323,7 +7456,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Calcular la media y la desviación típica de la masa corporal
   (\texttt{mas\ cor\ (g)}) para cada tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7347,7 +7480,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Calcular la media y la desviación típica de todas las variables para
   cada tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7497,7 +7630,7 @@ siguiente función
   \end{itemize}
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, colframe=quarto-callout-important-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-important-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 Todos los atributos se indican dentro de la función \texttt{aes()}.
 
@@ -8439,7 +8572,7 @@ año.
 \item
   Crear un tibble con los datos del fichero.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8471,7 +8604,7 @@ año.
   Convertir las variables \texttt{sexo}, \texttt{edad}, \texttt{tabaco}
   y \texttt{tabaco.antes} en factores.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8483,7 +8616,7 @@ año.
 \item
   Dibujar un diagrama de barras con la frecuencia de niños y niñas.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8499,7 +8632,7 @@ año.
   Dibujar un diagrama de barras del \texttt{apgar1} de los neonatos de
   madres fumadoras y no fumadoras durante el embarazo.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8514,7 +8647,7 @@ año.
 \item
   Dibujar un histograma acumulado del peso según el sexo con 10 clases.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8530,7 +8663,7 @@ año.
   Dibujar un gráfico de densidad de probabilidad del peso de los
   neonatos de madres fumadoras y no fumadoras durante el embarazo.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8546,7 +8679,7 @@ año.
   Dibujar un diagrama de caja del peso de los recién nacidos según sexo
   y si la madre fumaba o no durante el embarazo.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8563,7 +8696,7 @@ año.
   madres fumadoras durante el embarazo, frente al número de cigarros que
   fumaban las madres. Incluir la recta de regresión.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8588,7 +8721,7 @@ año.
   fumaban las madres, separando por facetas según el sexo y la edad de
   la madre.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10521,7 +10654,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Crear un tibble con los datos del fichero.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10557,7 +10690,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Convertir el tratamiento en un factor.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10569,7 +10702,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
 \item
   Calcular el tamaño muestral de cada grupo de tratamiento
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10591,7 +10724,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Comprobar la normalidad de la variable IHS en cada grupo de
   tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10614,7 +10747,7 @@ bioquímica, de una muestra de ratas tratadas con distintos tratamientos.
   Comprobar la homocedasticiad de varianzas de la variable IHS en los
   tres grupos de tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10637,7 +10770,7 @@ group  2  0.1636 0.8503
   Realizar un contraste de ANOVA para comparar las medias de la variable
   IHS entre los tres grupos de tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10659,7 +10792,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
   Realizar los contrastes de comparación de medias de la variable IHS
   por pares de trataimentos.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10687,7 +10820,7 @@ Kanamicina-Dexametasona -0.0126000000 -0.017409273 -0.007790727 0.0000082
   significativas en la variable IHS entre los tres grupos de
   tratamiento.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10709,7 +10842,7 @@ Kruskal-Wallis chi-squared = 13.433, df = 2, p-value = 0.001211
   Construir la recta de regresión del variable IHS sobre la variable
   IES.
 
-  \begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacityback=0, colback=white, left=2mm, breakable, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, bottomtitle=1mm, coltitle=black, toptitle=1mm, toprule=.15mm]
+  \begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Solución}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
